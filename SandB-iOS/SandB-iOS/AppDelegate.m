@@ -1,18 +1,18 @@
 //
-//  APPAppDelegate.m
+//  AppDelegate.m
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.
 //  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
 //
 
-#import "APPAppDelegate.h"
+#import "AppDelegate.h"
 
-#import "APPFirstViewController.h"
+#import "FirstViewController.h"
 
-#import "APPSecondViewController.h"
+#import "SecondViewController.h"
 
-@implementation APPAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -20,12 +20,14 @@
     // Override point for customization after application launch.
     UIViewController *viewController1, *viewController2;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        viewController1 = [[APPFirstViewController alloc] initWithNibName:@"APPFirstViewController_iPhone" bundle:nil];
-        viewController2 = [[APPSecondViewController alloc] initWithNibName:@"APPSecondViewController_iPhone" bundle:nil];
-    } else {
-        viewController1 = [[APPFirstViewController alloc] initWithNibName:@"APPFirstViewController_iPad" bundle:nil];
-        viewController2 = [[APPSecondViewController alloc] initWithNibName:@"APPSecondViewController_iPad" bundle:nil];
+        viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController_iPhone" bundle:nil];
+        viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController_iPhone" bundle:nil];
     }
+    //Commenting out ipad specific xib loading
+    /*else {
+        viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController_iPad" bundle:nil];
+        viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController_iPad" bundle:nil];
+    }*/
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = @[viewController1, viewController2];
     self.window.rootViewController = self.tabBarController;

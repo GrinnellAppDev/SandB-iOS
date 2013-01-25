@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
 //
 
-#import "APPSecondViewController.h"
+#import "SecondViewController.h"
 
-@interface APPSecondViewController ()
+@interface SecondViewController ()
 
 @end
 
-@implementation APPSecondViewController
+@implementation SecondViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

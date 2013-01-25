@@ -1,5 +1,5 @@
 //
-//  APPAppDelegate.h
+//  AppDelegate.h
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APPAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

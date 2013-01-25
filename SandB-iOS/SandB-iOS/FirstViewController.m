@@ -1,18 +1,18 @@
 //
-//  APPFirstViewController.m
+//  FirstViewController.m
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.
 //  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
 //
 
-#import "APPFirstViewController.h"
+#import "FirstViewController.h"
 
-@interface APPFirstViewController ()
+@interface FirstViewController ()
 
 @end
 
-@implementation APPFirstViewController
+@implementation FirstViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

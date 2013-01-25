@@ -1,5 +1,5 @@
 //
-//  APPSecondViewController.h
+//  SecondViewController.h
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APPSecondViewController : UIViewController
+@interface SecondViewController : UIViewController
 
 @end
