@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B59AF2716B5AB080089B06A /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		8BD1C80B16B32493005F3F23 /* SandB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SandB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD1C80F16B32493005F3F23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BD1C81116B32493005F3F23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -40,7 +41,6 @@
 		8BD1C82116B32493005F3F23 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8BD1C82316B32493005F3F23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8BD1C82516B32493005F3F23 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8BD1C82716B32493005F3F23 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		8BD1C82816B32493005F3F23 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		8BD1C82A16B32493005F3F23 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		8BD1C82C16B32493005F3F23 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			children = (
 				8BD1C81E16B32493005F3F23 /* AppDelegate.h */,
 				8BD1C81F16B32493005F3F23 /* AppDelegate.m */,
-				8BD1C82716B32493005F3F23 /* FirstViewController.h */,
+				3B59AF2716B5AB080089B06A /* FirstViewController.h */,
 				8BD1C82816B32493005F3F23 /* FirstViewController.m */,
 				8BD1C83516B32493005F3F23 /* FirstViewController_iPhone.xib */,
 				8BD1C84616B32E2B005F3F23 /* SecondViewController.h */,
@@ -331,6 +331,7 @@
 				8BD1C84516B32493005F3F23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

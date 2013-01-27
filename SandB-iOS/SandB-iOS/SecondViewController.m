@@ -1,5 +1,5 @@
 //
-//  APPSecondViewController.m
+//  SecondViewController.m
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.

@@ -1,5 +1,5 @@
 //
-//  APPFirstViewController.h
+//  FirstViewController.h
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.
