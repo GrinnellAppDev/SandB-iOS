@@ -10,4 +10,7 @@
 
 @interface FirstViewController : UIViewController
 
+//For Custom Cell
+@property (nonatomic, strong) NSString *cellIdentifier;
+
 @end
