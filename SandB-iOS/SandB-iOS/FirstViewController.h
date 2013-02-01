@@ -10,7 +10,10 @@
 
 @interface FirstViewController : UIViewController
 
+- (void)loadArticles;
 //For Custom Cell
 @property (nonatomic, strong) NSString *cellIdentifier;
 
 @end
+
+

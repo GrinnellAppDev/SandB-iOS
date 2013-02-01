@@ -8,12 +8,15 @@
 
 #import "FirstViewController.h"
 #import "ArticleViewController.h"
+#import "Reachability.h"
 
 @interface FirstViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation FirstViewController{
+    NSString *alert;
+}
 
 @synthesize cellIdentifier;
 
@@ -39,12 +42,54 @@
     self.cellIdentifier = @"NewsCell";
     self.title = @"Scarlet and Black";
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    [self loadArticles];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//Method to determine the availability of network Connections using the Reachability Class
+- (BOOL)networkCheck {
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    return (!(networkStatus == NotReachable));
+}
+
+- (void)loadArticles {
+    NSMutableString *url = [NSMutableString stringWithFormat:@"http://www.thesandb.com/feed"];
+    
+    //You should test for a network connection before here.
+    if ([self networkCheck]) {
+        //There's a network connection. Before Pulling in any real data. Let's check if there actually is any data available.
+        
+       // FOR PARSING: NSError *error;
+        NSData *availableData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+        @try {
+           // TODO - Parse the data
+            
+            
+        }
+        @catch (NSException *e) {
+            alert = @"server";
+            UIAlertView *network = [[UIAlertView alloc]
+                                    initWithTitle:@"Network Error"
+                                    message:@"The connection to the server failed. Please check back later. Sorry for the inconvenience."
+                                    delegate:self
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles:nil
+                                    ];
+            [network show];
+            return;
+        }
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+        [parser parse];
+        
+        NSLog(@"%@", parser);
+    }
 }
 
 #pragma mark - Table view data source
@@ -94,4 +139,11 @@
     [self.navigationController pushViewController:articlePage animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+    
+#pragma mark UIAlertViewDelegate Methods
+// Called when an alert button is tapped.
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    return;
+}
+    
 @end

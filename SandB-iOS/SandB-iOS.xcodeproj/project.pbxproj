@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB13516BC63ED00C20358 /* Reachability.m */; };
+		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C80F16B32493005F3F23 /* UIKit.framework */; };
 		8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81116B32493005F3F23 /* Foundation.framework */; };
 		8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81316B32493005F3F23 /* CoreGraphics.framework */; };
@@ -31,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		3B59AF2716B5AB080089B06A /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		8B9BB13416BC63ED00C20358 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		8B9BB13516BC63ED00C20358 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8BD1C80B16B32493005F3F23 /* SandB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SandB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD1C80F16B32493005F3F23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BD1C81116B32493005F3F23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */,
 				8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */,
 				8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */,
 				8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */,
@@ -93,6 +99,7 @@
 		8BD1C80E16B32493005F3F23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */,
 				8BD1C80F16B32493005F3F23 /* UIKit.framework */,
 				8BD1C81116B32493005F3F23 /* Foundation.framework */,
 				8BD1C81316B32493005F3F23 /* CoreGraphics.framework */,
@@ -120,6 +127,8 @@
 				8BD1C83116B32493005F3F23 /* second.png */,
 				8BD1C83316B32493005F3F23 /* second@2x.png */,
 				8BD1C81616B32493005F3F23 /* Supporting Files */,
+				8B9BB13416BC63ED00C20358 /* Reachability.h */,
+				8B9BB13516BC63ED00C20358 /* Reachability.m */,
 			);
 			path = "SandB-iOS";
 			sourceTree = "<group>";
@@ -217,6 +226,7 @@
 				8BD1C82916B32493005F3F23 /* FirstViewController.m in Sources */,
 				8BD1C83016B32493005F3F23 /* SecondViewController.m in Sources */,
 				8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */,
+				8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
