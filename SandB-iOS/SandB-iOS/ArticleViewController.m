@@ -13,7 +13,7 @@
 @end
 
 @implementation ArticleViewController
-@synthesize article, articleTitle;
+@synthesize article, articleTitle, articleBody;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,8 +29,8 @@
     [super viewDidLoad];
 
 //    self.navigationController.navigationBar.backItem.title = @"Back";
-    articleTitle.text = @"A TITLE";
-    article.text = @"some random shit";
+    articleTitle.text = article.title;
+    articleBody.text = article.article;
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight)];
     [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.view addGestureRecognizer:swipeRight];

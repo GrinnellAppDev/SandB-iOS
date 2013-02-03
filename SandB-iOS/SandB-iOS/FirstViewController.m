@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import "ArticleViewController.h"
 #import "Reachability.h"
+#import "Article.h"
 
 @interface FirstViewController ()
 
@@ -29,7 +30,7 @@
     }
     return self;
 }
-							
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,7 +44,40 @@
     self.title = @"Scarlet and Black";
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    [self loadArticles];
+   // [self loadArticles];
+    
+    //Get the XML data
+    NSData *xmlData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://www.thesandb.com/feed"]];
+    tbxml = [[TBXML alloc]initWithXMLData:xmlData];
+    articleArray = [[NSMutableArray alloc] init];
+    // Obtain root element
+    TBXMLElement * root = tbxml.rootXMLElement;
+    if (root)
+    {
+        TBXMLElement * elem_NEWroot = [TBXML childElementNamed:@"channel" parentElement:root];
+        TBXMLElement * elem_ARTICLE = [TBXML childElementNamed:@"item" parentElement:elem_NEWroot];
+        while (elem_ARTICLE !=nil)
+        {
+            TBXMLElement * elem_TITLE = [TBXML childElementNamed:@"title" parentElement:elem_ARTICLE];
+            TBXMLElement * elem_TEXT = [TBXML childElementNamed:@"content:encoded" parentElement:elem_ARTICLE];
+            Article * art = [[Article alloc] init];
+            NSString *articleTitle = [TBXML textForElement:elem_TITLE];
+            NSString *articleBody = [TBXML textForElement:elem_TEXT];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n"];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8230" withString:@"... "];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
+            articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8230" withString:@"... "];
+            articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
+            
+            art.title = articleTitle;
+            art.article = articleBody;
+            [articleArray addObject:art];
+            elem_ARTICLE = [TBXML nextSiblingNamed:@"item" searchFromElement:elem_ARTICLE];
+            
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +92,7 @@
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     return (!(networkStatus == NotReachable));
 }
-
+/*
 - (void)loadArticles {
     NSMutableString *url = [NSMutableString stringWithFormat:@"http://www.thesandb.com/feed"];
     
@@ -90,7 +124,7 @@
         
         NSLog(@"%@", parser);
     }
-}
+}*/
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -98,7 +132,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView  numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return articleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -114,9 +148,11 @@
     UILabel *newsTitle = (UILabel *)[cell viewWithTag:1001];
     UIImageView *newsImage = (UIImageView *)[cell viewWithTag:1002];
     UILabel *newsArticle = (UILabel *)[cell viewWithTag:1003];
+    Article *currentArticle = [[Article alloc] init];
+    currentArticle = [articleArray objectAtIndex:indexPath.row];
     
-    newsTitle.text = @"TITLE";
-    newsArticle.text = @"THIS_IS_THE_TEXT";
+    newsTitle.text = currentArticle.title;
+    newsArticle.text = currentArticle.article;
     [newsImage setImage:[UIImage imageNamed:@"first.png"]];
     
     return cell;
@@ -136,9 +172,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    ArticleViewController *articlePage = [[ArticleViewController alloc] initWithNibName:@"ArticleViewController" bundle:nil];
+     articlePage.article = [[Article alloc] init];
+    articlePage.article = [articleArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:articlePage animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
     
 #pragma mark UIAlertViewDelegate Methods
 // Called when an alert button is tapped.

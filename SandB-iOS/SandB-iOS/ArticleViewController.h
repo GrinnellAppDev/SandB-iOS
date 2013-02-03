@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Article.h"
 
 @interface ArticleViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UILabel *articleTitle;
-@property (nonatomic, weak) IBOutlet UITextView *article;
+@property (nonatomic, weak) IBOutlet UITextView *articleBody;
+@property (nonatomic, strong) Article * article;
 
 @end

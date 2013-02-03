@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBXML.h"
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController {
+    NSMutableArray * articleArray;
+    TBXML * tbxml;
+}
 
 - (void)loadArticles;
 //For Custom Cell
