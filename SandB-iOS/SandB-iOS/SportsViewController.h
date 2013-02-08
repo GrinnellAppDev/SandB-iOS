@@ -1,13 +1,13 @@
 //
-//  SecondViewController.h
+//  SportsViewController.h
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.
 //  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SuperViewController.h"
 
-@interface SecondViewController : UIViewController
+@interface SportsViewController : SuperViewController
 
 @end

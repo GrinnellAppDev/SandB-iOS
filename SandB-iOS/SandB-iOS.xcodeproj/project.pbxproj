@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BEBCE7C16C59D0B00B6DD08 /* SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBCE7B16C59D0B00B6DD08 /* SuperViewController.m */; };
+		3BEBCE8116C5A79900B6DD08 /* FeaturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBCE7F16C5A79900B6DD08 /* FeaturesViewController.m */; };
+		3BEBCE8216C5A79900B6DD08 /* FeaturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8016C5A79900B6DD08 /* FeaturesViewController.xib */; };
+		3BEBCE8A16C5AB7000B6DD08 /* OpinionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */; };
+		3BEBCE8B16C5AB7000B6DD08 /* OpinionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */; };
 		8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB13516BC63ED00C20358 /* Reachability.m */; };
 		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8B9BB17016BEE5CF00C20358 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB16E16BEE5CF00C20358 /* TBXML.m */; };
@@ -23,11 +28,11 @@
 		8BD1C82916B32493005F3F23 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82816B32493005F3F23 /* FirstViewController.m */; };
 		8BD1C82B16B32493005F3F23 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C82A16B32493005F3F23 /* first.png */; };
 		8BD1C82D16B32493005F3F23 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C82C16B32493005F3F23 /* first@2x.png */; };
-		8BD1C83016B32493005F3F23 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82F16B32493005F3F23 /* SecondViewController.m */; };
+		8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82F16B32493005F3F23 /* SportsViewController.m */; };
 		8BD1C83216B32493005F3F23 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83116B32493005F3F23 /* second.png */; };
 		8BD1C83416B32493005F3F23 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83316B32493005F3F23 /* second@2x.png */; };
-		8BD1C83716B32493005F3F23 /* FirstViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83516B32493005F3F23 /* FirstViewController_iPhone.xib */; };
-		8BD1C83D16B32493005F3F23 /* SecondViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83B16B32493005F3F23 /* SecondViewController_iPhone.xib */; };
+		8BD1C83716B32493005F3F23 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83516B32493005F3F23 /* FirstViewController.xib */; };
+		8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83B16B32493005F3F23 /* SportsViewController.xib */; };
 		8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE016B5B29D0024A477 /* NewsCell.xib */; };
 		8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */; };
 		8BE8DFE716B5BBC10024A477 /* ArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */; };
@@ -35,11 +40,19 @@
 
 /* Begin PBXFileReference section */
 		3B59AF2716B5AB080089B06A /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		3BEBCE7A16C59D0B00B6DD08 /* SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperViewController.h; sourceTree = "<group>"; };
+		3BEBCE7B16C59D0B00B6DD08 /* SuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperViewController.m; sourceTree = "<group>"; };
+		3BEBCE7E16C5A79900B6DD08 /* FeaturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturesViewController.h; sourceTree = "<group>"; };
+		3BEBCE7F16C5A79900B6DD08 /* FeaturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturesViewController.m; sourceTree = "<group>"; };
+		3BEBCE8016C5A79900B6DD08 /* FeaturesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturesViewController.xib; sourceTree = "<group>"; };
+		3BEBCE8716C5AB7000B6DD08 /* OpinionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpinionViewController.h; sourceTree = "<group>"; };
+		3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpinionViewController.m; sourceTree = "<group>"; };
+		3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpinionViewController.xib; sourceTree = "<group>"; };
 		8B9BB13416BC63ED00C20358 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8B9BB13516BC63ED00C20358 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		8B9BB16D16BEE5CF00C20358 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBXML.h; path = "SandB-iOS/TBXML.h"; sourceTree = "<group>"; };
-		8B9BB16E16BEE5CF00C20358 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBXML.m; path = "SandB-iOS/TBXML.m"; sourceTree = "<group>"; };
+		8B9BB16D16BEE5CF00C20358 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		8B9BB16E16BEE5CF00C20358 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		8B9BB17716BEEE8F00C20358 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		8B9BB17816BEEE8F00C20358 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		8BD1C80B16B32493005F3F23 /* SandB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SandB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,12 +71,12 @@
 		8BD1C82816B32493005F3F23 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		8BD1C82A16B32493005F3F23 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		8BD1C82C16B32493005F3F23 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		8BD1C82F16B32493005F3F23 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		8BD1C82F16B32493005F3F23 /* SportsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportsViewController.m; sourceTree = "<group>"; };
 		8BD1C83116B32493005F3F23 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		8BD1C83316B32493005F3F23 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		8BD1C83616B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController_iPhone.xib; sourceTree = "<group>"; };
-		8BD1C83C16B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController_iPhone.xib; sourceTree = "<group>"; };
-		8BD1C84616B32E2B005F3F23 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		8BD1C83616B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
+		8BD1C83C16B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SportsViewController.xib; sourceTree = "<group>"; };
+		8BD1C84616B32E2B005F3F23 /* SportsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SportsViewController.h; sourceTree = "<group>"; };
 		8BE8DFE016B5B29D0024A477 /* NewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		8BE8DFE316B5BBC10024A477 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
 		8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
@@ -85,14 +98,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8B9BB17216BEE5E700C20358 /* TBXML */ = {
+		3BEBCE8316C5A94700B6DD08 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
+				3B59AF2716B5AB080089B06A /* FirstViewController.h */,
+				8BD1C82816B32493005F3F23 /* FirstViewController.m */,
+				8BD1C83516B32493005F3F23 /* FirstViewController.xib */,
+				8BD1C84616B32E2B005F3F23 /* SportsViewController.h */,
+				8BD1C82F16B32493005F3F23 /* SportsViewController.m */,
+				8BD1C83B16B32493005F3F23 /* SportsViewController.xib */,
+				3BEBCE7E16C5A79900B6DD08 /* FeaturesViewController.h */,
+				3BEBCE7F16C5A79900B6DD08 /* FeaturesViewController.m */,
+				3BEBCE8016C5A79900B6DD08 /* FeaturesViewController.xib */,
+				3BEBCE8716C5AB7000B6DD08 /* OpinionViewController.h */,
+				3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */,
+				3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */,
+				8BE8DFE316B5BBC10024A477 /* ArticleViewController.h */,
+				8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */,
+				8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */,
+			);
+			name = "Main Views";
+			sourceTree = "<group>";
+		};
+		3BEBCE8416C5A96900B6DD08 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				8BD1C81E16B32493005F3F23 /* AppDelegate.h */,
+				8BD1C81F16B32493005F3F23 /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		3BEBCE8516C5A98400B6DD08 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8B9BB17716BEEE8F00C20358 /* Article.h */,
+				8B9BB17816BEEE8F00C20358 /* Article.m */,
+				8BE8DFE016B5B29D0024A477 /* NewsCell.xib */,
+				8B9BB13416BC63ED00C20358 /* Reachability.h */,
+				8B9BB13516BC63ED00C20358 /* Reachability.m */,
+				3BEBCE7A16C59D0B00B6DD08 /* SuperViewController.h */,
+				3BEBCE7B16C59D0B00B6DD08 /* SuperViewController.m */,
 				8B9BB16D16BEE5CF00C20358 /* TBXML.h */,
 				8B9BB16E16BEE5CF00C20358 /* TBXML.m */,
 			);
-			name = TBXML;
-			path = ..;
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		3BEBCE8616C5A9A000B6DD08 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8BD1C82A16B32493005F3F23 /* first.png */,
+				8BD1C82C16B32493005F3F23 /* first@2x.png */,
+				8BD1C83116B32493005F3F23 /* second.png */,
+				8BD1C83316B32493005F3F23 /* second@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		8BD1C80016B32493005F3F23 = {
@@ -126,28 +187,11 @@
 		8BD1C81516B32493005F3F23 /* SandB-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8BD1C81E16B32493005F3F23 /* AppDelegate.h */,
-				8BD1C81F16B32493005F3F23 /* AppDelegate.m */,
-				3B59AF2716B5AB080089B06A /* FirstViewController.h */,
-				8BD1C82816B32493005F3F23 /* FirstViewController.m */,
-				8BD1C83516B32493005F3F23 /* FirstViewController_iPhone.xib */,
-				8BE8DFE016B5B29D0024A477 /* NewsCell.xib */,
-				8B9BB17716BEEE8F00C20358 /* Article.h */,
-				8B9BB17816BEEE8F00C20358 /* Article.m */,
-				8BE8DFE316B5BBC10024A477 /* ArticleViewController.h */,
-				8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */,
-				8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */,
-				8BD1C84616B32E2B005F3F23 /* SecondViewController.h */,
-				8BD1C82F16B32493005F3F23 /* SecondViewController.m */,
-				8BD1C83B16B32493005F3F23 /* SecondViewController_iPhone.xib */,
-				8BD1C82A16B32493005F3F23 /* first.png */,
-				8BD1C82C16B32493005F3F23 /* first@2x.png */,
-				8BD1C83116B32493005F3F23 /* second.png */,
-				8BD1C83316B32493005F3F23 /* second@2x.png */,
-				8B9BB17216BEE5E700C20358 /* TBXML */,
+				3BEBCE8416C5A96900B6DD08 /* App Delegate */,
+				3BEBCE8516C5A98400B6DD08 /* Helper Classes */,
+				3BEBCE8616C5A9A000B6DD08 /* Images */,
+				3BEBCE8316C5A94700B6DD08 /* Main Views */,
 				8BD1C81616B32493005F3F23 /* Supporting Files */,
-				8B9BB13416BC63ED00C20358 /* Reachability.h */,
-				8B9BB13516BC63ED00C20358 /* Reachability.m */,
 			);
 			path = "SandB-iOS";
 			sourceTree = "<group>";
@@ -226,10 +270,12 @@
 				8BD1C82D16B32493005F3F23 /* first@2x.png in Resources */,
 				8BD1C83216B32493005F3F23 /* second.png in Resources */,
 				8BD1C83416B32493005F3F23 /* second@2x.png in Resources */,
-				8BD1C83716B32493005F3F23 /* FirstViewController_iPhone.xib in Resources */,
-				8BD1C83D16B32493005F3F23 /* SecondViewController_iPhone.xib in Resources */,
+				8BD1C83716B32493005F3F23 /* FirstViewController.xib in Resources */,
+				8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */,
 				8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */,
 				8BE8DFE716B5BBC10024A477 /* ArticleViewController.xib in Resources */,
+				3BEBCE8216C5A79900B6DD08 /* FeaturesViewController.xib in Resources */,
+				3BEBCE8B16C5AB7000B6DD08 /* OpinionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,11 +289,14 @@
 				8BD1C81C16B32493005F3F23 /* main.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
 				8BD1C82916B32493005F3F23 /* FirstViewController.m in Sources */,
-				8BD1C83016B32493005F3F23 /* SecondViewController.m in Sources */,
+				8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */,
 				8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */,
 				8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */,
 				8B9BB17016BEE5CF00C20358 /* TBXML.m in Sources */,
 				8B9BB17916BEEE8F00C20358 /* Article.m in Sources */,
+				3BEBCE7C16C59D0B00B6DD08 /* SuperViewController.m in Sources */,
+				3BEBCE8116C5A79900B6DD08 /* FeaturesViewController.m in Sources */,
+				3BEBCE8A16C5AB7000B6DD08 /* OpinionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,20 +311,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		8BD1C83516B32493005F3F23 /* FirstViewController_iPhone.xib */ = {
+		8BD1C83516B32493005F3F23 /* FirstViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8BD1C83616B32493005F3F23 /* en */,
 			);
-			name = FirstViewController_iPhone.xib;
+			name = FirstViewController.xib;
 			sourceTree = "<group>";
 		};
-		8BD1C83B16B32493005F3F23 /* SecondViewController_iPhone.xib */ = {
+		8BD1C83B16B32493005F3F23 /* SportsViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8BD1C83C16B32493005F3F23 /* en */,
 			);
-			name = SecondViewController_iPhone.xib;
+			name = SportsViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -9,28 +9,35 @@
 #import "AppDelegate.h"
 
 #import "FirstViewController.h"
-#import "SecondViewController.h"
+#import "SportsViewController.h"
+#import "FeaturesViewController.h"
+#import "OpinionViewController.h"
 
 @implementation AppDelegate
-@synthesize navigationController;
+@synthesize navController1, navController2, navController3, navController4;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1, *viewController2;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController_iPhone" bundle:nil];
-        navigationController = [[UINavigationController alloc] initWithRootViewController:viewController1];
-        viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController_iPhone" bundle:nil];
-    }
+    UIViewController *viewController1, *viewController2, *viewController3, *viewController4;
     //Commenting out ipad specific xib loading
+   // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+        navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
+        viewController2 = [[SportsViewController alloc] initWithNibName:@"SportsViewController" bundle:nil];
+        navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
+        viewController3 = [[FeaturesViewController alloc] initWithNibName:@"FeaturesViewController" bundle:nil];
+    navController3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
+    viewController4 = [[OpinionViewController alloc] initWithNibName:@"OpinionViewController" bundle:nil];
+    navController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];
+   // }
     /*else {
         viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController_iPad" bundle:nil];
         viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController_iPad" bundle:nil];
     }*/
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[navigationController, viewController2];
+    self.tabBarController.viewControllers = @[navController1, navController2, navController3, navController4];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
