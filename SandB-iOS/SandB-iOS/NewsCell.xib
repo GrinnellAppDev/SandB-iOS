@@ -88,7 +88,7 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<object class="IBUILabel" id="688971044">
+							<object class="IBUILabel" id="17811103">
 								<reference key="NSNextResponder" ref="460311635"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{88, 20}, {192, 101}}</string>
@@ -107,11 +107,13 @@
 								<int key="IBUIBaselineAdjustment">0</int>
 								<int key="IBUINumberOfLines">5</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<int key="type">1</int>
+									<string key="name">Georgia</string>
+									<string key="family">Georgia</string>
+									<int key="traits">0</int>
 									<double key="pointSize">14</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica</string>
+									<string key="NSName">Georgia</string>
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -172,7 +174,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="330654266"/>
 							<reference ref="417586571"/>
-							<reference ref="688971044"/>
+							<reference ref="17811103"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -190,7 +192,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">71</int>
-						<reference key="object" ref="688971044"/>
+						<reference key="object" ref="17811103"/>
 						<reference key="parent" ref="837901787"/>
 					</object>
 				</array>

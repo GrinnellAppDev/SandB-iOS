@@ -63,13 +63,29 @@
             Article * art = [[Article alloc] init];
             NSString *articleTitle = [TBXML textForElement:elem_TITLE];
             NSString *articleBody = [TBXML textForElement:elem_TEXT];
+            
+            // TODO - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n"];
             articleBody = [articleBody stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
             articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<em>" withString:@""];
             articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8230" withString:@"... "];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8220" withString:@"\""];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8221" withString:@"\""];
             articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8211;" withString:@"-"];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#038;" withString:@"&"];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#215;" withString:@"x"];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#60;" withString:@"<"];
             articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8230" withString:@"... "];
             articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
+            articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#038;" withString:@"&"];
+            articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+            articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8211;" withString:@"-"];
+            articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#215;" withString:@"x"];
+            articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8220" withString:@"\""];
+            articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8221" withString:@"\""];
             
             art.title = articleTitle;
             art.article = articleBody;
@@ -92,39 +108,6 @@
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     return (!(networkStatus == NotReachable));
 }
-/*
-- (void)loadArticles {
-    NSMutableString *url = [NSMutableString stringWithFormat:@"http://www.thesandb.com/feed"];
-    
-    //You should test for a network connection before here.
-    if ([self networkCheck]) {
-        //There's a network connection. Before Pulling in any real data. Let's check if there actually is any data available.
-        
-       // FOR PARSING: NSError *error;
-        NSData *availableData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-        @try {
-           // TODO - Parse the data
-            
-            
-        }
-        @catch (NSException *e) {
-            alert = @"server";
-            UIAlertView *network = [[UIAlertView alloc]
-                                    initWithTitle:@"Network Error"
-                                    message:@"The connection to the server failed. Please check back later. Sorry for the inconvenience."
-                                    delegate:self
-                                    cancelButtonTitle:@"OK"
-                                    otherButtonTitles:nil
-                                    ];
-            [network show];
-            return;
-        }
-        NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
-        [parser parse];
-        
-        NSLog(@"%@", parser);
-    }
-}*/
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
