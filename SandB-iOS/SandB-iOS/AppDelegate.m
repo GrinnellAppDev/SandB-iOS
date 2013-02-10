@@ -12,15 +12,16 @@
 #import "SportsViewController.h"
 #import "FeaturesViewController.h"
 #import "OpinionViewController.h"
+#import "ArtsViewController.h"
 
 @implementation AppDelegate
-@synthesize navController1, navController2, navController3, navController4;
+@synthesize navController1, navController2, navController3, navController4, navController5;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1, *viewController2, *viewController3, *viewController4;
+    UIViewController *viewController1, *viewController2, *viewController3, *viewController4, *viewController5;
     //Commenting out ipad specific xib loading
    // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
@@ -31,13 +32,16 @@
     navController3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
     viewController4 = [[OpinionViewController alloc] initWithNibName:@"OpinionViewController" bundle:nil];
     navController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];
+    viewController5 = [[ArtsViewController alloc] initWithNibName:@"ArtsViewController" bundle:nil];
+    navController5 = [[UINavigationController alloc] initWithRootViewController:viewController5];
+    
    // }
     /*else {
         viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController_iPad" bundle:nil];
         viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController_iPad" bundle:nil];
     }*/
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[navController1, navController2, navController3, navController4];
+    self.tabBarController.viewControllers = @[navController1, navController2, navController3, navController4, navController5];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

@@ -16,5 +16,6 @@
 @property (nonatomic, strong) IBOutlet UINavigationController *navController2;
 @property (nonatomic, strong) IBOutlet UINavigationController *navController3;
 @property (nonatomic, strong) IBOutlet UINavigationController *navController4;
+@property (nonatomic, strong) IBOutlet UINavigationController *navController5;
 
 @end
