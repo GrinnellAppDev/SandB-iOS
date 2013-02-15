@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0FBA7216CED9D500370199 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC46F6516C829A2008642F7 /* MBProgressHUD.m */; };
 		3BEBCE7C16C59D0B00B6DD08 /* SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBCE7B16C59D0B00B6DD08 /* SuperViewController.m */; };
 		3BEBCE8116C5A79900B6DD08 /* FeaturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBCE7F16C5A79900B6DD08 /* FeaturesViewController.m */; };
 		3BEBCE8216C5A79900B6DD08 /* FeaturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8016C5A79900B6DD08 /* FeaturesViewController.xib */; };
@@ -304,6 +305,7 @@
 				8BD1C82916B32493005F3F23 /* FirstViewController.m in Sources */,
 				8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */,
 				8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */,
+				3B0FBA7216CED9D500370199 /* MBProgressHUD.m in Sources */,
 				8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */,
 				8B9BB17016BEE5CF00C20358 /* TBXML.m in Sources */,
 				8B9BB17916BEEE8F00C20358 /* Article.m in Sources */,

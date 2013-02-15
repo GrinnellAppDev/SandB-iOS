@@ -8,13 +8,11 @@
 
 #import "FirstViewController.h"
 
-
 @interface FirstViewController ()
 
 @end
 
 @implementation FirstViewController
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +25,7 @@
 }
 
 - (void)viewDidLoad {
-    [super loadArticles:@"http://www.thesandb.com/feed"];
+    [super loadArticles:@"http://www.thesandb.com/feed"];    
     [super viewDidLoad];
 }
 

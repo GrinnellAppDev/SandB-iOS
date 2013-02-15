@@ -18,4 +18,7 @@
 //For Custom Cell
 @property (nonatomic, strong) NSString *cellIdentifier;
 
+@property (nonatomic, weak) IBOutlet UITableView *theTableView;
+
+
 @end
