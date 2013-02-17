@@ -24,11 +24,20 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super loadArticles:@"http://www.thesandb.com/Opinion/feed"];
+- (void)viewDidLoad{
+    UIButton *refresh = [[UIButton alloc] initWithFrame:CGRectMake(30, 30, 40, 40)];
+    [refresh setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+    [refresh addTarget:self action:@selector(load:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *refreshButton =[[UIBarButtonItem alloc] initWithCustomView:refresh];
+    [self.navigationItem setRightBarButtonItem:refreshButton animated:YES];
+    
+    [super loadArticles:@"http://www.thesandb.com/sections/opinion/feed"];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)load:(id)sender {
+    [super loadArticles:@"http://www.thesandb.com/sections/opinion/feed"];
 }
 
 - (void)didReceiveMemoryWarning

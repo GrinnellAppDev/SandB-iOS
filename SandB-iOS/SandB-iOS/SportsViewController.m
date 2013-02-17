@@ -24,9 +24,19 @@
 }
 							
 - (void)viewDidLoad {
-    [super loadArticles:@"http://www.thesandb.com/Sports/feed"];
+    UIButton *refresh = [[UIButton alloc] initWithFrame:CGRectMake(30, 30, 40, 40)];
+    [refresh setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+    [refresh addTarget:self action:@selector(load:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *refreshButton =[[UIBarButtonItem alloc] initWithCustomView:refresh];
+    [self.navigationItem setRightBarButtonItem:refreshButton animated:YES];
+    
+    [super loadArticles:@"http://www.thesandb.com/sections/sports/feed"];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)load:(id)sender {
+    [super loadArticles:@"http://www.thesandb.com/sections/sports/feed"];    
 }
 
 - (void)didReceiveMemoryWarning {

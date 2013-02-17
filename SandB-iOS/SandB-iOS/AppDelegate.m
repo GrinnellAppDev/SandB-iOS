@@ -10,7 +10,7 @@
 
 #import "FirstViewController.h"
 #import "SportsViewController.h"
-#import "FeaturesViewController.h"
+#import "CommunityViewController.h"
 #import "OpinionViewController.h"
 #import "ArtsViewController.h"
 
@@ -28,7 +28,7 @@
         navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
         viewController2 = [[SportsViewController alloc] initWithNibName:@"SportsViewController" bundle:nil];
         navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
-        viewController3 = [[FeaturesViewController alloc] initWithNibName:@"FeaturesViewController" bundle:nil];
+        viewController3 = [[CommunityViewController alloc] initWithNibName:@"CommunityViewController" bundle:nil];
     navController3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
     viewController4 = [[OpinionViewController alloc] initWithNibName:@"OpinionViewController" bundle:nil];
     navController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];

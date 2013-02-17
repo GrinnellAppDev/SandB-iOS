@@ -1,14 +1,14 @@
 //
-//  FeaturesViewController.h
+//  CommunityViewController.h
 //  SandB-iOS
 //
-//  Created by Colin Tremblay on 2/8/13.
+//  Created by Lea Marolt on 2/17/13.
 //  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
 //
 
 #import "SuperViewController.h"
 
-@interface FeaturesViewController : SuperViewController
+@interface CommunityViewController : SuperViewController
 
 - (void)load:(id)sender;
 

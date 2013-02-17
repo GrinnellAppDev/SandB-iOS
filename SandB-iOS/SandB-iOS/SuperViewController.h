@@ -10,8 +10,8 @@
 #import "TBXML.h"
 
 @interface SuperViewController : UIViewController {
-    NSMutableArray * articleArray;
-    TBXML * tbxml;
+    NSMutableArray *articleArray;
+    TBXML *tbxml;
 }
 
 - (void)loadArticles:(NSString *)url;

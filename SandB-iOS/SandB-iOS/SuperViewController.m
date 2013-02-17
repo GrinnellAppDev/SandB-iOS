@@ -33,66 +33,82 @@
 
 
 - (void)loadArticles:(NSString *)url{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading";
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        //Get the XML data
-        NSData *xmlData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:url]];
-        tbxml = [[TBXML alloc]initWithXMLData:xmlData];
-        articleArray = [[NSMutableArray alloc] init];
-        // Obtain root element
-        TBXMLElement * root = tbxml.rootXMLElement;
-        if (root)
-        {
-            TBXMLElement * elem_NEWroot = [TBXML childElementNamed:@"channel" parentElement:root];
-            TBXMLElement * elem_ARTICLE = [TBXML childElementNamed:@"item" parentElement:elem_NEWroot];
-            while (elem_ARTICLE !=nil)
+    if ([self networkCheck]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Loading";
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            
+            //Get the XML data
+            NSData *xmlData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:url]];
+            tbxml = [[TBXML alloc]initWithXMLData:xmlData];
+            articleArray = [[NSMutableArray alloc] init];
+            // Obtain root element
+            TBXMLElement * root = tbxml.rootXMLElement;
+            if (root)
             {
-                TBXMLElement * elem_TITLE = [TBXML childElementNamed:@"title" parentElement:elem_ARTICLE];
-                TBXMLElement * elem_TEXT = [TBXML childElementNamed:@"content:encoded" parentElement:elem_ARTICLE];
-                Article * art = [[Article alloc] init];
-                NSString *articleTitle = [TBXML textForElement:elem_TITLE];
-                NSString *articleBody = [TBXML textForElement:elem_TEXT];
-                
-                // TODO - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n"];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<em>" withString:@""];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8230" withString:@"... "];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8220" withString:@"\""];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8221" withString:@"\""];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8211;" withString:@"-"];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#038;" withString:@"&"];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#215;" withString:@"x"];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#60;" withString:@"<"];
-                articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
-                articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8230" withString:@"... "];
-                articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
-                articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#038;" withString:@"&"];
-                articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
-                articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8211;" withString:@"-"];
-                articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#215;" withString:@"x"];
-                articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8220" withString:@"\""];
-                articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8221" withString:@"\""];
-                
-                art.title = articleTitle;
-                art.article = articleBody;
-                [articleArray addObject:art];
-                elem_ARTICLE = [TBXML nextSiblingNamed:@"item" searchFromElement:elem_ARTICLE];
-                
+                TBXMLElement * elem_NEWroot = [TBXML childElementNamed:@"channel" parentElement:root];
+                TBXMLElement * elem_ARTICLE = [TBXML childElementNamed:@"item" parentElement:elem_NEWroot];
+                while (elem_ARTICLE !=nil)
+                {
+                    TBXMLElement * elem_TITLE = [TBXML childElementNamed:@"title" parentElement:elem_ARTICLE];
+                    TBXMLElement * elem_TEXT = [TBXML childElementNamed:@"content:encoded" parentElement:elem_ARTICLE];
+                    Article * art = [[Article alloc] init];
+                    NSString *articleTitle = [TBXML textForElement:elem_TITLE];
+                    NSString *articleBody = [TBXML textForElement:elem_TEXT];
+                    
+                    // TODO - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n"];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<em>" withString:@""];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8230" withString:@"... "];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8220" withString:@"\""];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8221" withString:@"\""];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#8211;" withString:@"-"];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#038;" withString:@"&"];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#215;" withString:@"x"];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&#60;" withString:@"<"];
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+                    articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8230" withString:@"... "];
+                    articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
+                    articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#038;" withString:@"&"];
+                    articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+                    articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8211;" withString:@"-"];
+                    articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#215;" withString:@"x"];
+                    articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8220" withString:@"\""];
+                    articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8221" withString:@"\""];
+                    
+                    art.title = articleTitle;
+                    art.article = articleBody;
+                    [articleArray addObject:art];
+                    elem_ARTICLE = [TBXML nextSiblingNamed:@"item" searchFromElement:elem_ARTICLE];
+                    
+                }
             }
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [theTableView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [theTableView reloadData];
+            });
         });
-    });
+    }
+    else {
+        //Network Check Failed - Show Alert ( We could use the MBProgessHUD for this as well - Like in the Google Plus iPhone app)
+        [self performSelectorOnMainThread:@selector(showNoNetworkAlert) withObject:nil waitUntilDone:YES];
+        return;
+    }
 }
-
+- (void)showNoNetworkAlert {
+    UIAlertView *network = [[UIAlertView alloc]
+                            initWithTitle:@"No Network Connection"
+                            message:@"Turn on cellular data or use Wi-Fi to access new data from the server"                            delegate:self
+                            cancelButtonTitle:@"OK"
+                            otherButtonTitles:nil
+                            ];
+    
+    [network show];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
