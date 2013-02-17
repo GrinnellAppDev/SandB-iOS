@@ -10,6 +10,7 @@
 
 @interface FirstViewController : SuperViewController
 
+- (void)load:(id)sender;
 
 @end
 

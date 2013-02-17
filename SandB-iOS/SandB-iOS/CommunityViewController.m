@@ -1,24 +1,24 @@
 //
-//  FeaturesViewController.m
+//  CommunityViewController.m
 //  SandB-iOS
 //
-//  Created by Colin Tremblay on 2/8/13.
+//  Created by Lea Marolt on 2/17/13.
 //  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
 //
 
-#import "FeaturesViewController.h"
+#import "CommunityViewController.h"
 
-@interface FeaturesViewController ()
+@interface CommunityViewController ()
 
 @end
 
-@implementation FeaturesViewController
+@implementation CommunityViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Features", @"Features");
+        self.title = NSLocalizedString(@"Community", @"Community");
         self.tabBarItem.image = [UIImage imageNamed:@"second"];
     }
     return self;
@@ -31,13 +31,13 @@
     UIBarButtonItem *refreshButton =[[UIBarButtonItem alloc] initWithCustomView:refresh];
     [self.navigationItem setRightBarButtonItem:refreshButton animated:YES];
     
-    [super loadArticles:@"http://www.thesandb.com/sections/features/feed"];
+    [super loadArticles:@"http://www.thesandb.com/sections/community/feed"];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)load:(id)sender {
-    [super loadArticles:@"http://www.thesandb.com/sections/features/feed"];
+    [super loadArticles:@"http://www.thesandb.com/sections/community/feed"];    
 }
 
 - (void)didReceiveMemoryWarning
