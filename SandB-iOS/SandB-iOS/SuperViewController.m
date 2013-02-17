@@ -162,7 +162,7 @@
     
     newsTitle.text = currentArticle.title;
     newsArticle.text = currentArticle.article;
-    [newsImage setImage:[UIImage imageNamed:@"first.png"]];
+    [newsImage setImage:[UIImage imageNamed:@"newspaper"]];
     
     return cell;
 }

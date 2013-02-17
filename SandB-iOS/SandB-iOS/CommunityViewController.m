@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Community", @"Community");
-        self.tabBarItem.image = [UIImage imageNamed:@"second"];
+        self.tabBarItem.image = [UIImage imageNamed:@"group"];
     }
     return self;
 }

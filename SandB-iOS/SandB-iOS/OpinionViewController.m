@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Opinion", @"Opinion");
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        self.tabBarItem.image = [UIImage imageNamed:@"brain"];
     }
     return self;
 }
