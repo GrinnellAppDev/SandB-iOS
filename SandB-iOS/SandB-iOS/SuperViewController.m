@@ -38,9 +38,13 @@
         hud.labelText = @"Loading";
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             
+            //WE NEED A TRY CATCH BLOCK AROUND ALL OF THIS (I THINK)
+            
             //Get the XML data
             NSData *xmlData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:url]];
-            tbxml = [[TBXML alloc]initWithXMLData:xmlData];
+            NSError *err;
+            tbxml = [[TBXML alloc] initWithXMLData:xmlData error:&err];
+            
             articleArray = [[NSMutableArray alloc] init];
             // Obtain root element
             TBXMLElement * root = tbxml.rootXMLElement;
