@@ -56,6 +56,7 @@ typedef enum {
 } MBProgressHUDAnimation;
 
 
+
 #ifndef MB_STRONG
 #if __has_feature(objc_arc)
 #define MB_STRONG strong
@@ -85,8 +86,6 @@ typedef void (^MBProgressHUDCompletionBlock)();
 #endif
 
 
-
-
 /**
  * Displays a simple HUD window containing a progress indicator and two optional labels for short messages.
  *
@@ -107,6 +106,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * - If also the detailsLabelText property is set then another label is placed below the first label.
  */
 @interface MBProgressHUD : UIView
+
 
 /**
  * Creates a new HUD, adds it to provided view and shows it. The counterpart to this method is hideHUDForView:animated:.
@@ -425,6 +425,10 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * A progress view for showing definite progress by filling up a circle (pie chart).
  */
 @interface MBRoundProgressView : UIView
+
+- (void)registerForKVO;
+- (void)unregisterFromKVO;
+- (NSArray *)observableKeypaths;
 
 /**
  * Progress (0.0 to 1.0)

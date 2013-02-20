@@ -15,7 +15,7 @@
 #import "ArtsViewController.h"
 
 @implementation AppDelegate
-@synthesize navController1, navController2, navController3, navController4, navController5;
+@synthesize window, tabBarController, navController1, navController2, navController3, navController4, navController5;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -41,7 +41,8 @@
         viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController_iPad" bundle:nil];
     }*/
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[navController1, navController2, navController3, navController4, navController5];
+    NSArray *viewsArray = [[NSArray alloc] initWithObjects:navController1, navController2, navController3, navController4, navController5, nil];
+    self.tabBarController.viewControllers = viewsArray;
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

@@ -13,7 +13,7 @@
     NSMutableArray *articleArray;
     TBXML *tbxml;
 }
-
+- (BOOL)networkCheck;
 - (void)loadArticles:(NSString *)url;
 //For Custom Cell
 @property (nonatomic, strong) NSString *cellIdentifier;
