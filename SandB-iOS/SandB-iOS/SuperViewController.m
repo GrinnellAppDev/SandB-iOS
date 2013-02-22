@@ -11,6 +11,7 @@
 #import "Reachability.h"
 #import "Article.h"
 #import "MBProgressHUD.h"
+#import "NSString_stripHtml.h"
 
 @interface SuperViewController ()
 
@@ -60,6 +61,8 @@
                     NSString *articleTitle = [TBXML textForElement:elem_TITLE];
                     NSString *articleBody = [TBXML textForElement:elem_TEXT];
                     
+                    
+                    /*
                     // TODO - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n"];
                     articleBody = [articleBody stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
@@ -83,9 +86,16 @@
                     articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#215;" withString:@"x"];
                     articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8220" withString:@"\""];
                     articleTitle = [articleTitle stringByReplacingOccurrencesOfString:@"&#8221" withString:@"\""];
+                    */
+                    articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>&nbsp;</p>\n" withString:@""];
                     
-                    art.title = articleTitle;
-                    art.article = articleBody;
+                    art.title = [articleTitle stripHtml];
+                    art.article = [articleBody stripHtml];
+                   // art.article = [art.article stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
+                    //art.article = [art.article stringByReplacingOccurrencesOfString:@".edu" withString:@".edu\n"];
+
+                    art.article = [art.article stringByReplacingOccurrencesOfString:@"\n" withString:@"\n\n"];
+
                     [articleArray addObject:art];
                     elem_ARTICLE = [TBXML nextSiblingNamed:@"item" searchFromElement:elem_ARTICLE];
                     
@@ -165,7 +175,16 @@
     currentArticle = [articleArray objectAtIndex:indexPath.row];
     
     newsTitle.text = currentArticle.title;
-    newsArticle.text = currentArticle.article;
+    NSString *newBody = [[NSString alloc] initWithString:currentArticle.article];
+
+    newBody = ReplaceFirstNewLine(currentArticle.article);
+    NSRange foundRange = [newBody rangeOfString:@"\n"];
+    if (foundRange.location == 0)
+        newBody = [newBody stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    
+    newsArticle.text = newBody;
+
+    
     [newsImage setImage:[UIImage imageNamed:@"newspaper"]];
     
     return cell;
@@ -192,6 +211,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
+NSString * ReplaceFirstNewLine(NSString * original) {
+    NSMutableString * newString = [NSMutableString stringWithString:original];
+    NSRange foundRange = [original rangeOfString:@"\n"];
+    NSRange newRange = foundRange;
+    newRange.length = foundRange.location + 2;
+    newRange.location = 0;
+    
+    if (foundRange.location != NSNotFound) {
+        [newString replaceCharactersInRange:newRange
+                                 withString:@""];
+    }
+    return newString;
+}
 
 #pragma mark UIAlertViewDelegate Methods
 // Called when an alert button is tapped.

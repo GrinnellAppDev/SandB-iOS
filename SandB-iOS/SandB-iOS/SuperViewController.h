@@ -15,6 +15,8 @@
 }
 - (BOOL)networkCheck;
 - (void)loadArticles:(NSString *)url;
+NSString * ReplaceFirstNewLine(NSString *original);
+
 //For Custom Cell
 @property (nonatomic, strong) NSString *cellIdentifier;
 
