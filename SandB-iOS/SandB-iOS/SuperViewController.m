@@ -242,8 +242,7 @@
  
  */
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 122;
     //    return [indexPath row] * 20;
 }
@@ -276,7 +275,9 @@
     label.text = sectionTitle;
     return label;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{    
+    return 24;
+}
 //theLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blah"]];
 
 

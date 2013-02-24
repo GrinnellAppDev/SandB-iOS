@@ -31,6 +31,7 @@
 //    self.navigationController.navigationBar.backItem.title = @"Back";
     articleTitle.text = article.title;
     articleBody.text = article.article;
+        
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight)];
     [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.view addGestureRecognizer:swipeRight];
