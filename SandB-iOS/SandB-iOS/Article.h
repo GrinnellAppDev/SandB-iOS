@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *article;
+@property (nonatomic, strong) UIImage *image;
 
 @end

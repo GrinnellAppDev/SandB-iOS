@@ -37,7 +37,7 @@
     if ([self networkCheck]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Loading";
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             
             //WE NEED A TRY CATCH BLOCK AROUND ALL OF THIS (I THINK)
             
@@ -89,6 +89,19 @@
                     */
                     articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>&nbsp;</p>\n" withString:@""];
                     
+                    NSRange srcRange = [articleBody rangeOfString:@"src=\""];
+                    if (srcRange.location != NSNotFound) {
+                        NSRange endRange = [articleBody rangeOfString:@"\" alt="];
+                        NSRange imgRange;
+                        imgRange.location = srcRange.location + srcRange.length;
+                        imgRange.length = endRange.location - imgRange.location;
+                        
+                        NSString *imageURLstring = [articleBody substringWithRange:imgRange];
+                        NSURL *imageURL = [[NSURL alloc] initWithString:imageURLstring];
+                    
+                        art.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];
+                    }
+
                     art.title = [articleTitle stripHtml];
                     art.article = [articleBody stripHtml];
                    // art.article = [art.article stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
@@ -113,6 +126,8 @@
         return;
     }
 }
+
+
 - (void)showNoNetworkAlert {
     UIAlertView *network = [[UIAlertView alloc]
                             initWithTitle:@"No Network Connection"
@@ -181,6 +196,7 @@
     UILabel *newsTitle = (UILabel *)[cell viewWithTag:1001];
     UIImageView *newsImage = (UIImageView *)[cell viewWithTag:1002];
     UILabel *newsArticle = (UILabel *)[cell viewWithTag:1003];
+    UILabel *largeNewsArticle = (UILabel *)[cell viewWithTag:1004];
     Article *currentArticle = [[Article alloc] init];
     currentArticle = [articleArray objectAtIndex:indexPath.row];
     
@@ -191,11 +207,26 @@
     NSRange foundRange = [newBody rangeOfString:@"\n"];
     if (foundRange.location == 0)
         newBody = [newBody stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    foundRange = [newBody rangeOfString:@"\n"];
+   NSRange newRange = [newBody rangeOfString:@"@grinnell.edu"];
+    if (newRange.location <= foundRange.location)
+        newBody = ReplaceEmail(newBody);
     
-    newsArticle.text = newBody;
 
-    
-    [newsImage setImage:[UIImage imageNamed:@"newspaper"]];
+    if (currentArticle.image != nil){
+        [newsImage setImage:currentArticle.image];
+        newsImage.hidden = NO;
+        newsArticle.text = newBody;
+        newsArticle.hidden = NO;
+        largeNewsArticle.hidden = YES;
+    }
+    else {
+        newsImage.hidden = YES;
+        largeNewsArticle.text = newBody;
+        newsArticle.hidden = YES;
+        largeNewsArticle.hidden = NO;
+    }
+//        [newsImage setImage:[UIImage imageNamed:@"newspaper"]];
     
     return cell;
 }
@@ -230,7 +261,7 @@
     
     UILabel *label = [[UILabel alloc] init];
     
-    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SBHeader.png"]];
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBHeader.png"]];
     
     //label.backgroundColor = [UIColor colorWithRed:142.0f/255.0f green:42.0f/255.0f blue:29.0f/255.0f alpha:1.0f];
    /* label.textColor = [UIColor colorWithHue:(136.0/360.0)  // Slightly bluish green
@@ -276,7 +307,19 @@ NSString * ReplaceFirstNewLine(NSString * original) {
     }
     return newString;
 }
-
+NSString * ReplaceEmail(NSString * original) {
+    NSMutableString * newString = [NSMutableString stringWithString:original];
+    NSRange foundRange = [original rangeOfString:@"@grinnell.edu"];
+    NSRange newRange = foundRange;
+    newRange.length = foundRange.location + foundRange.length + 2;
+    newRange.location = 0;
+    
+    if (foundRange.location != NSNotFound) {
+        [newString replaceCharactersInRange:newRange
+                                 withString:@""];
+    }
+    return newString;
+}
 #pragma mark UIAlertViewDelegate Methods
 // Called when an alert button is tapped.
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

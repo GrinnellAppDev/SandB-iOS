@@ -9,6 +9,6 @@
 #import "Article.h"
 
 @implementation Article
-@synthesize title, article;
+@synthesize title, article, image;
 
 @end
