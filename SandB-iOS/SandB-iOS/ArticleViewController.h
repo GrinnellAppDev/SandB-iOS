@@ -12,6 +12,7 @@
 @interface ArticleViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UILabel *articleTitle;
+@property (nonatomic, weak) IBOutlet UILabel *backgroundTitle;
 @property (nonatomic, weak) IBOutlet UITextView *articleBody;
 @property (nonatomic, strong) Article * article;
 

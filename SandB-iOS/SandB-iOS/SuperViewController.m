@@ -158,6 +158,8 @@
     return articleArray.count;
 }
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //Register the NIB cell object
     [tableView registerNib:[UINib nibWithNibName:@"NewsCell" bundle:nil] forCellReuseIdentifier:self.cellIdentifier];
@@ -168,6 +170,14 @@
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.cellIdentifier];
 	}
+    
+    
+    //change highlight cell color
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    [bgColorView setBackgroundColor:[UIColor colorWithRed:142.0f/255.0f green:42.0f/255.0f blue:29.0f/255.0f alpha:1.0f]];
+    [cell setSelectedBackgroundView:bgColorView];
+    
     UILabel *newsTitle = (UILabel *)[cell viewWithTag:1001];
     UIImageView *newsImage = (UIImageView *)[cell viewWithTag:1002];
     UILabel *newsArticle = (UILabel *)[cell viewWithTag:1003];
@@ -189,15 +199,56 @@
     
     return cell;
 }
+
+/*
+ 
+ CHANGE IMAGE OF LABEL
+ 
+ UILabel *currentTitle = (UILabel *) [cell viewWithTag:1005];
+ 
+ currentTitle.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SANDB.png"]];
+ 
+ 
+ */
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 122;
     //    return [indexPath row] * 20;
 }
+
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     // TODO - Set this based on URL
-    return @"Newest Stories";
+        return @"";
 }
+
+// set bg color for header in section
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    
+    UILabel *label = [[UILabel alloc] init];
+    
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SBHeader.png"]];
+    
+    //label.backgroundColor = [UIColor colorWithRed:142.0f/255.0f green:42.0f/255.0f blue:29.0f/255.0f alpha:1.0f];
+   /* label.textColor = [UIColor colorWithHue:(136.0/360.0)  // Slightly bluish green
+                                 saturation:1.0
+                                 brightness:0.60
+                                      alpha:1.0]; */
+    //label.textColor = [UIColor colorWithRed:0.5 green:0.2 blue:0.2 alpha:1.0];
+    //label.shadowColor = [UIColor grayColor];
+    //label.shadowOffset = CGSizeMake(0.0, 1.0);
+    //label.font = [UIFont fontWithName:@"Verdana-Bold" size:15.0];
+    
+    label.text = sectionTitle;
+    return label;
+}
+
+//theLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blah"]];
+
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     return @"";

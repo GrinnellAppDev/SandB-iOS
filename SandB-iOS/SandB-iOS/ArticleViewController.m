@@ -13,7 +13,7 @@
 @end
 
 @implementation ArticleViewController
-@synthesize article, articleTitle, articleBody;
+@synthesize article, articleTitle, articleBody, backgroundTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,8 +34,12 @@
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight)];
     [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.view addGestureRecognizer:swipeRight];
+    
+    backgroundTitle.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SANDB.png"]];
+
     // Do any additional setup after loading the view from its nib.
 }
+
 - (void)handleSwipeRight {
     [self.navigationController popViewControllerAnimated:YES];
 }

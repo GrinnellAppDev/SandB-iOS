@@ -18,6 +18,8 @@
 		3BEBCE8216C5A79900B6DD08 /* FeaturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8016C5A79900B6DD08 /* FeaturesViewController.xib */; };
 		3BEBCE8A16C5AB7000B6DD08 /* OpinionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */; };
 		3BEBCE8B16C5AB7000B6DD08 /* OpinionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */; };
+		8B71773F16D858FA001F1F94 /* SANDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71773E16D858FA001F1F94 /* SANDB.png */; };
+		8B71774716D906AC001F1F94 /* SBHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71774616D906AC001F1F94 /* SBHeader.png */; };
 		8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB13516BC63ED00C20358 /* Reachability.m */; };
 		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8B9BB17016BEE5CF00C20358 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB16E16BEE5CF00C20358 /* TBXML.m */; };
@@ -61,6 +63,8 @@
 		3BEBCE8716C5AB7000B6DD08 /* OpinionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpinionViewController.h; sourceTree = "<group>"; };
 		3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpinionViewController.m; sourceTree = "<group>"; };
 		3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpinionViewController.xib; sourceTree = "<group>"; };
+		8B71773E16D858FA001F1F94 /* SANDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDB.png; sourceTree = "<group>"; };
+		8B71774616D906AC001F1F94 /* SBHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SBHeader.png; sourceTree = "<group>"; };
 		8B9BB13416BC63ED00C20358 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8B9BB13516BC63ED00C20358 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -178,6 +182,8 @@
 		3BEBCE8616C5A9A000B6DD08 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8B71774616D906AC001F1F94 /* SBHeader.png */,
+				8B71773E16D858FA001F1F94 /* SANDB.png */,
 				3BD9DEA716D17A1B0053C1C5 /* newspaper.png */,
 				3BD9DEA916D17A390053C1C5 /* basketball.png */,
 				3BD9DEAF16D17E260053C1C5 /* group.png */,
@@ -312,6 +318,8 @@
 				3BD9DEAD16D17A390053C1C5 /* brain.png in Resources */,
 				3BD9DEAE16D17A390053C1C5 /* drama.png in Resources */,
 				3BD9DEB016D17E260053C1C5 /* group.png in Resources */,
+				8B71773F16D858FA001F1F94 /* SANDB.png in Resources */,
+				8B71774716D906AC001F1F94 /* SBHeader.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
