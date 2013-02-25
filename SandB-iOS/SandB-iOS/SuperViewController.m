@@ -260,7 +260,7 @@
     
     UILabel *label = [[UILabel alloc] init];
     
-    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBHeader.png"]];
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBtop.png"]];
     
     //label.backgroundColor = [UIColor colorWithRed:142.0f/255.0f green:42.0f/255.0f blue:29.0f/255.0f alpha:1.0f];
    /* label.textColor = [UIColor colorWithHue:(136.0/360.0)  // Slightly bluish green
