@@ -13,7 +13,9 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *articleTitle;
 @property (nonatomic, weak) IBOutlet UILabel *backgroundTitle;
-@property (nonatomic, weak) IBOutlet UITextView *articleBody;
+@property (nonatomic, strong) IBOutlet UITextView *articleBody;
+@property (nonatomic, weak) IBOutlet UIImageView *articleImage;
+@property (nonatomic, weak) IBOutlet UIScrollView *scroll;
 @property (nonatomic, strong) Article * article;
 
 @end
