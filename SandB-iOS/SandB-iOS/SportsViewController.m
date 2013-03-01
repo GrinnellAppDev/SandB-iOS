@@ -32,7 +32,6 @@
     
     [super loadArticles:@"http://www.thesandb.com/sections/sports/feed"];
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)load:(id)sender {
@@ -41,7 +40,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

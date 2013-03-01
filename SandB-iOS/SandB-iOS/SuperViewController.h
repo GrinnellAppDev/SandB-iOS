@@ -13,15 +13,13 @@
     NSMutableArray *articleArray;
     TBXML *tbxml;
 }
+
 - (BOOL)networkCheck;
 - (void)loadArticles:(NSString *)url;
-NSString * ReplaceFirstNewLine(NSString *original);
-NSString * ReplaceEmail(NSString * original);
+NSString *ReplaceFirstNewLine(NSString *original);
+NSString *ReplaceEmail(NSString *original);
 
-//For Custom Cell
 @property (nonatomic, strong) NSString *cellIdentifier;
-
 @property (nonatomic, weak) IBOutlet UITableView *theTableView;
-
 
 @end

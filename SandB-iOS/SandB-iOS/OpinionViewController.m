@@ -14,8 +14,7 @@
 
 @implementation OpinionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Opinion", @"Opinion");
@@ -33,17 +32,14 @@
     
     [super loadArticles:@"http://www.thesandb.com/sections/opinion/feed"];
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)load:(id)sender {
     [super loadArticles:@"http://www.thesandb.com/sections/opinion/feed"];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

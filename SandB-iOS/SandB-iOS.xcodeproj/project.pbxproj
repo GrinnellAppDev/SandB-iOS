@@ -144,12 +144,12 @@
 				3BEBCE8716C5AB7000B6DD08 /* OpinionViewController.h */,
 				3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */,
 				3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */,
-				8BE8DFE316B5BBC10024A477 /* ArticleViewController.h */,
-				8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */,
-				8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */,
 				8BC46F5E16C823A3008642F7 /* ArtsViewController.h */,
 				8BC46F5F16C823A3008642F7 /* ArtsViewController.m */,
 				8BC46F6016C823A3008642F7 /* ArtsViewController.xib */,
+				8BE8DFE316B5BBC10024A477 /* ArticleViewController.h */,
+				8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */,
+				8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */,
 			);
 			name = "Main Views";
 			sourceTree = "<group>";
