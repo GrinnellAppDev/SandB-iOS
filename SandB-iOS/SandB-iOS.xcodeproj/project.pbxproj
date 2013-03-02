@@ -28,6 +28,8 @@
 		8B9BB17916BEEE8F00C20358 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB17816BEEE8F00C20358 /* Article.m */; };
 		8BC46F6116C823A3008642F7 /* ArtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC46F5F16C823A3008642F7 /* ArtsViewController.m */; };
 		8BC46F6216C823A3008642F7 /* ArtsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC46F6016C823A3008642F7 /* ArtsViewController.xib */; };
+		8BD00E7D16E2A8C800431B35 /* SnBiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD00E7B16E2A8C800431B35 /* SnBiPad.png */; };
+		8BD00E7E16E2A8C800431B35 /* SandBArticleBanneriPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD00E7C16E2A8C800431B35 /* SandBArticleBanneriPad.png */; };
 		8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C80F16B32493005F3F23 /* UIKit.framework */; };
 		8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81116B32493005F3F23 /* Foundation.framework */; };
 		8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81316B32493005F3F23 /* CoreGraphics.framework */; };
@@ -81,6 +83,8 @@
 		8BC46F6016C823A3008642F7 /* ArtsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtsViewController.xib; sourceTree = "<group>"; };
 		8BC46F6416C829A2008642F7 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8BC46F6516C829A2008642F7 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		8BD00E7B16E2A8C800431B35 /* SnBiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnBiPad.png; sourceTree = "<group>"; };
+		8BD00E7C16E2A8C800431B35 /* SandBArticleBanneriPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SandBArticleBanneriPad.png; sourceTree = "<group>"; };
 		8BD1C80B16B32493005F3F23 /* SandB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SandB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD1C80F16B32493005F3F23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BD1C81116B32493005F3F23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -186,6 +190,8 @@
 		3BEBCE8616C5A9A000B6DD08 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8BD00E7B16E2A8C800431B35 /* SnBiPad.png */,
+				8BD00E7C16E2A8C800431B35 /* SandBArticleBanneriPad.png */,
 				8B6ABC7A16DACFBD00DF3865 /* SnBtop.png */,
 				8B6ABC7816DACF6800DF3865 /* SANDBtop.png */,
 				8B8E505D16DAAD9A005F7B85 /* SnBHeader.png */,
@@ -328,6 +334,8 @@
 				8B8E505E16DAAD9A005F7B85 /* SnBHeader.png in Resources */,
 				8B6ABC7916DACF6800DF3865 /* SANDBtop.png in Resources */,
 				8B6ABC7B16DACFBD00DF3865 /* SnBtop.png in Resources */,
+				8BD00E7D16E2A8C800431B35 /* SnBiPad.png in Resources */,
+				8BD00E7E16E2A8C800431B35 /* SandBArticleBanneriPad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
