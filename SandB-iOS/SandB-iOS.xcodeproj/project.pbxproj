@@ -18,10 +18,8 @@
 		3BEBCE8216C5A79900B6DD08 /* FeaturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8016C5A79900B6DD08 /* FeaturesViewController.xib */; };
 		3BEBCE8A16C5AB7000B6DD08 /* OpinionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */; };
 		3BEBCE8B16C5AB7000B6DD08 /* OpinionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */; };
-		8B6ABC7916DACF6800DF3865 /* SANDBtop.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6ABC7816DACF6800DF3865 /* SANDBtop.png */; };
 		8B6ABC7B16DACFBD00DF3865 /* SnBtop.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6ABC7A16DACFBD00DF3865 /* SnBtop.png */; };
 		8B71773F16D858FA001F1F94 /* SANDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71773E16D858FA001F1F94 /* SANDB.png */; };
-		8B8E505E16DAAD9A005F7B85 /* SnBHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B8E505D16DAAD9A005F7B85 /* SnBHeader.png */; };
 		8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB13516BC63ED00C20358 /* Reachability.m */; };
 		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8B9BB17016BEE5CF00C20358 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB16E16BEE5CF00C20358 /* TBXML.m */; };
@@ -29,7 +27,6 @@
 		8BC46F6116C823A3008642F7 /* ArtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC46F5F16C823A3008642F7 /* ArtsViewController.m */; };
 		8BC46F6216C823A3008642F7 /* ArtsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC46F6016C823A3008642F7 /* ArtsViewController.xib */; };
 		8BD00E7D16E2A8C800431B35 /* SnBiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD00E7B16E2A8C800431B35 /* SnBiPad.png */; };
-		8BD00E7E16E2A8C800431B35 /* SandBArticleBanneriPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD00E7C16E2A8C800431B35 /* SandBArticleBanneriPad.png */; };
 		8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C80F16B32493005F3F23 /* UIKit.framework */; };
 		8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81116B32493005F3F23 /* Foundation.framework */; };
 		8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81316B32493005F3F23 /* CoreGraphics.framework */; };
@@ -67,10 +64,8 @@
 		3BEBCE8716C5AB7000B6DD08 /* OpinionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpinionViewController.h; sourceTree = "<group>"; };
 		3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpinionViewController.m; sourceTree = "<group>"; };
 		3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpinionViewController.xib; sourceTree = "<group>"; };
-		8B6ABC7816DACF6800DF3865 /* SANDBtop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDBtop.png; sourceTree = "<group>"; };
 		8B6ABC7A16DACFBD00DF3865 /* SnBtop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnBtop.png; sourceTree = "<group>"; };
 		8B71773E16D858FA001F1F94 /* SANDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDB.png; sourceTree = "<group>"; };
-		8B8E505D16DAAD9A005F7B85 /* SnBHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnBHeader.png; sourceTree = "<group>"; };
 		8B9BB13416BC63ED00C20358 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8B9BB13516BC63ED00C20358 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -84,7 +79,6 @@
 		8BC46F6416C829A2008642F7 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8BC46F6516C829A2008642F7 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8BD00E7B16E2A8C800431B35 /* SnBiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnBiPad.png; sourceTree = "<group>"; };
-		8BD00E7C16E2A8C800431B35 /* SandBArticleBanneriPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SandBArticleBanneriPad.png; sourceTree = "<group>"; };
 		8BD1C80B16B32493005F3F23 /* SandB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SandB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD1C80F16B32493005F3F23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BD1C81116B32493005F3F23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -191,10 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				8BD00E7B16E2A8C800431B35 /* SnBiPad.png */,
-				8BD00E7C16E2A8C800431B35 /* SandBArticleBanneriPad.png */,
 				8B6ABC7A16DACFBD00DF3865 /* SnBtop.png */,
-				8B6ABC7816DACF6800DF3865 /* SANDBtop.png */,
-				8B8E505D16DAAD9A005F7B85 /* SnBHeader.png */,
 				8B71773E16D858FA001F1F94 /* SANDB.png */,
 				3BD9DEA716D17A1B0053C1C5 /* newspaper.png */,
 				3BD9DEA916D17A390053C1C5 /* basketball.png */,
@@ -331,11 +322,8 @@
 				3BD9DEAE16D17A390053C1C5 /* drama.png in Resources */,
 				3BD9DEB016D17E260053C1C5 /* group.png in Resources */,
 				8B71773F16D858FA001F1F94 /* SANDB.png in Resources */,
-				8B8E505E16DAAD9A005F7B85 /* SnBHeader.png in Resources */,
-				8B6ABC7916DACF6800DF3865 /* SANDBtop.png in Resources */,
 				8B6ABC7B16DACFBD00DF3865 /* SnBtop.png in Resources */,
 				8BD00E7D16E2A8C800431B35 /* SnBiPad.png in Resources */,
-				8BD00E7E16E2A8C800431B35 /* SandBArticleBanneriPad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

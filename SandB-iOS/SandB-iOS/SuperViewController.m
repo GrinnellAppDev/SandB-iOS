@@ -233,7 +233,12 @@
     NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
     
     UILabel *label = [[UILabel alloc] init];
-    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBtop.png"]];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBtop.png"]];
+    else
+        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBiPad.png"]];
+    
     label.text = sectionTitle;
     return label;
 }
