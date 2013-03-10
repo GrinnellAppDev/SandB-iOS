@@ -254,9 +254,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8BD1C80A16B32493005F3F23 /* SandB-iOS */ = {
+		8BD1C80A16B32493005F3F23 /* S&B */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8BD1C84316B32493005F3F23 /* Build configuration list for PBXNativeTarget "SandB-iOS" */;
+			buildConfigurationList = 8BD1C84316B32493005F3F23 /* Build configuration list for PBXNativeTarget "S&B" */;
 			buildPhases = (
 				8BD1C80716B32493005F3F23 /* Sources */,
 				8BD1C80816B32493005F3F23 /* Frameworks */,
@@ -266,7 +266,7 @@
 			);
 			dependencies = (
 			);
-			name = "SandB-iOS";
+			name = "S&B";
 			productName = "SandB-iOS";
 			productReference = 8BD1C80B16B32493005F3F23 /* SandB-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -293,7 +293,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8BD1C80A16B32493005F3F23 /* SandB-iOS */,
+				8BD1C80A16B32493005F3F23 /* S&B */,
 			);
 		};
 /* End PBXProject section */
@@ -470,7 +470,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BD1C84316B32493005F3F23 /* Build configuration list for PBXNativeTarget "SandB-iOS" */ = {
+		8BD1C84316B32493005F3F23 /* Build configuration list for PBXNativeTarget "S&B" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BD1C84416B32493005F3F23 /* Debug */,
