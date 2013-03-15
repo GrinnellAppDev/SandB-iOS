@@ -217,6 +217,12 @@
         largeNewsArticle.hidden = NO;
     }
     
+    /*
+    newsArticle.hidden = YES;
+    newsImage.hidden = YES;
+    newsTitle.hidden = YES;
+    largeNewsArticle.hidden = YES;
+    */
     return cell;
 }
 
