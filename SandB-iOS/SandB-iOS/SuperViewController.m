@@ -241,7 +241,7 @@
     UILabel *label = [[UILabel alloc] init];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBtop.png"]];
+        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBiPhone.png"]];
     else
         if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
         {
