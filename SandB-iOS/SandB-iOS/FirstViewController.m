@@ -32,7 +32,14 @@
     
     [super loadArticles:@"http://www.thesandb.com/feed"];
     [super viewDidLoad];
+    
+
+    
 }
+
+
+
+
 
 - (void)load:(id)sender {
     [super loadArticles:@"http://www.thesandb.com/feed"];
