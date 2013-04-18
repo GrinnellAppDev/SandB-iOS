@@ -243,7 +243,13 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
         label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBtop.png"]];
     else
-        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBiPad.png"]];
+        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+        {
+            // chnange image for landscape orientation
+            label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBiPadLandscape.png"]];
+        }
+    else
+        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBiPadNew.png"]];
     
     label.text = sectionTitle;
     return label;
