@@ -246,7 +246,7 @@
     }
     else {
 
-            // chnange image for landscape orientation
+            // Change image for landscape orientation
             label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPad.png"]];
         }
 
