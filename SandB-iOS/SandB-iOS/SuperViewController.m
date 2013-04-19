@@ -240,16 +240,16 @@
     
     UILabel *label = [[UILabel alloc] init];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBiPhone.png"]];
-    else
-        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-        {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        
+            label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPhone.png"]];
+    }
+    else {
+
             // chnange image for landscape orientation
-            label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBiPadLandscape.png"]];
+            label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPad.png"]];
         }
-    else
-        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"SnBiPadNew.png"]];
+
     
     label.text = sectionTitle;
     return label;
