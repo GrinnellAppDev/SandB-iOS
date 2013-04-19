@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  NewsViewController.h
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.
@@ -8,7 +8,7 @@
 
 #import "SuperViewController.h"
 
-@interface FirstViewController : SuperViewController
+@interface NewsViewController : SuperViewController
 
 - (void)load:(id)sender;
 

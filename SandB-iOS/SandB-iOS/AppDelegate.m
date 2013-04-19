@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "FirstViewController.h"
+#import "NewsViewController.h"
 #import "SportsViewController.h"
 #import "CommunityViewController.h"
 #import "OpinionViewController.h"
@@ -24,7 +24,7 @@
     
     // Commenting out ipad specific xib loading
     // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-    viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController"
+    viewController1 = [[NewsViewController alloc] initWithNibName:@"NewsViewController"
                                                             bundle:nil];
     navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
     
@@ -100,5 +100,14 @@
  {
  }
  */
+
+-(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else  /* iphone */
+        return UIInterfaceOrientationMaskPortrait;
+}
 
 @end

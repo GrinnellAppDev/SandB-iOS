@@ -40,10 +40,15 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             // Try to get and parse the data
             @try {
-                //Get the XML data
+                // Get the XML data
                 NSData *xmlData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:url]];
                 NSError *err;
                 tbxml = [[TBXML alloc] initWithXMLData:xmlData error:&err];
+                
+                // Throw exception if any error occured
+                if (err)
+                    [NSException raise:NSInvalidArgumentException format:@"%@", err];
+                
                 articleArray = [[NSMutableArray alloc] init];
                 // Obtain root element
                 TBXMLElement * root = tbxml.rootXMLElement;
@@ -327,6 +332,18 @@ NSString * ReplaceEmail(NSString *original) {
                           otherButtonTitles:nil
                           ];
     [error show];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        // Return YES for supported orientations
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    
+    else
+        return YES;
+    // Use this to allow upside down as well
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end

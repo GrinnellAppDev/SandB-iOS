@@ -46,9 +46,9 @@
 		8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C81F16B32493005F3F23 /* AppDelegate.m */; };
 		8BD1C82416B32493005F3F23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C82316B32493005F3F23 /* Default@2x.png */; };
 		8BD1C82616B32493005F3F23 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C82516B32493005F3F23 /* Default-568h@2x.png */; };
-		8BD1C82916B32493005F3F23 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82816B32493005F3F23 /* FirstViewController.m */; };
+		8BD1C82916B32493005F3F23 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82816B32493005F3F23 /* NewsViewController.m */; };
 		8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82F16B32493005F3F23 /* SportsViewController.m */; };
-		8BD1C83716B32493005F3F23 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83516B32493005F3F23 /* FirstViewController.xib */; };
+		8BD1C83716B32493005F3F23 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83516B32493005F3F23 /* NewsViewController.xib */; };
 		8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83B16B32493005F3F23 /* SportsViewController.xib */; };
 		8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE016B5B29D0024A477 /* NewsCell.xib */; };
 		8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */; };
@@ -61,7 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B59AF2716B5AB080089B06A /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		3B59AF2716B5AB080089B06A /* NewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		3BD9DEA716D17A1B0053C1C5 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
 		3BD9DEA916D17A390053C1C5 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
 		3BD9DEAA16D17A390053C1C5 /* brain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brain.png; sourceTree = "<group>"; };
@@ -113,9 +113,9 @@
 		8BD1C81F16B32493005F3F23 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8BD1C82316B32493005F3F23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8BD1C82516B32493005F3F23 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8BD1C82816B32493005F3F23 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		8BD1C82816B32493005F3F23 /* NewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		8BD1C82F16B32493005F3F23 /* SportsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportsViewController.m; sourceTree = "<group>"; };
-		8BD1C83616B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
+		8BD1C83616B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsViewController.xib; sourceTree = "<group>"; };
 		8BD1C83C16B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SportsViewController.xib; sourceTree = "<group>"; };
 		8BD1C84616B32E2B005F3F23 /* SportsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SportsViewController.h; sourceTree = "<group>"; };
 		8BE8DFE016B5B29D0024A477 /* NewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
@@ -149,9 +149,9 @@
 		3BEBCE8316C5A94700B6DD08 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
-				3B59AF2716B5AB080089B06A /* FirstViewController.h */,
-				8BD1C82816B32493005F3F23 /* FirstViewController.m */,
-				8BD1C83516B32493005F3F23 /* FirstViewController.xib */,
+				3B59AF2716B5AB080089B06A /* NewsViewController.h */,
+				8BD1C82816B32493005F3F23 /* NewsViewController.m */,
+				8BD1C83516B32493005F3F23 /* NewsViewController.xib */,
 				8BD1C84616B32E2B005F3F23 /* SportsViewController.h */,
 				8BD1C82F16B32493005F3F23 /* SportsViewController.m */,
 				8BD1C83B16B32493005F3F23 /* SportsViewController.xib */,
@@ -347,7 +347,7 @@
 				8BD1C81A16B32493005F3F23 /* InfoPlist.strings in Resources */,
 				8BD1C82416B32493005F3F23 /* Default@2x.png in Resources */,
 				8BD1C82616B32493005F3F23 /* Default-568h@2x.png in Resources */,
-				8BD1C83716B32493005F3F23 /* FirstViewController.xib in Resources */,
+				8BD1C83716B32493005F3F23 /* NewsViewController.xib in Resources */,
 				8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */,
 				8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */,
 				8BE8DFE716B5BBC10024A477 /* ArticleViewController.xib in Resources */,
@@ -388,7 +388,7 @@
 			files = (
 				8BD1C81C16B32493005F3F23 /* main.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
-				8BD1C82916B32493005F3F23 /* FirstViewController.m in Sources */,
+				8BD1C82916B32493005F3F23 /* NewsViewController.m in Sources */,
 				8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */,
 				8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */,
 				3B0FBA7216CED9D500370199 /* MBProgressHUD.m in Sources */,
@@ -415,12 +415,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		8BD1C83516B32493005F3F23 /* FirstViewController.xib */ = {
+		8BD1C83516B32493005F3F23 /* NewsViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8BD1C83616B32493005F3F23 /* en */,
 			);
-			name = FirstViewController.xib;
+			name = NewsViewController.xib;
 			sourceTree = "<group>";
 		};
 		8BD1C83B16B32493005F3F23 /* SportsViewController.xib */ = {

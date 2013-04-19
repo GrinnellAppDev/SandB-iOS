@@ -35,6 +35,7 @@
     // Set the image behind the title
     backgroundTitle.backgroundColor = [UIColor colorWithPatternImage:
                                        [UIImage imageNamed:@"SANDB.png"]];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,6 +81,18 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    // Return YES for supported orientations
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    
+    else
+        return YES;
+    // Use this to allow upside down as well
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end

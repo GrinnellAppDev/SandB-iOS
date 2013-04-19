@@ -1,18 +1,18 @@
 //
-//  FirstViewController.m
+//  NewsViewController.m
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 1/25/13.
 //  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "NewsViewController.h"
 
-@interface FirstViewController ()
+@interface NewsViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation NewsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,9 +36,6 @@
 
     
 }
-
-
-
 
 
 - (void)load:(id)sender {
