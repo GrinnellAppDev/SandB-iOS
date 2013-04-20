@@ -46,7 +46,7 @@
                 tbxml = [[TBXML alloc] initWithXMLData:xmlData error:&err];
                 
                 // Throw exception if any error occured
-                if (err)
+                if (err != NULL)
                     [NSException raise:NSInvalidArgumentException format:@"%@", err];
                 
                 articleArray = [[NSMutableArray alloc] init];
@@ -58,7 +58,7 @@
                                                             parentElement:root];
                     TBXMLElement *elem_ARTICLE = [TBXML childElementNamed:@"item"
                                                             parentElement:elem_NEWroot];
-                    while (elem_ARTICLE !=nil) {
+                    while (elem_ARTICLE != nil) {
                         // Create a new article
                         Article * art = [[Article alloc] init];
                         
