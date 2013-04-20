@@ -27,6 +27,8 @@
 		8B125BB71721005B00C550F7 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BB61721005B00C550F7 /* Icon-Small.png */; };
 		8B125BB9172100C000C550F7 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BB8172100BF00C550F7 /* iTunesArtwork.png */; };
 		8B125BBB172100FF00C550F7 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */; };
+		8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5B20751721DBCD00E9E3AA /* NewsViewController.m */; };
+		8B5B20791721DBE900E9E3AA /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20771721DBE900E9E3AA /* NewsViewController.xib */; };
 		8B71773F16D858FA001F1F94 /* SANDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71773E16D858FA001F1F94 /* SANDB.png */; };
 		8B7F5B931720982700590514 /* TopBanneriPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F5B921720982700590514 /* TopBanneriPad.png */; };
 		8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB13516BC63ED00C20358 /* Reachability.m */; };
@@ -46,9 +48,7 @@
 		8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C81F16B32493005F3F23 /* AppDelegate.m */; };
 		8BD1C82416B32493005F3F23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C82316B32493005F3F23 /* Default@2x.png */; };
 		8BD1C82616B32493005F3F23 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C82516B32493005F3F23 /* Default-568h@2x.png */; };
-		8BD1C82916B32493005F3F23 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82816B32493005F3F23 /* NewsViewController.m */; };
 		8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82F16B32493005F3F23 /* SportsViewController.m */; };
-		8BD1C83716B32493005F3F23 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83516B32493005F3F23 /* NewsViewController.xib */; };
 		8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83B16B32493005F3F23 /* SportsViewController.xib */; };
 		8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE016B5B29D0024A477 /* NewsCell.xib */; };
 		8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */; };
@@ -61,7 +61,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B59AF2716B5AB080089B06A /* NewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		3BD9DEA716D17A1B0053C1C5 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
 		3BD9DEA916D17A390053C1C5 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
 		3BD9DEAA16D17A390053C1C5 /* brain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brain.png; sourceTree = "<group>"; };
@@ -84,6 +83,9 @@
 		8B125BB61721005B00C550F7 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		8B125BB8172100BF00C550F7 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		8B5B20741721DBCD00E9E3AA /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		8B5B20751721DBCD00E9E3AA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		8B5B20781721DBE900E9E3AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsViewController.xib; sourceTree = "<group>"; };
 		8B71773E16D858FA001F1F94 /* SANDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDB.png; sourceTree = "<group>"; };
 		8B7F5B921720982700590514 /* TopBanneriPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TopBanneriPad.png; path = ../../../Images/TopBanneriPad.png; sourceTree = "<group>"; };
 		8B9BB13416BC63ED00C20358 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -113,9 +115,7 @@
 		8BD1C81F16B32493005F3F23 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8BD1C82316B32493005F3F23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8BD1C82516B32493005F3F23 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8BD1C82816B32493005F3F23 /* NewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		8BD1C82F16B32493005F3F23 /* SportsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportsViewController.m; sourceTree = "<group>"; };
-		8BD1C83616B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsViewController.xib; sourceTree = "<group>"; };
 		8BD1C83C16B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SportsViewController.xib; sourceTree = "<group>"; };
 		8BD1C84616B32E2B005F3F23 /* SportsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SportsViewController.h; sourceTree = "<group>"; };
 		8BE8DFE016B5B29D0024A477 /* NewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
@@ -149,9 +149,9 @@
 		3BEBCE8316C5A94700B6DD08 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
-				3B59AF2716B5AB080089B06A /* NewsViewController.h */,
-				8BD1C82816B32493005F3F23 /* NewsViewController.m */,
-				8BD1C83516B32493005F3F23 /* NewsViewController.xib */,
+				8B5B20741721DBCD00E9E3AA /* NewsViewController.h */,
+				8B5B20751721DBCD00E9E3AA /* NewsViewController.m */,
+				8B5B20771721DBE900E9E3AA /* NewsViewController.xib */,
 				8BD1C84616B32E2B005F3F23 /* SportsViewController.h */,
 				8BD1C82F16B32493005F3F23 /* SportsViewController.m */,
 				8BD1C83B16B32493005F3F23 /* SportsViewController.xib */,
@@ -347,7 +347,6 @@
 				8BD1C81A16B32493005F3F23 /* InfoPlist.strings in Resources */,
 				8BD1C82416B32493005F3F23 /* Default@2x.png in Resources */,
 				8BD1C82616B32493005F3F23 /* Default-568h@2x.png in Resources */,
-				8BD1C83716B32493005F3F23 /* NewsViewController.xib in Resources */,
 				8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */,
 				8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */,
 				8BE8DFE716B5BBC10024A477 /* ArticleViewController.xib in Resources */,
@@ -376,6 +375,7 @@
 				8B125BB71721005B00C550F7 /* Icon-Small.png in Resources */,
 				8B125BB9172100C000C550F7 /* iTunesArtwork.png in Resources */,
 				8B125BBB172100FF00C550F7 /* iTunesArtwork@2x.png in Resources */,
+				8B5B20791721DBE900E9E3AA /* NewsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +388,6 @@
 			files = (
 				8BD1C81C16B32493005F3F23 /* main.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
-				8BD1C82916B32493005F3F23 /* NewsViewController.m in Sources */,
 				8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */,
 				8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */,
 				3B0FBA7216CED9D500370199 /* MBProgressHUD.m in Sources */,
@@ -401,26 +400,27 @@
 				8BC46F6116C823A3008642F7 /* ArtsViewController.m in Sources */,
 				8BFF61F916D164DB00CF3714 /* CommunityViewController.m in Sources */,
 				8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */,
+				8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8B5B20771721DBE900E9E3AA /* NewsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B5B20781721DBE900E9E3AA /* en */,
+			);
+			name = NewsViewController.xib;
+			sourceTree = "<group>";
+		};
 		8BD1C81816B32493005F3F23 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8BD1C81916B32493005F3F23 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8BD1C83516B32493005F3F23 /* NewsViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8BD1C83616B32493005F3F23 /* en */,
-			);
-			name = NewsViewController.xib;
 			sourceTree = "<group>";
 		};
 		8BD1C83B16B32493005F3F23 /* SportsViewController.xib */ = {
@@ -501,11 +501,13 @@
 		8BD1C84516B32493005F3F23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grinnell AppDev (TGDK2NF7Q9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3C6E10D4-340C-41DF-9C74-25398FE07FE6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
