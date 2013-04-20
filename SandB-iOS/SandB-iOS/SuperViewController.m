@@ -78,14 +78,17 @@
                             NSRange imgRange;
                             imgRange.location = srcRange.location + srcRange.length;
                             imgRange.length = endRange.location - imgRange.location;
-                            
+
                             // Create the URL
                             NSString *imageURLstring = [articleBody substringWithRange:imgRange];
-                            NSURL *imageURL = [[NSURL alloc] initWithString:imageURLstring];
-                            
-                            // Fetch the image
-                            art.image = [UIImage imageWithData:
+                            // Sanity Check
+                            if(imageURLstring != NULL){
+                                NSURL *imageURL = [[NSURL alloc] initWithString:imageURLstring];
+
+                                // Fetch the image
+                                art.image = [UIImage imageWithData:
                                          [NSData dataWithContentsOfURL:imageURL]];
+                            }
                         }
                         
                         // Remove HTML tags

@@ -30,7 +30,6 @@
 		8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5B20751721DBCD00E9E3AA /* NewsViewController.m */; };
 		8B5B20791721DBE900E9E3AA /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20771721DBE900E9E3AA /* NewsViewController.xib */; };
 		8B71773F16D858FA001F1F94 /* SANDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71773E16D858FA001F1F94 /* SANDB.png */; };
-		8B7F5B931720982700590514 /* TopBanneriPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F5B921720982700590514 /* TopBanneriPad.png */; };
 		8B9BB13616BC63ED00C20358 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB13516BC63ED00C20358 /* Reachability.m */; };
 		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8B9BB17016BEE5CF00C20358 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB16E16BEE5CF00C20358 /* TBXML.m */; };
@@ -54,7 +53,6 @@
 		8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */; };
 		8BE8DFE716B5BBC10024A477 /* ArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */; };
 		8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFB80BB16D80F9800571249 /* NSString_stripHtml.m */; };
-		8BFD32D01720C51600CCFB3A /* TopBanneriPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFD32CE1720C51600CCFB3A /* TopBanneriPhone.png */; };
 		8BFF61F916D164DB00CF3714 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFF61F716D164DB00CF3714 /* CommunityViewController.m */; };
 		8BFF61FA16D164DB00CF3714 /* CommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF61F816D164DB00CF3714 /* CommunityViewController.xib */; };
 		8BFF61FC16D16D4500CF3714 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF61FB16D16D4500CF3714 /* refresh.png */; };
@@ -87,7 +85,6 @@
 		8B5B20751721DBCD00E9E3AA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		8B5B20781721DBE900E9E3AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsViewController.xib; sourceTree = "<group>"; };
 		8B71773E16D858FA001F1F94 /* SANDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDB.png; sourceTree = "<group>"; };
-		8B7F5B921720982700590514 /* TopBanneriPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TopBanneriPad.png; path = ../../../Images/TopBanneriPad.png; sourceTree = "<group>"; };
 		8B9BB13416BC63ED00C20358 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8B9BB13516BC63ED00C20358 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -124,7 +121,6 @@
 		8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleViewController.xib; sourceTree = "<group>"; };
 		8BFB80BA16D80F9800571249 /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_stripHtml.h; path = ../NSString_stripHtml.h; sourceTree = "<group>"; };
 		8BFB80BB16D80F9800571249 /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSString_stripHtml.m; path = ../NSString_stripHtml.m; sourceTree = "<group>"; };
-		8BFD32CE1720C51600CCFB3A /* TopBanneriPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TopBanneriPhone.png; path = ../../../Images/TopBanneriPhone.png; sourceTree = "<group>"; };
 		8BFF61F616D164DB00CF3714 /* CommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityViewController.h; sourceTree = "<group>"; };
 		8BFF61F716D164DB00CF3714 /* CommunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityViewController.m; sourceTree = "<group>"; };
 		8BFF61F816D164DB00CF3714 /* CommunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityViewController.xib; sourceTree = "<group>"; };
@@ -221,8 +217,6 @@
 		8B4F81E816ED0E47008466CE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				8BFD32CE1720C51600CCFB3A /* TopBanneriPhone.png */,
-				8B7F5B921720982700590514 /* TopBanneriPad.png */,
 				8B125BB61721005B00C550F7 /* Icon-Small.png */,
 				8B125BB41720FFCC00C550F7 /* Icon-Small@2x.png */,
 				8B125BB21720FF4700C550F7 /* Icon-Small-50.png */,
@@ -364,8 +358,6 @@
 				8BCB11C516F3B4C900BACF34 /* Default.png in Resources */,
 				8BCB11C716F3B50800BACF34 /* Default-Portrait~ipad.png in Resources */,
 				8BCB11C916F3B50B00BACF34 /* Default-Landscape~ipad.png in Resources */,
-				8B7F5B931720982700590514 /* TopBanneriPad.png in Resources */,
-				8BFD32D01720C51600CCFB3A /* TopBanneriPhone.png in Resources */,
 				8B125BAB1720FD5E00C550F7 /* Icon-72.png in Resources */,
 				8B125BAD1720FD7900C550F7 /* SnBLogoNew144.png in Resources */,
 				8B125BAF1720FE1B00C550F7 /* Icon.png in Resources */,
