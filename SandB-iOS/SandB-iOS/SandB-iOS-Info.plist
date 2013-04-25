@@ -16,13 +16,12 @@
 			<array>
 				<string>Icon.png</string>
 				<string>Icon@2x.png</string>
-				<string>SnBLogoNew.png</string>
 				<string>SnBLogoNew144.png</string>
 			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>GrinnellAppDev.SandB</string>
+	<string>com.GrinnellAppDev.SandB</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
