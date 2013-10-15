@@ -13,7 +13,7 @@
 @end
 
 @implementation ArticleViewController
-@synthesize article, articleTitle, articleImage, articleBody, backgroundTitle, scroll;
+@synthesize article, articleTitle, articleImage, articleBody, backgroundTitle, scroll, label;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,7 +35,6 @@
     // Set the image behind the title
     backgroundTitle.backgroundColor = [UIColor colorWithPatternImage:
                                        [UIImage imageNamed:@"SANDB.png"]];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,7 +45,9 @@
     articleTitle.text = article.title;
     
     // Get the needed height for the text view (so it doesn't scroll)
-    CGSize textViewSize = [article.article sizeWithFont:[UIFont fontWithName:@"Palatino" size:15]
+    // NEW VERSION DOESNT WORK
+   // CGSize textViewSize = [article.article sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Palatino" size:15]}];
+   CGSize textViewSize = [article.article sizeWithFont:[UIFont fontWithName:@"Palatino" size:15]
                                       constrainedToSize:CGSizeMake(self.view.frame.size.width - 16,
                                                                    FLT_MAX)
                                           lineBreakMode:UILineBreakModeWordWrap];

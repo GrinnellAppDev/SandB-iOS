@@ -8,10 +8,10 @@
 
 #import "SuperViewController.h"
 #import "ArticleViewController.h"
-#import "Reachability.h"
 #import "Article.h"
-#import "MBProgressHUD.h"
 #import "NSString_stripHtml.h"
+#import <Reachability.h>
+#import <MBProgressHUD.h>
 
 @interface SuperViewController ()
 
@@ -72,9 +72,9 @@
                         
                         // Get and store image
                         NSRange srcRange = [articleBody rangeOfString:@"src=\""];
-                        if (srcRange.location != NSNotFound) {
+                        if (NSNotFound != srcRange.location) {
                             // Get the URL's location
-                            NSRange endRange = [articleBody rangeOfString:@"\" alt="];
+                            NSRange endRange = [articleBody rangeOfString:@"\" width="];
                             NSRange imgRange;
                             imgRange.location = srcRange.location + srcRange.length;
                             imgRange.length = endRange.location - imgRange.location;

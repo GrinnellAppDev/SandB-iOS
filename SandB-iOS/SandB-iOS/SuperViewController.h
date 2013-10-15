@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TBXML.h"
+#import <TBXML/TBXML.h>
 
 @interface SuperViewController : UIViewController {
     NSMutableArray *articleArray;
