@@ -55,7 +55,7 @@
     [self.window makeKeyAndVisible];
     
     // Make things red
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:142.0f/255.0f green:42.0f/255.0f blue:29.0f/255.0f alpha:1.0f]];
+    self.window.tintColor = [UIColor colorWithRed:142.0f/255.0f green:42.0f/255.0f blue:29.0f/255.0f alpha:1.0f];
     
     return YES;
 }
