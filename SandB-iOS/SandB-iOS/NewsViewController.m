@@ -32,9 +32,6 @@
     
     [super loadArticles:@"http://www.thesandb.com/feed"];
     [super viewDidLoad];
-    
-
-    
 }
 
 

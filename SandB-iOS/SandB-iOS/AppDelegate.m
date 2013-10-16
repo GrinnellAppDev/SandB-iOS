@@ -22,40 +22,43 @@
     // Override point for customization after application launch.
     UIViewController *viewController1, *viewController2, *viewController3, *viewController4, *viewController5;
     
-    // Commenting out ipad specific xib loading
-    // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
     viewController1 = [[NewsViewController alloc] initWithNibName:@"NewsViewController"
                                                             bundle:nil];
     navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
+    navController1.navigationBar.translucent = NO;
     
     viewController2 = [[SportsViewController alloc] initWithNibName:@"SportsViewController"
                                                              bundle:nil];
     navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
+    navController2.navigationBar.translucent = NO;
     
     viewController3 = [[CommunityViewController alloc] initWithNibName:@"CommunityViewController"
                                                                 bundle:nil];
     navController3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
+    navController3.navigationBar.translucent = NO;
     
     viewController4 = [[OpinionViewController alloc] initWithNibName:@"OpinionViewController"
                                                               bundle:nil];
     navController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];
+    navController4.navigationBar.translucent = NO;
     
     viewController5 = [[ArtsViewController alloc] initWithNibName:@"ArtsViewController"
                                                            bundle:nil];
     navController5 = [[UINavigationController alloc] initWithRootViewController:viewController5];
-    // }
-    /*else {
-     viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController_iPad" bundle:nil];
-     viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController_iPad" bundle:nil];
-     }*/
+    navController5.navigationBar.translucent = NO;
+    
     self.tabBarController = [[UITabBarController alloc] init];
     NSArray *viewsArray = [[NSArray alloc] initWithObjects:navController1, navController2, navController3, navController4, navController5, nil];
     self.tabBarController.viewControllers = viewsArray;
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
-    
+
     // Make things red
     self.window.tintColor = [UIColor colorWithRed:142.0f/255.0f green:42.0f/255.0f blue:29.0f/255.0f alpha:1.0f];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    self.tabBarController.tabBar.translucent = NO;
     
     return YES;
 }

@@ -148,7 +148,6 @@
     [[self navigationItem] setBackBarButtonItem:backButton];
     
     self.cellIdentifier = @"NewsCell";
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 - (void)didReceiveMemoryWarning {

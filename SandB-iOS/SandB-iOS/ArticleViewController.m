@@ -24,13 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //self.navigationController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     
-    // Set up the swipe right gesture
-    UISwipeGestureRecognizer *swipeRight =
-        [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                  action:@selector(handleSwipeRight)];
-    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
-    [self.view addGestureRecognizer:swipeRight];
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     // Set the image behind the title
     backgroundTitle.backgroundColor = [UIColor colorWithPatternImage:
@@ -43,14 +41,7 @@
     // Set up the article body, title, and image
     //  These have to go here so that the frame size is correct!
     articleTitle.text = article.title;
-    
-    // Get the needed height for the text view (so it doesn't scroll)
-    // NEW VERSION DOESNT WORK
-   // CGSize textViewSize = [article.article sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Palatino" size:15]}];
-   CGSize textViewSize = [article.article sizeWithFont:[UIFont fontWithName:@"Palatino" size:15]
-                                      constrainedToSize:CGSizeMake(self.view.frame.size.width - 16,
-                                                                   FLT_MAX)
-                                          lineBreakMode:UILineBreakModeWordWrap];
+
     // Set up the image and get the y offset for the text view
     CGFloat yPos;
     if (article.image != nil) {
@@ -64,20 +55,20 @@
     }
     
     // Set up the text view so it doesn't scroll and add it to the scroll view
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:article.article];
+    [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Palatino" size:15] range:(NSMakeRange(0, article.article.length))];
+    CGRect rect = [attrStr boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
+    CGFloat textHeight = rect.size.height;
     articleBody = [[UITextView alloc] initWithFrame:
-                   CGRectMake(0, yPos, self.view.frame.size.width, textViewSize.height + 16)];
+                   CGRectMake(0, yPos, self.view.frame.size.width, textHeight + 8)];
     articleBody.text = article.article;
     articleBody.font = [UIFont fontWithName:@"Palatino" size:15];
     articleBody.editable = NO;
+    //articleBody.scrollEnabled = NO;
     [scroll addSubview:articleBody];
     
     // Set the scroll view large enough to contain everything
-    scroll.contentSize = CGSizeMake(self.view.frame.size.width, textViewSize.height + 16 + yPos);
-}
-
-// Set up the swipe right gesture (same as hitting back button)
-- (void)handleSwipeRight {
-    [self.navigationController popViewControllerAnimated:YES];
+    scroll.contentSize = CGSizeMake(self.view.frame.size.width, textHeight + 8 + yPos);
 }
 
 - (void)didReceiveMemoryWarning {
