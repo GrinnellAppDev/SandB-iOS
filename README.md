@@ -1,8 +1,8 @@
 S&amp;B
 =========
 
-Authors:  * David Cowden
-          * Patrick Triest
+Authors:  * Colin Tremblay
+          * Lea Marolt Sonnenschein
 
 Date:    Saturday, 2nd November, 2013
 
