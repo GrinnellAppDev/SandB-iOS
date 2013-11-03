@@ -10,7 +10,7 @@ Date:    Saturday, 2nd November, 2013
 
 Grinnell College's Newspaper, the Scarlet &amp; Black
 
-#### [http://www.g-licio.us/DB/](http://www.g-licio.us/DB/)
+#### [http://www.g-licio.us/SandB/](http://www.g-licio.us/SandB/)
 
 ###About
 
