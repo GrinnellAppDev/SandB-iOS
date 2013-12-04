@@ -24,11 +24,8 @@
 }
 
 - (void)viewDidLoad{
-    UIButton *refresh = [[UIButton alloc] initWithFrame:CGRectMake(30, 30, 40, 40)];
-    [refresh setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
-    [refresh addTarget:self action:@selector(load:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *refreshButton =[[UIBarButtonItem alloc] initWithCustomView:refresh];
-    [self.navigationItem setRightBarButtonItem:refreshButton animated:YES];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(load:)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
     
     [super loadArticles:@"http://www.thesandb.com/sections/opinion/feed"];
     [super viewDidLoad];
