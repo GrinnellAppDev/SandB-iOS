@@ -49,70 +49,98 @@
                 if (err != NULL)
                     [NSException raise:NSInvalidArgumentException format:@"%@", err];
                 
-                articleArray = [[NSMutableArray alloc] init];
                 // Obtain root element
                 TBXMLElement * root = tbxml.rootXMLElement;
                 if (root) {
                     // Get to the articles and iterate through them
-                    TBXMLElement *elem_NEWroot = [TBXML childElementNamed:@"channel"
+                    TBXMLElement *elem_NewRoot = [TBXML childElementNamed:@"channel"
                                                             parentElement:root];
-                    TBXMLElement *elem_ARTICLE = [TBXML childElementNamed:@"item"
-                                                            parentElement:elem_NEWroot];
-                    while (elem_ARTICLE != nil) {
-                        // Create a new article
-                        Article * art = [[Article alloc] init];
-                        
-                        // Get and store title
-                        TBXMLElement * elem_TITLE = [TBXML childElementNamed:@"title" parentElement:elem_ARTICLE];
-                        NSString *articleTitle = [TBXML textForElement:elem_TITLE];
-                        
-                        // Get and store article body
-                        TBXMLElement * elem_TEXT = [TBXML childElementNamed:@"content:encoded" parentElement:elem_ARTICLE];
-                        NSString *articleBody = [TBXML textForElement:elem_TEXT];
-                        
-                        // Get and store image
-                        NSRange srcRange = [articleBody rangeOfString:@"src=\""];
-                        if (NSNotFound != srcRange.location) {
-                            // Get the URL's location
-                            NSRange endRange = [articleBody rangeOfString:@"\" width="];
-                            NSRange imgRange;
-                            imgRange.location = srcRange.location + srcRange.length;
-                            imgRange.length = endRange.location - imgRange.location;
+                    
+                    TBXMLElement *elem_Date = [TBXML childElementNamed:@"lastBuildDate"
+                                                         parentElement:elem_NewRoot];
+                    NSString *date = [TBXML textForElement:elem_Date];
+                    
+                    NSString *urlForPath = [url stringByReplacingOccurrencesOfString:@"/" withString:@""];
+                    urlForPath = [urlForPath stringByReplacingOccurrencesOfString:@"." withString:@""];
+                    urlForPath = [urlForPath stringByReplacingOccurrencesOfString:@"http:wwwthesandbcom" withString:@""];
 
-                            // Create the URL
-                            NSString *imageURLstring = [articleBody substringWithRange:imgRange];
-                            // Sanity Check
-                            if(imageURLstring != NULL){
-                                NSURL *imageURL = [[NSURL alloc] initWithString:imageURLstring];
+                    NSString *tempPath = NSTemporaryDirectory();
+                    NSString *currentFeedPlist = [NSString stringWithFormat:@"%@-%@.plist", date, urlForPath];
+                    NSString *path = [tempPath stringByAppendingPathComponent:currentFeedPlist];
+                    path = [path stringByReplacingOccurrencesOfString:@" " withString:@""];
+                    path = [path stringByReplacingOccurrencesOfString:@":" withString:@""];
+                    path = [path stringByReplacingOccurrencesOfString:@"+" withString:@""];
+                    path = [path stringByReplacingOccurrencesOfString:@"," withString:@""];
 
-                                // Fetch the image
-                                art.image = [UIImage imageWithData:
-                                         [NSData dataWithContentsOfURL:imageURL]];
+                    NSURL *pathURL = [NSURL URLWithString:path];
+                    NSLog(@"About to test for cached file called: %@", path);
+                    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                        articleArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
+                        NSLog(@"USING CACHED VERSION");
+                    }
+                    else {
+                        articleArray = [[NSMutableArray alloc] init];
+                        TBXMLElement *elem_ARTICLE = [TBXML childElementNamed:@"item"
+                                                                parentElement:elem_NewRoot];
+                        while (elem_ARTICLE != nil) {
+                            // Create a new article
+                            Article * art = [[Article alloc] init];
+                            
+                            // Get and store title
+                            TBXMLElement * elem_TITLE = [TBXML childElementNamed:@"title" parentElement:elem_ARTICLE];
+                            NSString *articleTitle = [TBXML textForElement:elem_TITLE];
+                            
+                            // Get and store article body
+                            TBXMLElement * elem_TEXT = [TBXML childElementNamed:@"content:encoded" parentElement:elem_ARTICLE];
+                            NSString *articleBody = [TBXML textForElement:elem_TEXT];
+                            
+                            // Get and store image
+                            NSRange srcRange = [articleBody rangeOfString:@"src=\""];
+                            if (NSNotFound != srcRange.location) {
+                                // Get the URL's location
+                                NSRange endRange = [articleBody rangeOfString:@"\" width="];
+                                NSRange imgRange;
+                                imgRange.location = srcRange.location + srcRange.length;
+                                imgRange.length = endRange.location - imgRange.location;
+                                
+                                // Create the URL
+                                NSString *imageURLstring = [articleBody substringWithRange:imgRange];
+                                // Sanity Check
+                                if(imageURLstring != NULL){
+                                    NSURL *imageURL = [[NSURL alloc] initWithString:imageURLstring];
+                                    
+                                    // Fetch the image
+                                    art.image = [UIImage imageWithData:
+                                                 [NSData dataWithContentsOfURL:imageURL]];
+                                }
                             }
+                            
+                            // Remove HTML tags
+                            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>&nbsp;</p>\n"
+                                                                                 withString:@""];
+                            art.title = [articleTitle stripHtml];
+                            art.article = [articleBody stripHtml];
+                            
+                            // Remove excess newline characters
+                            art.article = [art.article stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                            while ([art.article rangeOfString:@"\n\n"].location != NSNotFound)
+                                art.article = [art.article stringByReplacingOccurrencesOfString:@"\n\n"
+                                                                                     withString:@"\n"];
+                            
+                            // Create "hard returns"
+                            art.article = [art.article stringByReplacingOccurrencesOfString:@"\n"
+                                                                                 withString:@"\n\n"];
+                            
+                            // Add article to our array
+                            [articleArray addObject:art];
+                            
+                            // Get next article
+                            elem_ARTICLE = [TBXML nextSiblingNamed:@"item"
+                                                 searchFromElement:elem_ARTICLE];
                         }
-                        
-                        // Remove HTML tags
-                        articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>&nbsp;</p>\n"
-                                                                             withString:@""];
-                        art.title = [articleTitle stripHtml];
-                        art.article = [articleBody stripHtml];
-
-                        // Remove excess newline characters
-                        art.article = [art.article stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                        while ([art.article rangeOfString:@"\n\n"].location != NSNotFound)
-                            art.article = [art.article stringByReplacingOccurrencesOfString:@"\n\n"
-                                                                                 withString:@"\n"];
-                        
-                        // Create "hard returns"
-                        art.article = [art.article stringByReplacingOccurrencesOfString:@"\n"
-                                                                             withString:@"\n\n"];
-                        
-                        // Add article to our array
-                        [articleArray addObject:art];
-                        
-                        // Get next article
-                        elem_ARTICLE = [TBXML nextSiblingNamed:@"item"
-                                             searchFromElement:elem_ARTICLE];
+                        NSLog(@"Writing file to: %@", path);
+                        BOOL didWrite = [articleArray writeToURL:pathURL atomically:YES];
+                        NSLog(@"%d", didWrite);
                     }
                 }
             }
@@ -223,13 +251,6 @@
         newsArticle.hidden = YES;
         largeNewsArticle.hidden = NO;
     }
-    
-    /*
-    newsArticle.hidden = YES;
-    newsImage.hidden = YES;
-    newsTitle.hidden = YES;
-    largeNewsArticle.hidden = YES;
-    */
     return cell;
 }
 
@@ -249,14 +270,14 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         
-            label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPhone.png"]];
+        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPhone.png"]];
     }
     else {
-
-            // Change image for landscape orientation
-            label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPad.png"]];
-        }
-
+        
+        // Change image for landscape orientation
+        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPad.png"]];
+    }
+    
     
     label.text = sectionTitle;
     return label;

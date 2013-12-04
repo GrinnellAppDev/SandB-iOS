@@ -556,14 +556,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43B56FF85CDE42F196966E07 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Lea Marolt (H69TS4DPUJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lea Marolt (H69TS4DPUJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D1ADD1FE-5CBD-40EF-BD4A-18E79985C41A";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -572,14 +572,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43B56FF85CDE42F196966E07 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Lea Marolt (H69TS4DPUJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lea Marolt (H69TS4DPUJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D1ADD1FE-5CBD-40EF-BD4A-18E79985C41A";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D1ADD1FE-5CBD-40EF-BD4A-18E79985C41A";
 				WRAPPER_EXTENSION = app;
 			};
