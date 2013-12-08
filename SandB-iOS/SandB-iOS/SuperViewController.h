@@ -16,6 +16,7 @@
 
 - (BOOL)networkCheck;
 - (void)loadArticles:(NSString *)url;
+- (void)parseFeed:(TBXMLElement *)elem_NewRoot withPath:(NSString *)originalPath andDate:(NSString *)date;
 NSString *ReplaceFirstNewLine(NSString *original);
 NSString *ReplaceEmail(NSString *original);
 

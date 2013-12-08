@@ -31,11 +31,27 @@
 }
 
 - (void)loadArticles:(NSString *)url{
-    if ([self networkCheck]) {
+    NSString *originalTempPath = NSTemporaryDirectory();
+    NSString *urlForOriginalPath = [url stringByReplacingOccurrencesOfString:@"http://www.thesandb.com/" withString:@""];
+    urlForOriginalPath = [urlForOriginalPath stringByReplacingOccurrencesOfString:@"/" withString:@""];
+
+    NSString *originalFeed = [NSString stringWithFormat:@"%@.plist", urlForOriginalPath];
+    NSString *originalPath = [originalTempPath stringByAppendingPathComponent:originalFeed];
+    
+   // NSLog(@"About to test for cached article file called: %@", originalPath);
+    if ([[NSFileManager defaultManager] fileExistsAtPath:originalPath]) {
+        articleArray = [NSKeyedUnarchiver unarchiveObjectWithFile:originalPath];
+        [theTableView reloadData];
+        //NSLog(@"USING CACHED VERSION");
+    }
+    else {
+      //  NSLog(@"No cache... showing HUD");
         // Set up HUD
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Loading";
-        
+    }
+    
+    if ([self networkCheck]) {
         // Dispatch our thread for getting data
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             // Try to get and parse the data
@@ -46,8 +62,10 @@
                 tbxml = [[TBXML alloc] initWithXMLData:xmlData error:&err];
                 
                 // Throw exception if any error occured
-                if (err != NULL)
-                    [NSException raise:NSInvalidArgumentException format:@"%@", err];
+                if (err != NULL){
+                    NSString *exceptionString = [NSString stringWithFormat:@"%@", err];
+                    @throw [NSException exceptionWithName:@"TBXMLParseError" reason:exceptionString userInfo:nil];
+                }
                 
                 // Obtain root element
                 TBXMLElement * root = tbxml.rootXMLElement;
@@ -60,87 +78,23 @@
                                                          parentElement:elem_NewRoot];
                     NSString *date = [TBXML textForElement:elem_Date];
                     
-                    NSString *urlForPath = [url stringByReplacingOccurrencesOfString:@"/" withString:@""];
-                    urlForPath = [urlForPath stringByReplacingOccurrencesOfString:@"." withString:@""];
-                    urlForPath = [urlForPath stringByReplacingOccurrencesOfString:@"http:wwwthesandbcom" withString:@""];
+                    NSString *path = [originalPath stringByReplacingOccurrencesOfString:@"feed.plist" withString:@"feed-date.plist"];
 
-                    NSString *tempPath = NSTemporaryDirectory();
-                    NSString *currentFeedPlist = [NSString stringWithFormat:@"%@-%@.plist", date, urlForPath];
-                    NSString *path = [tempPath stringByAppendingPathComponent:currentFeedPlist];
-                    path = [path stringByReplacingOccurrencesOfString:@" " withString:@""];
-                    path = [path stringByReplacingOccurrencesOfString:@":" withString:@""];
-                    path = [path stringByReplacingOccurrencesOfString:@"+" withString:@""];
-                    path = [path stringByReplacingOccurrencesOfString:@"," withString:@""];
-
-                    NSURL *pathURL = [NSURL URLWithString:path];
-                    NSLog(@"About to test for cached file called: %@", path);
+                    //NSLog(@"About to test for date file called: %@", path);
                     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                        articleArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
-                        NSLog(@"USING CACHED VERSION");
+                        NSString *dateStr = [[NSString alloc] initWithContentsOfFile:path encoding:NSStringEncodingConversionAllowLossy error:&err];
+                        // Throw exception if any error occured
+                        if (err != NULL){
+                            NSString *exceptionString = [NSString stringWithFormat:@"%@", err];
+                            @throw [NSException exceptionWithName:@"DateFileReadError" reason:exceptionString userInfo:nil];
+                        }
+                        
+                        if (![date isEqualToString:dateStr])
+                            [self parseFeed:elem_NewRoot withPath:originalPath andDate:date];
+                      // else NSLog(@"DATES EQUAL - USING CACHED VERSION");
                     }
                     else {
-                        articleArray = [[NSMutableArray alloc] init];
-                        TBXMLElement *elem_ARTICLE = [TBXML childElementNamed:@"item"
-                                                                parentElement:elem_NewRoot];
-                        while (elem_ARTICLE != nil) {
-                            // Create a new article
-                            Article * art = [[Article alloc] init];
-                            
-                            // Get and store title
-                            TBXMLElement * elem_TITLE = [TBXML childElementNamed:@"title" parentElement:elem_ARTICLE];
-                            NSString *articleTitle = [TBXML textForElement:elem_TITLE];
-                            
-                            // Get and store article body
-                            TBXMLElement * elem_TEXT = [TBXML childElementNamed:@"content:encoded" parentElement:elem_ARTICLE];
-                            NSString *articleBody = [TBXML textForElement:elem_TEXT];
-                            
-                            // Get and store image
-                            NSRange srcRange = [articleBody rangeOfString:@"src=\""];
-                            if (NSNotFound != srcRange.location) {
-                                // Get the URL's location
-                                NSRange endRange = [articleBody rangeOfString:@"\" width="];
-                                NSRange imgRange;
-                                imgRange.location = srcRange.location + srcRange.length;
-                                imgRange.length = endRange.location - imgRange.location;
-                                
-                                // Create the URL
-                                NSString *imageURLstring = [articleBody substringWithRange:imgRange];
-                                // Sanity Check
-                                if(imageURLstring != NULL){
-                                    NSURL *imageURL = [[NSURL alloc] initWithString:imageURLstring];
-                                    
-                                    // Fetch the image
-                                    art.image = [UIImage imageWithData:
-                                                 [NSData dataWithContentsOfURL:imageURL]];
-                                }
-                            }
-                            
-                            // Remove HTML tags
-                            articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>&nbsp;</p>\n"
-                                                                                 withString:@""];
-                            art.title = [articleTitle stripHtml];
-                            art.article = [articleBody stripHtml];
-                            
-                            // Remove excess newline characters
-                            art.article = [art.article stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                            while ([art.article rangeOfString:@"\n\n"].location != NSNotFound)
-                                art.article = [art.article stringByReplacingOccurrencesOfString:@"\n\n"
-                                                                                     withString:@"\n"];
-                            
-                            // Create "hard returns"
-                            art.article = [art.article stringByReplacingOccurrencesOfString:@"\n"
-                                                                                 withString:@"\n\n"];
-                            
-                            // Add article to our array
-                            [articleArray addObject:art];
-                            
-                            // Get next article
-                            elem_ARTICLE = [TBXML nextSiblingNamed:@"item"
-                                                 searchFromElement:elem_ARTICLE];
-                        }
-                        NSLog(@"Writing file to: %@", path);
-                        BOOL didWrite = [articleArray writeToURL:pathURL atomically:YES];
-                        NSLog(@"%d", didWrite);
+                        [self parseFeed:elem_NewRoot withPath:originalPath andDate:date];
                     }
                 }
             }
@@ -150,6 +104,7 @@
                 [self performSelectorOnMainThread:@selector(showErrorAlert)
                                        withObject:nil
                                     waitUntilDone:YES];
+                NSLog(@"%@", exception);
                 return;
             }
             // Join thread
@@ -166,6 +121,79 @@
                             waitUntilDone:YES];
         return;
     }
+}
+
+- (void)parseFeed:(TBXMLElement *)elem_NewRoot withPath:(NSString *)originalPath andDate:(NSString *)date{
+    articleArray = [[NSMutableArray alloc] init];
+    TBXMLElement *elem_ARTICLE = [TBXML childElementNamed:@"item"
+                                            parentElement:elem_NewRoot];
+    while (elem_ARTICLE != nil) {
+        // Create a new article
+        Article * art = [[Article alloc] init];
+        
+        // Get and store title
+        TBXMLElement * elem_TITLE = [TBXML childElementNamed:@"title" parentElement:elem_ARTICLE];
+        NSString *articleTitle = [TBXML textForElement:elem_TITLE];
+        
+        // Get and store article body
+        TBXMLElement * elem_TEXT = [TBXML childElementNamed:@"content:encoded" parentElement:elem_ARTICLE];
+        NSString *articleBody = [TBXML textForElement:elem_TEXT];
+        
+        // Get and store image
+        NSRange srcRange = [articleBody rangeOfString:@"src=\""];
+        if (NSNotFound != srcRange.location) {
+            // Get the URL's location
+            NSRange endRange = [articleBody rangeOfString:@"\" width="];
+            NSRange imgRange;
+            imgRange.location = srcRange.location + srcRange.length;
+            imgRange.length = endRange.location - imgRange.location;
+            
+            // Create the URL
+            NSString *imageURLstring = [articleBody substringWithRange:imgRange];
+            // Sanity Check
+            if(imageURLstring != NULL){
+                NSURL *imageURL = [[NSURL alloc] initWithString:imageURLstring];
+                
+                // Fetch the image
+                art.image = [UIImage imageWithData:
+                             [NSData dataWithContentsOfURL:imageURL]];
+            }
+        }
+        
+        // Remove HTML tags
+        articleBody = [articleBody stringByReplacingOccurrencesOfString:@"<p>&nbsp;</p>\n"
+                                                             withString:@""];
+        art.title = [articleTitle stripHtml];
+        art.article = [articleBody stripHtml];
+        
+        // Remove excess newline characters
+        art.article = [art.article stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        while ([art.article rangeOfString:@"\n\n"].location != NSNotFound)
+            art.article = [art.article stringByReplacingOccurrencesOfString:@"\n\n"
+                                                                 withString:@"\n"];
+        
+        // Create "hard returns"
+        art.article = [art.article stringByReplacingOccurrencesOfString:@"\n"
+                                                             withString:@"\n\n"];
+        
+        // Add article to our array
+        [articleArray addObject:art];
+        
+        // Get next article
+        elem_ARTICLE = [TBXML nextSiblingNamed:@"item"
+                             searchFromElement:elem_ARTICLE];
+    }
+    BOOL didWrite = [NSKeyedArchiver archiveRootObject:articleArray toFile:originalPath];
+    if (!didWrite)
+        NSLog(@"An error occurred writing the article cache");
+    NSString *path = [originalPath stringByReplacingOccurrencesOfString:@"feed.plist" withString:@"feed-date.plist"];
+    NSError *err;
+    didWrite = [date writeToFile:path atomically:YES encoding:NSStringEncodingConversionAllowLossy error:&err];
+    // If any error occured
+    if (!didWrite)
+        NSLog(@"An error occurred writing the date file: %@", err);
+   // else NSLog(@"Wrote new date file");
+    
 }
 
 - (void)viewDidLoad {

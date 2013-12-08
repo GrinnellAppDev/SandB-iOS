@@ -11,5 +11,4 @@
 @interface CommunityViewController : SuperViewController
 
 - (void)load:(id)sender;
-
 @end

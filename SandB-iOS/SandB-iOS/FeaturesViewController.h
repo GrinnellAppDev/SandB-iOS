@@ -11,5 +11,4 @@
 @interface FeaturesViewController : SuperViewController
 
 - (void)load:(id)sender;
-
 @end

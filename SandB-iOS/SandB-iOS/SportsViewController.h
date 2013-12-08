@@ -11,5 +11,4 @@
 @interface SportsViewController : SuperViewController
 
 - (void)load:(id)sender;
-
 @end

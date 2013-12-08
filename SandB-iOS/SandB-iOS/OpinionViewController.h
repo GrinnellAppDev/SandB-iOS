@@ -11,5 +11,4 @@
 @interface OpinionViewController : SuperViewController
 
 - (void)load:(id)sender;
-
 @end
