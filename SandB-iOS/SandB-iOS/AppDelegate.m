@@ -20,29 +20,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1, *viewController2, *viewController3, *viewController4, *viewController5;
     
-    viewController1 = [[NewsViewController alloc] initWithNibName:@"NewsViewController"
+    NewsViewController *viewController1 = [[NewsViewController alloc] initWithNibName:@"NewsViewController"
                                                             bundle:nil];
     navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
     navController1.navigationBar.translucent = NO;
     
-    viewController2 = [[SportsViewController alloc] initWithNibName:@"SportsViewController"
+    SportsViewController *viewController2 = [[SportsViewController alloc] initWithNibName:@"SportsViewController"
                                                              bundle:nil];
     navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
     navController2.navigationBar.translucent = NO;
     
-    viewController3 = [[CommunityViewController alloc] initWithNibName:@"CommunityViewController"
+    CommunityViewController *viewController3 = [[CommunityViewController alloc] initWithNibName:@"CommunityViewController"
                                                                 bundle:nil];
     navController3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
     navController3.navigationBar.translucent = NO;
     
-    viewController4 = [[OpinionViewController alloc] initWithNibName:@"OpinionViewController"
+    OpinionViewController *viewController4 = [[OpinionViewController alloc] initWithNibName:@"OpinionViewController"
                                                               bundle:nil];
     navController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];
     navController4.navigationBar.translucent = NO;
     
-    viewController5 = [[ArtsViewController alloc] initWithNibName:@"ArtsViewController"
+    ArtsViewController *viewController5 = [[ArtsViewController alloc] initWithNibName:@"ArtsViewController"
                                                            bundle:nil];
     navController5 = [[UINavigationController alloc] initWithRootViewController:viewController5];
     navController5.navigationBar.translucent = NO;

@@ -11,5 +11,4 @@
 @interface ArtsViewController : SuperViewController
 
 - (void)load:(id)sender;
-
 @end

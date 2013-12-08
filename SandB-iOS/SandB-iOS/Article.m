@@ -11,4 +11,21 @@
 @implementation Article
 @synthesize title, article, image;
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        title = [aDecoder decodeObjectForKey:@"title"];
+        article = [aDecoder decodeObjectForKey:@"article"];
+        image = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"image"]];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:title forKey:@"title"];
+    [aCoder encodeObject:article forKey:@"article"];
+    NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
+    [aCoder encodeObject:imgData forKey:@"image"];
+}
+
 @end
