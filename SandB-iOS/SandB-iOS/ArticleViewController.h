@@ -19,5 +19,6 @@
 @property (nonatomic, strong) Article *article;
 @property (nonatomic, weak) IBOutlet UILabel *label;
 
+- (void)commentsBtnTapped:(id)sender;
 
 @end

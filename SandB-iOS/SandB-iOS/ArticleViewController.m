@@ -7,6 +7,7 @@
 //
 
 #import "ArticleViewController.h"
+#import "CommentsViewController.h"
 
 @interface ArticleViewController ()
 
@@ -33,6 +34,12 @@
     // Set the image behind the title
     backgroundTitle.backgroundColor = [UIColor colorWithPatternImage:
                                        [UIImage imageNamed:@"SANDB.png"]];
+    
+    // Make the comments button
+    if (article.commentsCount) {
+        UIBarButtonItem *commentsBtn = [[UIBarButtonItem alloc] initWithTitle:@"Comments" style:UIBarButtonItemStylePlain target:self action:@selector(commentsBtnTapped:)];
+        self.navigationItem.rightBarButtonItem = commentsBtn;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,6 +92,12 @@
         return YES;
     // Use this to allow upside down as well
     //return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (void)commentsBtnTapped:(id)sender {
+    CommentsViewController *commentsVC = [[CommentsViewController alloc] initWithNibName:@"CommentsViewController" bundle:nil];
+    commentsVC.url = article.comments;
+    [self.navigationController pushViewController:commentsVC animated:YES];
 }
 
 @end

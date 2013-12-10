@@ -135,6 +135,15 @@
         TBXMLElement * elem_TITLE = [TBXML childElementNamed:@"title" parentElement:elem_ARTICLE];
         NSString *articleTitle = [TBXML textForElement:elem_TITLE];
         
+        // Get and store article comments URL
+        TBXMLElement * elem_COMMENTS = [TBXML childElementNamed:@"wfw:commentRss" parentElement:elem_ARTICLE];
+        NSString *comments = [TBXML textForElement:elem_COMMENTS];
+        NSURL *commentsURL = [NSURL URLWithString:comments];
+        
+        // Get and store article comment count
+        TBXMLElement * elem_COMMENT_COUNT = [TBXML childElementNamed:@"slash:comments" parentElement:elem_ARTICLE];
+        int commentCount = [[TBXML textForElement:elem_COMMENT_COUNT] intValue];
+        
         // Get and store article body
         TBXMLElement * elem_TEXT = [TBXML childElementNamed:@"content:encoded" parentElement:elem_ARTICLE];
         NSString *articleBody = [TBXML textForElement:elem_TEXT];
@@ -165,6 +174,8 @@
                                                              withString:@""];
         art.title = [articleTitle stripHtml];
         art.article = [articleBody stripHtml];
+        art.comments = commentsURL;
+        art.commentsCount = commentCount;
         
         // Remove excess newline characters
         art.article = [art.article stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
