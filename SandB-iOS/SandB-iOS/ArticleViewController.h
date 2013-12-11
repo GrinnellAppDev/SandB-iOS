@@ -11,13 +11,12 @@
 
 @interface ArticleViewController : UIViewController
 
-@property (nonatomic, weak) IBOutlet UIScrollView *scroll;
-@property (nonatomic, weak) IBOutlet UILabel *backgroundTitle;
-@property (nonatomic, weak) IBOutlet UILabel *articleTitle;
-@property (nonatomic, weak) IBOutlet UIImageView *articleImage;
-@property (nonatomic, strong) IBOutlet UITextView *articleBody;
+@property (nonatomic, strong) IBOutlet UIScrollView *scroll;
+@property (nonatomic, strong) IBOutlet UILabel *articleTitle;
+@property (nonatomic, strong) IBOutlet UIImageView *articleImage;
+@property (nonatomic, strong) IBOutlet UILabel *articleBody;
 @property (nonatomic, strong) Article *article;
-@property (nonatomic, weak) IBOutlet UILabel *label;
 
+- (void)commentsBtnTapped:(id)sender;
 
 @end
