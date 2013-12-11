@@ -297,39 +297,6 @@
     return 122;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"";
-}
-
-// set bg color for header in section
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
-    
-    UILabel *label = [[UILabel alloc] init];
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        
-        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPhone.png"]];
-    }
-    else {
-        
-        // Change image for landscape orientation
-        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TopBanneriPad.png"]];
-    }
-    
-    
-    label.text = sectionTitle;
-    return label;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 24;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return @"";
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ArticleViewController *articlePage = [[ArticleViewController alloc] initWithNibName:@"ArticleViewController" bundle:nil];
     articlePage.article = [[Article alloc] init];

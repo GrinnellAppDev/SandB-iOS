@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentsViewController">
             <connections>
-                <outlet property="theTableView" destination="QT4-sR-kEk" id="NoP-c7-lAf"/>
+                <outlet property="theTableView" destination="QT4-sR-kEk" id="6Y3-8M-JqM"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -20,8 +20,8 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="1" id="68r-9k-dlT"/>
-                        <outlet property="delegate" destination="1" id="7He-zQ-Ib9"/>
+                        <outlet property="dataSource" destination="-1" id="EHI-kX-eY6"/>
+                        <outlet property="delegate" destination="-1" id="rXd-V1-aka"/>
                     </connections>
                 </tableView>
             </subviews>

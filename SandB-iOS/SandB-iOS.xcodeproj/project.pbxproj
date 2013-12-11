@@ -67,6 +67,7 @@
 		E19E290E180E5ED200ED33FE /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2907180E5ED200ED33FE /* icon-80.png */; };
 		E19E290F180E5ED200ED33FE /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2908180E5ED200ED33FE /* icon-120.png */; };
 		E19E2910180E5ED200ED33FE /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2909180E5ED200ED33FE /* icon-152.png */; };
+		E1A1247C18590EAF00C43E73 /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A1247B18590EAF00C43E73 /* CommentsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +148,7 @@
 		E19E2907180E5ED200ED33FE /* icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-80.png"; sourceTree = "<group>"; };
 		E19E2908180E5ED200ED33FE /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
 		E19E2909180E5ED200ED33FE /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-152.png"; sourceTree = "<group>"; };
+		E1A1247B18590EAF00C43E73 /* CommentsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				E198F6371857B52600CBDDED /* CommentsViewController.h */,
 				E198F6381857B52600CBDDED /* CommentsViewController.m */,
 				E198F6391857B52600CBDDED /* CommentsViewController.xib */,
+				E1A1247B18590EAF00C43E73 /* CommentsCell.xib */,
 			);
 			name = "Main Views";
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				8B71773F16D858FA001F1F94 /* SANDB.png in Resources */,
 				8B125BAB1720FD5E00C550F7 /* Icon-72.png in Resources */,
 				E19E2901180E5D3200ED33FE /* Default-Landscape@2x.png in Resources */,
+				E1A1247C18590EAF00C43E73 /* CommentsCell.xib in Resources */,
 				8B125BAD1720FD7900C550F7 /* SnBLogoNew144.png in Resources */,
 				8B125BAF1720FE1B00C550F7 /* Icon.png in Resources */,
 				8B125BB11720FECD00C550F7 /* Icon@2x.png in Resources */,

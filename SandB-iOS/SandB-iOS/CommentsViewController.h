@@ -16,5 +16,6 @@
 
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, weak) IBOutlet UITableView *theTableView;
+@property (nonatomic, strong) NSString *cellIdentifier;
 
 @end

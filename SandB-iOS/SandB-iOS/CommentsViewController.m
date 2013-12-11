@@ -11,6 +11,7 @@
 #import <MBProgressHUD.h>
 #import <Reachability.h>
 #import "Comment.h"
+#import "NSString_stripHtml.h"
 
 @interface CommentsViewController ()
 
@@ -20,8 +21,7 @@
 
 @synthesize url, theTableView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -29,15 +29,16 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSLog(@"%@", url);
+    
+    self.cellIdentifier = @"CommentsCell";
+
     [self loadComments];
 }
 
-- (void)loadComments{
+- (void)loadComments {
     NSString *originalTempPath = NSTemporaryDirectory();
     
     NSString *urlForOriginalPath = [[NSString stringWithFormat:@"%@", url] stringByReplacingOccurrencesOfString:@"http://www.thesandb.com/" withString:@""];
@@ -144,7 +145,7 @@
         NSString *author = [TBXML textForElement:elem_TITLE];
         
         // Get and store date/time
-        TBXMLElement *elem_TIMESTAMP = [TBXML childElementNamed:@"content:encoded" parentElement:elem_COMMENT];
+        TBXMLElement *elem_TIMESTAMP = [TBXML childElementNamed:@"pubDate" parentElement:elem_COMMENT];
         NSString *timestamp = [TBXML textForElement:elem_TIMESTAMP];
         timestamp = [timestamp stringByReplacingOccurrencesOfString:@" +0000" withString:@""];
         
@@ -156,9 +157,10 @@
         comment = [comment stringByReplacingOccurrencesOfString:@"<p>&nbsp;</p>\n"
                                                              withString:@""];
         
-        tempComment.text = comment;
-        tempComment.author = author;
-        tempComment.timestamp = timestamp;
+        tempComment.text = [comment stripHtml];;
+        tempComment.author = [author stripHtml];
+        tempComment.timestamp = [timestamp stripHtml];
+        NSLog(@"%@", tempComment.text);
         
         // Add article to our array
         [commentsArray addObject:tempComment];
@@ -185,6 +187,57 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return commentsArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Get the comment for this cell
+    Comment *currentComment = [[Comment alloc] init];
+    currentComment = [commentsArray objectAtIndex:indexPath.row];
+    
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:currentComment.text];
+    [attrStr addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline] range:(NSMakeRange(0, currentComment.text.length))];
+    CGRect rect = [attrStr boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 40, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
+    CGFloat textHeight = rect.size.height;
+    return textHeight + 98;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Register the NIB cell object for our custom cell
+    [tableView registerNib:[UINib nibWithNibName:@"CommentsCell" bundle:nil] forCellReuseIdentifier:self.cellIdentifier];
+    
+    UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
+	if (cell == nil) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.cellIdentifier];
+	}
+    
+    // Connect the cell's properties
+    UILabel *authorLbl = (UILabel *)[cell viewWithTag:8001];
+    UILabel *timeLbl = (UILabel *)[cell viewWithTag:8002];
+    UILabel *textLbl = (UILabel *)[cell viewWithTag:8003];
+    
+    // Get the comment for this cell
+    Comment *currentComment = [[Comment alloc] init];
+    currentComment = [commentsArray objectAtIndex:indexPath.row];
+    
+    // Set the author
+    authorLbl.text = currentComment.author;
+    
+    // Set the timestamp
+    timeLbl.text = currentComment.timestamp;
+    
+    // Set the Comment Text
+    textLbl.text = currentComment.text;
+    
+    return cell;
 }
 
 //Method to determine the availability of network Connections using the Reachability Class
