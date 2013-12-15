@@ -3,6 +3,7 @@ S&amp;B
 
 Authors:  * Colin Tremblay
           * Lea Marolt Sonnenschein
+          * Daniel Torres
 
 Date:    Saturday, 2nd November, 2013
 
