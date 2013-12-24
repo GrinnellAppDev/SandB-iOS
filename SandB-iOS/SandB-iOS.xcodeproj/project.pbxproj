@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0A72ADD2A3AA4449A8D2C7FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 860B32250CAC4589B9915763 /* libPods.a */; };
+		16B3E6F418691C9A00ABC0CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E6F318691C9A00ABC0CF /* Main.storyboard */; };
+		16B3E6F918691F1900ABC0CF /* ArticlesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E6F818691F1900ABC0CF /* ArticlesListViewController.m */; };
+		16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E708186937DD00ABC0CF /* UIImage+ImageEffects.m */; };
+		16B3E70C18693BD400ABC0CF /* GlassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E70B18693BD400ABC0CF /* GlassViewController.m */; };
+		16B3E70E18693E2500ABC0CF /* thomas2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E70D18693E2500ABC0CF /* thomas2.jpg */; };
+		16B3E7111869469400ABC0CF /* BTGlassScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E7101869469400ABC0CF /* BTGlassScrollView.m */; };
+		16B3E7141869502500ABC0CF /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E7131869502500ABC0CF /* ArticleViewController.m */; };
+		16B3E7171869569700ABC0CF /* rink.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E7151869569700ABC0CF /* rink.jpg */; };
+		16B3E7181869569700ABC0CF /* game.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E7161869569700ABC0CF /* game.jpg */; };
+		16B3E71B186968EB00ABC0CF /* TestArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E71A186968EB00ABC0CF /* TestArticleViewController.m */; };
 		3BD9DEA816D17A1B0053C1C5 /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEA716D17A1B0053C1C5 /* newspaper.png */; };
 		3BD9DEAC16D17A390053C1C5 /* basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEA916D17A390053C1C5 /* basketball.png */; };
 		3BD9DEAD16D17A390053C1C5 /* brain.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEAA16D17A390053C1C5 /* brain.png */; };
@@ -45,8 +55,6 @@
 		8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82F16B32493005F3F23 /* SportsViewController.m */; };
 		8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83B16B32493005F3F23 /* SportsViewController.xib */; };
 		8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE016B5B29D0024A477 /* NewsCell.xib */; };
-		8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */; };
-		8BE8DFE716B5BBC10024A477 /* ArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */; };
 		8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFB80BB16D80F9800571249 /* NSString_stripHtml.m */; };
 		8BFF61F916D164DB00CF3714 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFF61F716D164DB00CF3714 /* CommunityViewController.m */; };
 		8BFF61FA16D164DB00CF3714 /* CommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF61F816D164DB00CF3714 /* CommunityViewController.xib */; };
@@ -71,6 +79,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16B3E6F318691C9A00ABC0CF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		16B3E6F718691F1900ABC0CF /* ArticlesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesListViewController.h; sourceTree = "<group>"; };
+		16B3E6F818691F1900ABC0CF /* ArticlesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesListViewController.m; sourceTree = "<group>"; };
+		16B3E707186937DD00ABC0CF /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		16B3E708186937DD00ABC0CF /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		16B3E70A18693BD400ABC0CF /* GlassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlassViewController.h; sourceTree = "<group>"; };
+		16B3E70B18693BD400ABC0CF /* GlassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlassViewController.m; sourceTree = "<group>"; };
+		16B3E70D18693E2500ABC0CF /* thomas2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thomas2.jpg; sourceTree = "<group>"; };
+		16B3E70F1869469400ABC0CF /* BTGlassScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTGlassScrollView.h; sourceTree = "<group>"; };
+		16B3E7101869469400ABC0CF /* BTGlassScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTGlassScrollView.m; sourceTree = "<group>"; };
+		16B3E7121869502500ABC0CF /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		16B3E7131869502500ABC0CF /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
+		16B3E7151869569700ABC0CF /* rink.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rink.jpg; sourceTree = "<group>"; };
+		16B3E7161869569700ABC0CF /* game.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = game.jpg; sourceTree = "<group>"; };
+		16B3E719186968EB00ABC0CF /* TestArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArticleViewController.h; sourceTree = "<group>"; };
+		16B3E71A186968EB00ABC0CF /* TestArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArticleViewController.m; sourceTree = "<group>"; };
 		3BD9DEA716D17A1B0053C1C5 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
 		3BD9DEA916D17A390053C1C5 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
 		3BD9DEAA16D17A390053C1C5 /* brain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brain.png; sourceTree = "<group>"; };
@@ -121,9 +145,6 @@
 		8BD1C83C16B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SportsViewController.xib; sourceTree = "<group>"; };
 		8BD1C84616B32E2B005F3F23 /* SportsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SportsViewController.h; sourceTree = "<group>"; };
 		8BE8DFE016B5B29D0024A477 /* NewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
-		8BE8DFE316B5BBC10024A477 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
-		8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
-		8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleViewController.xib; sourceTree = "<group>"; };
 		8BFB80BA16D80F9800571249 /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_stripHtml.h; path = ../NSString_stripHtml.h; sourceTree = "<group>"; };
 		8BFB80BB16D80F9800571249 /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSString_stripHtml.m; path = ../NSString_stripHtml.m; sourceTree = "<group>"; };
 		8BFF61F616D164DB00CF3714 /* CommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityViewController.h; sourceTree = "<group>"; };
@@ -167,6 +188,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16B3E6F618691EC600ABC0CF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				16B3E6F718691F1900ABC0CF /* ArticlesListViewController.h */,
+				16B3E6F818691F1900ABC0CF /* ArticlesListViewController.m */,
+				16B3E7121869502500ABC0CF /* ArticleViewController.h */,
+				16B3E7131869502500ABC0CF /* ArticleViewController.m */,
+				16B3E70A18693BD400ABC0CF /* GlassViewController.h */,
+				16B3E70B18693BD400ABC0CF /* GlassViewController.m */,
+				16B3E719186968EB00ABC0CF /* TestArticleViewController.h */,
+				16B3E71A186968EB00ABC0CF /* TestArticleViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		16B3E7021869376C00ABC0CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				16B3E70F1869469400ABC0CF /* BTGlassScrollView.h */,
+				16B3E7101869469400ABC0CF /* BTGlassScrollView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		16B3E706186937C800ABC0CF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				16B3E707186937DD00ABC0CF /* UIImage+ImageEffects.h */,
+				16B3E708186937DD00ABC0CF /* UIImage+ImageEffects.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		3BEBCE8316C5A94700B6DD08 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,9 +242,6 @@
 				8BC46F5E16C823A3008642F7 /* ArtsViewController.h */,
 				8BC46F5F16C823A3008642F7 /* ArtsViewController.m */,
 				8BC46F6016C823A3008642F7 /* ArtsViewController.xib */,
-				8BE8DFE316B5BBC10024A477 /* ArticleViewController.h */,
-				8BE8DFE416B5BBC10024A477 /* ArticleViewController.m */,
-				8BE8DFE516B5BBC10024A477 /* ArticleViewController.xib */,
 				E198F6371857B52600CBDDED /* CommentsViewController.h */,
 				E198F6381857B52600CBDDED /* CommentsViewController.m */,
 				E198F6391857B52600CBDDED /* CommentsViewController.xib */,
@@ -297,11 +348,18 @@
 		8BD1C81516B32493005F3F23 /* SandB-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				16B3E70D18693E2500ABC0CF /* thomas2.jpg */,
+				16B3E7151869569700ABC0CF /* rink.jpg */,
+				16B3E7161869569700ABC0CF /* game.jpg */,
+				16B3E706186937C800ABC0CF /* Categories */,
+				16B3E7021869376C00ABC0CF /* Views */,
+				16B3E6F618691EC600ABC0CF /* Controllers */,
 				3BEBCE8416C5A96900B6DD08 /* App Delegate */,
 				3BEBCE8516C5A98400B6DD08 /* Helper Classes */,
 				3BEBCE8616C5A9A000B6DD08 /* Images */,
 				3BEBCE8316C5A94700B6DD08 /* Main Views */,
 				8BD1C81616B32493005F3F23 /* Supporting Files */,
+				16B3E6F318691C9A00ABC0CF /* Main.storyboard */,
 			);
 			path = "SandB-iOS";
 			sourceTree = "<group>";
@@ -386,7 +444,6 @@
 				8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */,
 				8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */,
 				E1A0301B185E424E00C794F0 /* Default-568h@2x.png in Resources */,
-				8BE8DFE716B5BBC10024A477 /* ArticleViewController.xib in Resources */,
 				E19E290C180E5ED200ED33FE /* icon-58.png in Resources */,
 				3BEBCE8216C5A79900B6DD08 /* FeaturesViewController.xib in Resources */,
 				3BEBCE8B16C5AB7000B6DD08 /* OpinionViewController.xib in Resources */,
@@ -395,12 +452,15 @@
 				8BC46F6216C823A3008642F7 /* ArtsViewController.xib in Resources */,
 				8BFF61FA16D164DB00CF3714 /* CommunityViewController.xib in Resources */,
 				E1A03020185E424E00C794F0 /* Default@2x.png in Resources */,
+				16B3E6F418691C9A00ABC0CF /* Main.storyboard in Resources */,
 				8BFF61FC16D16D4500CF3714 /* refresh.png in Resources */,
 				3BD9DEA816D17A1B0053C1C5 /* newspaper.png in Resources */,
 				3BD9DEAC16D17A390053C1C5 /* basketball.png in Resources */,
 				E19E290B180E5ED200ED33FE /* icon-40.png in Resources */,
 				E1A0301F185E424E00C794F0 /* Default-Portrait@2x.png in Resources */,
 				E19E290A180E5ED200ED33FE /* icon-29.png in Resources */,
+				16B3E7171869569700ABC0CF /* rink.jpg in Resources */,
+				16B3E70E18693E2500ABC0CF /* thomas2.jpg in Resources */,
 				E19E290E180E5ED200ED33FE /* icon-80.png in Resources */,
 				E19E290D180E5ED200ED33FE /* icon-76.png in Resources */,
 				3BD9DEAD16D17A390053C1C5 /* brain.png in Resources */,
@@ -411,6 +471,7 @@
 				E1A1247C18590EAF00C43E73 /* CommentsCell.xib in Resources */,
 				8B125BAD1720FD7900C550F7 /* SnBLogoNew144.png in Resources */,
 				8B125BAF1720FE1B00C550F7 /* Icon.png in Resources */,
+				16B3E7181869569700ABC0CF /* game.jpg in Resources */,
 				8B125BB11720FECD00C550F7 /* Icon@2x.png in Resources */,
 				E19E2910180E5ED200ED33FE /* icon-152.png in Resources */,
 				8B125BB31720FF4700C550F7 /* Icon-Small-50.png in Resources */,
@@ -469,18 +530,23 @@
 			files = (
 				8BD1C81C16B32493005F3F23 /* main.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
+				16B3E6F918691F1900ABC0CF /* ArticlesListViewController.m in Sources */,
 				8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */,
+				16B3E7141869502500ABC0CF /* ArticleViewController.m in Sources */,
 				E198F63A1857B52600CBDDED /* CommentsViewController.m in Sources */,
-				8BE8DFE616B5BBC10024A477 /* ArticleViewController.m in Sources */,
 				8B9BB17916BEEE8F00C20358 /* Article.m in Sources */,
 				3BEBCE7C16C59D0B00B6DD08 /* SuperViewController.m in Sources */,
+				16B3E7111869469400ABC0CF /* BTGlassScrollView.m in Sources */,
 				E198F63E1857BDBA00CBDDED /* Comment.m in Sources */,
 				3BEBCE8116C5A79900B6DD08 /* FeaturesViewController.m in Sources */,
+				16B3E71B186968EB00ABC0CF /* TestArticleViewController.m in Sources */,
 				3BEBCE8A16C5AB7000B6DD08 /* OpinionViewController.m in Sources */,
 				8BC46F6116C823A3008642F7 /* ArtsViewController.m in Sources */,
+				16B3E70C18693BD400ABC0CF /* GlassViewController.m in Sources */,
 				8BFF61F916D164DB00CF3714 /* CommunityViewController.m in Sources */,
 				8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */,
 				8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */,
+				16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +642,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43B56FF85CDE42F196966E07 /* Pods.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -592,6 +659,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43B56FF85CDE42F196966E07 /* Pods.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

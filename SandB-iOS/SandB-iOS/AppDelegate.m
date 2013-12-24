@@ -18,6 +18,8 @@
 @synthesize window, tabBarController, navController1, navController2, navController3, navController4, navController5;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    /*
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
@@ -58,6 +60,7 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setBarStyle:UIBarStyleBlackOpaque];
     self.tabBarController.tabBar.translucent = NO;
+    */
     
     return YES;
 }

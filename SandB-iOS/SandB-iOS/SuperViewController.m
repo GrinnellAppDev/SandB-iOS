@@ -299,8 +299,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ArticleViewController *articlePage = [[ArticleViewController alloc] initWithNibName:@"ArticleViewController" bundle:nil];
-    articlePage.article = [[Article alloc] init];
-    articlePage.article = [articleArray objectAtIndex:indexPath.row];
+    //articlePage.article = [[Article alloc] init];
+    //articlePage.article = [articleArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:articlePage animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
