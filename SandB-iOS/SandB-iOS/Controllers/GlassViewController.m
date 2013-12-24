@@ -11,6 +11,8 @@
 #import "Article.h"
 #import "TestArticleViewController.h"
 
+#define SIDE_BAR_WIDTH 2
+
 @interface GlassViewController ()
 
 @end
@@ -26,6 +28,7 @@
     BTGlassScrollView *_glassScrollView2;
     BTGlassScrollView *_glassScrollView3;
     int _page;
+    int _tmpIndex;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,7 +46,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    NSLog(@"art: %@", self.articles);
     allGlassScrollViews = [NSMutableArray new];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -64,22 +66,32 @@
     //background
     self.view.backgroundColor = [UIColor blackColor];
     
-    CGFloat blackSideBarWidth = 2;
     
-    _viewScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width + 2*blackSideBarWidth, self.view.frame.size.height)];
+    _viewScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width + 2*SIDE_BAR_WIDTH, self.view.frame.size.height)];
     [_viewScroller setPagingEnabled:YES];
     [_viewScroller setDelegate:self];
     [_viewScroller setShowsHorizontalScrollIndicator:NO];
     [self.view addSubview:_viewScroller];
     
-    //Prepare all the glassScrolls.
+    //Prepare all the glassScrolls. Refactored. Moved to ViewWillAppear as 1 single method.
     
+    /*
     for (Article *article in self.articles) {
         BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
         
         [allGlassScrollViews addObject:glassScrollView];
         [_viewScroller addSubview:glassScrollView];
     }
+    */
+    
+    /*
+    [self.articles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
+        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
+        
+        [allGlassScrollViews addObject:glassScrollView];
+        [_viewScroller addSubview:glassScrollView];
+    }];
+     */
     
     
     
@@ -102,32 +114,58 @@
     
     int page = _page; // resize scrollview can cause setContentOffset off for no reason and screw things up
     
-    CGFloat blackSideBarWidth = 2;
-    [_viewScroller setFrame:CGRectMake(0, 0, self.view.frame.size.width + 2*blackSideBarWidth, self.view.frame.size.height)];
-    NSLog(@"count: %d", allGlassScrollViews.count);
+    [_viewScroller setFrame:CGRectMake(0, 0, self.view.frame.size.width + 2*SIDE_BAR_WIDTH, self.view.frame.size.height)];
     
-    [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
+ //   [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
     
+    /*
     [_glassScrollView1 setFrame:self.view.frame];
     [_glassScrollView2 setFrame:self.view.frame];
     [_glassScrollView3 setFrame:self.view.frame];
-    
+    */
     
     //[_glassScrollView2 setFrame:CGRectOffset(_glassScrollView2.bounds, _viewScroller.frame.size.width, 0)];
    // [_glassScrollView3 setFrame:CGRectOffset(_glassScrollView3.bounds, 2*_viewScroller.frame.size.width, 0)];
     
+    /*
+     Loop through all the articles. Create GlassScrollViews for each of them. Add them to the View Scroller at their correct
+     locations. Update the View Scrollers content size.
+     */
+    [self.articles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
+        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
+        
+        [allGlassScrollViews addObject:glassScrollView];
+        [_viewScroller addSubview:glassScrollView];
+        
+        [glassScrollView setFrame:self.view.frame];
+        [glassScrollView setFrame:CGRectOffset(glassScrollView.bounds, idx * _viewScroller.frame.size.width, 0)];
+    }];
     
+       [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
     
+    /*
+    [allGlassScrollViews enumerateObjectsUsingBlock:^(BTGlassScrollView *glassScroll, NSUInteger idx, BOOL *stop) {
+        [glassScroll setFrame:self.view.frame];
+        [glassScroll setFrame:CGRectOffset(glassScroll.bounds, idx * _viewScroller.frame.size.width, 0)];
+    }];
+     */
+    
+    /*
     for (int i = 1; i < allGlassScrollViews.count; i++) {
         BTGlassScrollView *glassScroll = allGlassScrollViews[i];
         [glassScroll setFrame:self.view.frame];
         [glassScroll setFrame:CGRectOffset(glassScroll.bounds, i * _viewScroller.frame.size.width, 0)];
-
     }
+     */
     
     
+    //I'm not sure what this does... it was in his sample app. Leaving for now...
     [_viewScroller setContentOffset:CGPointMake(page * _viewScroller.frame.size.width, _viewScroller.contentOffset.y)];
     _page = page;
+    
+    //Keep track of a tmpIndex which lets us add to the scrollview after the user has swiped all the way to the right
+    //and we download more data. _tmpIndex helps us know which index to add the new GlassScrollviews we created to.
+    _tmpIndex = allGlassScrollViews.count;
     
     
 }
@@ -143,24 +181,23 @@
     [_glassScrollView3 setTopLayoutGuideLength:[self.topLayoutGuide length]];
     */
     
+    /*
     for (BTGlassScrollView *glassScroll in allGlassScrollViews) {
         [glassScroll setTopLayoutGuideLength:[self.topLayoutGuide length]];
     }
+    */
+    
+    //Trying this to see if it increases performance. Update the autolayout stuff.
+    [allGlassScrollViews enumerateObjectsUsingBlock:^(BTGlassScrollView *glassScroll, NSUInteger idx, BOOL *stop) {
+        [glassScroll setTopLayoutGuideLength:[self.topLayoutGuide length]];
+    }];
 }
 
 - (UIView *)customViewWithArticle:(Article *)article
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    ArticleViewController *articleViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainArticleViewController"];
-    articleViewController.article = article; 
-    
-    NSLog(@"av: %@", articleViewController);
-    
-    
-    
-//    return articleViewController.view;
-    
+    //Should rename this.. to ArticleViewController.. But it was being awkward the last time i tried.
     TestArticleViewController *tvc = [storyboard instantiateViewControllerWithIdentifier:@"TestViewController"];
     tvc.article = article; 
     return tvc.view;
@@ -211,7 +248,8 @@
     
     CGFloat ratio = scrollView.contentOffset.x/scrollView.frame.size.width;
     _page = (int)floor(ratio);
-    NSLog(@"%i",_page);
+    
+    //NSLog(@"%i",_page);
     /*
     if (ratio > -1 && ratio < 1) {
         [_glassScrollView1 scrollHorizontalRatio:-ratio];
@@ -223,6 +261,8 @@
         [_glassScrollView3 scrollHorizontalRatio:-ratio + 2];
     }
     */
+    
+    //More awkwardness....
     int lowerRatio = -1;
     int upperRatio = 1;
     
@@ -237,6 +277,79 @@
         }
         
     }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    CGFloat ratio = scrollView.contentOffset.x/scrollView.frame.size.width;
+    _page = (int)floor(ratio);
+    
+    
+    if (_page == allGlassScrollViews.count - 2) {
+
+        [self pullnewData];
+        
+    }
+}
+
+- (void)pullnewData
+{
+    
+    //Simulate new data ready.
+    NSMutableArray *newArticles = [NSMutableArray new];
+    
+    Article *a3 = [[Article alloc] init];
+    a3.image = [UIImage imageNamed:@"thomas2.jpg"];
+    a3.title = @"Thomas!!.";
+    [self.articles addObject:a3];
+    [newArticles addObject:a3];
+
+    Article *a4 = [[Article alloc] init];
+    a4.image = [UIImage imageNamed:@"town.jpg"];
+    a4.title = @"Yes we can.";
+    [self.articles addObject:a4];
+    [newArticles addObject:a4];
+    
+    Article *a5 = [[Article alloc] init];
+    a5.image = [UIImage imageNamed:@"rink.jpg"];
+    a5.title = @"But I'm not that easy.";
+    [self.articles addObject:a5];
+    [newArticles addObject:a5];
+    
+    
+    NSLog(@"tmpin: %d", _tmpIndex);
+    
+    [newArticles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
+        
+        
+        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
+        
+        [allGlassScrollViews addObject:glassScrollView];
+        [_viewScroller addSubview:glassScrollView];
+
+        
+        float width = CGRectGetWidth(_viewScroller.frame);
+        int cIndx = idx + _tmpIndex;
+        float newx = cIndx * width;
+        
+        
+        //Ideally.. I'd like to use a one line like this... but it doesn't effing work for SOME reason. you can try it..
+        //Maybe it's my device. So I used the newx created above... no idea why that works instead.
+        //float newX = idx + _tmpIndex * CGRectGetWidth(_viewScroller.frame);
+        
+
+        [glassScrollView setFrame:self.view.frame];
+        [glassScrollView setFrame:CGRectOffset(glassScrollView.bounds, newx, 0)];
+        
+        
+    }];
+
+    
+    [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
+    
+
+    _tmpIndex = allGlassScrollViews.count;
+    
     
 }
 
@@ -251,6 +364,8 @@
     [_glassScrollView3 scrollVerticallyToOffset:glass.foregroundScrollView.contentOffset.y];
 }
 
+
+//Not sure what this does.. 
 - (BTGlassScrollView *)currentGlass
 {
     BTGlassScrollView *glass;

@@ -35,13 +35,13 @@
     self.articles = [NSMutableArray new];
     
     Article *a1 = [[Article alloc] init];
-    a1.image = [UIImage imageNamed:@"thomas2.jpg"];
+    a1.image = [UIImage imageNamed:@"thomas.jpg"];
     a1.title = @"Thomas Neil is a baller";
     [self.articles addObject:a1];
     
     Article *a2 = [[Article alloc] init];
     a2.image = [UIImage imageNamed:@"game.jpg"];
-    a2.title = @"Lea Marolt is hot.. But actually..";
+    a2.title = @"Lea is cool..";
     [self.articles addObject:a2];
     
     Article *a3 = [[Article alloc] init];
@@ -51,6 +51,7 @@
     
     Article *a4 = [[Article alloc] init];
     a4.title = @"I'm having such a hard time trying to not make out with you";
+    a4.image = [UIImage imageNamed:@"town.jpg"];
     [self.articles addObject:a4];
     
 }

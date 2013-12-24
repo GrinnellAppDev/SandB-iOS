@@ -18,6 +18,8 @@
 		16B3E7171869569700ABC0CF /* rink.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E7151869569700ABC0CF /* rink.jpg */; };
 		16B3E7181869569700ABC0CF /* game.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E7161869569700ABC0CF /* game.jpg */; };
 		16B3E71B186968EB00ABC0CF /* TestArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E71A186968EB00ABC0CF /* TestArticleViewController.m */; };
+		16B3E71D186A3F3700ABC0CF /* town.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E71C186A3F3700ABC0CF /* town.jpg */; };
+		16B3E71F186A50B000ABC0CF /* thomas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E71E186A50B000ABC0CF /* thomas.jpg */; };
 		3BD9DEA816D17A1B0053C1C5 /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEA716D17A1B0053C1C5 /* newspaper.png */; };
 		3BD9DEAC16D17A390053C1C5 /* basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEA916D17A390053C1C5 /* basketball.png */; };
 		3BD9DEAD16D17A390053C1C5 /* brain.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEAA16D17A390053C1C5 /* brain.png */; };
@@ -95,6 +97,8 @@
 		16B3E7161869569700ABC0CF /* game.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = game.jpg; sourceTree = "<group>"; };
 		16B3E719186968EB00ABC0CF /* TestArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArticleViewController.h; sourceTree = "<group>"; };
 		16B3E71A186968EB00ABC0CF /* TestArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArticleViewController.m; sourceTree = "<group>"; };
+		16B3E71C186A3F3700ABC0CF /* town.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = town.jpg; sourceTree = "<group>"; };
+		16B3E71E186A50B000ABC0CF /* thomas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thomas.jpg; sourceTree = "<group>"; };
 		3BD9DEA716D17A1B0053C1C5 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
 		3BD9DEA916D17A390053C1C5 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
 		3BD9DEAA16D17A390053C1C5 /* brain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brain.png; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 		8BD1C81516B32493005F3F23 /* SandB-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				16B3E71C186A3F3700ABC0CF /* town.jpg */,
+				16B3E71E186A50B000ABC0CF /* thomas.jpg */,
 				16B3E70D18693E2500ABC0CF /* thomas2.jpg */,
 				16B3E7151869569700ABC0CF /* rink.jpg */,
 				16B3E7161869569700ABC0CF /* game.jpg */,
@@ -457,6 +463,7 @@
 				3BD9DEA816D17A1B0053C1C5 /* newspaper.png in Resources */,
 				3BD9DEAC16D17A390053C1C5 /* basketball.png in Resources */,
 				E19E290B180E5ED200ED33FE /* icon-40.png in Resources */,
+				16B3E71D186A3F3700ABC0CF /* town.jpg in Resources */,
 				E1A0301F185E424E00C794F0 /* Default-Portrait@2x.png in Resources */,
 				E19E290A180E5ED200ED33FE /* icon-29.png in Resources */,
 				16B3E7171869569700ABC0CF /* rink.jpg in Resources */,
@@ -471,6 +478,7 @@
 				E1A1247C18590EAF00C43E73 /* CommentsCell.xib in Resources */,
 				8B125BAD1720FD7900C550F7 /* SnBLogoNew144.png in Resources */,
 				8B125BAF1720FE1B00C550F7 /* Icon.png in Resources */,
+				16B3E71F186A50B000ABC0CF /* thomas.jpg in Resources */,
 				16B3E7181869569700ABC0CF /* game.jpg in Resources */,
 				8B125BB11720FECD00C550F7 /* Icon@2x.png in Resources */,
 				E19E2910180E5ED200ED33FE /* icon-152.png in Resources */,

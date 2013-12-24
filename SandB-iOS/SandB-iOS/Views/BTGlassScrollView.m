@@ -40,7 +40,9 @@
         if (blurredImage) {
             _blurredBackgroundImage = backgroundImage;
         }else{
-            _blurredBackgroundImage = [backgroundImage applyDarkEffect];
+            
+            //_blurredBackgroundImage = backgroundImage;
+           _blurredBackgroundImage = [backgroundImage applyDarkEffect];
            // _blurredBackgroundImage = [backgroundImage applyBlurWithRadius:DEFAULT_BLUR_RADIUS tintColor:DEFAULT_BLUR_TINT_COLOR saturationDeltaFactor:DEFAULT_BLUR_DELTA_FACTOR maskImage:nil];
         }
         _viewDistanceFromBottom = viewDistanceFromBottom;
@@ -50,7 +52,7 @@
         [self setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
         
         //create views
-        [self createBackgroundView];
+       [self createBackgroundView];
         [self createForegroundView];
         [self createTopShadow];
         [self createBottomShadow];
