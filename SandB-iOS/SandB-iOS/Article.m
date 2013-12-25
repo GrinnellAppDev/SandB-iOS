@@ -27,7 +27,7 @@
     self = [super init];
     if (self) {
         
-        _title = articleDictionary[@"title"];
+        _title =  articleDictionary[@"title"];
         _content = articleDictionary[@"content"];
         _category = articleDictionary[@"author"][@"name"];
         
@@ -40,13 +40,12 @@
             //todo - should loop.
             [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
-                _imageLargeURL = obj[@"images"][@"large"][@"url"];
-                
+               _imageLargeURL = obj[@"images"][@"large"][@"url"];
             }];
         }
         _author = articleDictionary[@"custom_fields"][@"author"];
         
-        //Make Blurred Image test.
+        //Make Blurred Image.
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         [manager downloadWithURL:[NSURL URLWithString:_imageMediumURL]
                          options:0
@@ -61,15 +60,11 @@
              {
                  // do something with image
                  _blurredImage = [image applyLightEffect];
-                 
              }
          }];
-        
     }
     return self;
 }
-
-
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];

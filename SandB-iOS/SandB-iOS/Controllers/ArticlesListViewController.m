@@ -11,10 +11,11 @@
 #import "Article.h"
 #import "AFNetworking.h"
 #import "SandBClient.h"
+#import "DataModel.h"
 
 @interface ArticlesListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *theTableView;
-@property (nonatomic, strong) NSMutableArray *articles;
+//@property (nonatomic, strong) NSMutableArray *articles;
 
 @end
 
@@ -34,7 +35,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.articles = [NSMutableArray new];
+   // self.articles = [NSMutableArray new];
     
     /*
     Article *a1 = [[Article alloc] init];
@@ -64,7 +65,9 @@
     [super viewWillAppear:animated];
     
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
-                         parameters:@{@"count": @(30) }
+                         parameters:@{@"count": @(10),
+                                      @"page": @(1)
+                                      }
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
                                 
                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
@@ -73,10 +76,11 @@
                                     NSArray *articleArray = responseObject[@"posts"];
                                     [articleArray enumerateObjectsUsingBlock:^(NSDictionary *articleDictionary, NSUInteger idx, BOOL *stop) {
                                         Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
-                                        [self.articles addObject:article];
+                                        [[[DataModel sharedModel] articles] addObject:article];
+//                                        [self.articles addObject:article];
                                     }];
                                     [self.theTableView reloadData]; 
-                                    NSLog(@"articles: %@", self.articles); 
+                                    //NSLog(@"articles: %@", self.articles);
                                 }
                                 
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -102,7 +106,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.articles.count;
+    return [[[DataModel sharedModel] articles] count];
+//    return self.articles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,7 +117,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //Customize Cell
-    Article *a = self.articles[indexPath.row];
+    Article *a = [[[DataModel sharedModel] articles] objectAtIndex:indexPath.row];
+    //  self.articles[indexPath.row]
     
     cell.textLabel.text = a.title;
     
@@ -129,7 +135,11 @@
 {
     if ([segue.identifier isEqualToString:@"showGlassViews"]) {
         GlassViewController *glvc = segue.destinationViewController;
-        glvc.articles = self.articles;
+        glvc.articles = [[DataModel sharedModel] articles];
+        
+        //Push to the article that was tapped. 
+        NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
+        glvc.page = indexPath.row;
     }
 }
 

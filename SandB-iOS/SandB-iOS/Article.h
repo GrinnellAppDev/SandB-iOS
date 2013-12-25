@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *imageMediumURL;
 @property (nonatomic, strong) NSString *imageLargeURL;
 @property (nonatomic, strong) NSString *author;
+@property (nonatomic, strong) NSMutableAttributedString *attrContent; 
 
 @property (nonatomic, strong) UIImage *blurredImage; 
 

@@ -21,6 +21,7 @@
 		16B3E71D186A3F3700ABC0CF /* town.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E71C186A3F3700ABC0CF /* town.jpg */; };
 		16B3E71F186A50B000ABC0CF /* thomas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E71E186A50B000ABC0CF /* thomas.jpg */; };
 		16B3E723186A6ECE00ABC0CF /* SandBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E722186A6ECE00ABC0CF /* SandBClient.m */; };
+		16B3E726186B929200ABC0CF /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E725186B929200ABC0CF /* DataModel.m */; };
 		3BD9DEA816D17A1B0053C1C5 /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEA716D17A1B0053C1C5 /* newspaper.png */; };
 		3BD9DEAC16D17A390053C1C5 /* basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEA916D17A390053C1C5 /* basketball.png */; };
 		3BD9DEAD16D17A390053C1C5 /* brain.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD9DEAA16D17A390053C1C5 /* brain.png */; };
@@ -102,6 +103,8 @@
 		16B3E71E186A50B000ABC0CF /* thomas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thomas.jpg; sourceTree = "<group>"; };
 		16B3E721186A6ECE00ABC0CF /* SandBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandBClient.h; sourceTree = "<group>"; };
 		16B3E722186A6ECE00ABC0CF /* SandBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandBClient.m; sourceTree = "<group>"; };
+		16B3E724186B929200ABC0CF /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		16B3E725186B929200ABC0CF /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		3BD9DEA716D17A1B0053C1C5 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
 		3BD9DEA916D17A390053C1C5 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
 		3BD9DEAA16D17A390053C1C5 /* brain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brain.png; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				16B3E722186A6ECE00ABC0CF /* SandBClient.m */,
 				8B9BB17716BEEE8F00C20358 /* Article.h */,
 				8B9BB17816BEEE8F00C20358 /* Article.m */,
+				16B3E724186B929200ABC0CF /* DataModel.h */,
+				16B3E725186B929200ABC0CF /* DataModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 				16B3E7111869469400ABC0CF /* BTGlassScrollView.m in Sources */,
 				E198F63E1857BDBA00CBDDED /* Comment.m in Sources */,
 				3BEBCE8116C5A79900B6DD08 /* FeaturesViewController.m in Sources */,
+				16B3E726186B929200ABC0CF /* DataModel.m in Sources */,
 				16B3E723186A6ECE00ABC0CF /* SandBClient.m in Sources */,
 				16B3E71B186968EB00ABC0CF /* TestArticleViewController.m in Sources */,
 				3BEBCE8A16C5AB7000B6DD08 /* OpinionViewController.m in Sources */,

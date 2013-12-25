@@ -13,7 +13,8 @@
 
 @interface GlassViewController : UIViewController <UIScrollViewAccessibilityDelegate>
 
-@property (nonatomic, strong) NSMutableArray *articles; 
+@property (nonatomic, strong) NSMutableArray *articles;
+@property (nonatomic, assign) int page;
 
 @end
 

@@ -49,6 +49,7 @@
     self.testLabel.text = self.article.title;
     
     //This is kinda wierd..
+   
     
     NSDictionary *options = @{
                               NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,

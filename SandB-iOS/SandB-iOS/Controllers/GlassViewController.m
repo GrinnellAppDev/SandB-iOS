@@ -36,7 +36,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _page = 0;
+        //_page = 0;
     }
     return self;
 }
