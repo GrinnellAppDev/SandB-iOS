@@ -132,7 +132,7 @@
      locations. Update the View Scrollers content size.
      */
     [self.articles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
-        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
+        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:nil blurredImage:article.blurredImage viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article] article:article];
         
         [allGlassScrollViews addObject:glassScrollView];
         [_viewScroller addSubview:glassScrollView];
@@ -298,6 +298,7 @@
     //Simulate new data ready.
     NSMutableArray *newArticles = [NSMutableArray new];
     
+    /*
     Article *a3 = [[Article alloc] init];
     a3.image = [UIImage imageNamed:@"thomas2.jpg"];
     a3.title = @"Thomas!!.";
@@ -315,6 +316,7 @@
     a5.title = @"But I'm not that easy.";
     [self.articles addObject:a5];
     [newArticles addObject:a5];
+    */
     
     
     NSLog(@"tmpin: %d", _tmpIndex);
@@ -322,7 +324,7 @@
     [newArticles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
         
         
-        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
+        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:nil blurredImage:article.blurredImage viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article] article:article];
         
         [allGlassScrollViews addObject:glassScrollView];
         [_viewScroller addSubview:glassScrollView];

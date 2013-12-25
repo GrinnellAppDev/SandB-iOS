@@ -36,6 +36,7 @@
     
     self.articles = [NSMutableArray new];
     
+    /*
     Article *a1 = [[Article alloc] init];
     a1.image = [UIImage imageNamed:@"thomas.jpg"];
     a1.title = @"Thomas Neil is a baller";
@@ -55,7 +56,7 @@
     a4.title = @"I'm having such a hard time trying to not make out with you";
     a4.image = [UIImage imageNamed:@"town.jpg"];
     [self.articles addObject:a4];
-    
+    */
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -63,7 +64,7 @@
     [super viewWillAppear:animated];
     
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
-                         parameters:@{@"count": @(10) }
+                         parameters:@{@"count": @(30) }
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
                                 
                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;

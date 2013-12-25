@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImage+ImageEffects.h"
+#import "Article.h"
 
 //default blur settings
 #define DEFAULT_BLUR_RADIUS 14
@@ -35,7 +36,9 @@
 @property (nonatomic, strong, readonly) UIScrollView *foregroundScrollView;//readonly just to get the scroll offsets
 @property (nonatomic, weak) id<BTGlassScrollViewDelegate> delegate;
 
-- (id)initWithFrame:(CGRect)frame BackgroundImage:(UIImage *)backgroundImage blurredImage:(UIImage *)blurredImage viewDistanceFromBottom:(CGFloat)viewDistanceFromBottom foregroundView:(UIView *)foregroundView;
+@property (nonatomic, strong) Article *article;
+
+- (id)initWithFrame:(CGRect)frame BackgroundImage:(UIImage *)backgroundImage blurredImage:(UIImage *)blurredImage viewDistanceFromBottom:(CGFloat)viewDistanceFromBottom foregroundView:(UIView *)foregroundView article:(Article *)article;
 - (void)scrollHorizontalRatio:(CGFloat)ratio;//from -1 to 1
 - (void)scrollVerticallyToOffset:(CGFloat)offsetY;
 @end

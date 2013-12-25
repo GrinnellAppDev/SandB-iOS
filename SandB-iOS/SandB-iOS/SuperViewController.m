@@ -164,8 +164,8 @@
                 NSURL *imageURL = [[NSURL alloc] initWithString:imageURLstring];
                 
                 // Fetch the image
-                art.image = [UIImage imageWithData:
-                             [NSData dataWithContentsOfURL:imageURL]];
+                //art.image = [UIImage imageWithData:
+                //             [NSData dataWithContentsOfURL:imageURL]];
             }
         }
         
@@ -277,6 +277,7 @@
                                                  withString:@"\n"];
     
     // Set image and blurb based on whether an image is present or not
+    /*
     if (currentArticle.image != nil){
         [newsImage setImage:currentArticle.image];
         newsImage.hidden = NO;
@@ -290,6 +291,7 @@
         newsArticle.hidden = YES;
         largeNewsArticle.hidden = NO;
     }
+     */
     return cell;
 }
 

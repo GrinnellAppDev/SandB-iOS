@@ -7,10 +7,12 @@
 //
 
 #import "Article.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+ImageEffects.h"
 
 @implementation Article
 
-@synthesize  article, image, comments, commentsCount;
+@synthesize  article,  comments, commentsCount;
 
 /*
 @property (nonatomic, strong) NSString *content;
@@ -39,10 +41,28 @@
             [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
                 _imageLargeURL = obj[@"images"][@"large"][@"url"];
+                
             }];
         }
         _author = articleDictionary[@"custom_fields"][@"author"];
         
+        //Make Blurred Image test.
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadWithURL:[NSURL URLWithString:_imageMediumURL]
+                         options:0
+                        progress:^(NSUInteger receivedSize, long long expectedSize)
+         {
+             // progression tracking code
+         }
+                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
+         {
+             if (image)
+             {
+                 // do something with image
+                 _blurredImage = [image applyDarkEffect];
+                 
+             }
+         }];
         
     }
     return self;
@@ -56,7 +76,7 @@
         article = [aDecoder decodeObjectForKey:@"article"];
         comments = [aDecoder decodeObjectForKey:@"comments"];
         commentsCount = [aDecoder decodeIntForKey:@"commentsCount"];
-        image = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"image"]];
+        //image = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"image"]];
     }
     return self;
 }
@@ -65,8 +85,8 @@
     [aCoder encodeObject:article forKey:@"article"];
     [aCoder encodeObject:comments forKey:@"comments"];
     [aCoder encodeInt:commentsCount forKey:@"commentsCount"];
-    NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
-    [aCoder encodeObject:imgData forKey:@"image"];
+   // NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
+   // [aCoder encodeObject:imgData forKey:@"image"];
 }
 
 @end

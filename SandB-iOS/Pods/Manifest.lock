@@ -19,18 +19,23 @@ PODS:
     - AFNetworking/NSURLConnection
   - MBProgressHUD (0.8)
   - Reachability (3.1.1)
+  - SDWebImage (3.5.1):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.5.1)
   - TBXML (1.5)
 
 DEPENDENCIES:
   - AFNetworking
   - MBProgressHUD
   - Reachability
+  - SDWebImage
   - TBXML
 
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
+  SDWebImage: a408b548a634b792372e07e753fc1079aff5032a
   TBXML: 0511ac325d83e59d3aefa4bc8cd6cbeff07a8d9e
 
 COCOAPODS: 0.27.1

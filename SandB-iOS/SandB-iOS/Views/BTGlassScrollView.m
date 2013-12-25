@@ -8,6 +8,7 @@
 
 #import "BTGlassScrollView.h"
 #import "BTGlassScrollView.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation BTGlassScrollView
 {
@@ -32,14 +33,15 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame BackgroundImage:(UIImage *)backgroundImage blurredImage:(UIImage *)blurredImage viewDistanceFromBottom:(CGFloat)viewDistanceFromBottom foregroundView:(UIView *)foregroundView
+- (id)initWithFrame:(CGRect)frame BackgroundImage:(UIImage *)backgroundImage blurredImage:(UIImage *)blurredImage viewDistanceFromBottom:(CGFloat)viewDistanceFromBottom foregroundView:(UIView *)foregroundView article:(Article *)article
 {
     self = [super initWithFrame:frame];
     if (self) {
         //initialize values
+        _article = article; 
         _backgroundImage = backgroundImage;
         if (blurredImage) {
-            _blurredBackgroundImage = backgroundImage;
+            _blurredBackgroundImage = blurredImage;
         }else{
             
             //_blurredBackgroundImage = backgroundImage;
@@ -152,7 +154,16 @@
     _constraintView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width + 2*DEFAULT_MAX_BACKGROUND_MOVEMENT_HORIZONTAL, self.frame.size.height + DEFAULT_MAX_BACKGROUND_MOVEMENT_VERTICAL)];
     [_backgroundScrollView addSubview:_constraintView];
     
-    _backgroundImageView = [[UIImageView alloc] initWithImage:_backgroundImage];
+    //_backgroundImageView = [[UIImageView alloc] initWithImage:_backgroundImage];
+    _backgroundImageView = [[UIImageView alloc] init];
+    
+    NSLog(@"Working on %@", self.article.title);
+    if (self.article.imageLargeURL) {
+        NSLog(@"setting image url for %@", self.article.title);
+        [_backgroundImageView setImageWithURL:[NSURL URLWithString:self.article.imageLargeURL]];
+    } else {
+        
+    }
    // _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), 300)];
     //_backgroundImageView.image = _backgroundImage;
     

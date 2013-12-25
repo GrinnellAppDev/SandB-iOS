@@ -10,6 +10,8 @@
 
 @interface TestArticleViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
 
 @end
 
@@ -24,11 +26,39 @@
     return self;
 }
 
+- (void)updateViewConstraints
+{
+    [super updateViewConstraints];
+    self.contentViewHeight.constant = [self textViewHeight:self.contentTextView];
+}
+
+- (CGFloat)textViewHeight:(UITextView *)textView
+{
+    [textView.layoutManager ensureLayoutForTextContainer:textView.textContainer];
+    CGRect usedRect = [textView.layoutManager
+                       usedRectForTextContainer:textView.textContainer];
+    return ceilf(usedRect.size.height
+                 + textView.textContainerInset.top
+                 + textView.textContainerInset.bottom);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.testLabel.text = self.article.title;
+    
+    //This is kinda wierd..
+    
+    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSFontAttributeName: [UIFont fontWithName:@"Palatino-Roman" size:30.0f]};
+    
+    
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithData:[self.article.content dataUsingEncoding:NSUTF32StringEncoding] options:options documentAttributes:nil error:nil];
+    
+    self.contentTextView.attributedText = attrString;
+    
+
+   // self.contentTextView.text = self.article.content;
     
 }
 
