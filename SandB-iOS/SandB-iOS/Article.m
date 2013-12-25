@@ -43,7 +43,7 @@
                _imageLargeURL = obj[@"images"][@"large"][@"url"];
             }];
         }
-        _author = articleDictionary[@"custom_fields"][@"author"];
+        _author = [articleDictionary[@"custom_fields"][@"author"] firstObject];
         
         //Make Blurred Image.
         SDWebImageManager *manager = [SDWebImageManager sharedManager];

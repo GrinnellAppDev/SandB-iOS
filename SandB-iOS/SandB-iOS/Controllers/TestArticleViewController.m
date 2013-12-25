@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 
 @end
 
@@ -47,7 +48,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.testLabel.text = self.article.title;
-    
+    if (self.article.author) {
+        self.authorLabel.text =  [NSString stringWithFormat:@"By %@", self.article.author];
+    }
     //This is kinda wierd..
    
     
