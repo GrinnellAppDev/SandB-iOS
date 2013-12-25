@@ -50,11 +50,22 @@
     
     //This is kinda wierd..
     
-    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSFontAttributeName: [UIFont fontWithName:@"Palatino-Roman" size:30.0f]};
+    NSDictionary *options = @{
+                              NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                              };
     
+    //NSMutableAttributedString
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithData:[self.article.content dataUsingEncoding:NSUTF32StringEncoding]
+                                                                      options:options documentAttributes:nil
+                                                                        error:nil];
+
+  /* NSDictionary* attributes = @{
+                                 NSFontAttributeName:
+                                     [UIFont fontWithName:@"Optima" size:18.0],};
     
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithData:[self.article.content dataUsingEncoding:NSUTF32StringEncoding] options:options documentAttributes:nil error:nil];
-    
+
+    [attrString addAttributes:attributes range:NSMakeRange(0, [attrString length])];
+   */
     self.contentTextView.attributedText = attrString;
     
 

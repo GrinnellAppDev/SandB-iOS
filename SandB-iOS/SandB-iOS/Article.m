@@ -53,13 +53,14 @@
                         progress:^(NSUInteger receivedSize, long long expectedSize)
          {
              // progression tracking code
+             // not needed
          }
                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
          {
              if (image)
              {
                  // do something with image
-                 _blurredImage = [image applyDarkEffect];
+                 _blurredImage = [image applyLightEffect];
                  
              }
          }];
