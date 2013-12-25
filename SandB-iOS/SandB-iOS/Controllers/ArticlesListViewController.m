@@ -13,9 +13,13 @@
 #import "SandBClient.h"
 #import "DataModel.h"
 
+const int kLoadingCellTag = 888;
+
 @interface ArticlesListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *theTableView;
 //@property (nonatomic, strong) NSMutableArray *articles;
+@property (nonatomic, assign) int  currentPage;
+@property (nonatomic, assign) int totalPages;
 
 @end
 
@@ -34,6 +38,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    _currentPage = 1;
     
    // self.articles = [NSMutableArray new];
     
@@ -64,22 +70,29 @@
 {
     [super viewWillAppear:animated];
     
+    [self fetchArticles];
+}
+
+- (void)fetchArticles
+{
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
-                         parameters:@{@"count": @(10),
-                                      @"page": @(1)
+                         parameters:@{@"count": @(7),
+                                      @"page": @(_currentPage)
                                       }
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
                                 
                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
                                 
                                 if (httpResponse.statusCode == 200) {
+                                    _totalPages = [responseObject[@"pages"] intValue];
                                     NSArray *articleArray = responseObject[@"posts"];
                                     [articleArray enumerateObjectsUsingBlock:^(NSDictionary *articleDictionary, NSUInteger idx, BOOL *stop) {
+                                        
                                         Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
                                         [[[DataModel sharedModel] articles] addObject:article];
-//                                        [self.articles addObject:article];
+                                        //                                        [self.articles addObject:article];
                                     }];
-                                    [self.theTableView reloadData]; 
+                                    [self.theTableView reloadData];
                                     //NSLog(@"articles: %@", self.articles);
                                 }
                                 
@@ -106,15 +119,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[DataModel sharedModel] articles] count];
+    if (_currentPage < _totalPages) {
+        return [[[DataModel sharedModel] articles] count] + 1;
+    } else {
+        return [[[DataModel sharedModel] articles] count];
+    }
 //    return self.articles.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)articleCellForIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"ArticleCell";
     
-    static NSString *cellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *cell = [self.theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //Customize Cell
     Article *a = [[[DataModel sharedModel] articles] objectAtIndex:indexPath.row];
@@ -123,6 +140,27 @@
     cell.textLabel.text = a.title;
     
     return cell;
+
+}
+
+- (UITableViewCell *)loadingCell
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.center = cell.center;
+    [cell addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+    cell.tag = kLoadingCellTag;
+    return cell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row < [[[DataModel sharedModel] articles] count]) {
+        return [self articleCellForIndexPath:indexPath];
+    } else {
+        return [self loadingCell];
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -140,6 +178,15 @@
         //Push to the article that was tapped. 
         NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
         glvc.page = indexPath.row;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (cell.tag == kLoadingCellTag) {
+        _currentPage++;
+        [self fetchArticles];
     }
 }
 
