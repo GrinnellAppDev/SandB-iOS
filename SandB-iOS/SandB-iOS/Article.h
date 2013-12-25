@@ -16,4 +16,13 @@
 @property (nonatomic, strong) NSURL *comments;
 @property (nonatomic, assign) int commentsCount;
 
+
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *category; //News, Opinion, Sports etc.
+@property (nonatomic, strong) NSString *imageMediumURL;
+@property (nonatomic, strong) NSString *imageLargeURL;
+@property (nonatomic, strong) NSString *author;
+
+- (instancetype)initWithArticleDictionary:(NSDictionary *)articleDictionary;
+
 @end

@@ -9,12 +9,50 @@
 #import "Article.h"
 
 @implementation Article
-@synthesize title, article, image, comments, commentsCount;
+
+@synthesize  article, image, comments, commentsCount;
+
+/*
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *category; //News, Opinion, Sports etc.
+@property (nonatomic, strong) NSString *imageMediumURL;
+@property (nonatomic, strong) NSString *imageLargeURL;
+@property (nonatomic, strong) NSString *author;
+*/
+
+- (instancetype)initWithArticleDictionary:(NSDictionary *)articleDictionary
+{
+    self = [super init];
+    if (self) {
+        
+        _title = articleDictionary[@"title"];
+        _content = articleDictionary[@"content"];
+        _category = articleDictionary[@"author"][@"name"];
+        
+        NSArray *attachments = articleDictionary[@"attachments"];
+        
+       // NSLog(@"title: %@", _title);
+       // NSLog(@"attachments: %@", attachments);
+        
+        if (attachments) {
+            //todo - should loop.
+            [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+               _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
+                _imageLargeURL = obj[@"images"][@"large"][@"url"];
+            }];
+        }
+        _author = articleDictionary[@"custom_fields"][@"author"];
+        
+        
+    }
+    return self;
+}
+
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        title = [aDecoder decodeObjectForKey:@"title"];
         article = [aDecoder decodeObjectForKey:@"article"];
         comments = [aDecoder decodeObjectForKey:@"comments"];
         commentsCount = [aDecoder decodeIntForKey:@"commentsCount"];
@@ -24,7 +62,6 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:title forKey:@"title"];
     [aCoder encodeObject:article forKey:@"article"];
     [aCoder encodeObject:comments forKey:@"comments"];
     [aCoder encodeInt:commentsCount forKey:@"commentsCount"];

@@ -10,4 +10,8 @@
 
 @interface SandBClient : AFHTTPSessionManager
 
++ (SandBClient *)sharedClient;
+
+//- (NSURLD)getRecentPostWithCompletion:(void (^)(NSArray *results, NSError *error)completion);
+
 @end

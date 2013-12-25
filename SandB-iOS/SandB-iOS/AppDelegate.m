@@ -13,11 +13,16 @@
 #import "CommunityViewController.h"
 #import "OpinionViewController.h"
 #import "ArtsViewController.h"
+#import "SandBClient.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation AppDelegate
 @synthesize window, tabBarController, navController1, navController2, navController3, navController4, navController5;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+
     
     /*
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

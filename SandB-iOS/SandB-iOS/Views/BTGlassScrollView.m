@@ -7,6 +7,7 @@
 //
 
 #import "BTGlassScrollView.h"
+#import "BTGlassScrollView.h"
 
 @implementation BTGlassScrollView
 {

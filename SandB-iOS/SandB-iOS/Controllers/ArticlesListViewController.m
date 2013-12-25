@@ -9,6 +9,8 @@
 #import "ArticlesListViewController.h"
 #import "GlassViewController.h"
 #import "Article.h"
+#import "AFNetworking.h"
+#import "SandBClient.h"
 
 @interface ArticlesListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *theTableView;
@@ -54,6 +56,33 @@
     a4.image = [UIImage imageNamed:@"town.jpg"];
     [self.articles addObject:a4];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[SandBClient sharedClient] GET:@"get_recent_posts/"
+                         parameters:@{@"count": @(10) }
+                            success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+                                
+                                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
+                                
+                                if (httpResponse.statusCode == 200) {
+                                    NSArray *articleArray = responseObject[@"posts"];
+                                    [articleArray enumerateObjectsUsingBlock:^(NSDictionary *articleDictionary, NSUInteger idx, BOOL *stop) {
+                                        Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
+                                        [self.articles addObject:article];
+                                    }];
+                                    [self.theTableView reloadData]; 
+                                    NSLog(@"articles: %@", self.articles); 
+                                }
+                                
+                            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                //Failure callback gets called when the request itself fails.
+                                //ie sucess could mean you could "successfully" get a 500.
+                                NSLog(@"Failure... %@", error);
+                            }];
 }
 
 - (void)didReceiveMemoryWarning

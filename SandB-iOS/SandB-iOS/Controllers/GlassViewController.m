@@ -365,7 +365,7 @@
 }
 
 
-//Not sure what this does.. 
+//Not sure what this does..
 - (BTGlassScrollView *)currentGlass
 {
     BTGlassScrollView *glass;

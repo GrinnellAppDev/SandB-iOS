@@ -1,4 +1,4 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) ARC_ENABLED
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/TBXML"
-OTHER_LDFLAGS = -ObjC -lz -framework CoreGraphics -framework SystemConfiguration
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/TBXML"
+OTHER_LDFLAGS = -ObjC -lz -framework CoreGraphics -framework MobileCoreServices -framework Security -framework SystemConfiguration
 PODS_ROOT = ${SRCROOT}/Pods
