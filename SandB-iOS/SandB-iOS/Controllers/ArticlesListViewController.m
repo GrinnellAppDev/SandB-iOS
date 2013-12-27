@@ -25,6 +25,9 @@ const int kLoadingCellTag = 888;
 
 @implementation ArticlesListViewController
 
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,6 +35,10 @@ const int kLoadingCellTag = 888;
         // Custom initialization
     }
     return self;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidLoad

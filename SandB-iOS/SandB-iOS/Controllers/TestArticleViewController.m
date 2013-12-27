@@ -40,9 +40,7 @@
 - (void)updateViewConstraints
 {
     [super updateViewConstraints];
-    NSLog(@"vh: %f", self.view.frame.size.height);
     self.contentViewHeight.constant = [self textViewHeight:self.contentTextView];
-    NSLog(@"vh: %f", self.view.frame.size.height);
 }
 
 - (CGFloat)textViewHeight:(UITextView *)textView

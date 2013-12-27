@@ -40,7 +40,6 @@
 {
     [super viewWillAppear:animated];
     
-    NSLog(@"Calledvwi");
     [self.titlelabel setTextColor:[UIColor whiteColor]];
     [self.titlelabel setShadowColor:[UIColor blackColor]];
     [self.titlelabel setShadowOffset:CGSizeMake(1, 1)];

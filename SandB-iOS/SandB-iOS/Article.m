@@ -27,7 +27,9 @@
     self = [super init];
     if (self) {
         
+        
         _title =  articleDictionary[@"title"];
+        
         _content = articleDictionary[@"content"];
         _category = articleDictionary[@"author"][@"name"];
         
