@@ -10,11 +10,11 @@
 #import "ArticleViewController.h"
 #import "Article.h"
 #import "TestArticleViewController.h"
+#import "DataModel.h"
 
 #define SIDE_BAR_WIDTH 2
 
 @interface GlassViewController ()
-
 @end
 
 @implementation GlassViewController
@@ -29,6 +29,7 @@
     BTGlassScrollView *_glassScrollView3;
     int _page;
     int _tmpIndex;
+    BOOL _isFetchingNewData;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,7 +48,8 @@
 	// Do any additional setup after loading the view.
     
     allGlassScrollViews = [NSMutableArray new];
-
+    _isFetchingNewData = NO;
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     //preventing weird inset
@@ -61,7 +63,7 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSShadowAttributeName: shadow};
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.title = @"Awesome App";
+    //self.title = @"Awesome App";
     
     //background
     self.view.backgroundColor = [UIColor blackColor];
@@ -76,35 +78,35 @@
     //Prepare all the glassScrolls. Refactored. Moved to ViewWillAppear as 1 single method.
     
     /*
-    for (Article *article in self.articles) {
-        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
-        
-        [allGlassScrollViews addObject:glassScrollView];
-        [_viewScroller addSubview:glassScrollView];
-    }
-    */
+     for (Article *article in self.articles) {
+     BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
+     
+     [allGlassScrollViews addObject:glassScrollView];
+     [_viewScroller addSubview:glassScrollView];
+     }
+     */
     
     /*
-    [self.articles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
-        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
-        
-        [allGlassScrollViews addObject:glassScrollView];
-        [_viewScroller addSubview:glassScrollView];
-    }];
+     [self.articles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
+     BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:article.image blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article]];
+     
+     [allGlassScrollViews addObject:glassScrollView];
+     [_viewScroller addSubview:glassScrollView];
+     }];
      */
     
     
     
- /*
-    _glassScrollView1 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"thomas2.jpg"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
-    _glassScrollView2 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"game.jpg"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
-    _glassScrollView3 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"rink.jpg"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
-    
-    [_viewScroller addSubview:_glassScrollView1];
-    [_viewScroller addSubview:_glassScrollView2];
-    [_viewScroller addSubview:_glassScrollView3];
-    
-*/
+    /*
+     _glassScrollView1 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"thomas2.jpg"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
+     _glassScrollView2 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"game.jpg"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
+     _glassScrollView3 = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"rink.jpg"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:[self customView]];
+     
+     [_viewScroller addSubview:_glassScrollView1];
+     [_viewScroller addSubview:_glassScrollView2];
+     [_viewScroller addSubview:_glassScrollView3];
+     
+     */
     
 }
 
@@ -116,16 +118,16 @@
     
     [_viewScroller setFrame:CGRectMake(0, 0, self.view.frame.size.width + 2*SIDE_BAR_WIDTH, self.view.frame.size.height)];
     
- //   [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
+    //   [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
     
     /*
-    [_glassScrollView1 setFrame:self.view.frame];
-    [_glassScrollView2 setFrame:self.view.frame];
-    [_glassScrollView3 setFrame:self.view.frame];
-    */
+     [_glassScrollView1 setFrame:self.view.frame];
+     [_glassScrollView2 setFrame:self.view.frame];
+     [_glassScrollView3 setFrame:self.view.frame];
+     */
     
     //[_glassScrollView2 setFrame:CGRectOffset(_glassScrollView2.bounds, _viewScroller.frame.size.width, 0)];
-   // [_glassScrollView3 setFrame:CGRectOffset(_glassScrollView3.bounds, 2*_viewScroller.frame.size.width, 0)];
+    // [_glassScrollView3 setFrame:CGRectOffset(_glassScrollView3.bounds, 2*_viewScroller.frame.size.width, 0)];
     
     /*
      Loop through all the articles. Create GlassScrollViews for each of them. Add them to the View Scroller at their correct
@@ -141,21 +143,21 @@
         [glassScrollView setFrame:CGRectOffset(glassScrollView.bounds, idx * _viewScroller.frame.size.width, 0)];
     }];
     
-       [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
+    [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
     
     /*
-    [allGlassScrollViews enumerateObjectsUsingBlock:^(BTGlassScrollView *glassScroll, NSUInteger idx, BOOL *stop) {
-        [glassScroll setFrame:self.view.frame];
-        [glassScroll setFrame:CGRectOffset(glassScroll.bounds, idx * _viewScroller.frame.size.width, 0)];
-    }];
+     [allGlassScrollViews enumerateObjectsUsingBlock:^(BTGlassScrollView *glassScroll, NSUInteger idx, BOOL *stop) {
+     [glassScroll setFrame:self.view.frame];
+     [glassScroll setFrame:CGRectOffset(glassScroll.bounds, idx * _viewScroller.frame.size.width, 0)];
+     }];
      */
     
     /*
-    for (int i = 1; i < allGlassScrollViews.count; i++) {
-        BTGlassScrollView *glassScroll = allGlassScrollViews[i];
-        [glassScroll setFrame:self.view.frame];
-        [glassScroll setFrame:CGRectOffset(glassScroll.bounds, i * _viewScroller.frame.size.width, 0)];
-    }
+     for (int i = 1; i < allGlassScrollViews.count; i++) {
+     BTGlassScrollView *glassScroll = allGlassScrollViews[i];
+     [glassScroll setFrame:self.view.frame];
+     [glassScroll setFrame:CGRectOffset(glassScroll.bounds, i * _viewScroller.frame.size.width, 0)];
+     }
      */
     
     
@@ -176,16 +178,16 @@
     // or even the status bar
     
     /*
-    [_glassScrollView1 setTopLayoutGuideLength:[self.topLayoutGuide length]];
-    [_glassScrollView2 setTopLayoutGuideLength:[self.topLayoutGuide length]];
-    [_glassScrollView3 setTopLayoutGuideLength:[self.topLayoutGuide length]];
-    */
+     [_glassScrollView1 setTopLayoutGuideLength:[self.topLayoutGuide length]];
+     [_glassScrollView2 setTopLayoutGuideLength:[self.topLayoutGuide length]];
+     [_glassScrollView3 setTopLayoutGuideLength:[self.topLayoutGuide length]];
+     */
     
     /*
-    for (BTGlassScrollView *glassScroll in allGlassScrollViews) {
-        [glassScroll setTopLayoutGuideLength:[self.topLayoutGuide length]];
-    }
-    */
+     for (BTGlassScrollView *glassScroll in allGlassScrollViews) {
+     [glassScroll setTopLayoutGuideLength:[self.topLayoutGuide length]];
+     }
+     */
     
     //Trying this to see if it increases performance. Update the autolayout stuff.
     [allGlassScrollViews enumerateObjectsUsingBlock:^(BTGlassScrollView *glassScroll, NSUInteger idx, BOOL *stop) {
@@ -199,49 +201,56 @@
     
     //Should rename this.. to ArticleViewController.. But it was being awkward the last time i tried.
     TestArticleViewController *tvc = [storyboard instantiateViewControllerWithIdentifier:@"TestViewController"];
-    tvc.article = article; 
+    tvc.article = article;
+    
+    //    [tvc  updateViewConstraints];
+    //    [tvc viewWillLayoutSubviews];
+    
+    [self addChildViewController:tvc];
+    [tvc didMoveToParentViewController:self];
+    
     return tvc.view;
 }
 
 /*
-- (UIView *)customView
-{
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ArticleViewController *articleViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainArticleViewController"];
-    
-    
-    return articleViewController.view;
+ - (UIView *)customView
+ {
  
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 705)];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 310, 120)];
-    [label setText:[NSString stringWithFormat:@"%i℉",arc4random_uniform(20) + 60]];
-    [label setTextColor:[UIColor whiteColor]];
-    [label setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:120]];
-    [label setShadowColor:[UIColor blackColor]];
-    [label setShadowOffset:CGSizeMake(1, 1)];
-    [view addSubview:label];
-    
-    UIView *box1 = [[UIView alloc] initWithFrame:CGRectMake(5, 140, 310, 125)];
-    box1.layer.cornerRadius = 3;
-    box1.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
-    [view addSubview:box1];
-    
-    UIView *box2 = [[UIView alloc] initWithFrame:CGRectMake(5, 270, 310, 300)];
-    box2.layer.cornerRadius = 3;
-    box2.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
-    [view addSubview:box2];
-    
-    UIView *box3 = [[UIView alloc] initWithFrame:CGRectMake(5, 575, 310, 125)];
-    box3.layer.cornerRadius = 3;
-    box3.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
-    [view addSubview:box3];
-    
-    return view;
+ UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+ ArticleViewController *articleViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainArticleViewController"];
  
-}
-*/
+ 
+ return articleViewController.view;
+ 
+ UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 705)];
+ 
+ UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 310, 120)];
+ [label setText:[NSString stringWithFormat:@"%i℉",arc4random_uniform(20) + 60]];
+ [label setTextColor:[UIColor whiteColor]];
+ [label setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:120]];
+ [label setShadowColor:[UIColor blackColor]];
+ [label setShadowOffset:CGSizeMake(1, 1)];
+ [view addSubview:label];
+ 
+ UIView *box1 = [[UIView alloc] initWithFrame:CGRectMake(5, 140, 310, 125)];
+ box1.layer.cornerRadius = 3;
+ box1.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
+ [view addSubview:box1];
+ 
+ UIView *box2 = [[UIView alloc] initWithFrame:CGRectMake(5, 270, 310, 300)];
+ box2.layer.cornerRadius = 3;
+ box2.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
+ [view addSubview:box2];
+ 
+ UIView *box3 = [[UIView alloc] initWithFrame:CGRectMake(5, 575, 310, 125)];
+ box3.layer.cornerRadius = 3;
+ box3.backgroundColor = [UIColor colorWithWhite:0 alpha:.15];
+ [view addSubview:box3];
+ 
+ return view;
+ 
+ }
+ */
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -251,16 +260,16 @@
     
     //NSLog(@"%i",_page);
     /*
-    if (ratio > -1 && ratio < 1) {
-        [_glassScrollView1 scrollHorizontalRatio:-ratio];
-    }
-    if (ratio > 0 && ratio < 2) {
-        [_glassScrollView2 scrollHorizontalRatio:-ratio + 1];
-    }
-    if (ratio > 1 && ratio < 3) {
-        [_glassScrollView3 scrollHorizontalRatio:-ratio + 2];
-    }
-    */
+     if (ratio > -1 && ratio < 1) {
+     [_glassScrollView1 scrollHorizontalRatio:-ratio];
+     }
+     if (ratio > 0 && ratio < 2) {
+     [_glassScrollView2 scrollHorizontalRatio:-ratio + 1];
+     }
+     if (ratio > 1 && ratio < 3) {
+     [_glassScrollView3 scrollHorizontalRatio:-ratio + 2];
+     }
+     */
     
     //More awkwardness....
     int lowerRatio = -1;
@@ -273,7 +282,7 @@
         int upper = upperRatio + i;
         if (ratio > lower && ratio < upper) {
             [glassScroll scrollHorizontalRatio:-ratio + i];
-
+            
         }
         
     }
@@ -284,9 +293,9 @@
     CGFloat ratio = scrollView.contentOffset.x/scrollView.frame.size.width;
     _page = (int)floor(ratio);
     
-    
+    NSLog(@"_page is %d", _page);
     if (_page == allGlassScrollViews.count - 2) {
-
+        
         [self pullnewData];
         
     }
@@ -295,63 +304,72 @@
 - (void)pullnewData
 {
     
+    if (!_isFetchingNewData) {
+        
+        _isFetchingNewData = YES;
+        [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSArray *newArticles, int totalPages, int currentPage, NSError *error) {
+            
+            NSLog(@"new data: %d", _tmpIndex);
+            
+            [newArticles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
+                
+                NSLog(@"++ %@-%@", article.title, article.blurredImage);
+                
+                BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:nil blurredImage:article.blurredImage viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article] article:article];
+                
+                [allGlassScrollViews addObject:glassScrollView];
+                [_viewScroller addSubview:glassScrollView];
+                
+                
+                float width = CGRectGetWidth(_viewScroller.frame);
+                int cIndx = idx + _tmpIndex;
+                float newx = cIndx * width;
+                
+                
+                //Ideally.. I'd like to use a one line like this... but it doesn't effing work for SOME reason. you can try it..
+                //Maybe it's my device. So I used the newx created above... no idea why that works instead.
+                //float newX = idx + _tmpIndex * CGRectGetWidth(_viewScroller.frame);
+                
+                
+                [glassScrollView setFrame:self.view.frame];
+                [glassScrollView setFrame:CGRectOffset(glassScrollView.bounds, newx, 0)];
+                
+                
+            }];
+            
+            
+            [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
+            
+            
+            _tmpIndex = allGlassScrollViews.count;
+            
+            _isFetchingNewData = NO;
+        }];
+    }
     //Simulate new data ready.
-    NSMutableArray *newArticles = [NSMutableArray new];
+    //NSMutableArray *newArticles = [NSMutableArray new];
+    
+    
     
     /*
-    Article *a3 = [[Article alloc] init];
-    a3.image = [UIImage imageNamed:@"thomas2.jpg"];
-    a3.title = @"Thomas!!.";
-    [self.articles addObject:a3];
-    [newArticles addObject:a3];
-
-    Article *a4 = [[Article alloc] init];
-    a4.image = [UIImage imageNamed:@"town.jpg"];
-    a4.title = @"Yes we can.";
-    [self.articles addObject:a4];
-    [newArticles addObject:a4];
-    
-    Article *a5 = [[Article alloc] init];
-    a5.image = [UIImage imageNamed:@"rink.jpg"];
-    a5.title = @"But I'm not that easy.";
-    [self.articles addObject:a5];
-    [newArticles addObject:a5];
-    */
-    
-    
-    NSLog(@"tmpin: %d", _tmpIndex);
-    
-    [newArticles enumerateObjectsUsingBlock:^(Article *article, NSUInteger idx, BOOL *stop) {
-        
-        
-        BTGlassScrollView *glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:nil blurredImage:article.blurredImage viewDistanceFromBottom:120 foregroundView:[self customViewWithArticle:article] article:article];
-        
-        [allGlassScrollViews addObject:glassScrollView];
-        [_viewScroller addSubview:glassScrollView];
-
-        
-        float width = CGRectGetWidth(_viewScroller.frame);
-        int cIndx = idx + _tmpIndex;
-        float newx = cIndx * width;
-        
-        
-        //Ideally.. I'd like to use a one line like this... but it doesn't effing work for SOME reason. you can try it..
-        //Maybe it's my device. So I used the newx created above... no idea why that works instead.
-        //float newX = idx + _tmpIndex * CGRectGetWidth(_viewScroller.frame);
-        
-
-        [glassScrollView setFrame:self.view.frame];
-        [glassScrollView setFrame:CGRectOffset(glassScrollView.bounds, newx, 0)];
-        
-        
-    }];
-
-    
-    [_viewScroller setContentSize:CGSizeMake( allGlassScrollViews.count * _viewScroller.frame.size.width, self.view.frame.size.height)];
-    
-
-    _tmpIndex = allGlassScrollViews.count;
-    
+     Article *a3 = [[Article alloc] init];
+     a3.image = [UIImage imageNamed:@"thomas2.jpg"];
+     a3.title = @"Thomas!!.";
+     [self.articles addObject:a3];
+     [newArticles addObject:a3];
+     
+     Article *a4 = [[Article alloc] init];
+     a4.image = [UIImage imageNamed:@"town.jpg"];
+     a4.title = @"Yes we can.";
+     [self.articles addObject:a4];
+     [newArticles addObject:a4];
+     
+     Article *a5 = [[Article alloc] init];
+     a5.image = [UIImage imageNamed:@"rink.jpg"];
+     a5.title = @"But I'm not that easy.";
+     [self.articles addObject:a5];
+     [newArticles addObject:a5];
+     */
     
 }
 

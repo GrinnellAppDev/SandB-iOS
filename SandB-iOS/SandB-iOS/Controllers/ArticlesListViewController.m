@@ -41,6 +41,9 @@ const int kLoadingCellTag = 888;
     
     _currentPage = 1;
     
+    [self fetchArticles];
+
+    
    // self.articles = [NSMutableArray new];
     
     /*
@@ -69,14 +72,24 @@ const int kLoadingCellTag = 888;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.theTableView reloadData];
     
-    [self fetchArticles];
 }
 
 - (void)fetchArticles
 {
+    [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+        if (!error) {
+            _totalPages = totalPages;
+            _currentPage = currentPage;
+            [self.theTableView reloadData];
+        }
+    }];
+    
+    
+    /*
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
-                         parameters:@{@"count": @(7),
+                         parameters:@{@"count": @(10),
                                       @"page": @(_currentPage)
                                       }
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
@@ -101,6 +114,7 @@ const int kLoadingCellTag = 888;
                                 //ie sucess could mean you could "successfully" get a 500.
                                 NSLog(@"Failure... %@", error);
                             }];
+     */ 
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,7 +152,7 @@ const int kLoadingCellTag = 888;
     //  self.articles[indexPath.row]
     
     cell.textLabel.text = a.title;
-    
+
     return cell;
 
 }
@@ -185,7 +199,6 @@ const int kLoadingCellTag = 888;
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (cell.tag == kLoadingCellTag) {
-        _currentPage++;
         [self fetchArticles];
     }
 }

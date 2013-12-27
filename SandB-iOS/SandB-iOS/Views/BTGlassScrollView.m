@@ -9,6 +9,7 @@
 #import "BTGlassScrollView.h"
 #import "BTGlassScrollView.h"
 #import "UIImageView+AFNetworking.h"
+#import "UIImageView+WebCache.h"
 
 @implementation BTGlassScrollView
 {
@@ -40,12 +41,16 @@
         //initialize values
         _article = article; 
         _backgroundImage = backgroundImage;
+        NSLog(@"-- %@ blurredImage: %@",article.title, blurredImage);
+        
+
         if (blurredImage) {
+            
             _blurredBackgroundImage = blurredImage;
         }else{
             
             //_blurredBackgroundImage = backgroundImage;
-           _blurredBackgroundImage = [backgroundImage applyDarkEffect];
+           //_blurredBackgroundImage = [backgroundImage applyLightEffect];
            // _blurredBackgroundImage = [backgroundImage applyBlurWithRadius:DEFAULT_BLUR_RADIUS tintColor:DEFAULT_BLUR_TINT_COLOR saturationDeltaFactor:DEFAULT_BLUR_DELTA_FACTOR maskImage:nil];
         }
         _viewDistanceFromBottom = viewDistanceFromBottom;
@@ -55,12 +60,17 @@
         [self setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
         
         //create views
-       [self createBackgroundView];
-        [self createForegroundView];
-        [self createTopShadow];
-        [self createBottomShadow];
+        [self createViews];
     }
     return self;
+}
+
+- (void)createViews
+{
+    [self createBackgroundView];
+    [self createForegroundView];
+    [self createTopShadow];
+    [self createBottomShadow];
 }
 
 - (void)scrollHorizontalRatio:(CGFloat)ratio
@@ -157,10 +167,11 @@
     //_backgroundImageView = [[UIImageView alloc] initWithImage:_backgroundImage];
     _backgroundImageView = [[UIImageView alloc] init];
     
-    NSLog(@"Working on %@", self.article.title);
+    //_backgroundImageView.image = [UIImage imageNamed:@"theg.jpg"];
     if (self.article.imageLargeURL) {
-        NSLog(@"setting image url for %@", self.article.title);
-        [_backgroundImageView setImageWithURL:[NSURL URLWithString:self.article.imageLargeURL]];
+        //NSLog(@"setting image url for %@", self.article.title);
+       [_backgroundImageView setImageWithURL:[NSURL URLWithString:self.article.imageLargeURL]];
+
     } else {
         
     }

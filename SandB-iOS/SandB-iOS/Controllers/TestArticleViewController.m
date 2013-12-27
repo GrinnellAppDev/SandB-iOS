@@ -27,6 +27,11 @@
     return self;
 }
 
+- (void)viewWillLayoutSubviews
+{
+    
+}
+
 - (void)updateViewConstraints
 {
     [super updateViewConstraints];
@@ -43,9 +48,24 @@
                  + textView.textContainerInset.bottom);
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.contentTextView.attributedText = self.article.attrContent;
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //NSLog(@"scv: %@", self.article.attrContent);
 	// Do any additional setup after loading the view.
     self.testLabel.text = self.article.title;
     if (self.article.author) {
@@ -53,16 +73,21 @@
     }
     //This is kinda wierd..
    
+
+    
     
     NSDictionary *options = @{
                               NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                               };
     
     //NSMutableAttributedString
+    
+    /*
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithData:[self.article.content dataUsingEncoding:NSUTF32StringEncoding]
                                                                       options:options documentAttributes:nil
                                                                         error:nil];
 
+     */
   /* NSDictionary* attributes = @{
                                  NSFontAttributeName:
                                      [UIFont fontWithName:@"Optima" size:18.0],};
@@ -70,10 +95,12 @@
 
     [attrString addAttributes:attributes range:NSMakeRange(0, [attrString length])];
    */
-    self.contentTextView.attributedText = attrString;
+   // self.contentTextView.attributedText = self.article.attrContent;
     
+   // self.contentTextView.attributedText = self.article.attrContent;
 
-   // self.contentTextView.text = self.article.content;
+   //self.contentTextView.text = self.article.content;
+
     
 }
 
