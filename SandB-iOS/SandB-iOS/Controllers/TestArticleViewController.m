@@ -29,13 +29,20 @@
 
 - (void)viewWillLayoutSubviews
 {
-    
+    //self.contentTextView.frame.size.height = [self textViewHeight:self.contentTextView];
+   
+    /*
+    CGRect newFrame = CGRectMake(self.contentTextView.frame.origin.x, self.contentTextView.frame.origin.y, self.contentTextView.frame.size.width, [self textViewHeight:self.contentTextView]);
+    self.contentTextView.frame = newFrame;
+     */
 }
 
 - (void)updateViewConstraints
 {
     [super updateViewConstraints];
+    NSLog(@"vh: %f", self.view.frame.size.height);
     self.contentViewHeight.constant = [self textViewHeight:self.contentTextView];
+    NSLog(@"vh: %f", self.view.frame.size.height);
 }
 
 - (CGFloat)textViewHeight:(UITextView *)textView
@@ -52,6 +59,7 @@
 {
     [super viewWillAppear:animated];
     self.contentTextView.attributedText = self.article.attrContent;
+    
 
 }
 
@@ -75,11 +83,11 @@
    
 
     
-    
+   /*
     NSDictionary *options = @{
                               NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                               };
-    
+    */
     //NSMutableAttributedString
     
     /*

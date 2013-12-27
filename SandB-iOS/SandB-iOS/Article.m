@@ -119,17 +119,6 @@
     NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 150%;}</style></head>";
     NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, _content, htmlClose];
     
-
-    
-    /*
-    <head>
-    <style type='text/css'>
-    h1 {color:red;}
-    h2 {color:blue;}
-    p {color:green;}
-    </style>
-    </head>";
-     */
     
     //NSLog(@"Forming attrString for %@", _title);
     NSError *error = nil;

@@ -125,8 +125,24 @@
     //reposition
     [_foregroundView setFrame:CGRectOffset(_foregroundView.bounds, (_foregroundScrollView.frame.size.width - _foregroundView.bounds.size.width)/2, _foregroundScrollView.frame.size.height - _foregroundScrollView.contentInset.top - _viewDistanceFromBottom)];
     
+    
     //resize contentSize
-    [_foregroundScrollView setContentSize:CGSizeMake(self.frame.size.width, _foregroundView.frame.origin.y + _foregroundView.frame.size.height)];
+    float newHeight;
+    //Look for the textview inside this view.
+    for (UITextView * subview in _foregroundView.subviews) {
+        if ([subview isMemberOfClass:[UITextView class]]) {
+            //calculate it's height.
+            [subview.layoutManager ensureLayoutForTextContainer:subview.textContainer];
+            CGRect usedRect = [subview.layoutManager
+                               usedRectForTextContainer:subview.textContainer];
+            newHeight = ceilf(usedRect.size.height
+                         + subview.textContainerInset.top
+                         + subview.textContainerInset.bottom);
+            newHeight = newHeight + 100;
+        }
+    }
+    //[_foregroundScrollView setContentSize:CGSizeMake(self.frame.size.width, _foregroundView.frame.origin.y + _foregroundView.frame.size.height)];
+    [_foregroundScrollView setContentSize:CGSizeMake(self.frame.size.width, _foregroundView.frame.origin.y + newHeight)];
     
     //reset the offset
     [_foregroundScrollView setContentOffset:CGPointMake(0, - _foregroundScrollView.contentInset.top)];
@@ -138,6 +154,7 @@
     [self createTopShadow];
 }
 
+/*
 - (void)setViewDistanceFromBottom:(CGFloat)viewDistanceFromBottom
 {
 #warning might cause infiniteloop
@@ -149,6 +166,7 @@
     //shadows
     [_botShadowLayer setFrame:CGRectOffset(_botShadowLayer.bounds, 0, self.frame.size.height - _viewDistanceFromBottom)];
 }
+*/
 
 #pragma mark - Views creation
 #pragma mark ScrollViews
@@ -199,7 +217,6 @@
 }
 
 
-
 - (void)createForegroundView
 {
     _foregroundContainerView = [[UIView alloc] initWithFrame:self.frame];
@@ -217,7 +234,8 @@
     [_foregroundView setFrame:CGRectOffset(_foregroundView.bounds, (_foregroundScrollView.frame.size.width - _foregroundView.bounds.size.width)/2, _foregroundScrollView.frame.size.height - _viewDistanceFromBottom)];
     [_foregroundScrollView addSubview:_foregroundView];
     
-    [_foregroundScrollView setContentSize:CGSizeMake(self.frame.size.width, _foregroundView.frame.origin.y + _foregroundView.frame.size.height)];
+    
+   // [_foregroundScrollView setContentSize:CGSizeMake(self.frame.size.width, _foregroundView.frame.origin.y + _foregroundView.frame.size.height)];
 }
 
 #pragma mark Shadow and Mask Layer

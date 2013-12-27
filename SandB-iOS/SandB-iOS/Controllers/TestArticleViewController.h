@@ -11,5 +11,6 @@
 
 @interface TestArticleViewController : UIViewController
 @property (nonatomic, strong) Article *article;
+@property (weak, nonatomic) IBOutlet UIScrollView *theScrollView;
 
 @end
