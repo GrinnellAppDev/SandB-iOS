@@ -58,6 +58,8 @@
 
     // Set up scroll view
     int offset = articleTitle.frame.size.height + articleTitle.frame.origin.y + padding * 2;
+    for (UIView *subview in [scroll subviews])
+        [subview removeFromSuperview];
     scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, offset, self.view.frame.size.width, self.view.frame.size.height - offset)];
     
     // Set up the image and add it to the scroll view
