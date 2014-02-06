@@ -57,7 +57,6 @@
 {
     [super viewWillAppear:animated];
     self.contentTextView.attributedText = self.article.attrContent;
-    
 
 }
 

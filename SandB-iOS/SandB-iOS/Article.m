@@ -27,7 +27,7 @@
     self = [super init];
     if (self) {
         
-        
+    
         _title =  articleDictionary[@"title"];
         
         _content = articleDictionary[@"content"];
@@ -35,14 +35,33 @@
         
         NSArray *attachments = articleDictionary[@"attachments"];
         
+        NSLog(@"attachements: %@", attachments);
+        
        // NSLog(@"title: %@", _title);
        // NSLog(@"attachments: %@", attachments);
         
         if (attachments) {
             //todo - should loop.
             [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-               _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
-               _imageLargeURL = obj[@"images"][@"large"][@"url"];
+                NSLog(@"obj: %@", obj);
+                
+                if ([obj[@"images"] count] > 1) {
+                    _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
+                    _imageLargeURL = obj[@"images"][@"large"][@"url"];
+                }
+                
+                /*
+                if (obj[@"images"][@"medium"][@"url"]) {
+                    _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
+                }
+                
+                if (obj[@"images"][@"large"][@"url"]) {
+                    _imageLargeURL = obj[@"images"][@"large"][@"url"];
+                }
+                 */
+                
+              // _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
+              // _imageLargeURL = obj[@"images"][@"large"][@"url"];
             }];
         }
         _author = [articleDictionary[@"custom_fields"][@"author"] firstObject];

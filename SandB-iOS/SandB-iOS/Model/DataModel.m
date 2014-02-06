@@ -65,8 +65,6 @@
 
                                 completion(nil, nil, 0, 0, error);
                             }];
-
-    
 }
 
 

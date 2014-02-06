@@ -13,6 +13,8 @@
 #import "SandBClient.h"
 #import "DataModel.h"
 
+#import <Crashlytics/Crashlytics.h>
+
 const int kLoadingCellTag = 888;
 
 @interface ArticlesListViewController ()
@@ -50,30 +52,8 @@ const int kLoadingCellTag = 888;
     
     [self fetchArticles];
 
-    
+
    // self.articles = [NSMutableArray new];
-    
-    /*
-    Article *a1 = [[Article alloc] init];
-    a1.image = [UIImage imageNamed:@"thomas.jpg"];
-    a1.title = @"Thomas Neil is a baller";
-    [self.articles addObject:a1];
-    
-    Article *a2 = [[Article alloc] init];
-    a2.image = [UIImage imageNamed:@"game.jpg"];
-    a2.title = @"Lea is cool..";
-    [self.articles addObject:a2];
-    
-    Article *a3 = [[Article alloc] init];
-    a3.image = [UIImage imageNamed:@"rink.jpg"];
-    a3.title = @"But I'm not that easy.";
-    [self.articles addObject:a3];
-    
-    Article *a4 = [[Article alloc] init];
-    a4.title = @"I'm having such a hard time trying to not make out with you";
-    a4.image = [UIImage imageNamed:@"town.jpg"];
-    [self.articles addObject:a4];
-    */
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,6 +65,9 @@ const int kLoadingCellTag = 888;
 
 - (void)fetchArticles
 {
+    
+
+    
     [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
         if (!error) {
             _totalPages = totalPages;
@@ -187,6 +170,7 @@ const int kLoadingCellTag = 888;
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -199,6 +183,7 @@ const int kLoadingCellTag = 888;
         //Push to the article that was tapped. 
         NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
         glvc.page = indexPath.row;
+        
     }
 }
 

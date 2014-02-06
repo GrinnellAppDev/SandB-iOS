@@ -15,6 +15,7 @@
 #import "ArtsViewController.h"
 #import "SandBClient.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 @synthesize window, tabBarController, navController1, navController2, navController3, navController4, navController5;
@@ -22,6 +23,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+
+    [Crashlytics startWithAPIKey:@"45894d9e8a6bc3b8513651d6de36159e2c836e51"];
+    //[Crashlytics sharedInstance].debugMode = YES;
+    
+    
 
     
     /*
