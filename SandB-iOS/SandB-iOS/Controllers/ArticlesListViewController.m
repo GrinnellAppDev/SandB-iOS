@@ -18,7 +18,8 @@
 
 const int kLoadingCellTag = 888;
 
-@interface ArticlesListViewController ()
+@interface ArticlesListViewController () <UISearchBarDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *theTableView;
 //@property (nonatomic, strong) NSMutableArray *articles;
 @property (nonatomic, assign) int  currentPage;
@@ -52,7 +53,10 @@ const int kLoadingCellTag = 888;
     _currentPage = 1;
     
     [self fetchArticles];
+    
+    self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
 
+    [self.theTableView setContentOffset:CGPointMake(0, 44)];
 
    // self.articles = [NSMutableArray new];
 }
@@ -64,9 +68,41 @@ const int kLoadingCellTag = 888;
     
 }
 
+
+#pragma mark - SearchDisplayControllerDelegate
+
+- (void)searchDisplayControllerWillBeginSearch: (UISearchDisplayController *)controller
+{
+    self.searchDisplayController.searchBar.showsCancelButton = YES;
+}
+
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller {
+    
+    self.searchDisplayController.searchBar.showsCancelButton =NO;
+    
+}
+- (IBAction)triggerSearch:(id)sender {
+    NSLog(@"tiggering search");
+    NSLog(@"searchBar: %@",self.searchBar);
+    
+    [self.searchBar becomeFirstResponder];
+    
+//    [self.searchBar becomeFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
+{
+    [self.view endEditing:YES];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.view endEditing:YES];
+    NSLog(@"Search for %@", searchBar.text);
+}
+
 - (void)fetchArticles
 {
-    
 
     
     [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ArticlesListViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
