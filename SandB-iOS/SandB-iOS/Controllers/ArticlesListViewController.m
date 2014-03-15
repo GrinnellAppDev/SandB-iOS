@@ -99,6 +99,12 @@ const int kLoadingCellTag = 888;
 {
     [self.view endEditing:YES];
     NSLog(@"Search for %@", searchBar.text);
+    
+    [[DataModel sharedModel] searchArticlesForTerm:searchBar.text withCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+        if (!error) {
+            [self.theTableView reloadData];
+        }
+    }];
 }
 
 - (void)fetchArticles
