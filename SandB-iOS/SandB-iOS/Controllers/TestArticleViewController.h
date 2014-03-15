@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Article.h"
+#import "FBShimmeringView.h"
 
 @interface TestArticleViewController : UIViewController
 @property (nonatomic, strong) Article *article;
 @property (weak, nonatomic) IBOutlet UIScrollView *theScrollView;
+@property (strong, nonatomic) IBOutlet FBShimmeringView *shimmerView;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
 @end

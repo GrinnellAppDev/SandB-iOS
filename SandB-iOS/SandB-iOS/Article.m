@@ -137,7 +137,7 @@
     //Increasing the font size via css - Did it this way because I didn't want to lose the formatting... Hmm..
     NSString *htmlOpen = @"<html>";
     NSString *htmlClose = @"</html>";
-    NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 150%;}</style></head>";
+    NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 150%;font-family:'Raleway-Regular';}</style></head>";
     NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, _content, htmlClose];
     
     

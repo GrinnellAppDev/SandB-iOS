@@ -12,6 +12,7 @@
 #import "AFNetworking.h"
 #import "SandBClient.h"
 #import "DataModel.h"
+#import "ArticleCell.h"
 
 #import <Crashlytics/Crashlytics.h>
 
@@ -135,13 +136,18 @@ const int kLoadingCellTag = 888;
 {
     static NSString *cellIdentifier = @"ArticleCell";
     
-    UITableViewCell *cell = [self.theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    ArticleCell *cell = [self.theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //Customize Cell
     Article *a = [[[DataModel sharedModel] articles] objectAtIndex:indexPath.row];
     //  self.articles[indexPath.row]
     
-    cell.textLabel.text = a.title;
+    [cell.titleLabel setFont:[UIFont fontWithName:@"Raleway-Regular" size:18.f]];
+    
+    [cell.dateAndAuthorLabel setFont:[UIFont fontWithName:@"Raleway-Thin" size:12.f]];
+    
+    cell.titleLabel.text = a.title;
+    cell.dateAndAuthorLabel.text = [NSString stringWithFormat:@"Mar 13 | %@", a.author];
 
     return cell;
 

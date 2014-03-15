@@ -48,6 +48,13 @@
 		8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5B20751721DBCD00E9E3AA /* NewsViewController.m */; };
 		8B5B20791721DBE900E9E3AA /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20771721DBE900E9E3AA /* NewsViewController.xib */; };
 		8B71773F16D858FA001F1F94 /* SANDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71773E16D858FA001F1F94 /* SANDB.png */; };
+		8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B85640018D4D75B0098B83A /* ArticleCell.m */; };
+		8B85640D18D4DE1A0098B83A /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B85640C18D4DA9A0098B83A /* Raleway-Thin.ttf */; };
+		8B85640F18D4E0970098B83A /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B85640E18D4DF470098B83A /* Raleway-Regular.ttf */; };
+		8B85641218D4E4AE0098B83A /* featuresIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B85641018D4E4AE0098B83A /* featuresIcon.png */; };
+		8B85641318D4E4AE0098B83A /* featuresIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B85641118D4E4AE0098B83A /* featuresIcon@2x.png */; };
+		8B85641618D4E6F40098B83A /* featuresColor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B85641418D4E6F40098B83A /* featuresColor.png */; };
+		8B85641718D4E6F40098B83A /* featuresColor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B85641518D4E6F40098B83A /* featuresColor@2x.png */; };
 		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8B9BB17916BEEE8F00C20358 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB17816BEEE8F00C20358 /* Article.m */; };
 		8BC46F6116C823A3008642F7 /* ArtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC46F5F16C823A3008642F7 /* ArtsViewController.m */; };
@@ -139,6 +146,23 @@
 		8B5B20751721DBCD00E9E3AA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		8B5B20781721DBE900E9E3AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsViewController.xib; sourceTree = "<group>"; };
 		8B71773E16D858FA001F1F94 /* SANDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDB.png; sourceTree = "<group>"; };
+		8B8563FF18D4D75B0098B83A /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
+		8B85640018D4D75B0098B83A /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
+		8B85640318D4D9760098B83A /* Raleway-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.otf"; sourceTree = "<group>"; };
+		8B85640418D4D9760098B83A /* Raleway-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.otf"; sourceTree = "<group>"; };
+		8B85640518D4D9760098B83A /* Raleway-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLight.otf"; sourceTree = "<group>"; };
+		8B85640618D4D9760098B83A /* Raleway-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Heavy.otf"; sourceTree = "<group>"; };
+		8B85640718D4D9760098B83A /* Raleway-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.otf"; sourceTree = "<group>"; };
+		8B85640818D4D9760098B83A /* Raleway-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.otf"; sourceTree = "<group>"; };
+		8B85640918D4D9760098B83A /* Raleway-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.otf"; sourceTree = "<group>"; };
+		8B85640A18D4D9760098B83A /* Raleway-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.otf"; sourceTree = "<group>"; };
+		8B85640B18D4D9760098B83A /* Raleway-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.otf"; sourceTree = "<group>"; };
+		8B85640C18D4DA9A0098B83A /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Thin.ttf"; path = "../Raleway-Thin.ttf"; sourceTree = "<group>"; };
+		8B85640E18D4DF470098B83A /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		8B85641018D4E4AE0098B83A /* featuresIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = featuresIcon.png; sourceTree = "<group>"; };
+		8B85641118D4E4AE0098B83A /* featuresIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "featuresIcon@2x.png"; sourceTree = "<group>"; };
+		8B85641418D4E6F40098B83A /* featuresColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = featuresColor.png; sourceTree = "<group>"; };
+		8B85641518D4E6F40098B83A /* featuresColor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "featuresColor@2x.png"; sourceTree = "<group>"; };
 		8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8B9BB17716BEEE8F00C20358 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Article.h; path = ../Article.h; sourceTree = "<group>"; };
 		8B9BB17816BEEE8F00C20358 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Article.m; path = ../Article.m; sourceTree = "<group>"; };
@@ -245,6 +269,8 @@
 				8B9BB17816BEEE8F00C20358 /* Article.m */,
 				16B3E724186B929200ABC0CF /* DataModel.h */,
 				16B3E725186B929200ABC0CF /* DataModel.m */,
+				8B8563FF18D4D75B0098B83A /* ArticleCell.h */,
+				8B85640018D4D75B0098B83A /* ArticleCell.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +330,10 @@
 		3BEBCE8616C5A9A000B6DD08 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8B85641418D4E6F40098B83A /* featuresColor.png */,
+				8B85641518D4E6F40098B83A /* featuresColor@2x.png */,
+				8B85641018D4E4AE0098B83A /* featuresIcon.png */,
+				8B85641118D4E4AE0098B83A /* featuresIcon@2x.png */,
 				8B4F81E816ED0E47008466CE /* Icons */,
 				8B71773E16D858FA001F1F94 /* SANDB.png */,
 				3BD9DEA716D17A1B0053C1C5 /* newspaper.png */,
@@ -341,9 +371,26 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		8B85640218D4D96A0098B83A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8B85640318D4D9760098B83A /* Raleway-Bold.otf */,
+				8B85640418D4D9760098B83A /* Raleway-ExtraBold.otf */,
+				8B85640518D4D9760098B83A /* Raleway-ExtraLight.otf */,
+				8B85640618D4D9760098B83A /* Raleway-Heavy.otf */,
+				8B85640718D4D9760098B83A /* Raleway-Light.otf */,
+				8B85640818D4D9760098B83A /* Raleway-Medium.otf */,
+				8B85640918D4D9760098B83A /* Raleway-Regular.otf */,
+				8B85640A18D4D9760098B83A /* Raleway-SemiBold.otf */,
+				8B85640B18D4D9760098B83A /* Raleway-Thin.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		8BD1C80016B32493005F3F23 = {
 			isa = PBXGroup;
 			children = (
+				8B85640218D4D96A0098B83A /* Resources */,
 				8BD1C81516B32493005F3F23 /* SandB-iOS */,
 				8BD1C80E16B32493005F3F23 /* Frameworks */,
 				8BD1C80C16B32493005F3F23 /* Products */,
@@ -398,6 +445,8 @@
 		8BD1C81616B32493005F3F23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B85640E18D4DF470098B83A /* Raleway-Regular.ttf */,
+				8B85640C18D4DA9A0098B83A /* Raleway-Thin.ttf */,
 				E1A03015185E424E00C794F0 /* Default-568h@2x.png */,
 				E1A03016185E424E00C794F0 /* Default-Landscape.png */,
 				E1A03017185E424E00C794F0 /* Default-Landscape@2x.png */,
@@ -472,8 +521,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B85640F18D4E0970098B83A /* Raleway-Regular.ttf in Resources */,
+				8B85640D18D4DE1A0098B83A /* Raleway-Thin.ttf in Resources */,
 				8BD1C81A16B32493005F3F23 /* InfoPlist.strings in Resources */,
 				8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */,
+				8B85641618D4E6F40098B83A /* featuresColor.png in Resources */,
 				8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */,
 				E1A0301B185E424E00C794F0 /* Default-568h@2x.png in Resources */,
 				E19E290C180E5ED200ED33FE /* icon-58.png in Resources */,
@@ -490,6 +542,7 @@
 				3BD9DEAC16D17A390053C1C5 /* basketball.png in Resources */,
 				E19E290B180E5ED200ED33FE /* icon-40.png in Resources */,
 				16B3E71D186A3F3700ABC0CF /* town.jpg in Resources */,
+				8B85641318D4E4AE0098B83A /* featuresIcon@2x.png in Resources */,
 				E1A0301F185E424E00C794F0 /* Default-Portrait@2x.png in Resources */,
 				E19E290A180E5ED200ED33FE /* icon-29.png in Resources */,
 				16B3E7171869569700ABC0CF /* rink.jpg in Resources */,
@@ -501,6 +554,7 @@
 				3BD9DEB016D17E260053C1C5 /* group.png in Resources */,
 				8B71773F16D858FA001F1F94 /* SANDB.png in Resources */,
 				8B125BAB1720FD5E00C550F7 /* Icon-72.png in Resources */,
+				8B85641218D4E4AE0098B83A /* featuresIcon.png in Resources */,
 				E1A1247C18590EAF00C43E73 /* CommentsCell.xib in Resources */,
 				8B125BAD1720FD7900C550F7 /* SnBLogoNew144.png in Resources */,
 				8B125BAF1720FE1B00C550F7 /* Icon.png in Resources */,
@@ -516,6 +570,7 @@
 				8B125BBB172100FF00C550F7 /* iTunesArtwork@2x.png in Resources */,
 				E1A0301D185E424E00C794F0 /* Default-Landscape@2x.png in Resources */,
 				8B5B20791721DBE900E9E3AA /* NewsViewController.xib in Resources */,
+				8B85641718D4E6F40098B83A /* featuresColor@2x.png in Resources */,
 				8B40D5041729D4060000128D /* TopBanneriPhone.png in Resources */,
 				8B40D5061729D4150000128D /* TopBanneriPad.png in Resources */,
 				E1A0301E185E424E00C794F0 /* Default-Portrait.png in Resources */,
@@ -578,6 +633,7 @@
 			files = (
 				8BD1C81C16B32493005F3F23 /* main.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
+				8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */,
 				16B3E6F918691F1900ABC0CF /* ArticlesListViewController.m in Sources */,
 				8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */,
 				16B3E7141869502500ABC0CF /* ArticleViewController.m in Sources */,
@@ -698,13 +754,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/moujaled/Development/SandB-Grinnell-iOS/SandB-iOS",
+					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C0327D0D-7AA1-41C5-9090-39EDB636262F";
+				PROVISIONING_PROFILE = "F9D0F359-2CA6-4C54-843D-2A9C01FD717A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -719,14 +776,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/moujaled/Development/SandB-Grinnell-iOS/SandB-iOS",
+					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C0327D0D-7AA1-41C5-9090-39EDB636262F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C0327D0D-7AA1-41C5-9090-39EDB636262F";
+				PROVISIONING_PROFILE = "F9D0F359-2CA6-4C54-843D-2A9C01FD717A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9D0F359-2CA6-4C54-843D-2A9C01FD717A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

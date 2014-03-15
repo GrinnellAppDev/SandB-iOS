@@ -7,6 +7,7 @@
 //
 
 #import "TestArticleViewController.h"
+#import "FBShimmeringView.h"
 
 @interface TestArticleViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
@@ -16,7 +17,9 @@
 
 @end
 
-@implementation TestArticleViewController
+@implementation TestArticleViewController {
+    FBShimmeringView *shimmerView;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,14 +30,8 @@
     return self;
 }
 
-- (void)viewWillLayoutSubviews
-{
-    //self.contentTextView.frame.size.height = [self textViewHeight:self.contentTextView];
-   
-    /*
-    CGRect newFrame = CGRectMake(self.contentTextView.frame.origin.x, self.contentTextView.frame.origin.y, self.contentTextView.frame.size.width, [self textViewHeight:self.contentTextView]);
-    self.contentTextView.frame = newFrame;
-     */
+- (void) viewDidLayoutSubviews {
+    [self.backgroundView setFrame:CGRectMake(self.backgroundView.frame.origin.x, self.backgroundView.frame.origin.y, self.backgroundView.frame.size.width, ([self textViewHeight:self.contentTextView] + 200))];
 }
 
 - (void)updateViewConstraints
@@ -60,6 +57,10 @@
 
 }
 
+-(void)viewWillLayoutSubviews {
+    
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -77,6 +78,21 @@
         self.authorLabel.text =  [NSString stringWithFormat:@"By %@", self.article.author];
     }
     //This is kinda wierd..
+    
+    
+//    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.view.bounds];
+//    [self.view addSubview:shimmeringView];
+//
+//    shimmeringView.contentView = self.testLabel;
+    
+    // Start shimmering.
+   // shimmeringView.shimmering = YES;
+    self.shimmerView.contentView = self.authorLabel;
+    self.shimmerView.shimmering = YES;
+    
+//    CGPoint center1 = CGPointMake(self.view.bounds.size.width/2,
+//                                  self.view.bounds.size,height/2);
+    
    
 
     
