@@ -47,6 +47,10 @@
 		8B40D5061729D4150000128D /* TopBanneriPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B40D5051729D4150000128D /* TopBanneriPad.png */; };
 		8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5B20751721DBCD00E9E3AA /* NewsViewController.m */; };
 		8B5B20791721DBE900E9E3AA /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20771721DBE900E9E3AA /* NewsViewController.xib */; };
+		8B5DC4C918F1F4F500732D45 /* NewArticlesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */; };
+		8B5DC4CC18F1F57A00732D45 /* NewArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4CB18F1F57A00732D45 /* NewArticleCell.m */; };
+		8B5DC4CF18F1F67B00732D45 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */; };
+		8B5DC4D318F1F91A00732D45 /* NewArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D218F1F91A00732D45 /* NewArticleViewController.m */; };
 		8B71773F16D858FA001F1F94 /* SANDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71773E16D858FA001F1F94 /* SANDB.png */; };
 		8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B85640018D4D75B0098B83A /* ArticleCell.m */; };
 		8B85640D18D4DE1A0098B83A /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B85640C18D4DA9A0098B83A /* Raleway-Thin.ttf */; };
@@ -145,6 +149,14 @@
 		8B5B20741721DBCD00E9E3AA /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		8B5B20751721DBCD00E9E3AA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		8B5B20781721DBE900E9E3AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsViewController.xib; sourceTree = "<group>"; };
+		8B5DC4C718F1F4F500732D45 /* NewArticlesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewArticlesListTableViewController.h; path = ../../NewArticlesListTableViewController.h; sourceTree = "<group>"; };
+		8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewArticlesListTableViewController.m; path = ../../NewArticlesListTableViewController.m; sourceTree = "<group>"; };
+		8B5DC4CA18F1F57A00732D45 /* NewArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewArticleCell.h; path = ../Model/NewArticleCell.h; sourceTree = "<group>"; };
+		8B5DC4CB18F1F57A00732D45 /* NewArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewArticleCell.m; path = ../Model/NewArticleCell.m; sourceTree = "<group>"; };
+		8B5DC4CD18F1F67B00732D45 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		8B5DC4D118F1F91A00732D45 /* NewArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticleViewController.h; sourceTree = "<group>"; };
+		8B5DC4D218F1F91A00732D45 /* NewArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticleViewController.m; sourceTree = "<group>"; };
 		8B71773E16D858FA001F1F94 /* SANDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDB.png; sourceTree = "<group>"; };
 		8B8563FF18D4D75B0098B83A /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
 		8B85640018D4D75B0098B83A /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
@@ -230,6 +242,7 @@
 		16B3E6F618691EC600ABC0CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B5DC4D018F1F68200732D45 /* New */,
 				16B3E6F718691F1900ABC0CF /* ArticlesListViewController.h */,
 				16B3E6F818691F1900ABC0CF /* ArticlesListViewController.m */,
 				16B3E7121869502500ABC0CF /* ArticleViewController.h */,
@@ -245,6 +258,8 @@
 		16B3E7021869376C00ABC0CF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8B5DC4CA18F1F57A00732D45 /* NewArticleCell.h */,
+				8B5DC4CB18F1F57A00732D45 /* NewArticleCell.m */,
 				16B3E70F1869469400ABC0CF /* BTGlassScrollView.h */,
 				1600A33118933C71006DFF9B /* BTGlassScrollView.m */,
 			);
@@ -369,6 +384,19 @@
 				8B40D5051729D4150000128D /* TopBanneriPad.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		8B5DC4D018F1F68200732D45 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				8B5DC4D118F1F91A00732D45 /* NewArticleViewController.h */,
+				8B5DC4D218F1F91A00732D45 /* NewArticleViewController.m */,
+				8B5DC4CD18F1F67B00732D45 /* MenuViewController.h */,
+				8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */,
+				8B5DC4C718F1F4F500732D45 /* NewArticlesListTableViewController.h */,
+				8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */,
+			);
+			name = New;
 			sourceTree = "<group>";
 		};
 		8B85640218D4D96A0098B83A /* Resources */ = {
@@ -632,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD1C81C16B32493005F3F23 /* main.m in Sources */,
+				8B5DC4C918F1F4F500732D45 /* NewArticlesListTableViewController.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
 				8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */,
 				16B3E6F918691F1900ABC0CF /* ArticlesListViewController.m in Sources */,
@@ -639,6 +668,8 @@
 				16B3E7141869502500ABC0CF /* ArticleViewController.m in Sources */,
 				E198F63A1857B52600CBDDED /* CommentsViewController.m in Sources */,
 				8B9BB17916BEEE8F00C20358 /* Article.m in Sources */,
+				8B5DC4CF18F1F67B00732D45 /* MenuViewController.m in Sources */,
+				8B5DC4CC18F1F57A00732D45 /* NewArticleCell.m in Sources */,
 				3BEBCE7C16C59D0B00B6DD08 /* SuperViewController.m in Sources */,
 				E198F63E1857BDBA00CBDDED /* Comment.m in Sources */,
 				3BEBCE8116C5A79900B6DD08 /* FeaturesViewController.m in Sources */,
@@ -646,6 +677,7 @@
 				16B3E723186A6ECE00ABC0CF /* SandBClient.m in Sources */,
 				16B3E71B186968EB00ABC0CF /* TestArticleViewController.m in Sources */,
 				3BEBCE8A16C5AB7000B6DD08 /* OpinionViewController.m in Sources */,
+				8B5DC4D318F1F91A00732D45 /* NewArticleViewController.m in Sources */,
 				8BC46F6116C823A3008642F7 /* ArtsViewController.m in Sources */,
 				16B3E70C18693BD400ABC0CF /* GlassViewController.m in Sources */,
 				8BFF61F916D164DB00CF3714 /* CommunityViewController.m in Sources */,

@@ -79,19 +79,17 @@
     }
     //This is kinda wierd..
     
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Checking if I can change text color in code, since it doesn't work in Storyboard
+    //    self.contentTextView.textColor = [UIColor redColor];
+    // This doesn't work, color & font & all those sorts of things have to be changed in the Article
+    // model with CSS
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
     
-//    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.view.bounds];
-//    [self.view addSubview:shimmeringView];
-//
-//    shimmeringView.contentView = self.testLabel;
-    
-    // Start shimmering.
-   // shimmeringView.shimmering = YES;
+    // FB Shimmering Effect
     self.shimmerView.contentView = self.authorLabel;
     self.shimmerView.shimmering = YES;
     
-//    CGPoint center1 = CGPointMake(self.view.bounds.size.width/2,
-//                                  self.view.bounds.size,height/2);
     
    
 

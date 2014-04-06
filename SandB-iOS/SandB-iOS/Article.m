@@ -123,7 +123,9 @@
         
         //Obviously this isn't right. We're doing it on the main thread. Need to figure out a way to blur this out. And then refresh the GlassScrollViews AFTER the image has been blurred. in order for this to work right...
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_imageMediumURL]]];
-        _blurredImage = [image applyLightEffect];
+        
+        UIColor *red = [UIColor colorWithRed:141.0f/255.0f green:29.0f/255.0f blue:41.0f/255.0f alpha:1.0f];
+        _blurredImage = [image applyTintEffectWithColor:[UIColor blackColor]];
         
 
         
@@ -137,7 +139,7 @@
     //Increasing the font size via css - Did it this way because I didn't want to lose the formatting... Hmm..
     NSString *htmlOpen = @"<html>";
     NSString *htmlClose = @"</html>";
-    NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 150%;font-family:'Raleway-Regular';}</style></head>";
+    NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 150%;font-family:'Helvetica Neue';color:#4A4A4A;}</style></head>";
     NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, _content, htmlClose];
     
     
