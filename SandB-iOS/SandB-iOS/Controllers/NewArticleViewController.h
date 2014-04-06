@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UITextView *articleContentTextView;
 @property (strong, nonatomic) IBOutlet UILabel *articleTitleLabel;
 @property (nonatomic, strong) Article *article;
+@property (strong, nonatomic) IBOutlet UITableView *theTableView;
 
 @end

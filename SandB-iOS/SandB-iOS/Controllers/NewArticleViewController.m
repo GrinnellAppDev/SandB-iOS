@@ -7,12 +7,16 @@
 //
 
 #import "NewArticleViewController.h"
+#import "ContentCell.h"
 
 @interface NewArticleViewController ()
 
 @end
 
-@implementation NewArticleViewController
+@implementation NewArticleViewController {
+    CGFloat contentHeight;
+    NSAttributedString *test;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +34,8 @@
     
     self.articleTitleLabel.text = self.article.title;
     self.articleContentTextView.text = self.article.content;
+    test = [[NSAttributedString alloc] initWithString:self.article.content];
+    contentHeight = [self textViewHeightForAttributedText:test andWidth:320.0] + 20;
     
 }
 
@@ -49,5 +55,55 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Table View Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *titleCellIdentifier = @"TitleCell";
+    static NSString *contentCellIdentifier = @"ContentCell";
+    
+    UITableViewCell *titleCell;
+    ContentCell *contentCell;
+    
+    if (indexPath.row == 0) {
+        titleCell = [tableView dequeueReusableCellWithIdentifier:titleCellIdentifier forIndexPath:indexPath];
+        titleCell.textLabel.text = self.article.title;
+        return titleCell;
+    }
+    
+    else //(indexPath.row == 1)
+    {
+        contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
+        contentCell.contentTextView.attributedText = test;
+        
+        return contentCell;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)path
+{
+    NSLog(@"stuff");
+    if (path.row == 1) {
+        return contentHeight;
+    }
+    
+    else {
+        return 40.0f;
+    }
+}
+
+- (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
+{
+    UITextView *textView = [[UITextView alloc] init];
+    [textView setAttributedText:text];
+    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    return size.height;
+}
 
 @end

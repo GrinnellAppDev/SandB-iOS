@@ -33,7 +33,7 @@
     for (int i = 0; i < 10; i++) {
         Article *article = [[Article alloc] init];
         article.title = [NSString stringWithFormat:@"Article Title: %d", i];
-        article.content = @"Biggest baddest content the world as ever seen!!!";
+        article.content = @"Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!!";
         //put in array
         [self.pageArticles addObject:article];
     }
