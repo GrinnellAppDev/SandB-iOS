@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Article.h"
 
-@interface NewArticleViewController : UIViewController
+@interface NewArticleViewController : UIViewController 
+
+@property (nonatomic) NSUInteger pageIndex;
+@property (strong, nonatomic) IBOutlet UITextView *articleContentTextView;
+@property (strong, nonatomic) IBOutlet UILabel *articleTitleLabel;
+@property (nonatomic, strong) Article *article;
 
 @end

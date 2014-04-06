@@ -27,6 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.articleTitleLabel.text = self.article.title;
+    self.articleContentTextView.text = self.article.content;
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -51,6 +51,8 @@
 		8B5DC4CC18F1F57A00732D45 /* NewArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4CB18F1F57A00732D45 /* NewArticleCell.m */; };
 		8B5DC4CF18F1F67B00732D45 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */; };
 		8B5DC4D318F1F91A00732D45 /* NewArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D218F1F91A00732D45 /* NewArticleViewController.m */; };
+		8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D518F1FD0200732D45 /* NewArticlePageViewHolderController.m */; };
+		8B5DC4D818F20A9400732D45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D718F20A9400732D45 /* Images.xcassets */; };
 		8B71773F16D858FA001F1F94 /* SANDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71773E16D858FA001F1F94 /* SANDB.png */; };
 		8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B85640018D4D75B0098B83A /* ArticleCell.m */; };
 		8B85640D18D4DE1A0098B83A /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B85640C18D4DA9A0098B83A /* Raleway-Thin.ttf */; };
@@ -157,6 +159,9 @@
 		8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		8B5DC4D118F1F91A00732D45 /* NewArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticleViewController.h; sourceTree = "<group>"; };
 		8B5DC4D218F1F91A00732D45 /* NewArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticleViewController.m; sourceTree = "<group>"; };
+		8B5DC4D418F1FD0200732D45 /* NewArticlePageViewHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticlePageViewHolderController.h; sourceTree = "<group>"; };
+		8B5DC4D518F1FD0200732D45 /* NewArticlePageViewHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticlePageViewHolderController.m; sourceTree = "<group>"; };
+		8B5DC4D718F20A9400732D45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		8B71773E16D858FA001F1F94 /* SANDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDB.png; sourceTree = "<group>"; };
 		8B8563FF18D4D75B0098B83A /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
 		8B85640018D4D75B0098B83A /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
@@ -395,6 +400,8 @@
 				8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */,
 				8B5DC4C718F1F4F500732D45 /* NewArticlesListTableViewController.h */,
 				8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */,
+				8B5DC4D418F1FD0200732D45 /* NewArticlePageViewHolderController.h */,
+				8B5DC4D518F1FD0200732D45 /* NewArticlePageViewHolderController.m */,
 			);
 			name = New;
 			sourceTree = "<group>";
@@ -466,6 +473,7 @@
 				3BEBCE8316C5A94700B6DD08 /* Main Views */,
 				8BD1C81616B32493005F3F23 /* Supporting Files */,
 				16B3E6F318691C9A00ABC0CF /* Main.storyboard */,
+				8B5DC4D718F20A9400732D45 /* Images.xcassets */,
 			);
 			path = "SandB-iOS";
 			sourceTree = "<group>";
@@ -575,6 +583,7 @@
 				E19E290A180E5ED200ED33FE /* icon-29.png in Resources */,
 				16B3E7171869569700ABC0CF /* rink.jpg in Resources */,
 				16B3E70E18693E2500ABC0CF /* thomas2.jpg in Resources */,
+				8B5DC4D818F20A9400732D45 /* Images.xcassets in Resources */,
 				E19E290E180E5ED200ED33FE /* icon-80.png in Resources */,
 				E19E290D180E5ED200ED33FE /* icon-76.png in Resources */,
 				3BD9DEAD16D17A390053C1C5 /* brain.png in Resources */,
@@ -683,6 +692,7 @@
 				8BFF61F916D164DB00CF3714 /* CommunityViewController.m in Sources */,
 				1600A33218933C71006DFF9B /* BTGlassScrollView.m in Sources */,
 				8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */,
+				8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */,
 				8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */,
 				16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */,
 			);
