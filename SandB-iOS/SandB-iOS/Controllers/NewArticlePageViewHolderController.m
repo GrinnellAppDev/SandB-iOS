@@ -33,9 +33,11 @@
     for (int i = 0; i < 10; i++) {
         Article *article = [[Article alloc] init];
         article.title = [NSString stringWithFormat:@"Article Title: %d", i];
-        article.content = @"Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!!";
+        article.content = @"Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!!";
         //put in array
         [self.pageArticles addObject:article];
+        
+        //self.topBarView.layer.zPosition = 1;
     }
     
     // Do any additional setup after loading the view.
@@ -50,11 +52,12 @@
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    self.pageViewController.view.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    [self.view bringSubviewToFront:self.topBarView];
     
     // get rid of swiping back
     
@@ -70,6 +73,13 @@
         // iOS 7
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
     }
+    
+    // methods that notify this view from the NewArticleViewController that the table view scrolled to a certain break point
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorTopBar) name:@"ColorTopBar" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uncolorTopBar) name:@"UncolorTopBar" object:nil];
+    
+    // changing the color of the buttons
 
 }
 
@@ -145,5 +155,46 @@
     return YES;
 }
 
+
+- (IBAction)popViewController:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)colorTopBar {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.topBarView.backgroundColor = [UIColor whiteColor];
+        self.redSeparator.alpha = 1;
+    }];
+    
+    [self colorButtons];
+}
+
+-(void)uncolorTopBar {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.topBarView.backgroundColor = [UIColor clearColor];
+        self.redSeparator.alpha = 0;
+    }];
+    
+    [self uncolorButtons];
+}
+
+-(void) colorButtons {
+    self.view.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
+    
+    self.backButton.imageView.image = [[UIImage imageNamed:@"BackButtonWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.chatButton.imageView.image = [[UIImage imageNamed:@"ChatIconWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.starButton.imageView.image = [[UIImage imageNamed:@"StarIconWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.shareButton.imageView.image = [[UIImage imageNamed:@"ShareIconWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.editTextButton.imageView.image = [[UIImage imageNamed:@"EditTextIconWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+}
+
+-(void) uncolorButtons {
+    
+    self.backButton.imageView.image = [[UIImage imageNamed:@"BackButtonWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
+    self.chatButton.imageView.image = [[UIImage imageNamed:@"ChatIconWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
+    self.starButton.imageView.image = [[UIImage imageNamed:@"StarIconWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
+    self.shareButton.imageView.image = [[UIImage imageNamed:@"ShareIconWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
+    self.editTextButton.imageView.image = [[UIImage imageNamed:@"EditTextIconWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
+}
 
 @end

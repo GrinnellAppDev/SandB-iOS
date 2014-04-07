@@ -38,6 +38,12 @@
     [self ecslidingOptions];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

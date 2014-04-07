@@ -45,6 +45,7 @@
 		8B125BBB172100FF00C550F7 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */; };
 		8B40D5041729D4060000128D /* TopBanneriPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B40D5031729D4060000128D /* TopBanneriPhone.png */; };
 		8B40D5061729D4150000128D /* TopBanneriPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B40D5051729D4150000128D /* TopBanneriPad.png */; };
+		8B44468A18F23725002D1B42 /* UIScrollView+APParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B44468918F23725002D1B42 /* UIScrollView+APParallaxHeader.m */; };
 		8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5B20751721DBCD00E9E3AA /* NewsViewController.m */; };
 		8B5B20791721DBE900E9E3AA /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20771721DBE900E9E3AA /* NewsViewController.xib */; };
 		8B5DC4C918F1F4F500732D45 /* NewArticlesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */; };
@@ -149,6 +150,8 @@
 		8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		8B40D5031729D4060000128D /* TopBanneriPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopBanneriPhone.png; sourceTree = "<group>"; };
 		8B40D5051729D4150000128D /* TopBanneriPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopBanneriPad.png; sourceTree = "<group>"; };
+		8B44468818F23725002D1B42 /* UIScrollView+APParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+APParallaxHeader.h"; sourceTree = "<group>"; };
+		8B44468918F23725002D1B42 /* UIScrollView+APParallaxHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+APParallaxHeader.m"; sourceTree = "<group>"; };
 		8B5B20741721DBCD00E9E3AA /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		8B5B20751721DBCD00E9E3AA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		8B5B20781721DBE900E9E3AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsViewController.xib; sourceTree = "<group>"; };
@@ -371,6 +374,16 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		8B44468418F2369C002D1B42 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				8B44468818F23725002D1B42 /* UIScrollView+APParallaxHeader.h */,
+				8B44468918F23725002D1B42 /* UIScrollView+APParallaxHeader.m */,
+			);
+			name = Vendor;
+			path = "SandB-iOS/Vendor";
+			sourceTree = "<group>";
+		};
 		8B4F81E816ED0E47008466CE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,7 +424,7 @@
 			name = New;
 			sourceTree = "<group>";
 		};
-		8B85640218D4D96A0098B83A /* Resources */ = {
+		8B85640218D4D96A0098B83A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				8B85640318D4D9760098B83A /* Raleway-Bold.otf */,
@@ -424,13 +437,14 @@
 				8B85640A18D4D9760098B83A /* Raleway-SemiBold.otf */,
 				8B85640B18D4D9760098B83A /* Raleway-Thin.otf */,
 			);
-			name = Resources;
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		8BD1C80016B32493005F3F23 = {
 			isa = PBXGroup;
 			children = (
-				8B85640218D4D96A0098B83A /* Resources */,
+				8B44468418F2369C002D1B42 /* Vendor */,
+				8B85640218D4D96A0098B83A /* Fonts */,
 				8BD1C81516B32493005F3F23 /* SandB-iOS */,
 				8BD1C80E16B32493005F3F23 /* Frameworks */,
 				8BD1C80C16B32493005F3F23 /* Products */,
@@ -697,6 +711,7 @@
 				16B3E70C18693BD400ABC0CF /* GlassViewController.m in Sources */,
 				8BFF61F916D164DB00CF3714 /* CommunityViewController.m in Sources */,
 				1600A33218933C71006DFF9B /* BTGlassScrollView.m in Sources */,
+				8B44468A18F23725002D1B42 /* UIScrollView+APParallaxHeader.m in Sources */,
 				8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */,
 				8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */,
 				8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */,

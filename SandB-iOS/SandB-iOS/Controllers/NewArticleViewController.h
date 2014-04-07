@@ -17,4 +17,5 @@
 @property (nonatomic, strong) Article *article;
 @property (strong, nonatomic) IBOutlet UITableView *theTableView;
 
+
 @end

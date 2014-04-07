@@ -8,6 +8,7 @@
 
 #import "NewArticleViewController.h"
 #import "ContentCell.h"
+#import "UIScrollView+APParallaxHeader.h"
 
 @interface NewArticleViewController ()
 
@@ -35,14 +36,37 @@
     self.articleTitleLabel.text = self.article.title;
     self.articleContentTextView.text = self.article.content;
     test = [[NSAttributedString alloc] initWithString:self.article.content];
-    contentHeight = [self textViewHeightForAttributedText:test andWidth:320.0] + 20;
     
+    // add parallax image
+    [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"thomas.jpg"] andHeight:400];
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:YES];
+    
+//    CGSize size = self.articleContentTextView.contentSize;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidLayoutSubviews {
+    // change size of textview
+    
+//    CGFloat textViewWidth = self.articleContentTextView.frame.size.width;
+//    CGSize newSize = [self.articleContentTextView sizeThatFits:CGSizeMake(textViewWidth, MAXFLOAT)];
+//    CGRect newFrame = self.articleContentTextView.frame;
+//    newFrame.size = CGSizeMake(fmaxf(newSize.width, textViewWidth), 500);
+//    self.articleContentTextView.frame = newFrame;
+    
+    
+    contentHeight = [self textViewHeightForAttributedText:test andWidth:320.0] + 20;
+
 }
 
 /*
@@ -80,7 +104,14 @@
     else //(indexPath.row == 1)
     {
         contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
-        contentCell.contentTextView.attributedText = test;
+        //contentCell.contentTextView.attributedText = test;
+        
+        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(20, 5, 310, contentHeight)];
+        contentTextView.attributedText = test;
+        contentTextView.userInteractionEnabled = NO;
+        contentTextView.selectable = NO;
+        
+        [contentCell.contentView addSubview:contentTextView];
         
         return contentCell;
     }
@@ -90,7 +121,7 @@
 {
     NSLog(@"stuff");
     if (path.row == 1) {
-        return contentHeight;
+        return contentHeight + 100;
     }
     
     else {
@@ -104,6 +135,20 @@
     [textView setAttributedText:text];
     CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
     return size.height;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat contentOffsetDifference = scrollView.contentOffset.y;
+    NSLog(@"our floattt: %f", contentOffsetDifference);
+    
+    if (scrollView.contentOffset.y > -69.0 ) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ColorTopBar" object:nil];
+    }
+    
+    else if (scrollView.contentOffset.y < -69.0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UncolorTopBar" object:nil];
+    }
 }
 
 @end

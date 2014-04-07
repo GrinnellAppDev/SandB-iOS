@@ -13,5 +13,13 @@
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) NSMutableArray *pageArticles;
+@property (strong, nonatomic) IBOutlet UIView *topBarView;
+- (IBAction)popViewController:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *redSeparator;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UIButton *chatButton;
+@property (strong, nonatomic) IBOutlet UIButton *starButton;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
+@property (strong, nonatomic) IBOutlet UIButton *editTextButton;
 
 @end
