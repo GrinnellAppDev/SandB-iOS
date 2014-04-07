@@ -12,16 +12,13 @@
 
 @end
 
-@implementation MenuViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+@implementation MenuViewController {
+    NSArray *categoriesTitles;
+    NSArray *toolsTitles;
+    NSArray *categoryColors;
+    NSArray *selectedCategoryColors;
 }
+
 
 - (void)viewDidLoad
 {
@@ -32,6 +29,13 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    categoriesTitles = @[@"News", @"Arts", @"Community", @"Features", @"Opinion", @"Sports"];
+    categoryColors = [[NSArray alloc] initWithObjects:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0], [UIColor colorWithRed:24.0/255 green:84.0/255 blue:2.0/255 alpha:1.0], [UIColor colorWithRed:139.0/255 green:87.0/255 blue:42.0/255 alpha:1.0], [UIColor colorWithRed:196.0/255 green:22.0/255 blue:22.0/255 alpha:1.0], [UIColor colorWithRed:166.0/255 green:163.0/255 blue:17.0/255 alpha:1.0], [UIColor colorWithRed:40.0/255 green:141.0/255 blue:20.0/255 alpha:1.0], nil];
+    
+    selectedCategoryColors = [[NSArray alloc] initWithObjects:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1], [UIColor colorWithRed:24.0/255 green:84.0/255 blue:2.0/255 alpha:0.1], [UIColor colorWithRed:139.0/255 green:87.0/255 blue:42.0/255 alpha:0.1], [UIColor colorWithRed:196.0/255 green:22.0/255 blue:22.0/255 alpha:0.1], [UIColor colorWithRed:166.0/255 green:163.0/255 blue:17.0/255 alpha:0.1], [UIColor colorWithRed:40.0/255 green:141.0/255 blue:20.0/255 alpha:0.1], nil];
+    
+    toolsTitles = @[@"Saved Articles", @"Rate Our App", @"Contact Us"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,28 +48,92 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    if (section == 0) {
+        return 6;
+    }
+    
+    else {
+        return 3;
+    }
 }
 
-/*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Categories";
+    }
+    else {
+        return @"Tools";
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    header.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
+    header.textLabel.textColor = [UIColor whiteColor];
+    
+}
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *indetifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indetifier forIndexPath:indexPath];
     
     // Configure the cell...
     
+    UIView *categoryIndicator;
+    
+    if (indexPath.section == 0) {
+        cell.textLabel.text = categoriesTitles[indexPath.row];
+        categoryIndicator = (UIView *) [cell viewWithTag:10];
+        categoryIndicator.backgroundColor = categoryColors[indexPath.row];
+        
+        // TO DO: Make sure to change background color of first cell white, when something else is selected
+        if (indexPath.row == 0) {
+            cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
+        }
+        cell.textLabel.textColor = categoryColors[indexPath.row];
+        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22]];
+    }
+    
+    if (indexPath.section == 1) {
+        cell.textLabel.text = toolsTitles[indexPath.row];
+        categoryIndicator = (UIView *) [cell viewWithTag:10];
+        categoryIndicator.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
+        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22]];
+    }
+    
     return cell;
 }
-*/
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (indexPath.section == 0) {
+        cell.backgroundColor = selectedCategoryColors[indexPath.row];
+    }
+    
+    if (indexPath.section == 1) {
+        cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor whiteColor];
+}
+
 
 /*
 // Override to support conditional editing of the table view.

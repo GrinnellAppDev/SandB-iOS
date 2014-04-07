@@ -78,8 +78,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorTopBar) name:@"ColorTopBar" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uncolorTopBar) name:@"UncolorTopBar" object:nil];
-    
-    // changing the color of the buttons
 
 }
 
@@ -177,6 +175,8 @@
     
     [self uncolorButtons];
 }
+
+// changing the color of the buttons
 
 -(void) colorButtons {
     self.view.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
