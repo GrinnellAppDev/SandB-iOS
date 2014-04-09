@@ -9,6 +9,7 @@
 #import "NewArticlesListTableViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
 #import "NewArticleCell.h"
+#import "DataModel.h"
 
 @interface NewArticlesListTableViewController ()
 
@@ -36,6 +37,21 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self ecslidingOptions];
+    [self fetchArticles];
+    
+}
+
+- (void) fetchArticles {
+    
+    [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+        if (!error) {
+            [self.tableView reloadData];
+        }
+        else {
+            NSLog(@"I am sad!");
+        }
+    }];
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -61,7 +77,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return [[[DataModel sharedModel] articles] count];;
 }
 
 
@@ -71,7 +87,7 @@
     
     // Configure the cell...
     
-    cell.textLabel.text = @"Sttuffff";
+    cell.textLabel.text = [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] title];
     
     return cell;
 }

@@ -121,6 +121,10 @@
     
     if (indexPath.section == 0) {
         cell.backgroundColor = selectedCategoryColors[indexPath.row];
+        NSIndexPath *firstCellPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        UITableViewCell *firstCell = [tableView cellForRowAtIndexPath:firstCellPath];
+        
+        // TO DO: Make the selected row be the color of the category that gets displayed in the main view
     }
     
     if (indexPath.section == 1) {
