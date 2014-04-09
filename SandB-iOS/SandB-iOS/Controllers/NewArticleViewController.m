@@ -140,7 +140,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat contentOffsetDifference = scrollView.contentOffset.y;
-    NSLog(@"our floattt: %f", contentOffsetDifference);
+   // NSLog(@"our floattt: %f", contentOffsetDifference);
     
     if (scrollView.contentOffset.y > -69.0 ) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ColorTopBar" object:nil];

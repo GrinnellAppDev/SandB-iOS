@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewArticleViewController.h"
 
-@interface NewArticlePageViewHolderController : UIViewController <UIPageViewControllerDataSource>
+@interface NewArticlePageViewHolderController : UIViewController <UIPageViewControllerDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) NSMutableArray *pageArticles;

@@ -9,7 +9,9 @@
 #import "NewArticlePageViewHolderController.h"
 #import "Article.h"
 
-@interface NewArticlePageViewHolderController ()
+@interface NewArticlePageViewHolderController () {
+
+}
 
 @end
 
@@ -159,42 +161,39 @@
 }
 
 -(void)colorTopBar {
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.topBarView.backgroundColor = [UIColor whiteColor];
         self.redSeparator.alpha = 1;
     }];
     
-    [self colorButtons];
+    [self colorButtonsForRenderingMode:UIImageRenderingModeAlwaysTemplate andControlState:UIControlStateNormal];
 }
 
 -(void)uncolorTopBar {
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.topBarView.backgroundColor = [UIColor clearColor];
         self.redSeparator.alpha = 0;
     }];
     
-    [self uncolorButtons];
+    [self colorButtonsForRenderingMode:UIImageRenderingModeAutomatic andControlState:UIControlStateNormal];
+
 }
 
 // changing the color of the buttons
 
--(void) colorButtons {
+-(void) colorButtonsForRenderingMode:(UIImageRenderingMode *) mode andControlState:(UIControlState *) state{
+    
     self.view.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
     
-    self.backButton.imageView.image = [[UIImage imageNamed:@"BackButtonWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.chatButton.imageView.image = [[UIImage imageNamed:@"ChatIconWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.starButton.imageView.image = [[UIImage imageNamed:@"StarIconWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.shareButton.imageView.image = [[UIImage imageNamed:@"ShareIconWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.editTextButton.imageView.image = [[UIImage imageNamed:@"EditTextIconWhite"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-}
-
--(void) uncolorButtons {
+    [self.backButton setImage:[[UIImage imageNamed:@"BackButtonWhite"]imageWithRenderingMode:mode] forState:state];
+    [self.chatButton setImage:[[UIImage imageNamed:@"ChatIconWhite"]imageWithRenderingMode:mode] forState:state];
+    [self.starButton setImage:[[UIImage imageNamed:@"StarIconWhite"]imageWithRenderingMode:mode] forState:state];
+    [self.shareButton setImage:[[UIImage imageNamed:@"ShareIconWhite"]imageWithRenderingMode:mode] forState:state];
+    [self.editTextButton setImage:[[UIImage imageNamed:@"EditTextIconWhite"]imageWithRenderingMode:mode] forState:state];
     
-    self.backButton.imageView.image = [[UIImage imageNamed:@"BackButtonWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
-    self.chatButton.imageView.image = [[UIImage imageNamed:@"ChatIconWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
-    self.starButton.imageView.image = [[UIImage imageNamed:@"StarIconWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
-    self.shareButton.imageView.image = [[UIImage imageNamed:@"ShareIconWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
-    self.editTextButton.imageView.image = [[UIImage imageNamed:@"EditTextIconWhite"] imageWithRenderingMode:UIImageRenderingModeAutomatic];
+    // TO DO: Change Color When Button Pressed
 }
 
 @end
