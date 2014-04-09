@@ -9,9 +9,9 @@
 #import "NewArticlePageViewHolderController.h"
 #import "Article.h"
 
-@interface NewArticlePageViewHolderController () {
+@interface NewArticlePageViewHolderController ()
 
-}
+@property (nonatomic, strong) Article *currentArticle;
 
 @end
 
@@ -80,6 +80,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorTopBar) name:@"ColorTopBar" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uncolorTopBar) name:@"UncolorTopBar" object:nil];
+    
+    // Set pageview delegate to self
+    self.pageViewController.delegate = self;
 
 }
 
@@ -114,14 +117,14 @@
         return nil;
     }
     
-    NewArticleViewController *nwvc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
+    NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
     
     Article *article = self.pageArticles[index];
     
-    nwvc.article = article;
-    nwvc.pageIndex = index;
+    navc.article = article;
+    navc.pageIndex = index;
     
-    return nwvc;
+    return navc;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -145,7 +148,6 @@
     }
     
     index++;
-    
     return [self viewControllerAtIndex:index];
 }
 
@@ -194,6 +196,19 @@
     [self.editTextButton setImage:[[UIImage imageNamed:@"EditTextIconWhite"]imageWithRenderingMode:mode] forState:state];
     
     // TO DO: Change Color When Button Pressed
+}
+
+- (IBAction)favoriteButtonPressed:(id)sender {
+    NSLog(@"I am favoriting the current article - %@", self.currentArticle.title);
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
+    
+    NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
+    
+    NSUInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
+    
+    self.currentArticle  = self.pageArticles[theIndex];
 }
 
 @end

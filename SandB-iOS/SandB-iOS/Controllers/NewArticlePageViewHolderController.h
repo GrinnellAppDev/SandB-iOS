@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewArticleViewController.h"
 
-@interface NewArticlePageViewHolderController : UIViewController <UIPageViewControllerDataSource, UITableViewDelegate>
+@interface NewArticlePageViewHolderController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) NSMutableArray *pageArticles;
@@ -21,5 +21,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *starButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *editTextButton;
+
+// ACTIONS
+- (IBAction)favoriteButtonPressed:(id)sender;
 
 @end
