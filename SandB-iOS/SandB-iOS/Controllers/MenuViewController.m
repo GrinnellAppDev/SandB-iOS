@@ -7,6 +7,7 @@
 //
 
 #import "MenuViewController.h"
+#import "NewsCategories.h"
 
 @interface MenuViewController ()
 
@@ -30,12 +31,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    categoriesTitles = @[@"News", @"Arts", @"Community", @"Features", @"Opinion", @"Sports"];
-    categoryColors = [[NSArray alloc] initWithObjects:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0], [UIColor colorWithRed:24.0/255 green:84.0/255 blue:2.0/255 alpha:1.0], [UIColor colorWithRed:139.0/255 green:87.0/255 blue:42.0/255 alpha:1.0], [UIColor colorWithRed:196.0/255 green:22.0/255 blue:22.0/255 alpha:1.0], [UIColor colorWithRed:166.0/255 green:163.0/255 blue:17.0/255 alpha:1.0], [UIColor colorWithRed:40.0/255 green:141.0/255 blue:20.0/255 alpha:1.0], nil];
+    [[NewsCategories sharedCategories] categoriesWithData];
     
-    selectedCategoryColors = [[NSArray alloc] initWithObjects:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1], [UIColor colorWithRed:24.0/255 green:84.0/255 blue:2.0/255 alpha:0.1], [UIColor colorWithRed:139.0/255 green:87.0/255 blue:42.0/255 alpha:0.1], [UIColor colorWithRed:196.0/255 green:22.0/255 blue:22.0/255 alpha:0.1], [UIColor colorWithRed:166.0/255 green:163.0/255 blue:17.0/255 alpha:0.1], [UIColor colorWithRed:40.0/255 green:141.0/255 blue:20.0/255 alpha:0.1], nil];
+    categoriesTitles = [[[NewsCategories sharedCategories] categories] objectForKey:@"names"];
+    categoryColors = [[[NewsCategories sharedCategories] categories] objectForKey:@"colors"];
+    selectedCategoryColors = [[[NewsCategories sharedCategories] categories] objectForKey:@"highlighted"];
     
     toolsTitles = @[@"Saved Articles", @"Rate Our App", @"Contact Us"];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,14 +107,14 @@
             cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
         }
         cell.textLabel.textColor = categoryColors[indexPath.row];
-        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:22]];
     }
     
     if (indexPath.section == 1) {
         cell.textLabel.text = toolsTitles[indexPath.row];
         categoryIndicator = (UIView *) [cell viewWithTag:10];
         categoryIndicator.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:22]];
     }
     
     return cell;

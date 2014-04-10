@@ -28,7 +28,15 @@
     //[Crashlytics sharedInstance].debugMode = YES;
     
     
-
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+    shadow.shadowOffset = CGSizeMake(0, 1);
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                           shadow, NSShadowAttributeName,
+                                                           [UIFont fontWithName:@"HelveticaNeue" size:23.0], NSFontAttributeName, nil]];
     
     /*
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

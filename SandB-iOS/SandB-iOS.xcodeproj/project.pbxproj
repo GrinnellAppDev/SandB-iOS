@@ -76,6 +76,9 @@
 		8BD1C83016B32493005F3F23 /* SportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C82F16B32493005F3F23 /* SportsViewController.m */; };
 		8BD1C83D16B32493005F3F23 /* SportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1C83B16B32493005F3F23 /* SportsViewController.xib */; };
 		8BE8DFE116B5B29D0024A477 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8DFE016B5B29D0024A477 /* NewsCell.xib */; };
+		8BF70EE318F65F2B00637795 /* NewsCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EE218F65F2B00637795 /* NewsCategories.m */; };
+		8BF70EE918F6CB1000637795 /* NewsCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EE818F6CB1000637795 /* NewsCategory.m */; };
+		8BF70EEC18F738B700637795 /* SpecificCategoryArticlesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EEB18F738B700637795 /* SpecificCategoryArticlesListViewController.m */; };
 		8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFB80BB16D80F9800571249 /* NSString_stripHtml.m */; };
 		8BFF61F916D164DB00CF3714 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFF61F716D164DB00CF3714 /* CommunityViewController.m */; };
 		8BFF61FA16D164DB00CF3714 /* CommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF61F816D164DB00CF3714 /* CommunityViewController.xib */; };
@@ -206,6 +209,12 @@
 		8BD1C83C16B32493005F3F23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SportsViewController.xib; sourceTree = "<group>"; };
 		8BD1C84616B32E2B005F3F23 /* SportsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SportsViewController.h; sourceTree = "<group>"; };
 		8BE8DFE016B5B29D0024A477 /* NewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		8BF70EE118F65F2B00637795 /* NewsCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCategories.h; sourceTree = "<group>"; };
+		8BF70EE218F65F2B00637795 /* NewsCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCategories.m; sourceTree = "<group>"; };
+		8BF70EE718F6CB1000637795 /* NewsCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCategory.h; sourceTree = "<group>"; };
+		8BF70EE818F6CB1000637795 /* NewsCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCategory.m; sourceTree = "<group>"; };
+		8BF70EEA18F738B700637795 /* SpecificCategoryArticlesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecificCategoryArticlesListViewController.h; sourceTree = "<group>"; };
+		8BF70EEB18F738B700637795 /* SpecificCategoryArticlesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecificCategoryArticlesListViewController.m; sourceTree = "<group>"; };
 		8BFB80BA16D80F9800571249 /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_stripHtml.h; path = ../NSString_stripHtml.h; sourceTree = "<group>"; };
 		8BFB80BB16D80F9800571249 /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSString_stripHtml.m; path = ../NSString_stripHtml.m; sourceTree = "<group>"; };
 		8BFF61F616D164DB00CF3714 /* CommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityViewController.h; sourceTree = "<group>"; };
@@ -299,6 +308,10 @@
 				16B3E725186B929200ABC0CF /* DataModel.m */,
 				8B8563FF18D4D75B0098B83A /* ArticleCell.h */,
 				8B85640018D4D75B0098B83A /* ArticleCell.m */,
+				8BF70EE118F65F2B00637795 /* NewsCategories.h */,
+				8BF70EE218F65F2B00637795 /* NewsCategories.m */,
+				8BF70EE718F6CB1000637795 /* NewsCategory.h */,
+				8BF70EE818F6CB1000637795 /* NewsCategory.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,6 +433,8 @@
 				8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */,
 				8B5DC4D418F1FD0200732D45 /* NewArticlePageViewHolderController.h */,
 				8B5DC4D518F1FD0200732D45 /* NewArticlePageViewHolderController.m */,
+				8BF70EEA18F738B700637795 /* SpecificCategoryArticlesListViewController.h */,
+				8BF70EEB18F738B700637795 /* SpecificCategoryArticlesListViewController.m */,
 			);
 			name = New;
 			sourceTree = "<group>";
@@ -697,7 +712,9 @@
 				E198F63A1857B52600CBDDED /* CommentsViewController.m in Sources */,
 				8B9BB17916BEEE8F00C20358 /* Article.m in Sources */,
 				8B5DC4CF18F1F67B00732D45 /* MenuViewController.m in Sources */,
+				8BF70EE318F65F2B00637795 /* NewsCategories.m in Sources */,
 				8B5DC4CC18F1F57A00732D45 /* NewArticleCell.m in Sources */,
+				8BF70EE918F6CB1000637795 /* NewsCategory.m in Sources */,
 				3BEBCE7C16C59D0B00B6DD08 /* SuperViewController.m in Sources */,
 				E198F63E1857BDBA00CBDDED /* Comment.m in Sources */,
 				3BEBCE8116C5A79900B6DD08 /* FeaturesViewController.m in Sources */,
@@ -714,6 +731,7 @@
 				8B44468A18F23725002D1B42 /* UIScrollView+APParallaxHeader.m in Sources */,
 				8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */,
 				8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */,
+				8BF70EEC18F738B700637795 /* SpecificCategoryArticlesListViewController.m in Sources */,
 				8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */,
 				16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */,
 			);

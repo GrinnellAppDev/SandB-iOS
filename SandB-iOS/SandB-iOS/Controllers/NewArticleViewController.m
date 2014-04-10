@@ -69,7 +69,6 @@
 //         }
 //     }];
 //
-    NSLog(@"THE DATE!!!! %@", self.article.date);
 }
 
 - (void) viewDidAppear:(BOOL)animated {

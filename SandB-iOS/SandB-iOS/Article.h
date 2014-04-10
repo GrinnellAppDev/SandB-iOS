@@ -17,6 +17,7 @@
 @property (nonatomic, assign) int commentsCount;
 @property (nonatomic, strong) NSString *date;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic) BOOL read;
 
 
 @property (nonatomic, strong) NSString *content;

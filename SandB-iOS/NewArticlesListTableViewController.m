@@ -11,9 +11,11 @@
 #import "NewArticleCell.h"
 #import "DataModel.h"
 #import "NewArticlePageViewHolderController.h"
+#import "NewsCategories.h"
 
 @interface NewArticlesListTableViewController ()
 @property (nonatomic) NSInteger articleIndex;
+@property (nonatomic, strong) NSArray *categoryColors;
 
 @end
 
@@ -40,7 +42,6 @@
     
     [self ecslidingOptions];
     [self fetchArticles];
-    
 }
 
 - (void) fetchArticles {
@@ -60,6 +61,7 @@
     [super viewWillAppear:YES];
     
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,10 +92,37 @@
     // Configure the cell...
     
     cell.articleTitle.text = [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] title];
-    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | By %@",[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] author]];
-    cell.categoryIdentifier.backgroundColor = [UIColor redColor];
+    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] author]];
+    cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]] color];
+    
+    // if article has been clicked on, aka red, color it with the category color to mark it as read
+    if ([[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] read]) {
+        cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]] highlightedColor];
+    }
+    else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+    
+    // make sure the selected color stays
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NewArticleCell *cell = (NewArticleCell *) [tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]] highlightedColor];
+    
+    [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] setRead:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)setCellColor:(UIColor *)color ForCell:(UITableViewCell *)cell {
+    cell.contentView.backgroundColor = color;
+    cell.backgroundColor = color;
 }
 
 // SEGUE METHODS

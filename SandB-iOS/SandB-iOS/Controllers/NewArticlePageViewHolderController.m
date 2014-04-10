@@ -79,9 +79,11 @@
     // DO STUFF WITH THE API
     // http://thesandb.com/api/get_category_posts + GET + JSON encoded id
     // 3 - News
-    // 216 - Community
     // 5 - Arts
+    // 216 - Community
     // 6 - Features
+    // 4 - Opinion
+    // 7 - Sports
     
     
 
@@ -121,6 +123,10 @@
     NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
     
     Article *article = self.pageArticles[self.articleIndex];
+    
+    NSLog(@"HAS THIS ARTICLE BEEN READ? %hhd", article.read);
+    
+    [[[DataModel sharedModel] articles][self.articleIndex] setRead:YES];
     
     navc.article = article;
     navc.pageIndex = index;

@@ -36,7 +36,7 @@
         
         NSLog(@"CONTENT: %@", _content);
         
-        _category = articleDictionary[@"author"][@"name"];
+        _category = [articleDictionary[@"categories"] objectAtIndex:0][@"title"];
         
         NSArray *attachments = articleDictionary[@"attachments"];
         NSDictionary *thumbnails = articleDictionary[@"thumbnail_images"];
@@ -75,6 +75,12 @@
             self.thumbnailImageURL = thumbnails[@"large"][@"url"];
         }
         _author = [articleDictionary[@"custom_fields"][@"author"] firstObject];
+        
+        NSRange range = [_author rangeOfString:@","];
+        if (range.location != NSNotFound) {
+            _author = [_author substringToIndex:range.location];
+        }
+        
         _date = articleDictionary[@"date"];
         _email = [articleDictionary[@"custom_fields"][@"author"] lastObject];
         
