@@ -12,9 +12,11 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *article;
-//@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSURL *comments;
 @property (nonatomic, assign) int commentsCount;
+@property (nonatomic, strong) NSString *date;
+@property (nonatomic, strong) NSString *email;
 
 
 @property (nonatomic, strong) NSString *content;
@@ -24,7 +26,9 @@
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSMutableAttributedString *attrContent; 
 
-@property (nonatomic, strong) UIImage *blurredImage; 
+@property (nonatomic, strong) UIImage *blurredImage;
+
+@property (nonatomic, strong) NSString *thumbnailImageURL;
 
 - (instancetype)initWithArticleDictionary:(NSDictionary *)articleDictionary;
 

@@ -9,6 +9,7 @@
 #import "NewArticleViewController.h"
 #import "ContentCell.h"
 #import "UIScrollView+APParallaxHeader.h"
+#import "UIImageView+WebCache.h"
 
 @interface NewArticleViewController ()
 
@@ -34,12 +35,41 @@
     // Do any additional setup after loading the view.
     
     self.articleTitleLabel.text = self.article.title;
-    self.articleContentTextView.text = self.article.content;
-    test = [[NSAttributedString alloc] initWithString:self.article.content];
+    self.articleContentTextView.attributedText = self.article.attrContent;
+    test = self.article.attrContent;
+    
+    NSLog(@"Thumbnail URL: %@", self.article.thumbnailImageURL);
     
     // add parallax image
-    [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"thomas.jpg"] andHeight:400];
+    [self.theTableView addParallaxWithImage:self.article.image andHeight:400];
+//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//    [manager downloadWithURL:[NSURL URLWithString:self.article.thumbnailImageURL] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//        // code
+//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+//        if (image) {
+//            [self.theTableView addParallaxWithImage:image andHeight:400];
+//        }
+//    }];
     
+//    [manager downloadWithURL:[NSURL URLWithString:self.article.thumbnailImageURL]
+//                     options:0
+//                    progress:^(NSUInteger receivedSize, long long expectedSize)
+//     {
+//         // progression tracking code
+//         // not needed
+//     }
+//                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
+//     {
+//         NSLog(@"Donloading %@ image %@", _title, image);
+//         if (image)
+//         {
+//             // do something with image
+//             [self.theTableView addParallaxWithImage:image andHeight:400];
+//             
+//         }
+//     }];
+//
+    NSLog(@"THE DATE!!!! %@", self.article.date);
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -106,7 +136,7 @@
         contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
         //contentCell.contentTextView.attributedText = test;
         
-        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(20, 5, 310, contentHeight)];
+        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 0, 302, contentHeight)];
         contentTextView.attributedText = test;
         contentTextView.userInteractionEnabled = NO;
         contentTextView.selectable = NO;

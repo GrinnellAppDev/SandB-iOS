@@ -8,10 +8,12 @@
 
 #import "NewArticlePageViewHolderController.h"
 #import "Article.h"
+#import "DataModel.h"
 
 @interface NewArticlePageViewHolderController ()
 
 @property (nonatomic, strong) Article *currentArticle;
+@property (nonatomic) NSUInteger index;
 
 @end
 
@@ -30,17 +32,7 @@
 {
     [super viewDidLoad];
     
-    self.pageArticles = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < 10; i++) {
-        Article *article = [[Article alloc] init];
-        article.title = [NSString stringWithFormat:@"Article Title: %d", i];
-        article.content = @"Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!! Biggest baddest content the world as ever seen!!!";
-        //put in array
-        [self.pageArticles addObject:article];
-        
-        //self.topBarView.layer.zPosition = 1;
-    }
+    self.pageArticles = [[DataModel sharedModel] articles];
     
     // Do any additional setup after loading the view.
     
@@ -83,6 +75,15 @@
     
     // Set pageview delegate to self
     self.pageViewController.delegate = self;
+    
+    // DO STUFF WITH THE API
+    // http://thesandb.com/api/get_category_posts + GET + JSON encoded id
+    // 3 - News
+    // 216 - Community
+    // 5 - Arts
+    // 6 - Features
+    
+    
 
 }
 
@@ -119,36 +120,52 @@
     
     NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
     
-    Article *article = self.pageArticles[index];
+    Article *article = self.pageArticles[self.articleIndex];
     
     navc.article = article;
     navc.pageIndex = index;
+    
+    NSLog(@"the current index: %i", self.articleIndex);
     
     return navc;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
-    NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
+    // NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
     
-    if (index == 0 || (index == NSNotFound)) {
+//    if (index == 0 || (index == NSNotFound)) {
+//        return nil;
+//    }
+//    
+//    index--;
+//    return [self viewControllerAtIndex:index];
+    
+    if (self.articleIndex == 0 || (self.articleIndex == NSNotFound)) {
         return nil;
     }
     
-    index--;
-    return [self viewControllerAtIndex:index];
+    self.articleIndex--;
+    return [self viewControllerAtIndex:self.articleIndex];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
-    NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
+    //NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
     
-    if (index == NSNotFound) {
+//    if (index == NSNotFound) {
+//        return nil;
+//    }
+//    
+//    index++;
+    
+    if (self.articleIndex == NSNotFound) {
         return nil;
     }
     
-    index++;
-    return [self viewControllerAtIndex:index];
+    self.articleIndex++;
+    
+    return [self viewControllerAtIndex:self.articleIndex];
 }
 
 #pragma mark - Status Bar Options
@@ -206,9 +223,10 @@
     
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     
-    NSUInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
+    NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     
     self.currentArticle  = self.pageArticles[theIndex];
+
 }
 
 @end

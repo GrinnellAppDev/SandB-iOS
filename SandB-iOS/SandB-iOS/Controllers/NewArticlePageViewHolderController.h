@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *starButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *editTextButton;
+@property (nonatomic) NSUInteger articleIndex;
 
 // ACTIONS
 - (IBAction)favoriteButtonPressed:(id)sender;

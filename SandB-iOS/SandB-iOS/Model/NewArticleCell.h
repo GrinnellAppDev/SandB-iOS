@@ -10,5 +10,7 @@
 
 @interface NewArticleCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIView *categoryIdentifier;
+@property (strong, nonatomic) IBOutlet UILabel *articleTitle;
+@property (strong, nonatomic) IBOutlet UILabel *articleDetails;
 
 @end

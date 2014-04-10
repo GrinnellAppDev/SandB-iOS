@@ -31,9 +31,15 @@
         _title =  articleDictionary[@"title"];
         
         _content = articleDictionary[@"content"];
+        
+        _content = [_content stringByReplacingOccurrencesOfString:@"<div id=\"attachment_.*</div>" withString:@"" options:NSCaseInsensitiveSearch | NSRegularExpressionSearch range:NSMakeRange(0, [_content length])];
+        
+        NSLog(@"CONTENT: %@", _content);
+        
         _category = articleDictionary[@"author"][@"name"];
         
         NSArray *attachments = articleDictionary[@"attachments"];
+        NSDictionary *thumbnails = articleDictionary[@"thumbnail_images"];
         
         NSLog(@"attachements: %@", attachments);
         
@@ -64,7 +70,24 @@
               // _imageLargeURL = obj[@"images"][@"large"][@"url"];
             }];
         }
+        
+        if (thumbnails) {
+            self.thumbnailImageURL = thumbnails[@"large"][@"url"];
+        }
         _author = [articleDictionary[@"custom_fields"][@"author"] firstObject];
+        _date = articleDictionary[@"date"];
+        _email = [articleDictionary[@"custom_fields"][@"author"] lastObject];
+        
+        // MAKE STRING INTO DATE
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSDate *articleDate = [formatter dateFromString:_date];
+        
+        NSDateFormatter *newFormatter = [[NSDateFormatter alloc] init];
+        [newFormatter setDateFormat:@"dd MMM"];
+        _date = [newFormatter stringFromDate:articleDate];
+        NSLog(@"THE DATEEEEE: %@", _date);
         
         //This section is what we need to optimize on.
         //Blurring the images.
@@ -100,11 +123,11 @@
         
         
         
-        /*
+        
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadWithURL:[NSURL URLWithString:_imageMediumURL]
+        [manager downloadWithURL:[NSURL URLWithString:self.thumbnailImageURL]
                          options:0
-                        progress:^(NSUInteger receivedSize, long long expectedSize)
+                        progress:^(NSInteger receivedSize, NSInteger expectedSize)
          {
              // progression tracking code
              // not needed
@@ -115,17 +138,16 @@
              if (image)
              {
                  // do something with image
-                 _blurredImage = [image applyLightEffect];
+                 _image = image;
                  
              }
          }];
-        */
         
         //Obviously this isn't right. We're doing it on the main thread. Need to figure out a way to blur this out. And then refresh the GlassScrollViews AFTER the image has been blurred. in order for this to work right...
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_imageMediumURL]]];
-        
-        UIColor *red = [UIColor colorWithRed:141.0f/255.0f green:29.0f/255.0f blue:41.0f/255.0f alpha:1.0f];
-        _blurredImage = [image applyTintEffectWithColor:[UIColor blackColor]];
+//        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_imageMediumURL]]];
+//        
+//        UIColor *red = [UIColor colorWithRed:141.0f/255.0f green:29.0f/255.0f blue:41.0f/255.0f alpha:1.0f];
+//        _blurredImage = [image applyTintEffectWithColor:[UIColor blackColor]];
         
 
         

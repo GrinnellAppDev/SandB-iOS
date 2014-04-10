@@ -20,9 +20,9 @@ PODS:
   - ECSlidingViewController (2.0.1)
   - MBProgressHUD (0.8)
   - Reachability (3.1.1)
-  - SDWebImage (3.5.1):
+  - SDWebImage (3.6):
     - SDWebImage/Core
-  - SDWebImage/Core (3.5.1)
+  - SDWebImage/Core (3.6)
   - Shimmer (1.0.1)
   - TBXML (1.5)
 
@@ -40,7 +40,7 @@ SPEC CHECKSUMS:
   ECSlidingViewController: d7bb96ee5bbe261ed80ee16a513f94b9fd3c9767
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
-  SDWebImage: a408b548a634b792372e07e753fc1079aff5032a
+  SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
   Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
   TBXML: 0511ac325d83e59d3aefa4bc8cd6cbeff07a8d9e
 

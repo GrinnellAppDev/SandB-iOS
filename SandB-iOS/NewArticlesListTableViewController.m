@@ -10,8 +10,10 @@
 #import "UIViewController+ECSlidingViewController.h"
 #import "NewArticleCell.h"
 #import "DataModel.h"
+#import "NewArticlePageViewHolderController.h"
 
 @interface NewArticlesListTableViewController ()
+@property (nonatomic) NSInteger articleIndex;
 
 @end
 
@@ -77,7 +79,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[[DataModel sharedModel] articles] count];;
+    return [[[DataModel sharedModel] articles] count];
 }
 
 
@@ -87,9 +89,25 @@
     
     // Configure the cell...
     
-    cell.textLabel.text = [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] title];
+    cell.articleTitle.text = [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] title];
+    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | By %@",[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] author]];
+    cell.categoryIdentifier.backgroundColor = [UIColor redColor];
     
     return cell;
+}
+
+// SEGUE METHODS
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        if ([segue.destinationViewController isKindOfClass:[NewArticlePageViewHolderController class]]) {
+            NewArticlePageViewHolderController *napvhc = segue.destinationViewController;
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            NSUInteger currentArticleIndex = indexPath.row;
+            
+            napvhc.articleIndex = currentArticleIndex;            
+        }
+    }
 }
 
 
@@ -148,7 +166,9 @@
     // setup swipe and button gestures for the sliding view controller
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
     self.slidingViewController.customAnchoredGestures = @[];
-    [[self.navigationController.viewControllers.firstObject view] addGestureRecognizer:self.slidingViewController.panGesture];
+//    [[self.navigationController.viewControllers.firstObject view] addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    // TO DO: Swipe to the right to reveal menu
 }
 
 @end
