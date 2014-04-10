@@ -188,7 +188,7 @@
 -(void)colorTopBar {
     
     [UIView animateWithDuration:0.3 animations:^{
-        self.topBarView.backgroundColor = [UIColor whiteColor];
+        self.topBarView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
         self.redSeparator.alpha = 1;
     }];
     

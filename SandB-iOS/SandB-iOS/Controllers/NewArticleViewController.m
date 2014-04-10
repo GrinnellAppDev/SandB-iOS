@@ -41,7 +41,12 @@
     NSLog(@"Thumbnail URL: %@", self.article.thumbnailImageURL);
     
     // add parallax image
-    [self.theTableView addParallaxWithImage:self.article.image andHeight:400];
+    if (self.article.image) {
+        [self.theTableView addParallaxWithImage:self.article.image andHeight:400];
+    }
+    else {
+        [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"defaultImage"] andHeight:400];
+    }
 //    SDWebImageManager *manager = [SDWebImageManager sharedManager];
 //    [manager downloadWithURL:[NSURL URLWithString:self.article.thumbnailImageURL] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
 //        // code
