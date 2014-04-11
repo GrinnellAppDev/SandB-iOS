@@ -7,6 +7,7 @@
 //
 
 #import "SpecificCategoryArticlesListViewController.h"
+#import "UIViewController+ECSlidingViewController.h"
 
 @interface SpecificCategoryArticlesListViewController ()
 
@@ -55,6 +56,18 @@
     // Return the number of rows in the section.
     return 0;
 }
+
+#pragma mark - ECSliding methods
+
+-(void)ecslidingOptions {
+    // setup swipe and button gestures for the sliding view controller
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    self.slidingViewController.customAnchoredGestures = @[];
+    //    [[self.navigationController.viewControllers.firstObject view] addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    // TO DO: Swipe to the right to reveal menu
+}
+
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -10,6 +10,7 @@
 #import "ContentCell.h"
 #import "UIScrollView+APParallaxHeader.h"
 #import "UIImageView+WebCache.h"
+#import "TitleCell.h"
 
 @interface NewArticleViewController ()
 
@@ -34,10 +35,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.articleTitleLabel.text = self.article.title;
-    self.articleContentTextView.attributedText = self.article.attrContent;
-    test = self.article.attrContent;
-    
     NSLog(@"Thumbnail URL: %@", self.article.thumbnailImageURL);
     
     // add parallax image
@@ -47,33 +44,6 @@
     else {
         [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"defaultImage"] andHeight:400];
     }
-//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//    [manager downloadWithURL:[NSURL URLWithString:self.article.thumbnailImageURL] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//        // code
-//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-//        if (image) {
-//            [self.theTableView addParallaxWithImage:image andHeight:400];
-//        }
-//    }];
-    
-//    [manager downloadWithURL:[NSURL URLWithString:self.article.thumbnailImageURL]
-//                     options:0
-//                    progress:^(NSUInteger receivedSize, long long expectedSize)
-//     {
-//         // progression tracking code
-//         // not needed
-//     }
-//                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
-//     {
-//         NSLog(@"Donloading %@ image %@", _title, image);
-//         if (image)
-//         {
-//             // do something with image
-//             [self.theTableView addParallaxWithImage:image andHeight:400];
-//             
-//         }
-//     }];
-//
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -81,7 +51,19 @@
     [super viewDidAppear:YES];
     
 //    CGSize size = self.articleContentTextView.contentSize;
+    
 }
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+
+    test = self.article.attrContent;
+    
+    contentHeight = [self textViewHeightForAttributedText:test andWidth:307.0];
+    
+    NSLog(@"CONTENT HEIGHT: %f", contentHeight);
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -99,8 +81,7 @@
 //    self.articleContentTextView.frame = newFrame;
     
     
-    contentHeight = [self textViewHeightForAttributedText:test andWidth:320.0] + 20;
-
+    // somehow this gets called twice, and it reverts back to the content height of the previous article. Not quite sure why or how this is happening, but IT ISSSS!!!
 }
 
 /*
@@ -126,12 +107,17 @@
     static NSString *titleCellIdentifier = @"TitleCell";
     static NSString *contentCellIdentifier = @"ContentCell";
     
-    UITableViewCell *titleCell;
+    TitleCell *titleCell;
     ContentCell *contentCell;
     
     if (indexPath.row == 0) {
+        
         titleCell = [tableView dequeueReusableCellWithIdentifier:titleCellIdentifier forIndexPath:indexPath];
-        titleCell.textLabel.text = self.article.title;
+        
+        //titleCell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        titleCell.titleLabel.numberOfLines = 0;
+        [titleCell.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]];
+        titleCell.titleLabel.text = self.article.title;
         return titleCell;
     }
     
@@ -140,7 +126,7 @@
         contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
         //contentCell.contentTextView.attributedText = test;
         
-        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 0, 302, contentHeight)];
+        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 10, 306, contentHeight)];
         contentTextView.attributedText = test;
         contentTextView.userInteractionEnabled = NO;
         contentTextView.selectable = NO;
@@ -155,11 +141,11 @@
 {
     NSLog(@"stuff");
     if (path.row == 1) {
-        return contentHeight + 100;
+        return contentHeight + 10;
     }
     
     else {
-        return 40.0f;
+        return 60.0f;
     }
 }
 

@@ -34,6 +34,7 @@
 		3BEBCE8216C5A79900B6DD08 /* FeaturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8016C5A79900B6DD08 /* FeaturesViewController.xib */; };
 		3BEBCE8A16C5AB7000B6DD08 /* OpinionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8816C5AB7000B6DD08 /* OpinionViewController.m */; };
 		3BEBCE8B16C5AB7000B6DD08 /* OpinionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */; };
+		8B0DA2B818F827C300613D14 /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DA2B718F827C300613D14 /* TitleCell.m */; };
 		8B125BAB1720FD5E00C550F7 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BAA1720FD5E00C550F7 /* Icon-72.png */; };
 		8B125BAD1720FD7900C550F7 /* SnBLogoNew144.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BAC1720FD7900C550F7 /* SnBLogoNew144.png */; };
 		8B125BAF1720FE1B00C550F7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BAE1720FE1B00C550F7 /* Icon.png */; };
@@ -142,6 +143,8 @@
 		3BEBCE8916C5AB7000B6DD08 /* OpinionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpinionViewController.xib; sourceTree = "<group>"; };
 		43B56FF85CDE42F196966E07 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		860B32250CAC4589B9915763 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B0DA2B618F827C300613D14 /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
+		8B0DA2B718F827C300613D14 /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
 		8B125BAA1720FD5E00C550F7 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		8B125BAC1720FD7900C550F7 /* SnBLogoNew144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnBLogoNew144.png; sourceTree = "<group>"; };
 		8B125BAE1720FE1B00C550F7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				1600A33118933C71006DFF9B /* BTGlassScrollView.m */,
 				8B5DC4D918F211E700732D45 /* ContentCell.h */,
 				8B5DC4DA18F211E700732D45 /* ContentCell.m */,
+				8B0DA2B618F827C300613D14 /* TitleCell.h */,
+				8B0DA2B718F827C300613D14 /* TitleCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -730,6 +735,7 @@
 				1600A33218933C71006DFF9B /* BTGlassScrollView.m in Sources */,
 				8B44468A18F23725002D1B42 /* UIScrollView+APParallaxHeader.m in Sources */,
 				8BFB80BC16D80F9800571249 /* NSString_stripHtml.m in Sources */,
+				8B0DA2B818F827C300613D14 /* TitleCell.m in Sources */,
 				8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */,
 				8BF70EEC18F738B700637795 /* SpecificCategoryArticlesListViewController.m in Sources */,
 				8B5B20761721DBCD00E9E3AA /* NewsViewController.m in Sources */,

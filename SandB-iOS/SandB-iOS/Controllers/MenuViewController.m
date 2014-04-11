@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "NewsCategories.h"
+#import "UIViewController+ECSlidingViewController.h"
 
 @interface MenuViewController ()
 
@@ -37,9 +38,13 @@
     categoryColors = [[[NewsCategories sharedCategories] categories] objectForKey:@"colors"];
     selectedCategoryColors = [[[NewsCategories sharedCategories] categories] objectForKey:@"highlighted"];
     
+    NSLog(@"highlighted colors: %@", categoryColors);
+    
     toolsTitles = @[@"Saved Articles", @"Rate Our App", @"Contact Us"];
     
     self.view.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
+    
+    self.slidingViewController.anchorRightRevealAmount = 200.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,8 +130,7 @@
     
     if (indexPath.section == 0) {
         cell.backgroundColor = selectedCategoryColors[indexPath.row];
-        NSIndexPath *firstCellPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        UITableViewCell *firstCell = [tableView cellForRowAtIndexPath:firstCellPath];
+        
         
         // TO DO: Make the selected row be the color of the category that gets displayed in the main view
     }
@@ -140,6 +144,12 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor whiteColor];
+}
+
+-(IBAction)dontfail:(id)sender {
+    self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"failedNav"];
+    [self.slidingViewController resetTopViewAnimated:YES];
+    
 }
 
 
@@ -198,10 +208,10 @@
     
 }
 
--(IBAction)dontfail:(id)sender {
+//-(IBAction)dontfail:(id)sender {
 //    self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"failedNav"];
 //    [self.slidingViewController resetTopViewAnimated:YES];
-    
-}
+//    
+//}
 
 @end
