@@ -11,10 +11,10 @@
 @interface NewsCategory : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic) NSInteger idNum;
+@property (nonatomic) NSNumber *idNum;
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) UIColor *highlightedColor;
 
--(id) categoryWithName:(NSString *) name andColor:(UIColor *) color andId:(NSInteger) idNum andHighlightedColor:(UIColor *) higlighted;
+-(id) categoryWithName:(NSString *) name andColor:(UIColor *) color andId:(NSNumber *) idNum andHighlightedColor:(UIColor *) higlighted;
 
 @end

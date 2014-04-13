@@ -15,6 +15,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedCategories = [[NewsCategories alloc] init];
+        // YAY, now I don't have to call it ever!!! Thanks DrJid.
+        [_sharedCategories categoriesWithData];
     });
     
     return _sharedCategories;

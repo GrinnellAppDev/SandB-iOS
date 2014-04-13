@@ -124,14 +124,10 @@
     
     Article *article = self.pageArticles[self.articleIndex];
     
-    NSLog(@"HAS THIS ARTICLE BEEN READ? %hhd", article.read);
-    
     [[[DataModel sharedModel] articles][self.articleIndex] setRead:YES];
     
     navc.article = article;
     navc.pageIndex = index;
-    
-    NSLog(@"the current index: %i", self.articleIndex);
     
     return navc;
 }
@@ -222,7 +218,7 @@
 }
 
 - (IBAction)favoriteButtonPressed:(id)sender {
-    NSLog(@"I am favoriting the current article - %@", self.currentArticle.title);
+
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{

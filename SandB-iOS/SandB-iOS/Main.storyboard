@@ -309,7 +309,7 @@
         <!--Page View Controller-->
         <scene sceneID="12m-vp-cX6">
             <objects>
-                <pageViewController storyboardIdentifier="NewArticlePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jI3-oi-tgu" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="NewArticlePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="jI3-oi-tgu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eY-0Y-9kK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2556" y="-31"/>
@@ -536,14 +536,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NKC-Z6-pKN">
-                                                    <rect key="frame" x="-5" y="0.0" width="10" height="43"/>
+                                                    <rect key="frame" x="-5" y="0.0" width="10" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8KY-ct-C8D" kind="custom" customClass="ECSlidingSegue" id="FSt-k6-dyJ"/>
+                                            <segue destination="hiF-cc-XCO" kind="custom" identifier="GoToCategory" customClass="ECSlidingSegue" id="vPS-Gc-hnn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -568,25 +568,20 @@
         <scene sceneID="7FI-bp-Nr6">
             <objects>
                 <tableViewController id="ckz-kK-ozO" customClass="SpecificCategoryArticlesListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XbZ-FD-mJm">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XbZ-FD-mJm">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="82" id="ldg-KH-uIJ" customClass="NewArticleCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewArticleCell" rowHeight="82" id="O34-vH-Vk2" customClass="NewArticleCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ldg-KH-uIJ" id="NGC-2j-kSh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O34-vH-Vk2" id="2VP-zf-PZQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="82"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DF8-yq-gLz">
-                                            <rect key="frame" x="-11" y="0.0" width="21" height="81"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" red="0.047518988319999997" green="0.62085459180000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="FeM-0r-utn">
-                                            <rect key="frame" x="21" y="3" width="267" height="51"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="h6Z-dD-WHn">
+                                            <rect key="frame" x="20" y="3" width="267" height="51"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Amazing Article Title #1">
@@ -600,8 +595,8 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqk-BV-lNG">
-                                            <rect key="frame" x="21" y="55" width="267" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAb-va-SPh">
+                                            <rect key="frame" x="20" y="55" width="267" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="David Kim | Something Else | Mar 21">
@@ -614,12 +609,17 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UrX-Xn-lud">
+                                            <rect key="frame" x="-11" y="0.0" width="22" height="81"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" red="0.0" green="0.61635044640000003" blue="0.61635044640000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="articleDetails" destination="Dqk-BV-lNG" id="IF2-m6-eVP"/>
-                                    <outlet property="articleTitle" destination="FeM-0r-utn" id="09V-5H-K9A"/>
-                                    <outlet property="categoryIdentifier" destination="DF8-yq-gLz" id="DHC-F8-A29"/>
+                                    <outlet property="articleDetails" destination="zAb-va-SPh" id="eCE-yt-rrJ"/>
+                                    <outlet property="articleTitle" destination="h6Z-dD-WHn" id="NmV-Qe-rgR"/>
+                                    <outlet property="categoryIdentifier" destination="UrX-Xn-lud" id="Q7Y-dl-iTs"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

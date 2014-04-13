@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NewsCategory.h";
+#import "NewsCategory.h"
 
 @interface NewsCategories : NSObject
 

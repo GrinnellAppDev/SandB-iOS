@@ -35,8 +35,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"Thumbnail URL: %@", self.article.thumbnailImageURL);
-    
     // add parallax image
     if (self.article.image) {
         [self.theTableView addParallaxWithImage:self.article.image andHeight:400];
@@ -139,7 +137,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)path
 {
-    NSLog(@"stuff");
     if (path.row == 1) {
         return contentHeight + 10;
     }

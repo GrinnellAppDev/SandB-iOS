@@ -8,6 +8,8 @@
 
 #import "SpecificCategoryArticlesListViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
+#import "DataModel.h"
+#import "NewArticleCell.h"
 
 @interface SpecificCategoryArticlesListViewController ()
 
@@ -33,6 +35,21 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self fetchCategoryArticles];
+}
+
+- (void) fetchCategoryArticles {
+    
+    [[DataModel sharedModel] fetchArticlesForCategory:self.recievedCategory withCompletionBlock:
+     ^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+         if (!error) {
+             [self.tableView reloadData];
+         }
+         else {
+             NSLog(@"I am sad!");
+         }
+     }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,16 +62,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [[[DataModel sharedModel] categoryArticles] count];
 }
 
 #pragma mark - ECSliding methods
@@ -69,16 +84,29 @@
 }
 
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *identifier = @"NewArticleCell";
+    
+    NewArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+
+    cell.articleTitle.text = [[[[DataModel sharedModel] categoryArticles] objectAtIndex:indexPath.row] title];
+    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] author]];
+    cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] category]] color];
+    
+    // if article has been clicked on, aka red, color it with the category color to mark it as read
+    if ([[[[DataModel sharedModel] categoryArticles] objectAtIndex:indexPath.row] read]) {
+        cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] category]] highlightedColor];
+    }
+    else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
     
     // Configure the cell...
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -128,5 +156,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)path
+{
+    return 82.0f;
+}
 
 @end

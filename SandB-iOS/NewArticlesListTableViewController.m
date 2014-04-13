@@ -16,6 +16,7 @@
 @interface NewArticlesListTableViewController ()
 @property (nonatomic) NSInteger articleIndex;
 @property (nonatomic, strong) NSArray *categoryColors;
+@property (nonatomic, strong) NSString *newsCategory;
 
 @end
 
@@ -40,8 +41,21 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    self.newsCategory = @"News";
+    if (self.recievedCategory) {
+        self.newsCategory = self.recievedCategory;
+    }
+    
     [self ecslidingOptions];
-    [self fetchArticles];
+    if ([self.newsCategory isEqualToString:@"News"]) {
+        NSLog(@"am i getting here?!");
+        [self fetchArticles];
+    }
+    else {
+        [self fetchCategoryArticles];
+        NSLog(@"AM I GETTING CATEGORY DATA?!?!?!");
+    }
+
 }
 
 - (void) fetchArticles {
@@ -55,6 +69,19 @@
         }
     }];
 
+}
+
+- (void) fetchCategoryArticles {
+    
+    [[DataModel sharedModel] fetchArticlesForCategory:self.recievedCategory withCompletionBlock:
+     ^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+         if (!error) {
+             [self.tableView reloadData];
+         }
+         else {
+             NSLog(@"I am sad!");
+         }
+     }];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -81,7 +108,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[[DataModel sharedModel] articles] count];
+    if ([self.newsCategory isEqualToString:@"News"]) {
+        return [[[DataModel sharedModel] articles] count];
+    }
+    else {
+        return [[[DataModel sharedModel] categoryArticles] count];
+    }
 }
 
 
@@ -91,16 +123,32 @@
     
     // Configure the cell...
     
-    cell.articleTitle.text = [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] title];
-    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] author]];
-    cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]] color];
+    if ([self.newsCategory isEqualToString:@"News"]) {
+        cell.articleTitle.text = [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] title];
+        cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] author]];
+        cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]] color];
     
-    // if article has been clicked on, aka red, color it with the category color to mark it as read
-    if ([[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] read]) {
-        cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]] highlightedColor];
+        // if article has been clicked on, aka red, color it with the category color to mark it as read
+        if ([[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] read]) {
+            cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]]  highlightedColor];
+        }
+        else {
+            cell.backgroundColor = [UIColor whiteColor];
+        }
     }
     else {
-        cell.backgroundColor = [UIColor whiteColor];
+        NSLog(@"Category articles: %@", [[DataModel sharedModel]categoryArticles]);
+        cell.articleTitle.text = [[[[DataModel sharedModel] categoryArticles] objectAtIndex:indexPath.row] title];
+        cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] author]];
+        cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] category]] color];
+        
+        // if article has been clicked on, aka red, color it with the category color to mark it as read
+        if ([[[[DataModel sharedModel] categoryArticles] objectAtIndex:indexPath.row] read]) {
+            cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] category]] highlightedColor];
+        }
+        else {
+            cell.backgroundColor = [UIColor whiteColor];
+        }
     }
     
     // make sure the selected color stays

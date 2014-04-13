@@ -10,4 +10,6 @@
 
 @interface NewArticlesListTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSString *recievedCategory;
+
 @end

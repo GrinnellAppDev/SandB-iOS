@@ -10,7 +10,7 @@
 
 @implementation NewsCategory
 
--(id) categoryWithName:(NSString *) name andColor:(UIColor *) color andId:(NSInteger) idNum andHighlightedColor:(UIColor *) higlighted {
+-(id) categoryWithName:(NSString *) name andColor:(UIColor *) color andId:(NSNumber *) idNum andHighlightedColor:(UIColor *) higlighted {
     NewsCategory *cat = [[NewsCategory alloc] init];
     
     [cat setName:name];

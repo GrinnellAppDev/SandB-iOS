@@ -9,6 +9,8 @@
 #import "MenuViewController.h"
 #import "NewsCategories.h"
 #import "UIViewController+ECSlidingViewController.h"
+#import "SpecificCategoryArticlesListViewController.h"
+#import "NewArticlesListTableViewController.h"
 
 @interface MenuViewController ()
 
@@ -150,6 +152,17 @@
     self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"failedNav"];
     [self.slidingViewController resetTopViewAnimated:YES];
     
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"GoToCategory"]) {
+        UINavigationController *nc = segue.destinationViewController;
+        NewArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
+        NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
+            
+        NSString *categoryString = categoriesTitles[indexPath.row];
+        naltvc.recievedCategory = categoryString;
+    }
 }
 
 
