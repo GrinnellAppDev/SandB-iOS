@@ -16,10 +16,9 @@
 #import "MZFormSheetSegue.h"
 
 @interface NewArticlePageViewHolderController ()
-
 @property (nonatomic, strong) Article *currentArticle;
 @property (nonatomic) NSUInteger index;
-
+@property (nonatomic, assign) BOOL isFetchingArticles;
 @end
 
 @implementation NewArticlePageViewHolderController
@@ -38,10 +37,10 @@
     [super viewDidLoad];
     
     if ([self.recievedCategoryString isEqualToString:@"News"]) {
-            self.pageArticles = [[DataModel sharedModel] articles];
+        self.pageArticles = [[DataModel sharedModel] articles];
     }
     else {
-            self.pageArticles = [[DataModel sharedModel] categoryArticles];
+        self.pageArticles = [[DataModel sharedModel] categoryArticles];
     }
     
     // Do any additional setup after loading the view.
@@ -56,20 +55,19 @@
     NSArray *viewControllers = @[startingViewController];
     //[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    
     // Bug in PageViewController with Scroll. http://stackoverflow.com/questions/13633059/uipageviewcontroller-how-do-i-correctly-jump-to-a-specific-page-without-messing
     __weak UIPageViewController * _weakPageViewController = self.pageViewController;
     [self.pageViewController setViewControllers:viewControllers
-                  direction:UIPageViewControllerNavigationDirectionForward
-                   animated:YES completion:^(BOOL finished) {
-                       UIPageViewController* pvcs = _weakPageViewController;
-                       if (!pvcs) return;
-                       dispatch_async(dispatch_get_main_queue(), ^{
-                           [pvcs setViewControllers:viewControllers
-                                          direction:UIPageViewControllerNavigationDirectionForward
-                                           animated:NO completion:nil];
-                       });
-                   }];
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:YES completion:^(BOOL finished) {
+                                           UIPageViewController* pvcs = _weakPageViewController;
+                                           if (!pvcs) return;
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                               [pvcs setViewControllers:viewControllers
+                                                              direction:UIPageViewControllerNavigationDirectionForward
+                                                               animated:NO completion:nil];
+                                           });
+                                       }];
     
     self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
@@ -93,7 +91,7 @@
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
     }
     
-    // methods that notify this view from the NewArticleViewController that the table view scrolled to a certain break point
+    // Methods that notify this view from the NewArticleViewController that the table view scrolled to a certain break point
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorTopBar) name:@"ColorTopBar" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uncolorTopBar) name:@"UncolorTopBar" object:nil];
     
@@ -108,7 +106,7 @@
     // 6 - Features
     // 4 - Opinion
     // 7 - Sports
-
+    
     // MODAL VIEW STUFF
     
     [[MZFormSheetBackgroundWindow appearance] setBackgroundBlurEffect:YES];
@@ -125,15 +123,15 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 #pragma mark - Page View Controller methods
@@ -145,7 +143,7 @@
     
     NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
     Article *article = self.pageArticles[index];
-
+    
     navc.article = article;
     navc.pageIndex = index;
     
@@ -154,7 +152,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
-     NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
+    NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
     
     if (index == 0 || (index == NSNotFound)) {
         return nil;
@@ -189,7 +187,7 @@
     [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
         if (!error) {
             
-            // TODO (DrJid): Handle when _currentPage < totalPages
+            // TODO (DrJid): Handle when _currentPage < totalPages :: Honestly... there are like... 3K articles... we'd never get to this point now would we...
             
             //_currentPage = currentPage;
             //_totalPages = totalPages;
@@ -199,6 +197,7 @@
         else {
             NSLog(@"I am sad!");
         }
+        self.isFetchingArticles = NO;
     }];
     
 }
@@ -217,15 +216,21 @@
          else {
              NSLog(@"I am sad!");
          }
+         self.isFetchingArticles = NO;
      }];
 }
 
 - (void)fetchArticlesForView {
-    if ([self.recievedCategoryString isEqualToString:@"News"]) {
-        [self fetchArticles];
-    }
-    else {
-        [self fetchCategoryArticles];
+    if (!self.isFetchingArticles) {
+        self.isFetchingArticles = YES;
+        NSLog(@"Fetching!!!");
+
+        if ([self.recievedCategoryString isEqualToString:@"News"]) {
+            [self fetchArticles];
+        }
+        else {
+            [self fetchCategoryArticles];
+        }
     }
 }
 #pragma mark - Status Bar Options
@@ -257,7 +262,7 @@
     }];
     
     [self colorButtonsForRenderingMode:UIImageRenderingModeAutomatic andControlState:UIControlStateNormal];
-
+    
 }
 
 // changing the color of the buttons
@@ -277,7 +282,7 @@
 
 - (IBAction)favoriteButtonPressed:(id)sender
 {
-
+    
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
@@ -285,13 +290,14 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-
+    
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
     [self.currentArticle setRead:YES];
-
     
+    
+    NSLog(@"theINdex: %d|| count: %lu", theIndex, self.pageArticles.count);
     if (theIndex > self.pageArticles.count - 5) {
         // Go fetch more data. and update the self.pageArticles array;
         [self fetchArticlesForView];
