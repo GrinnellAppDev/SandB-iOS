@@ -53,14 +53,15 @@
 }
 
 
+
 - (void)fetchArticlesWithCompletionBlock:(FetchArticlesCompletionBlock)completion
 {
+
+    
     _page++;
     NSMutableArray *newArticles = [NSMutableArray new];
     
-    //canceling operations.
-//    [[SandBClient sharedClient].operationQueue cancelAllOperations];
-    
+
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
                          parameters:@{@"count": @(12),
                                       @"page": @(_page)
@@ -88,6 +89,7 @@
 }
 
 - (void)searchArticlesForTerm:(NSString *)searchTerm withCompletionBlock:(FetchArticlesCompletionBlock)completion {
+    
     
     [[[DataModel sharedModel] articles] removeAllObjects];
     
@@ -119,87 +121,111 @@
     
 }
 
-- (void)fetchArticlesForCategory:(NSString *)category withCompletionBlock:(FetchArticlesCompletionBlock)completion {
-    
-    NSMutableArray *newCategoryArticles = [NSMutableArray new];
-    
-    NewsCategory *newsCategory = [[NewsCategory alloc] init];
-    newsCategory = [[[NewsCategories sharedCategories] categoriesByName] objectForKey:category];
-    
-    switch ([newsCategory.idNum integerValue]) {
+
+- (NSMutableArray *)categoryArrayFromID:(NSNumber *)categoryID
+{
+
+    switch ([categoryID integerValue]) {
         case 5:
-            _categoryArticles = _artsArticles;
-            _categoryPage = _artsPage;
+            return _artsArticles;
             break;
         case 216:
-            _categoryArticles = _communityArticles;
-            _categoryPage = _communityPage;
+            return _communityArticles;
             break;
         case  6:
-            _categoryArticles = _featuresArticles;
-            _categoryPage = _featuresPage;
+            return _featuresArticles;
             break;
         case 4:
-            _categoryArticles = _opinionsArticles;
-            _categoryPage = _opinionsPage;
+            return _opinionsArticles;
             break;
         case 7:
-            _categoryArticles = _sportArticles;
-            _categoryPage = _sportsPage;
+            return _sportArticles;
             break;
     }
+    return nil;
+}
+
+- (NSMutableArray *)categoryArrayForCategoryName:(NSString *)categoryName
+{
+    NewsCategory *category = [[[NewsCategories sharedCategories] categoriesByName] objectForKey:categoryName];
+    return [self categoryArrayFromID:category.idNum]; 
+}
+
+
+- (void)fetchArticlesForCategory:(NSString *)categoryString withCompletionBlock:(FetchArticlesCompletionBlock)completion {
+ 
+    NewsCategory *category = [[[NewsCategories sharedCategories] categoriesByName] objectForKey:categoryString];
     
+    switch ([category.idNum integerValue]) {
+        case 5: {
+            _artsPage++;
+            [self fetchArticlesUsingPage:_artsPage andCategoryID:5 andArray:_artsArticles withCompletionBlock:completion];
+            break;
+        }
+            
+        case 216: {
+            _communityPage++;
+            [self fetchArticlesUsingPage:_communityPage andCategoryID:216 andArray:_communityArticles withCompletionBlock:completion];
+
+            break;
+        }
+            
+        case  6: {
+            _featuresPage++;
+            [self fetchArticlesUsingPage:_featuresPage andCategoryID:6 andArray:_featuresArticles withCompletionBlock:completion];
+            break;
+        }
+            
+        case 4:
+            _opinionsPage++;
+            [self fetchArticlesUsingPage:_opinionsPage andCategoryID:4 andArray:_opinionsArticles withCompletionBlock:completion];
+            break;
+        case 7: {
+            _sportsPage++;
+            [self fetchArticlesUsingPage:_sportsPage andCategoryID:7 andArray:_sportArticles withCompletionBlock:completion];
+            break;
+        }
+            
+    }
+}
+
+- (void) fetchArticlesUsingPage:(int)page andCategoryID:(int)categoryID andArray:(NSMutableArray *)categoryArticles withCompletionBlock:(FetchArticlesCompletionBlock)completion {
+    
+    NSMutableArray *newCategoryArticles = [NSMutableArray new];
+
     [[SandBClient sharedClient] GET:@"get_category_posts/"
-                         parameters:@{@"id":newsCategory.idNum,
-                                      @"page": @(_categoryPage)
+                         parameters:@{@"id":@(categoryID),
+                                      @"page": @(page)
                                       }
-    
+     
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
-                                
-                                // Make sure we're still looking at the same category here. How would you know what the previous category was....?
                                 
                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
                                 
                                 if (httpResponse.statusCode == 200) {
                                     
-                                    _categoryPage++;
-
                                     int totalPages = [responseObject[@"pages"] intValue];
+                                    NSLog(@"res: %@", responseObject);
                                     NSArray *articleArray = responseObject[@"posts"];
                                     [articleArray enumerateObjectsUsingBlock:^(NSDictionary *articleDictionary, NSUInteger idx, BOOL *stop) {
                                         
                                         Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
                                         [newCategoryArticles addObject:article];
-                                        [[[DataModel sharedModel] categoryArticles] addObject:article];
-                                        
-                                        switch ([newsCategory.idNum integerValue]) {
-                                            case 5:
-                                                _artsPage = _categoryPage;
-                                                break;
-                                            case 216:
-                                                _communityPage = _categoryPage;
-                                                break;
-                                            case  6:
-                                                _featuresPage = _categoryPage;
-                                                break;
-                                            case 4:
-                                                _opinionsPage = _categoryPage;
-                                                break;
-                                            case 7:
-                                                _sportsPage = _categoryPage;
-                                                break;
-                                        }
+                                        //[[[DataModel sharedModel] categoryArticles] addObject:article];
+                                        [categoryArticles addObject:article];
+                                       
                                         
                                     }];
-                                    completion([[DataModel sharedModel] categoryArticles], newCategoryArticles, totalPages, _categoryPage, nil);
+                                    completion(categoryArticles, newCategoryArticles, totalPages, page, nil);
                                 }
-                                
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                 
                                 completion(nil, nil, 0, 0, error);
                             }];
-    
+
 }
+
+
 
 
 

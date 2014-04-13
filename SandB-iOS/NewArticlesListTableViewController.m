@@ -68,7 +68,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
             [self.tableView reloadData];
         }
         else {
-            NSLog(@"I am sad!");
+            NSLog(@"I am sad!: %@", [error description]);
         }
         self.isFetchingArticles = NO;
     }];
@@ -85,9 +85,9 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
              [self.tableView reloadData];
          }
          else {
-             NSLog(@"I am sad!");
+             NSLog(@"I am sad! :%@", [error description]);
          }
-         self.isFetchingArticles = NO; 
+         self.isFetchingArticles = NO;
      }];
 }
 
@@ -225,7 +225,9 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         return [[DataModel sharedModel] articles];
     }
     else {
-        return [[DataModel sharedModel] categoryArticles];
+//        return [[DataModel sharedModel] categoryArrayForCategoryName:self.newsCategory];
+//        return [[DataModel sharedModel] categoryArticles];
+        return [[DataModel sharedModel] categoryArrayForCategoryName:self.newsCategory];
     }
 }
 

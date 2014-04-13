@@ -10,6 +10,7 @@
 #import "NewsCategories.h"
 #import "UIViewController+ECSlidingViewController.h"
 #import "NewArticlesListTableViewController.h"
+#import "DataModel.h"
 
 @interface MenuViewController ()
 
@@ -143,6 +144,7 @@
     if (indexPath.section == 1) {
         cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
     }
+    
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -165,6 +167,9 @@
             
         NSString *categoryString = categoriesTitles[indexPath.row];
         naltvc.recievedCategory = categoryString;
+        
+        //Perhaps we should cancel all operations when preparing for this segue.
+        
     }
 }
 

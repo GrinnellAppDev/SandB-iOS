@@ -40,7 +40,7 @@
         self.pageArticles = [[DataModel sharedModel] articles];
     }
     else {
-        self.pageArticles = [[DataModel sharedModel] categoryArticles];
+        self.pageArticles =  [[DataModel sharedModel] categoryArrayForCategoryName:self.recievedCategoryString];
     }
     
     // Do any additional setup after loading the view.
