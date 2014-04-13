@@ -108,12 +108,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if ([self.newsCategory isEqualToString:@"News"]) {
-        return [[[DataModel sharedModel] articles] count];
-    }
-    else {
-        return [[[DataModel sharedModel] categoryArticles] count];
-    }
+    return [[self viewOptions] count];
 }
 
 
@@ -123,33 +118,17 @@
     
     // Configure the cell...
     
-    if ([self.newsCategory isEqualToString:@"News"]) {
-        cell.articleTitle.text = [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] title];
-        cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] author]];
-        cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]] color];
+        cell.articleTitle.text = [[[self viewOptions] objectAtIndex:indexPath.row] title];
+        cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[self viewOptions]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] author]];
+        cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self viewOptions]objectAtIndex:indexPath.row] category]] color];
     
         // if article has been clicked on, aka red, color it with the category color to mark it as read
-        if ([[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] read]) {
-            cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]]  highlightedColor];
+        if ([[[self viewOptions] objectAtIndex:indexPath.row] read]) {
+            cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self viewOptions] objectAtIndex:indexPath.row] category]]  highlightedColor];
         }
         else {
             cell.backgroundColor = [UIColor whiteColor];
         }
-    }
-    else {
-        NSLog(@"Category articles: %@", [[DataModel sharedModel]categoryArticles]);
-        cell.articleTitle.text = [[[[DataModel sharedModel] categoryArticles] objectAtIndex:indexPath.row] title];
-        cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] author]];
-        cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] category]] color];
-        
-        // if article has been clicked on, aka red, color it with the category color to mark it as read
-        if ([[[[DataModel sharedModel] categoryArticles] objectAtIndex:indexPath.row] read]) {
-            cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] categoryArticles]objectAtIndex:indexPath.row] category]] highlightedColor];
-        }
-        else {
-            cell.backgroundColor = [UIColor whiteColor];
-        }
-    }
     
     // make sure the selected color stays
     
@@ -159,9 +138,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NewArticleCell *cell = (NewArticleCell *) [tableView cellForRowAtIndexPath:indexPath];
     
-    cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] category]] highlightedColor];
+    cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self viewOptions]objectAtIndex:indexPath.row] category]] highlightedColor];
     
-    [[[[DataModel sharedModel] articles] objectAtIndex:indexPath.row] setRead:YES];
+    [[[self viewOptions] objectAtIndex:indexPath.row] setRead:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -182,7 +161,8 @@
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             NSUInteger currentArticleIndex = indexPath.row;
             
-            napvhc.articleIndex = currentArticleIndex;            
+            napvhc.articleIndex = currentArticleIndex;
+            napvhc.letsSeeIfYouWork = self.newsCategory;
         }
     }
 }
@@ -246,6 +226,15 @@
 //    [[self.navigationController.viewControllers.firstObject view] addGestureRecognizer:self.slidingViewController.panGesture];
     
     // TO DO: Swipe to the right to reveal menu
+}
+
+- (NSMutableArray *) viewOptions {
+    if ([self.newsCategory isEqualToString:@"News"]) {
+        return [[DataModel sharedModel] articles];
+    }
+    else {
+        return [[DataModel sharedModel] categoryArticles];
+    }
 }
 
 @end

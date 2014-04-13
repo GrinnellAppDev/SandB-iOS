@@ -564,86 +564,6 @@
             </objects>
             <point key="canvasLocation" x="1328" y="1333"/>
         </scene>
-        <!--Specific Category Articles List View Controller - Scarlet & Black-->
-        <scene sceneID="7FI-bp-Nr6">
-            <objects>
-                <tableViewController id="ckz-kK-ozO" customClass="SpecificCategoryArticlesListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XbZ-FD-mJm">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewArticleCell" rowHeight="82" id="O34-vH-Vk2" customClass="NewArticleCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="82"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O34-vH-Vk2" id="2VP-zf-PZQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="82"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="h6Z-dD-WHn">
-                                            <rect key="frame" x="20" y="3" width="267" height="51"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Amazing Article Title #1">
-                                                    <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
-                                                        <font key="NSOriginalFont" size="20" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAb-va-SPh">
-                                            <rect key="frame" x="20" y="55" width="267" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="David Kim | Something Else | Mar 21">
-                                                    <attributes>
-                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UrX-Xn-lud">
-                                            <rect key="frame" x="-11" y="0.0" width="22" height="81"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" red="0.0" green="0.61635044640000003" blue="0.61635044640000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="articleDetails" destination="zAb-va-SPh" id="eCE-yt-rrJ"/>
-                                    <outlet property="articleTitle" destination="h6Z-dD-WHn" id="NmV-Qe-rgR"/>
-                                    <outlet property="categoryIdentifier" destination="UrX-Xn-lud" id="Q7Y-dl-iTs"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ckz-kK-ozO" id="kEI-vt-ARU"/>
-                            <outlet property="delegate" destination="ckz-kK-ozO" id="5Ge-VK-9Uv"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Scarlet &amp; Black" id="jrA-5B-svH">
-                        <barButtonItem key="leftBarButtonItem" image="ShowMoreButton" id="Yyn-hV-HD2">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="Cob-Cv-XkY" kind="unwind" unwindAction="unwindToMenuViewController:" id="n1a-v8-VwC"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="RefreshButton" id="GgV-5e-nZh">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BPH-eq-LiU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1758" y="2028"/>
-        </scene>
         <!--Sliding View Controller-->
         <scene sceneID="FV0-dW-L6N">
             <objects>
@@ -665,26 +585,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcx-at-pfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1758" y="1333"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="gGh-nC-4Jo">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8KY-ct-C8D" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Sj1-NI-woZ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="lsG-aI-5Gu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.55837452170000001" green="0.0" blue="0.060333052870000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ckz-kK-ozO" kind="relationship" relationship="rootViewController" id="2cm-4a-BVB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iv3-uv-C8k" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1329" y="2028"/>
         </scene>
     </scenes>
     <resources>

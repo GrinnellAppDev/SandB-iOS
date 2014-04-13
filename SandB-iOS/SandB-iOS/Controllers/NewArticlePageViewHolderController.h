@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *editTextButton;
 @property (nonatomic) NSUInteger articleIndex;
+@property (nonatomic, strong) NSString *letsSeeIfYouWork;
 
 // ACTIONS
 - (IBAction)favoriteButtonPressed:(id)sender;

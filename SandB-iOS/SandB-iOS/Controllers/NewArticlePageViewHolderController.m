@@ -32,7 +32,12 @@
 {
     [super viewDidLoad];
     
-    self.pageArticles = [[DataModel sharedModel] articles];
+    if ([self.letsSeeIfYouWork isEqualToString:@"News"]) {
+            self.pageArticles = [[DataModel sharedModel] articles];
+    }
+    else {
+            self.pageArticles = [[DataModel sharedModel] categoryArticles];
+    }
     
     // Do any additional setup after loading the view.
     
@@ -44,7 +49,9 @@
     NewArticleViewController *startingViewController = [self viewControllerAtIndex:self.articleIndex];
     
     NSArray *viewControllers = @[startingViewController];
-
+    //[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    
     // Bug in PageViewController with Scroll. http://stackoverflow.com/questions/13633059/uipageviewcontroller-how-do-i-correctly-jump-to-a-specific-page-without-messing
     __weak UIPageViewController * _weakPageViewController = self.pageViewController;
     [self.pageViewController setViewControllers:viewControllers
@@ -129,7 +136,14 @@
     
     Article *article = self.pageArticles[index];
     
-    [[[DataModel sharedModel] articles][index] setRead:YES];
+//    if (![self.letsSeeIfYouWork isEqualToString:@"News"]) {
+//        NSLog(@" I AM DOING A CATEGORY!");
+//        [[[DataModel sharedModel] categoryArticles][index] setRead:YES];
+//    }
+//    else {
+//        NSLog(@" I AM DOING NEWS!");
+//        [[[DataModel sharedModel] articles][index] setRead:YES];
+//    }
 
     navc.article = article;
     navc.pageIndex = index;
@@ -224,6 +238,8 @@
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     
     self.currentArticle  = self.pageArticles[theIndex];
+    
+    [self.currentArticle setRead:YES];
 
 }
 

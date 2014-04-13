@@ -9,7 +9,6 @@
 #import "MenuViewController.h"
 #import "NewsCategories.h"
 #import "UIViewController+ECSlidingViewController.h"
-#import "SpecificCategoryArticlesListViewController.h"
 #import "NewArticlesListTableViewController.h"
 
 @interface MenuViewController ()
