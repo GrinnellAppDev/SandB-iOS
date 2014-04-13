@@ -79,16 +79,13 @@
                 NSLog(@"Expected numeric character entity but got &#%@%@;", xForHex, unknownEntity);
                 
             }
-            
         }
         else {
             NSString *amp;
             
             [scanner scanString:@"&" intoString:&amp];  //an isolated & symbol
             [result appendString:amp];
-
         }
-        
     }
     while (![scanner isAtEnd]);
     

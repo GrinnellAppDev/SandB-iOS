@@ -27,7 +27,7 @@
 {
     self = [super init];
     if (self) {
-            
+        
         _title = [articleDictionary[@"title"] stringByDecodingXMLEntities];
         
         _content = articleDictionary[@"content"];
@@ -86,6 +86,7 @@
         
         // MAKE STRING INTO DATE
         
+        // TODO (DrJid): NSDateFormatter is expensive. Create one to be used for all instead of every single article. This would speed things up.
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         NSDate *articleDate = [formatter dateFromString:_date];
