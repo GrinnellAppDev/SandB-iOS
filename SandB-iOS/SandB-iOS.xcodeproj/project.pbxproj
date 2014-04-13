@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A72ADD2A3AA4449A8D2C7FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 860B32250CAC4589B9915763 /* libPods.a */; };
 		1600A33218933C71006DFF9B /* BTGlassScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1600A33118933C71006DFF9B /* BTGlassScrollView.m */; };
+		16355F9B18FA87910047F3B0 /* NSString+ISO8859Codes.m in Sources */ = {isa = PBXBuildFile; fileRef = 16355F9A18FA87910047F3B0 /* NSString+ISO8859Codes.m */; };
 		16B3E6F418691C9A00ABC0CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E6F318691C9A00ABC0CF /* Main.storyboard */; };
 		16B3E6F918691F1900ABC0CF /* ArticlesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E6F818691F1900ABC0CF /* ArticlesListViewController.m */; };
 		16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E708186937DD00ABC0CF /* UIImage+ImageEffects.m */; };
@@ -116,6 +117,8 @@
 
 /* Begin PBXFileReference section */
 		1600A33118933C71006DFF9B /* BTGlassScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTGlassScrollView.m; sourceTree = "<group>"; };
+		16355F9918FA87910047F3B0 /* NSString+ISO8859Codes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ISO8859Codes.h"; sourceTree = "<group>"; };
+		16355F9A18FA87910047F3B0 /* NSString+ISO8859Codes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ISO8859Codes.m"; sourceTree = "<group>"; };
 		16B3E6F318691C9A00ABC0CF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		16B3E6F718691F1900ABC0CF /* ArticlesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesListViewController.h; sourceTree = "<group>"; };
 		16B3E6F818691F1900ABC0CF /* ArticlesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesListViewController.m; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 			children = (
 				16B3E707186937DD00ABC0CF /* UIImage+ImageEffects.h */,
 				16B3E708186937DD00ABC0CF /* UIImage+ImageEffects.m */,
+				16355F9918FA87910047F3B0 /* NSString+ISO8859Codes.h */,
+				16355F9A18FA87910047F3B0 /* NSString+ISO8859Codes.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -772,6 +777,7 @@
 			files = (
 				8BD1C81C16B32493005F3F23 /* main.m in Sources */,
 				8B5DC4C918F1F4F500732D45 /* NewArticlesListTableViewController.m in Sources */,
+				16355F9B18FA87910047F3B0 /* NSString+ISO8859Codes.m in Sources */,
 				8B72A00118FA529C00AD6C1F /* UIImage+Additional.m in Sources */,
 				8B729FFE18FA529C00AD6C1F /* MZFormSheetController.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,

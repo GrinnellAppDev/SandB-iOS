@@ -9,6 +9,7 @@
 #import "Article.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+ImageEffects.h"
+#import "NSString+ISO8859Codes.h"
 
 @implementation Article
 
@@ -26,9 +27,8 @@
 {
     self = [super init];
     if (self) {
-        
-    
-        _title =  articleDictionary[@"title"];
+            
+        _title = [articleDictionary[@"title"] stringByDecodingXMLEntities];
         
         _content = articleDictionary[@"content"];
         
