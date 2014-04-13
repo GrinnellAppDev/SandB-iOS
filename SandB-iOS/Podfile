@@ -6,3 +6,4 @@ pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'ECSlidingViewController', '~> 2.0.1'
 pod 'Shimmer'
+pod "ShareKit"

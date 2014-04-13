@@ -7,17 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZFormSheetController.h"
 
 @interface ShareModalViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (nonatomic, strong) MZFormSheetController *sheetController;
+
+// BUTTONS
+@property (strong, nonatomic) IBOutlet UIButton *twitterButton;
+@property (strong, nonatomic) IBOutlet UIButton *facebookIcon;
+@property (strong, nonatomic) IBOutlet UIButton *iMessageButton;
+@property (strong, nonatomic) IBOutlet UIButton *emailButton;
 
 // METHODS
-@property (strong, nonatomic) IBOutlet UIButton *cancelButtonPressed;
-@property (strong, nonatomic) IBOutlet UIButton *twitterButtonPressed;
-@property (strong, nonatomic) IBOutlet UIButton *facebookButtonPressed;
-@property (strong, nonatomic) IBOutlet UIButton *iMessageButtonPressed;
-@property (strong, nonatomic) IBOutlet UIButton *emailButtonPressed;
-@property (strong, nonatomic) IBOutlet UIButton *shareButtonPressed;
+- (IBAction)cancelButtonPressed:(id)sender;
+- (IBAction)shareButtonPressed:(id)sender;
+- (IBAction)twitterButtonPressed:(id)sender;
+- (IBAction)facebookButtonPressed:(id)sender;
+- (IBAction)iMessageButtonPressed:(id)sender;
+- (IBAction)emailButtonPressed:(id)sender;
+
 
 
 @end

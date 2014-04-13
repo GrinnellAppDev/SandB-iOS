@@ -331,7 +331,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-pE-N1h">
-                                        <rect key="frame" x="20" y="14" width="62" height="30"/>
+                                        <rect key="frame" x="20" y="13" width="62" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal">
@@ -343,6 +343,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="46r-bE-a6l"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tVY-nY-uFO">
                                         <rect key="frame" x="116" y="333" width="59" height="30"/>
@@ -357,15 +360,24 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="bMD-3L-VvY"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
                                         <rect key="frame" x="84" y="227" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="rq1-Xa-45o"/>
+                                        </constraints>
                                         <color key="tintColor" red="0.087923540760000002" green="0.093249433389999997" blue="0.1028977997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="TwitterIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="twitterButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="BeL-ZL-18E"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgr-XH-fmy">
                                         <rect key="frame" x="157" y="227" width="50" height="50"/>
@@ -373,6 +385,9 @@
                                         <state key="normal" image="FacebookIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="facebookButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="Xsa-yB-bly"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqQ-Dn-0Gw">
                                         <rect key="frame" x="84" y="285" width="50" height="50"/>
@@ -380,6 +395,9 @@
                                         <state key="normal" image="iMessageIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="iMessageButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="7kS-qB-mnr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGQ-XV-BoC">
                                         <rect key="frame" x="154" y="285" width="53" height="50"/>
@@ -387,13 +405,19 @@
                                         <state key="normal" image="EmailIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="emailButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="nJb-bP-X8k"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aG6-Lv-f8j">
-                                        <rect key="frame" x="237" y="12" width="33" height="33"/>
+                                        <rect key="frame" x="239" y="10" width="33" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="CancelButton">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="PLV-TO-3Lw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -405,12 +429,10 @@
                     <size key="freeformSize" width="290" height="370"/>
                     <connections>
                         <outlet property="backgroundView" destination="yfs-Qu-XJU" id="8YC-jC-Rjl"/>
-                        <outlet property="cancelButtonPressed" destination="aG6-Lv-f8j" id="4pQ-PR-Bbq"/>
-                        <outlet property="emailButtonPressed" destination="QGQ-XV-BoC" id="Yf6-GA-guG"/>
-                        <outlet property="facebookButtonPressed" destination="vgr-XH-fmy" id="5AS-56-QXN"/>
-                        <outlet property="iMessageButtonPressed" destination="IqQ-Dn-0Gw" id="zZi-wm-VWB"/>
-                        <outlet property="shareButtonPressed" destination="wm3-pE-N1h" id="mhe-hp-sxh"/>
-                        <outlet property="twitterButtonPressed" destination="MJv-VZ-230" id="DCb-D4-19a"/>
+                        <outlet property="emailButton" destination="QGQ-XV-BoC" id="oJ4-s0-j85"/>
+                        <outlet property="facebookIcon" destination="vgr-XH-fmy" id="TMn-l9-t8d"/>
+                        <outlet property="iMessageButton" destination="IqQ-Dn-0Gw" id="5P9-7T-HMV"/>
+                        <outlet property="twitterButton" destination="MJv-VZ-230" id="AiW-y0-NWk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZL-bQ-hrv" userLabel="First Responder" sceneMemberID="firstResponder"/>

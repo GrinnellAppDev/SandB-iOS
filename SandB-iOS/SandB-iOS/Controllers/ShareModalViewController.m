@@ -7,8 +7,10 @@
 //
 
 #import "ShareModalViewController.h"
+#import "MZFormSheetController.h"
 
-@interface ShareModalViewController ()
+@interface ShareModalViewController () {
+}
 
 @end
 
@@ -48,4 +50,23 @@
 }
 */
 
+- (IBAction)cancelButtonPressed:(id)sender {
+    MZFormSheetController *controller = self.formSheetController;
+    [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
+}
+
+- (IBAction)shareButtonPressed:(id)sender {
+
+}
+
+- (IBAction)twitterButtonPressed:(id)sender {
+}
+
+- (IBAction)facebookButtonPressed:(id)sender {
+}
+
+- (IBAction)iMessageButtonPressed:(id)sender {
+}
+- (IBAction)emailButtonPressed:(id)sender {
+}
 @end
