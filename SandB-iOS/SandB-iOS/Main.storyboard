@@ -328,7 +328,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-pE-N1h">
                                         <rect key="frame" x="20" y="13" width="62" height="30"/>
@@ -437,7 +437,146 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZL-bQ-hrv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2161" y="-31"/>
+            <point key="canvasLocation" x="2161" y="-491"/>
+        </scene>
+        <!--Text Option Modal View Controller-->
+        <scene sceneID="SE3-Ej-D1h">
+            <objects>
+                <viewController id="6oo-AK-9Hq" customClass="TextOptionModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nhp-YJ-Q8G"/>
+                        <viewControllerLayoutGuide type="bottom" id="7c9-zP-crz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1g2-uz-PpA">
+                        <rect key="frame" x="0.0" y="0.0" width="306" height="168"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5YU-GT-qS7">
+                                <rect key="frame" x="82" y="11" width="143" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Reading Options">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNa-Vm-wny">
+                                <rect key="frame" x="264" y="5" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="CancelButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="fbs-2I-ZBO"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Yo4-KH-8Bi">
+                                <rect key="frame" x="80" y="48" width="148" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" red="0.55837452170000001" green="0.0" blue="0.060333052870000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adn-Jp-uab">
+                                <rect key="frame" x="20" y="48" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="SmallerFont">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGN-ne-pJc">
+                                <rect key="frame" x="251" y="48" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="LargerFont">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-5l-6dL">
+                                <rect key="frame" x="1" y="84" width="101" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="SentinelFont">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sentinelFontButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="beN-WR-JGf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6k-Rd-f5U">
+                                <rect key="frame" x="109" y="85" width="102" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="HelveticaFont">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="helveticaFontButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="eyh-Qy-3md"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihs-YU-SGu">
+                                <rect key="frame" x="219" y="85" width="88" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="UbuntuFont">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ubuntuFontButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="y86-Fp-n5G"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mem-vJ-7JS">
+                                <rect key="frame" x="0.0" y="132" width="157" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="LightTheme">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="lightThemeButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="wlM-60-C6S"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9P3-jD-aXj">
+                                <rect key="frame" x="165" y="132" width="141" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="DarkTheme">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="darkThemeButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="BUP-n0-unI"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jme-pe-xtC">
+                                <rect key="frame" x="0.0" y="40" width="306" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anR-v0-wNF">
+                                <rect key="frame" x="1" y="84" width="306" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0K-sn-5jm">
+                                <rect key="frame" x="1" y="128" width="306" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.65405771680000002" blue="0.65405771680000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="306" height="168"/>
+                    <connections>
+                        <outlet property="darkThemeButton" destination="9P3-jD-aXj" id="cmn-6d-Mih"/>
+                        <outlet property="helveticaFontButton" destination="O6k-Rd-f5U" id="0SL-Qp-bDG"/>
+                        <outlet property="lightThemeButton" destination="Mem-vJ-7JS" id="Q36-SJ-JcO"/>
+                        <outlet property="sentinelFontButton" destination="kEo-5l-6dL" id="eDO-I0-eHx"/>
+                        <outlet property="textSlider" destination="Yo4-KH-8Bi" id="7dV-lR-9BQ"/>
+                        <outlet property="ubuntuFontButton" destination="Ihs-YU-SGu" id="Xbo-5O-dEQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHP-EQ-vfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2556" y="-491"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="12m-vp-cX6">
@@ -507,6 +646,9 @@
                                         <state key="normal" image="EditTextIconWhite">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="6oo-AK-9Hq" kind="custom" identifier="textOptionModal" customClass="MZFormSheetSegue" id="Ji7-c3-7lg"/>
+                                        </connections>
                                     </button>
                                     <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aNs-Sg-KkG">
                                         <rect key="frame" x="0.0" y="58" width="320" height="3"/>
@@ -727,14 +869,21 @@
         <image name="BackButtonWhite" width="33" height="33"/>
         <image name="CancelButton" width="33" height="33"/>
         <image name="ChatIconWhite" width="32" height="33"/>
+        <image name="DarkTheme" width="34" height="34"/>
         <image name="EditTextIconWhite" width="33" height="34"/>
         <image name="EmailIcon" width="50" height="50"/>
         <image name="FacebookIcon" width="50" height="50"/>
+        <image name="HelveticaFont" width="53" height="34"/>
+        <image name="LargerFont" width="34" height="34"/>
+        <image name="LightTheme" width="34" height="34"/>
         <image name="RefreshButton" width="33" height="33"/>
+        <image name="SentinelFont" width="53" height="34"/>
         <image name="ShareIconWhite" width="33" height="30"/>
         <image name="ShowMoreButton" width="33" height="33"/>
+        <image name="SmallerFont" width="34" height="34"/>
         <image name="StarIconWhite" width="34" height="30"/>
         <image name="TwitterIcon" width="50" height="50"/>
+        <image name="UbuntuFont" width="53" height="34"/>
         <image name="featuresColor.png" width="50" height="105"/>
         <image name="iMessageIcon" width="50" height="50"/>
     </resources>

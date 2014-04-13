@@ -57,6 +57,7 @@
 		8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D518F1FD0200732D45 /* NewArticlePageViewHolderController.m */; };
 		8B5DC4D818F20A9400732D45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D718F20A9400732D45 /* Images.xcassets */; };
 		8B5DC4DB18F211E700732D45 /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4DA18F211E700732D45 /* ContentCell.m */; };
+		8B69414218FAB3E200976E4A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69414118FAB3E200976E4A /* MessageUI.framework */; };
 		8B71773F16D858FA001F1F94 /* SANDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B71773E16D858FA001F1F94 /* SANDB.png */; };
 		8B729FFC18FA529C00AD6C1F /* MZFormSheetBackgroundWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B729FEF18FA529C00AD6C1F /* MZFormSheetBackgroundWindow.m */; };
 		8B729FFD18FA529C00AD6C1F /* MZFormSheetBackgroundWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B729FF118FA529C00AD6C1F /* MZFormSheetBackgroundWindowViewController.m */; };
@@ -70,6 +71,7 @@
 		8B72A00B18FA603600AD6C1F /* ShareMzModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A00A18FA603600AD6C1F /* ShareMzModalViewController.m */; };
 		8B72A00E18FA621E00AD6C1F /* MZCustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A00D18FA621E00AD6C1F /* MZCustomTransition.m */; };
 		8B72A01118FA6E8200AD6C1F /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A01018FA6E8200AD6C1F /* ShareModalViewController.m */; };
+		8B72A01418FA932200AD6C1F /* TextOptionModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A01318FA932200AD6C1F /* TextOptionModalViewController.m */; };
 		8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B85640018D4D75B0098B83A /* ArticleCell.m */; };
 		8B85640D18D4DE1A0098B83A /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B85640C18D4DA9A0098B83A /* Raleway-Thin.ttf */; };
 		8B85640F18D4E0970098B83A /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B85640E18D4DF470098B83A /* Raleway-Regular.ttf */; };
@@ -188,6 +190,7 @@
 		8B5DC4D718F20A9400732D45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		8B5DC4D918F211E700732D45 /* ContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCell.h; sourceTree = "<group>"; };
 		8B5DC4DA18F211E700732D45 /* ContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCell.m; sourceTree = "<group>"; };
+		8B69414118FAB3E200976E4A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8B71773E16D858FA001F1F94 /* SANDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SANDB.png; sourceTree = "<group>"; };
 		8B729FEE18FA529C00AD6C1F /* MZFormSheetBackgroundWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetBackgroundWindow.h; sourceTree = "<group>"; };
 		8B729FEF18FA529C00AD6C1F /* MZFormSheetBackgroundWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetBackgroundWindow.m; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 		8B72A00D18FA621E00AD6C1F /* MZCustomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCustomTransition.m; sourceTree = "<group>"; };
 		8B72A00F18FA6E8200AD6C1F /* ShareModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModalViewController.h; sourceTree = "<group>"; };
 		8B72A01018FA6E8200AD6C1F /* ShareModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModalViewController.m; sourceTree = "<group>"; };
+		8B72A01218FA932200AD6C1F /* TextOptionModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextOptionModalViewController.h; sourceTree = "<group>"; };
+		8B72A01318FA932200AD6C1F /* TextOptionModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextOptionModalViewController.m; sourceTree = "<group>"; };
 		8B8563FF18D4D75B0098B83A /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
 		8B85640018D4D75B0098B83A /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
 		8B85640318D4D9760098B83A /* Raleway-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.otf"; sourceTree = "<group>"; };
@@ -286,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B69414218FAB3E200976E4A /* MessageUI.framework in Frameworks */,
 				8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */,
 				8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */,
 				8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */,
@@ -480,6 +486,8 @@
 				8B72A00A18FA603600AD6C1F /* ShareMzModalViewController.m */,
 				8B72A00F18FA6E8200AD6C1F /* ShareModalViewController.h */,
 				8B72A01018FA6E8200AD6C1F /* ShareModalViewController.m */,
+				8B72A01218FA932200AD6C1F /* TextOptionModalViewController.h */,
+				8B72A01318FA932200AD6C1F /* TextOptionModalViewController.m */,
 			);
 			name = New;
 			sourceTree = "<group>";
@@ -550,6 +558,7 @@
 		8BD1C80E16B32493005F3F23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B69414118FAB3E200976E4A /* MessageUI.framework */,
 				16E425AD187DD5F200695381 /* Crashlytics.framework */,
 				8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */,
 				8BD1C80F16B32493005F3F23 /* UIKit.framework */,
@@ -781,6 +790,7 @@
 				8B72A00118FA529C00AD6C1F /* UIImage+Additional.m in Sources */,
 				8B729FFE18FA529C00AD6C1F /* MZFormSheetController.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
+				8B72A01418FA932200AD6C1F /* TextOptionModalViewController.m in Sources */,
 				8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */,
 				16B3E6F918691F1900ABC0CF /* ArticlesListViewController.m in Sources */,
 				8B72A00018FA529C00AD6C1F /* MZTransition.m in Sources */,
@@ -878,8 +888,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "D1ADD1FE-5CBD-40EF-BD4A-18E79985C41A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D1ADD1FE-5CBD-40EF-BD4A-18E79985C41A";
+				PROVISIONING_PROFILE = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -903,8 +913,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "D1ADD1FE-5CBD-40EF-BD4A-18E79985C41A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D1ADD1FE-5CBD-40EF-BD4A-18E79985C41A";
+				PROVISIONING_PROFILE = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -927,7 +937,7 @@
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36329D87-A661-46F9-A997-C7204BB99CA1";
+				PROVISIONING_PROFILE = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -948,8 +958,8 @@
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36329D87-A661-46F9-A997-C7204BB99CA1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "36329D87-A661-46F9-A997-C7204BB99CA1";
+				PROVISIONING_PROFILE = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
