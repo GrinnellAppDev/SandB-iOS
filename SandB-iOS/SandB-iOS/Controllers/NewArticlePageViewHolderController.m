@@ -41,10 +41,23 @@
     //NSLog(@"Data source is: %@", self.infoPageViewController)
     self.pageViewController.dataSource = self;
     
-    NewArticleViewController *startingViewController = [self viewControllerAtIndex:0];
+    NewArticleViewController *startingViewController = [self viewControllerAtIndex:self.articleIndex];
     
     NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+
+    // Bug in PageViewController with Scroll. http://stackoverflow.com/questions/13633059/uipageviewcontroller-how-do-i-correctly-jump-to-a-specific-page-without-messing
+    __weak UIPageViewController * _weakPageViewController = self.pageViewController;
+    [self.pageViewController setViewControllers:viewControllers
+                  direction:UIPageViewControllerNavigationDirectionForward
+                   animated:YES completion:^(BOOL finished) {
+                       UIPageViewController* pvcs = _weakPageViewController;
+                       if (!pvcs) return;
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           [pvcs setViewControllers:viewControllers
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:NO completion:nil];
+                       });
+                   }];
     
     self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
@@ -70,7 +83,6 @@
     
     // methods that notify this view from the NewArticleViewController that the table view scrolled to a certain break point
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorTopBar) name:@"ColorTopBar" object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uncolorTopBar) name:@"UncolorTopBar" object:nil];
     
     // Set pageview delegate to self
@@ -108,13 +120,6 @@
                                                                                        
 #pragma mark - Page View Controller methods
 
-- (IBAction)startWalkthrough {
-    NewArticleViewController *startingViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
-    [self viewDidLoad];
-}
-
 - (NewArticleViewController *) viewControllerAtIndex:(NSUInteger) index {
     if (([self.pageArticles count] == 0) || (index >= [self.pageArticles count])) {
         return nil;
@@ -122,9 +127,15 @@
     
     NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
     
-    Article *article = self.pageArticles[self.articleIndex];
+    Article *article = self.pageArticles[index];
     
+<<<<<<< HEAD
     [[[DataModel sharedModel] articles][self.articleIndex] setRead:YES];
+=======
+    NSLog(@"HAS THIS ARTICLE BEEN READ? %hhd", article.read);
+    
+    [[[DataModel sharedModel] articles][index] setRead:YES];
+>>>>>>> FETCH_HEAD
     
     navc.article = article;
     navc.pageIndex = index;
@@ -134,40 +145,31 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
-    // NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
+     NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
     
-//    if (index == 0 || (index == NSNotFound)) {
-//        return nil;
-//    }
-//    
-//    index--;
-//    return [self viewControllerAtIndex:index];
-    
-    if (self.articleIndex == 0 || (self.articleIndex == NSNotFound)) {
+    if (index == 0 || (index == NSNotFound)) {
         return nil;
     }
     
-    self.articleIndex--;
-    return [self viewControllerAtIndex:self.articleIndex];
+    index--;
+    return [self viewControllerAtIndex:index];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
-    //NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
+    NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
     
-//    if (index == NSNotFound) {
-//        return nil;
-//    }
-//    
-//    index++;
+    if (index == NSNotFound) {
+        return nil;
+    }
+    
+    index++;
     
     if (self.articleIndex == NSNotFound) {
         return nil;
     }
     
-    self.articleIndex++;
-    
-    return [self viewControllerAtIndex:self.articleIndex];
+    return [self viewControllerAtIndex:index];
 }
 
 #pragma mark - Status Bar Options
@@ -181,7 +183,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)colorTopBar {
+- (void)colorTopBar {
     
     [UIView animateWithDuration:0.3 animations:^{
         self.topBarView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
@@ -191,7 +193,7 @@
     [self colorButtonsForRenderingMode:UIImageRenderingModeAlwaysTemplate andControlState:UIControlStateNormal];
 }
 
--(void)uncolorTopBar {
+- (void)uncolorTopBar {
     
     [UIView animateWithDuration:0.3 animations:^{
         self.topBarView.backgroundColor = [UIColor clearColor];
