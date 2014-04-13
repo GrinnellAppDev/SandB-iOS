@@ -17,6 +17,7 @@
 @property (nonatomic, assign) int commentsCount;
 @property (nonatomic, strong) NSString *date;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *URL;
 @property (nonatomic) BOOL read;
 
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) NSString *category; //News, Opinion, Sports etc.
 @property (nonatomic, strong) NSString *imageMediumURL;
 @property (nonatomic, strong) NSString *imageLargeURL;
+@property (nonatomic, strong) NSString *imageSmallURL;
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSMutableAttributedString *attrContent; 
 

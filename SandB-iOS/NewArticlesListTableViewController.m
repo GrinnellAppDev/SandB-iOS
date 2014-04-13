@@ -57,6 +57,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         [self fetchCategoryArticles];
         NSLog(@"AM I GETTING CATEGORY DATA?!?!?!");
     }
+    
 }
 
 - (void) fetchArticles {
@@ -244,6 +245,11 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     }
 }
 
+// STATUS BAR
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 @end

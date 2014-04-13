@@ -30,6 +30,8 @@
         
         _title = [articleDictionary[@"title"] stringByDecodingXMLEntities];
         
+        _URL = articleDictionary[@"url"];
+        
         _content = articleDictionary[@"content"];
         
         _content = [_content stringByReplacingOccurrencesOfString:@"<div id=\"attachment_.*</div>" withString:@"" options:NSCaseInsensitiveSearch | NSRegularExpressionSearch range:NSMakeRange(0, [_content length])];
@@ -40,17 +42,18 @@
         NSArray *attachments = articleDictionary[@"attachments"];
         NSDictionary *thumbnails = articleDictionary[@"thumbnail_images"];
         
-        
        // NSLog(@"title: %@", _title);
        // NSLog(@"attachments: %@", attachments);
-        
+
         if (attachments) {
+
             //todo - should loop.
             [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 
                 if ([obj[@"images"] count] > 1) {
                     _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
                     _imageLargeURL = obj[@"images"][@"large"][@"url"];
+                    _imageSmallURL = obj[@"images"][@"thumbnail"][@"url"];
                 }
                 
                 /*

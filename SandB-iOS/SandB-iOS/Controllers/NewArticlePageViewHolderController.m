@@ -334,17 +334,11 @@
         formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
             // Passing data
             ShareModalViewController *smvc = (ShareModalViewController *)presentedFSViewController;
-            NSLog(@"SMVC: %@", smvc);
             if (self.currentArticle) {
-                NSLog(@"THE ARTICLE IS NOT EMPTY!");
-                smvc.articleTitle = self.currentArticle.title;
-                NSLog(@"THE ARTICLE IS: %@", self.currentArticle);
+                smvc.article = self.currentArticle;
             }
             else {
-                NSLog(@"THE ARTICLE IS EMPTY!");
-                smvc.articleTitle = [self.pageArticles[self.articleIndex] title];
-                NSLog(@"THE ARTICLE IS: %@", self.pageArticles[self.articleIndex]);
-                
+                smvc.article = self.pageArticles[self.articleIndex];                
             }
         };
 

@@ -25,6 +25,7 @@ PODS:
   - MBProgressHUD (0.8)
   - PocketAPI (1.0.2)
   - Reachability (3.1.1)
+  - SAMTextView (0.2.1)
   - SDWebImage (3.6):
     - SDWebImage/Core
   - SDWebImage/Core (3.6)
@@ -119,6 +120,7 @@ DEPENDENCIES:
   - ECSlidingViewController (~> 2.0.1)
   - MBProgressHUD
   - Reachability
+  - SAMTextView (~> 0.2.1)
   - SDWebImage
   - ShareKit
   - Shimmer
@@ -133,6 +135,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
+  SAMTextView: f0dae9662a7cc45e890eb2b24aa1769148ea2933
   SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
   ShareKit: 4804fd5d03994bb5ae0f0cb654aafc27641daa43
   Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
