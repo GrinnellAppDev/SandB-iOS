@@ -26,5 +26,6 @@
 
 // ACTIONS
 - (IBAction)favoriteButtonPressed:(id)sender;
+- (IBAction)shareButtonPressed:(id)sender;
 
 @end

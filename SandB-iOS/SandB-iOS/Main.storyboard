@@ -306,6 +306,117 @@
             </objects>
             <point key="canvasLocation" x="1758" y="657"/>
         </scene>
+        <!--Share Modal View Controller-->
+        <scene sceneID="LT7-tG-38g">
+            <objects>
+                <viewController id="2V4-0M-orm" customClass="ShareModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iBw-7g-LXD"/>
+                        <viewControllerLayoutGuide type="bottom" id="CMB-5j-idN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9EY-Ye-bmp">
+                        <rect key="frame" x="0.0" y="0.0" width="290" height="370"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yfs-Qu-XJU">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="370"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="byz-Oy-W0u">
+                                        <rect key="frame" x="0.0" y="48" width="290" height="161"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-pE-N1h">
+                                        <rect key="frame" x="20" y="14" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="SHARE">
+                                                    <attributes>
+                                                        <font key="NSFont" size="19" name="HelveticaNeue-Thin"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tVY-nY-uFO">
+                                        <rect key="frame" x="116" y="333" width="59" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="SHARE">
+                                                    <attributes>
+                                                        <font key="NSFont" size="19" name="HelveticaNeue-Thin"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
+                                        <rect key="frame" x="84" y="227" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.087923540760000002" green="0.093249433389999997" blue="0.1028977997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="TwitterIcon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgr-XH-fmy">
+                                        <rect key="frame" x="157" y="227" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="FacebookIcon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqQ-Dn-0Gw">
+                                        <rect key="frame" x="84" y="285" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="iMessageIcon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGQ-XV-BoC">
+                                        <rect key="frame" x="154" y="285" width="53" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="EmailIcon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aG6-Lv-f8j">
+                                        <rect key="frame" x="237" y="12" width="33" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="CancelButton">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="290" height="370"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="yfs-Qu-XJU" id="8YC-jC-Rjl"/>
+                        <outlet property="cancelButtonPressed" destination="aG6-Lv-f8j" id="4pQ-PR-Bbq"/>
+                        <outlet property="emailButtonPressed" destination="QGQ-XV-BoC" id="Yf6-GA-guG"/>
+                        <outlet property="facebookButtonPressed" destination="vgr-XH-fmy" id="5AS-56-QXN"/>
+                        <outlet property="iMessageButtonPressed" destination="IqQ-Dn-0Gw" id="zZi-wm-VWB"/>
+                        <outlet property="shareButtonPressed" destination="wm3-pE-N1h" id="mhe-hp-sxh"/>
+                        <outlet property="twitterButtonPressed" destination="MJv-VZ-230" id="DCb-D4-19a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZL-bQ-hrv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2161" y="-31"/>
+        </scene>
         <!--Page View Controller-->
         <scene sceneID="12m-vp-cX6">
             <objects>
@@ -364,6 +475,9 @@
                                         <state key="normal" image="ShareIconWhite">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="2V4-0M-orm" kind="custom" identifier="shareModal" customClass="MZFormSheetSegue" id="4ff-2m-mPE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b18-tT-goY">
                                         <rect key="frame" x="272" y="17" width="33" height="35"/>
@@ -589,13 +703,18 @@
     </scenes>
     <resources>
         <image name="BackButtonWhite" width="33" height="33"/>
+        <image name="CancelButton" width="33" height="33"/>
         <image name="ChatIconWhite" width="32" height="33"/>
         <image name="EditTextIconWhite" width="33" height="34"/>
+        <image name="EmailIcon" width="50" height="50"/>
+        <image name="FacebookIcon" width="50" height="50"/>
         <image name="RefreshButton" width="33" height="33"/>
         <image name="ShareIconWhite" width="33" height="30"/>
         <image name="ShowMoreButton" width="33" height="33"/>
         <image name="StarIconWhite" width="34" height="30"/>
+        <image name="TwitterIcon" width="50" height="50"/>
         <image name="featuresColor.png" width="50" height="105"/>
+        <image name="iMessageIcon" width="50" height="50"/>
     </resources>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

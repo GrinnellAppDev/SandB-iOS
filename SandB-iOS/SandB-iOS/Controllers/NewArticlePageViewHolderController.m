@@ -9,6 +9,11 @@
 #import "NewArticlePageViewHolderController.h"
 #import "Article.h"
 #import "DataModel.h"
+#import "ShareMZModalViewController.h"
+
+#import "MZFormSheetController.h"
+#import "MZCustomTransition.h"
+#import "MZFormSheetSegue.h"
 
 @interface NewArticlePageViewHolderController ()
 
@@ -103,9 +108,14 @@
     // 6 - Features
     // 4 - Opinion
     // 7 - Sports
-    
-    
 
+    // MODAL VIEW STUFF
+    
+    [[MZFormSheetBackgroundWindow appearance] setBackgroundBlurEffect:YES];
+    [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
+    [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
+    
+    [MZFormSheetController registerTransitionClass:[MZCustomTransition class] forTransitionStyle:MZFormSheetTransitionStyleCustom];
 }
 
 - (void)didReceiveMemoryWarning
@@ -124,7 +134,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-                                                                                       
+
+
 #pragma mark - Page View Controller methods
 
 - (NewArticleViewController *) viewControllerAtIndex:(NSUInteger) index {
@@ -231,6 +242,9 @@
 
 }
 
+- (IBAction)shareButtonPressed:(id)sender {
+}
+
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
     
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
@@ -241,6 +255,28 @@
     
     [self.currentArticle setRead:YES];
 
+}
+
+// MZ Methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"shareModal"]) {
+        MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;
+        MZFormSheetController *formSheet = formSheetSegue.formSheetController;
+        formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+        formSheet.cornerRadius = 0;
+        formSheet.presentedFormSheetSize = CGSizeMake(290, 370);
+        formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
+            
+        };
+        
+        formSheet.shouldDismissOnBackgroundViewTap = YES;
+        
+        formSheet.didPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
+            
+        };
+    }
 }
 
 @end
