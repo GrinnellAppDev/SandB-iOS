@@ -57,7 +57,10 @@
 {
     _page++;
     NSMutableArray *newArticles = [NSMutableArray new];
-
+    
+    //canceling operations.
+//    [[SandBClient sharedClient].operationQueue cancelAllOperations];
+    
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
                          parameters:@{@"count": @(12),
                                       @"page": @(_page)
@@ -79,7 +82,7 @@
                                 }
                                 
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
-
+                                
                                 completion(nil, nil, 0, 0, error);
                             }];
 }
@@ -146,8 +149,6 @@
             break;
     }
     
-    _categoryPage++;
-    
     [[SandBClient sharedClient] GET:@"get_category_posts/"
                          parameters:@{@"id":newsCategory.idNum,
                                       @"page": @(_categoryPage)
@@ -155,9 +156,14 @@
     
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
                                 
+                                // Make sure we're still looking at the same category here. How would you know what the previous category was....?
+                                
                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
                                 
                                 if (httpResponse.statusCode == 200) {
+                                    
+                                    _categoryPage++;
+
                                     int totalPages = [responseObject[@"pages"] intValue];
                                     NSArray *articleArray = responseObject[@"posts"];
                                     [articleArray enumerateObjectsUsingBlock:^(NSDictionary *articleDictionary, NSUInteger idx, BOOL *stop) {

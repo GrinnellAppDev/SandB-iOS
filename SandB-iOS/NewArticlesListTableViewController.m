@@ -20,6 +20,8 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 @property (nonatomic, strong) NSArray *categoryColors;
 @property (nonatomic, strong) NSString *newsCategory;
 
+@property (nonatomic, assign) BOOL isFetchingArticles;
+
 @end
 
 @implementation NewArticlesListTableViewController
@@ -68,6 +70,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         else {
             NSLog(@"I am sad!");
         }
+        self.isFetchingArticles = NO;
     }];
     
 }
@@ -84,6 +87,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
          else {
              NSLog(@"I am sad!");
          }
+         self.isFetchingArticles = NO; 
      }];
 }
 
@@ -127,21 +131,21 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     
     //Customize Cell
     cell.articleTitle.text = [[[self getArrayForView] objectAtIndex:indexPath.row] title];
-     
-     cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[self getArrayForView]objectAtIndex:indexPath.row] date], [[[self getArrayForView]objectAtIndex:indexPath.row] author]];
-     cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self getArrayForView]objectAtIndex:indexPath.row] category]] color];
-     
-     // if article has been clicked on, aka red, color it with the category color to mark it as read
-     if ([[[self getArrayForView] objectAtIndex:indexPath.row] read]) {
-         cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self getArrayForView] objectAtIndex:indexPath.row] category]]  highlightedColor];
-     }
-     else {
-         cell.backgroundColor = [UIColor whiteColor];
-     }
-     
-     // make sure the selected color stays
-     
-     return cell;
+    
+    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[self getArrayForView]objectAtIndex:indexPath.row] date], [[[self getArrayForView]objectAtIndex:indexPath.row] author]];
+    cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self getArrayForView]objectAtIndex:indexPath.row] category]] color];
+    
+    // if article has been clicked on, aka red, color it with the category color to mark it as read
+    if ([[[self getArrayForView] objectAtIndex:indexPath.row] read]) {
+        cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self getArrayForView] objectAtIndex:indexPath.row] category]]  highlightedColor];
+    }
+    else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+    
+    // make sure the selected color stays
+    
+    return cell;
 }
 
 
@@ -226,11 +230,15 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 }
 
 - (void)fetchArticlesForView {
-    if ([self.newsCategory isEqualToString:@"News"]) {
-        [self fetchArticles];
-    }
-    else {
-        [self fetchCategoryArticles];
+    if (!self.isFetchingArticles) {
+        self.isFetchingArticles = YES;
+        
+        if ([self.newsCategory isEqualToString:@"News"]) {
+            [self fetchArticles];
+        }
+        else {
+            [self fetchCategoryArticles];
+        }
     }
 }
 
