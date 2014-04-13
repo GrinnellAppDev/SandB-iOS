@@ -34,14 +34,12 @@
         
         _content = [_content stringByReplacingOccurrencesOfString:@"<div id=\"attachment_.*</div>" withString:@"" options:NSCaseInsensitiveSearch | NSRegularExpressionSearch range:NSMakeRange(0, [_content length])];
         
-        NSLog(@"CONTENT: %@", _content);
         
         _category = [articleDictionary[@"categories"] objectAtIndex:0][@"title"];
         
         NSArray *attachments = articleDictionary[@"attachments"];
         NSDictionary *thumbnails = articleDictionary[@"thumbnail_images"];
         
-        NSLog(@"attachements: %@", attachments);
         
        // NSLog(@"title: %@", _title);
        // NSLog(@"attachments: %@", attachments);
@@ -49,7 +47,6 @@
         if (attachments) {
             //todo - should loop.
             [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                NSLog(@"obj: %@", obj);
                 
                 if ([obj[@"images"] count] > 1) {
                     _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
@@ -93,7 +90,6 @@
         NSDateFormatter *newFormatter = [[NSDateFormatter alloc] init];
         [newFormatter setDateFormat:@"dd MMM"];
         _date = [newFormatter stringFromDate:articleDate];
-        NSLog(@"THE DATEEEEE: %@", _date);
         
         //This section is what we need to optimize on.
         //Blurring the images.
@@ -140,7 +136,6 @@
          }
                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
          {
-             NSLog(@"Donloading %@ image %@", _title, image);
              if (image)
              {
                  // do something with image
