@@ -12,6 +12,12 @@
 @implementation DataModel
 {
     int _page;
+    int _artsPage;
+    int _featuresPage;
+    int _communityPage;
+    int _sportsPage;
+    int _opinionsPage;
+    int _categoryPage;
 }
 
 
@@ -34,7 +40,13 @@
         self.artsArticles = [NSMutableArray new];
         self.communityArticles = [NSMutableArray new];
         self.sportArticles = [NSMutableArray new];
+        self.opinionsArticles = [NSMutableArray new];
         _page = 0;
+        _artsPage = 0;
+        _communityPage = 0;
+        _featuresPage = 0;
+        _sportsPage = 0;
+        _opinionsPage = 0;
         
     }
     return self;
@@ -108,30 +120,37 @@
     
     NSMutableArray *newCategoryArticles = [NSMutableArray new];
     
-    
     NewsCategory *newsCategory = [[NewsCategory alloc] init];
     newsCategory = [[[NewsCategories sharedCategories] categoriesByName] objectForKey:category];
     
     switch ([newsCategory.idNum integerValue]) {
         case 5:
             _categoryArticles = _artsArticles;
+            _categoryPage = _artsPage;
             break;
         case 216:
             _categoryArticles = _communityArticles;
+            _categoryPage = _communityPage;
             break;
         case  6:
             _categoryArticles = _featuresArticles;
+            _categoryPage = _featuresPage;
             break;
         case 4:
             _categoryArticles = _opinionsArticles;
+            _categoryPage = _opinionsPage;
             break;
         case 7:
             _categoryArticles = _sportArticles;
+            _categoryPage = _sportsPage;
             break;
     }
     
+    _categoryPage++;
+    
     [[SandBClient sharedClient] GET:@"get_category_posts/"
-                         parameters:@{@"id":newsCategory.idNum
+                         parameters:@{@"id":newsCategory.idNum,
+                                      @"page": @(_categoryPage)
                                       }
     
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
@@ -146,15 +165,33 @@
                                         Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
                                         [newCategoryArticles addObject:article];
                                         [[[DataModel sharedModel] categoryArticles] addObject:article];
+                                        
+                                        switch ([newsCategory.idNum integerValue]) {
+                                            case 5:
+                                                _artsPage = _categoryPage;
+                                                break;
+                                            case 216:
+                                                _communityPage = _categoryPage;
+                                                break;
+                                            case  6:
+                                                _featuresPage = _categoryPage;
+                                                break;
+                                            case 4:
+                                                _opinionsPage = _categoryPage;
+                                                break;
+                                            case 7:
+                                                _sportsPage = _categoryPage;
+                                                break;
+                                        }
+                                        
                                     }];
-                                    completion([[DataModel sharedModel] categoryArticles], newCategoryArticles, totalPages, 0, nil);
+                                    completion([[DataModel sharedModel] categoryArticles], newCategoryArticles, totalPages, _categoryPage, nil);
                                 }
                                 
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                 
                                 completion(nil, nil, 0, 0, error);
                             }];
-    
     
 }
 

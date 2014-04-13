@@ -119,7 +119,7 @@
     // Configure the cell...
     
         cell.articleTitle.text = [[[self viewOptions] objectAtIndex:indexPath.row] title];
-        cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[self viewOptions]objectAtIndex:indexPath.row] date], [[[[DataModel sharedModel] articles]objectAtIndex:indexPath.row] author]];
+        cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[self viewOptions]objectAtIndex:indexPath.row] date], [[[self viewOptions]objectAtIndex:indexPath.row] author]];
         cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self viewOptions]objectAtIndex:indexPath.row] category]] color];
     
         // if article has been clicked on, aka red, color it with the category color to mark it as read
