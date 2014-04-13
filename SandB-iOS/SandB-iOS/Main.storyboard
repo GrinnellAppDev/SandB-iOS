@@ -322,13 +322,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="370"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="byz-Oy-W0u">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="byz-Oy-W0u" customClass="SAMTextView">
                                         <rect key="frame" x="0.0" y="48" width="290" height="161"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-pE-N1h">
                                         <rect key="frame" x="20" y="13" width="62" height="30"/>
@@ -367,11 +366,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
                                         <rect key="frame" x="84" y="227" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="rq1-Xa-45o"/>
                                         </constraints>
-                                        <color key="tintColor" red="0.087923540760000002" green="0.093249433389999997" blue="0.1028977997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="TwitterIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -419,8 +416,22 @@
                                             <action selector="cancelButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="PLV-TO-3Lw"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neH-30-If6">
+                                        <rect key="frame" x="256" y="187" width="31" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="77">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.34787547831632648" green="0.34787547831632648" blue="0.34787547831632648" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.65405771680000002" blue="0.65405771680000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -429,6 +440,8 @@
                     <size key="freeformSize" width="290" height="370"/>
                     <connections>
                         <outlet property="backgroundView" destination="yfs-Qu-XJU" id="8YC-jC-Rjl"/>
+                        <outlet property="characterCount" destination="neH-30-If6" id="SHc-9C-82Y"/>
+                        <outlet property="commentTextView" destination="byz-Oy-W0u" id="ife-NC-FTw"/>
                         <outlet property="emailButton" destination="QGQ-XV-BoC" id="oJ4-s0-j85"/>
                         <outlet property="facebookIcon" destination="vgr-XH-fmy" id="TMn-l9-t8d"/>
                         <outlet property="iMessageButton" destination="IqQ-Dn-0Gw" id="5P9-7T-HMV"/>

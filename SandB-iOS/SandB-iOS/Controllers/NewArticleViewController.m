@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     
     // add parallax image
@@ -42,6 +43,7 @@
     else {
         [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"defaultImage"] andHeight:400];
     }
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {

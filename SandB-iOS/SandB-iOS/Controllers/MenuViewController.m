@@ -223,4 +223,9 @@
     [self presentViewController:productViewController animated:YES completion:nil];
 }
 
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self viewDidLoad];
+}
+
 @end

@@ -8,14 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "MZFormSheetController.h"
+#import "Article.h"
+#import <MessageUI/MessageUI.h>
+#import <SAMTextView.h>
 
-@interface ShareModalViewController : UIViewController
+@interface ShareModalViewController : UIViewController <MFMailComposeViewControllerDelegate, UITextViewDelegate, MFMessageComposeViewControllerDelegate>
 
 // PROPERTIES
-@property (nonatomic, strong) NSString *articleTitle;
+@property (nonatomic, strong) Article *article;
 
 // OUTLETS
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (strong, nonatomic) IBOutlet SAMTextView *commentTextView;
+@property (strong, nonatomic) IBOutlet UILabel *characterCount;
 
 // BUTTONS
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
