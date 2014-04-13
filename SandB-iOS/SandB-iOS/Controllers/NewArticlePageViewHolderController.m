@@ -133,17 +133,7 @@
     }
     
     NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
-    
     Article *article = self.pageArticles[index];
-    
-//    if (![self.letsSeeIfYouWork isEqualToString:@"News"]) {
-//        NSLog(@" I AM DOING A CATEGORY!");
-//        [[[DataModel sharedModel] categoryArticles][index] setRead:YES];
-//    }
-//    else {
-//        NSLog(@" I AM DOING NEWS!");
-//        [[[DataModel sharedModel] articles][index] setRead:YES];
-//    }
 
     navc.article = article;
     navc.pageIndex = index;
@@ -160,6 +150,7 @@
     }
     
     index--;
+    
     return [self viewControllerAtIndex:index];
 }
 
@@ -214,7 +205,7 @@
 
 // changing the color of the buttons
 
--(void) colorButtonsForRenderingMode:(UIImageRenderingMode *) mode andControlState:(UIControlState *) state{
+- (void) colorButtonsForRenderingMode:(UIImageRenderingMode *) mode andControlState:(UIControlState *) state {
     
     self.view.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
     
@@ -227,20 +218,17 @@
     // TO DO: Change Color When Button Pressed
 }
 
-- (IBAction)favoriteButtonPressed:(id)sender {
+- (IBAction)favoriteButtonPressed:(id)sender
+{
 
 }
 
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
-    
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
+{
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
-    
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
-    
     self.currentArticle  = self.pageArticles[theIndex];
-    
     [self.currentArticle setRead:YES];
-
 }
 
 @end

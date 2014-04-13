@@ -41,13 +41,13 @@
         self.communityArticles = [NSMutableArray new];
         self.sportArticles = [NSMutableArray new];
         self.opinionsArticles = [NSMutableArray new];
+        
         _page = 0;
         _artsPage = 0;
         _communityPage = 0;
         _featuresPage = 0;
         _sportsPage = 0;
         _opinionsPage = 0;
-        
     }
     return self;
 }

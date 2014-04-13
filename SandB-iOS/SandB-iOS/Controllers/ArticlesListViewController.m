@@ -171,7 +171,6 @@ const int kLoadingCellTag = 888;
     } else {
         return [[[DataModel sharedModel] articles] count];
     }
-//    return self.articles.count;
 }
 
 - (UITableViewCell *)articleCellForIndexPath:(NSIndexPath *)indexPath
