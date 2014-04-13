@@ -129,14 +129,8 @@
     
     Article *article = self.pageArticles[index];
     
-<<<<<<< HEAD
-    [[[DataModel sharedModel] articles][self.articleIndex] setRead:YES];
-=======
-    NSLog(@"HAS THIS ARTICLE BEEN READ? %hhd", article.read);
-    
     [[[DataModel sharedModel] articles][index] setRead:YES];
->>>>>>> FETCH_HEAD
-    
+
     navc.article = article;
     navc.pageIndex = index;
     
