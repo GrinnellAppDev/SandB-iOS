@@ -200,7 +200,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
             NSUInteger currentArticleIndex = indexPath.row;
             
             napvhc.articleIndex = currentArticleIndex;
-            napvhc.letsSeeIfYouWork = self.newsCategory;
+            napvhc.recievedCategoryString = self.newsCategory;
         }
     }
 }

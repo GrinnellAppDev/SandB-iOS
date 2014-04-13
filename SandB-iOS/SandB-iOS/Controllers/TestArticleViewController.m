@@ -89,9 +89,6 @@
     // FB Shimmering Effect
     self.shimmerView.contentView = self.authorLabel;
     self.shimmerView.shimmering = YES;
-    
-    
-   
 
     
    /*

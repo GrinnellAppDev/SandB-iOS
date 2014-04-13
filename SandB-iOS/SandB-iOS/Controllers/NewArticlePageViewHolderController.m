@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     
-    if ([self.letsSeeIfYouWork isEqualToString:@"News"]) {
+    if ([self.recievedCategoryString isEqualToString:@"News"]) {
             self.pageArticles = [[DataModel sharedModel] articles];
     }
     else {
@@ -182,6 +182,52 @@
     return [self viewControllerAtIndex:index];
 }
 
+#pragma mark - Downloading Data
+
+- (void) fetchArticles {
+    
+    [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+        if (!error) {
+            
+            // TODO (DrJid): Handle when _currentPage < totalPages
+            
+            //_currentPage = currentPage;
+            //_totalPages = totalPages;
+            //[self.tableView reloadData];
+            self.pageArticles = articles;
+        }
+        else {
+            NSLog(@"I am sad!");
+        }
+    }];
+    
+}
+
+- (void) fetchCategoryArticles {
+    
+    [[DataModel sharedModel] fetchArticlesForCategory:self.recievedCategoryString withCompletionBlock:
+     ^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+         if (!error) {
+             // TODO (DrJid): Same as above
+             //_currentPage = currentPage;
+             //_totalPages = totalPages;
+             //[self.tableView reloadData];
+             self.pageArticles = articles;
+         }
+         else {
+             NSLog(@"I am sad!");
+         }
+     }];
+}
+
+- (void)fetchArticlesForView {
+    if ([self.recievedCategoryString isEqualToString:@"News"]) {
+        [self fetchArticles];
+    }
+    else {
+        [self fetchCategoryArticles];
+    }
+}
 #pragma mark - Status Bar Options
 
 - (BOOL)prefersStatusBarHidden {
@@ -244,6 +290,12 @@
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
     [self.currentArticle setRead:YES];
+
+    
+    if (theIndex > self.pageArticles.count - 5) {
+        // Go fetch more data. and update the self.pageArticles array;
+        [self fetchArticlesForView];
+    }
 }
 
 // MZ Methods
