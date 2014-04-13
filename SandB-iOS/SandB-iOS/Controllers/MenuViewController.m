@@ -20,6 +20,7 @@
     NSArray *toolsTitles;
     NSArray *categoryColors;
     NSArray *selectedCategoryColors;
+    BOOL firstOpen;
 }
 
 
@@ -46,6 +47,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
     
     self.slidingViewController.anchorRightRevealAmount = 200.0;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,7 +112,7 @@
         
         // TO DO: Make sure to change background color of first cell white, when something else is selected
         if (indexPath.row == 0) {
-            cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
+                cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
         }
         cell.textLabel.textColor = categoryColors[indexPath.row];
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:22]];
@@ -128,12 +130,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSIndexPath *firstIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell *firstCell = [tableView cellForRowAtIndexPath:firstIndexPath];
     
     if (indexPath.section == 0) {
+        if (!(firstCell.backgroundColor == [UIColor whiteColor])) {
+            firstCell.backgroundColor = [UIColor whiteColor];
+        }
         cell.backgroundColor = selectedCategoryColors[indexPath.row];
-        
-        
-        // TO DO: Make the selected row be the color of the category that gets displayed in the main view
     }
     
     if (indexPath.section == 1) {
@@ -165,65 +169,10 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - ECSliding Methods
 
 - (IBAction)unwindToMenuViewController: (UIStoryboardSegue *) segue {
     
 }
-
-//-(IBAction)dontfail:(id)sender {
-//    self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"failedNav"];
-//    [self.slidingViewController resetTopViewAnimated:YES];
-//    
-//}
 
 @end

@@ -41,6 +41,9 @@ install_resource()
       ;;
   esac
 }
+install_resource "Facebook-iOS-SDK/src/FBUserSettingsViewResources.bundle"
+install_resource "ShareKit/Frameworks/GooglePlus.bundle"
+install_resource "${BUILT_PRODUCTS_DIR}/ShareKit.bundle"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then
@@ -66,3 +69,4 @@ then
   esac 
   find "${PWD}" -name "*.xcassets" -print0 | xargs -0 actool --output-format human-readable-text --notices --warnings --platform "${PLATFORM_NAME}" --minimum-deployment-target "${IPHONEOS_DEPLOYMENT_TARGET}" ${TARGET_DEVICE_ARGS} --compress-pngs --compile "${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 fi
+install_resource 'SSToolkit/SSToolkitResources.bundle'

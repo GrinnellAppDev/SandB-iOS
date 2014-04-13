@@ -312,11 +312,13 @@
             
         };
         
+        
         formSheet.shouldDismissOnBackgroundViewTap = YES;
         
         formSheet.didPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
             
         };
+        
     }
 }
 
