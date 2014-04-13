@@ -10,8 +10,12 @@
 #import "MZFormSheetController.h"
 
 @interface ShareModalViewController : UIViewController
+
+// PROPERTIES
+@property (nonatomic, strong) NSString *articleTitle;
+
+// OUTLETS
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
-@property (nonatomic, strong) MZFormSheetController *sheetController;
 
 // BUTTONS
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;

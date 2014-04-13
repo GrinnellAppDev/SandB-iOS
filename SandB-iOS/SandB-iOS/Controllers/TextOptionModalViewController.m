@@ -1,20 +1,19 @@
 //
-//  ShareModalViewController.m
+//  TextOptionModalViewController.m
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 4/13/14.
 //  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
 //
 
-#import "ShareModalViewController.h"
+#import "TextOptionModalViewController.h"
 #import "MZFormSheetController.h"
 
-@interface ShareModalViewController () {
-}
+@interface TextOptionModalViewController ()
 
 @end
 
-@implementation ShareModalViewController
+@implementation TextOptionModalViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,24 +29,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:180.0/255.0 blue:182.0/255.0 alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:180.0/255.0 blue:182.0/255.0 alpha:1.0];
     
+    self.textSlider.maximumTrackTintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"article title: %@", self.articleTitle);
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    NSLog(@"article title: %@", self.articleTitle);
 }
 
 /*
@@ -66,18 +56,18 @@
     [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 }
 
-- (IBAction)shareButtonPressed:(id)sender {
-
+- (IBAction)sentinelFontButtonPressed:(id)sender {
 }
 
-- (IBAction)twitterButtonPressed:(id)sender {
+- (IBAction)helveticaFontButtonPressed:(id)sender {
 }
 
-- (IBAction)facebookButtonPressed:(id)sender {
+- (IBAction)ubuntuFontButtonPressed:(id)sender {
 }
 
-- (IBAction)iMessageButtonPressed:(id)sender {
+- (IBAction)lightThemeButtonPressed:(id)sender {
 }
-- (IBAction)emailButtonPressed:(id)sender {
+
+- (IBAction)darkThemeButtonPressed:(id)sender {
 }
 @end

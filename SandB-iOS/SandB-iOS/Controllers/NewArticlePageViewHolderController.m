@@ -10,6 +10,8 @@
 #import "Article.h"
 #import "DataModel.h"
 #import "ShareMZModalViewController.h"
+#import "ShareModalViewController.h"
+#import "TextOptionModalViewController.h"
 
 #import "MZFormSheetController.h"
 #import "MZCustomTransition.h"
@@ -308,23 +310,49 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
+    // setup the segue
+    MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;
+    MZFormSheetController *formSheet = formSheetSegue.formSheetController;
+    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    formSheet.cornerRadius = 0;
+    formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
+        
+    };
+    
+    
+    formSheet.shouldDismissOnBackgroundViewTap = YES;
+    
+    formSheet.didPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
+        
+    };
+    
+    // depending on where we're going do more setup
     if ([segue.identifier isEqualToString:@"shareModal"]) {
-        MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;
-        MZFormSheetController *formSheet = formSheetSegue.formSheetController;
-        formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
-        formSheet.cornerRadius = 0;
         formSheet.presentedFormSheetSize = CGSizeMake(290, 370);
-        formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
-            
+        
+        formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
+            // Passing data
+            ShareModalViewController *smvc = (ShareModalViewController *)presentedFSViewController;
+            NSLog(@"SMVC: %@", smvc);
+            if (self.currentArticle) {
+                NSLog(@"THE ARTICLE IS NOT EMPTY!");
+                smvc.articleTitle = self.currentArticle.title;
+                NSLog(@"THE ARTICLE IS: %@", self.currentArticle);
+            }
+            else {
+                NSLog(@"THE ARTICLE IS EMPTY!");
+                smvc.articleTitle = [self.pageArticles[self.articleIndex] title];
+                NSLog(@"THE ARTICLE IS: %@", self.pageArticles[self.articleIndex]);
+                
+            }
         };
+
         
-        
-        formSheet.shouldDismissOnBackgroundViewTap = YES;
-        
-        formSheet.didPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
-            
-        };
-        
+    }
+    
+    if ([segue.identifier isEqualToString:@"textOptionModal"]) {
+        formSheet.presentedFormSheetSize = CGSizeMake(306, 168);
     }
 }
 

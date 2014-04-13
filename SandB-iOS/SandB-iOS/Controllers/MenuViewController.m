@@ -143,6 +143,13 @@
     
     if (indexPath.section == 1) {
         cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
+        if ([cell.textLabel.text isEqualToString:@"Rate Our App"]) {
+            {
+                NSString *str = @"itms-apps://ax.itunes.apple.com/app/id638912711";
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            }
+        }
     }
     
 }
@@ -160,16 +167,28 @@
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"GoToCategory"]) {
-        UINavigationController *nc = segue.destinationViewController;
-        NewArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
-        NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
+    NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
+    if (indexPath.section == 0) {
+        if ([segue.identifier isEqualToString:@"GoToCategory"]) {
+            UINavigationController *nc = segue.destinationViewController;
+            NewArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
+            NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
             
-        NSString *categoryString = categoriesTitles[indexPath.row];
-        naltvc.recievedCategory = categoryString;
-        
-        //Perhaps we should cancel all operations when preparing for this segue.
-        
+
+            NSString *categoryString = categoriesTitles[indexPath.row];
+            naltvc.recievedCategory = categoryString;
+        }
+    }
+    else {
+        if (indexPath.row == 0) {
+            //stub - favorite articles
+        }
+        else if (indexPath.row == 1) {
+            [self rateSnB];
+        }
+        else {
+            [self contactUs];
+        }
     }
 }
 
@@ -178,6 +197,30 @@
 
 - (IBAction)unwindToMenuViewController: (UIStoryboardSegue *) segue {
     
+}
+
+- (void) contactUs {
+    if([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        
+        mailViewController.navigationBar.tintColor = [UIColor whiteColor];
+        mailViewController.navigationBar.translucent = NO;
+        
+        mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+        
+        [mailViewController setSubject:@"Feedback - S&B"];
+        [mailViewController setToRecipients:[NSArray arrayWithObject:@"appdev@grinnell.edu"]];
+        [self presentViewController:mailViewController animated:YES completion:nil];
+    }
+}
+
+- (void) rateSnB {
+    NSDictionary *parameters = [NSDictionary dictionaryWithObject:@"638912711" forKey:SKStoreProductParameterITunesItemIdentifier];
+    SKStoreProductViewController *productViewController = [[SKStoreProductViewController alloc] init];
+    productViewController.delegate = self;
+    [productViewController loadProductWithParameters:parameters completionBlock:nil];
+    [self presentViewController:productViewController animated:YES completion:nil];
 }
 
 @end
