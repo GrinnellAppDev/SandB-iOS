@@ -16,7 +16,7 @@
 
 #import <Crashlytics/Crashlytics.h>
 
-const int kLoadingCellTag = 888;
+const int kLoadingCellTag1 = 888;
 
 @interface ArticlesListViewController () <UISearchBarDelegate>
 
@@ -171,7 +171,6 @@ const int kLoadingCellTag = 888;
     } else {
         return [[[DataModel sharedModel] articles] count];
     }
-//    return self.articles.count;
 }
 
 - (UITableViewCell *)articleCellForIndexPath:(NSIndexPath *)indexPath
@@ -202,7 +201,7 @@ const int kLoadingCellTag = 888;
     activityIndicator.center = cell.center;
     [cell addSubview:activityIndicator];
     [activityIndicator startAnimating];
-    cell.tag = kLoadingCellTag;
+    cell.tag = kLoadingCellTag1;
     return cell;
 }
 
@@ -238,7 +237,7 @@ const int kLoadingCellTag = 888;
 - (void)tableView:(UITableView *)tableView
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (cell.tag == kLoadingCellTag) {
+    if (cell.tag == kLoadingCellTag1) {
         [self fetchArticles];
     }
 }
