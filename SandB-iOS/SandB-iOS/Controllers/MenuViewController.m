@@ -41,7 +41,7 @@
     categoryColors = [[[NewsCategories sharedCategories] categories] objectForKey:@"colors"];
     selectedCategoryColors = [[[NewsCategories sharedCategories] categories] objectForKey:@"highlighted"];
     
-    NSLog(@"highlighted colors: %@", categoryColors);
+    //NSLog(@"highlighted colors: %@", categoryColors);
     
     toolsTitles = @[@"Saved Articles", @"Rate Our App", @"Contact Us"];
     

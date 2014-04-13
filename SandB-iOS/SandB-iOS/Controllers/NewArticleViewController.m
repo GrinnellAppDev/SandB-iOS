@@ -128,7 +128,7 @@
         contentTextView.attributedText = test;
         contentTextView.userInteractionEnabled = NO;
         contentTextView.selectable = NO;
-        
+        contentTextView.backgroundColor = [UIColor clearColor]; 
         [contentCell.contentView addSubview:contentTextView];
         
         return contentCell;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A72ADD2A3AA4449A8D2C7FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 860B32250CAC4589B9915763 /* libPods.a */; };
 		1600A33218933C71006DFF9B /* BTGlassScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1600A33118933C71006DFF9B /* BTGlassScrollView.m */; };
+		1633F08618FADB0B00D0288F /* UIPageViewController+ReloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1633F08518FADB0B00D0288F /* UIPageViewController+ReloadData.m */; };
 		16355F9B18FA87910047F3B0 /* NSString+ISO8859Codes.m in Sources */ = {isa = PBXBuildFile; fileRef = 16355F9A18FA87910047F3B0 /* NSString+ISO8859Codes.m */; };
 		16B3E6F418691C9A00ABC0CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E6F318691C9A00ABC0CF /* Main.storyboard */; };
 		16B3E6F918691F1900ABC0CF /* ArticlesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E6F818691F1900ABC0CF /* ArticlesListViewController.m */; };
@@ -119,6 +120,8 @@
 
 /* Begin PBXFileReference section */
 		1600A33118933C71006DFF9B /* BTGlassScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTGlassScrollView.m; sourceTree = "<group>"; };
+		1633F08418FADB0B00D0288F /* UIPageViewController+ReloadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPageViewController+ReloadData.h"; sourceTree = "<group>"; };
+		1633F08518FADB0B00D0288F /* UIPageViewController+ReloadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPageViewController+ReloadData.m"; sourceTree = "<group>"; };
 		16355F9918FA87910047F3B0 /* NSString+ISO8859Codes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ISO8859Codes.h"; sourceTree = "<group>"; };
 		16355F9A18FA87910047F3B0 /* NSString+ISO8859Codes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ISO8859Codes.m"; sourceTree = "<group>"; };
 		16B3E6F318691C9A00ABC0CF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -342,6 +345,8 @@
 				16B3E708186937DD00ABC0CF /* UIImage+ImageEffects.m */,
 				16355F9918FA87910047F3B0 /* NSString+ISO8859Codes.h */,
 				16355F9A18FA87910047F3B0 /* NSString+ISO8859Codes.m */,
+				1633F08418FADB0B00D0288F /* UIPageViewController+ReloadData.h */,
+				1633F08518FADB0B00D0288F /* UIPageViewController+ReloadData.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -803,6 +808,7 @@
 				8B5DC4CF18F1F67B00732D45 /* MenuViewController.m in Sources */,
 				8BF70EE318F65F2B00637795 /* NewsCategories.m in Sources */,
 				8B72A00E18FA621E00AD6C1F /* MZCustomTransition.m in Sources */,
+				1633F08618FADB0B00D0288F /* UIPageViewController+ReloadData.m in Sources */,
 				8B5DC4CC18F1F57A00732D45 /* NewArticleCell.m in Sources */,
 				8BF70EE918F6CB1000637795 /* NewsCategory.m in Sources */,
 				3BEBCE7C16C59D0B00B6DD08 /* SuperViewController.m in Sources */,
@@ -937,7 +943,7 @@
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
+				PROVISIONING_PROFILE = "36329D87-A661-46F9-A997-C7204BB99CA1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -958,8 +964,8 @@
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F82B6C50-115F-4948-9B79-5D2FCF3C9CF7";
+				PROVISIONING_PROFILE = "36329D87-A661-46F9-A997-C7204BB99CA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "36329D87-A661-46F9-A997-C7204BB99CA1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

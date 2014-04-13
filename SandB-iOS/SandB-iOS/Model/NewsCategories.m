@@ -33,7 +33,7 @@
     
     for (int i = 0; i < [categoryNames count]; i++) {
         NewsCategory *cat = [[NewsCategory alloc] categoryWithName:categoryNames[i] andColor:categoryColors[i] andId:categoryIds[i] andHighlightedColor:categoryHighlightedColors[i]];
-        NSLog(@"cat!!: %@", cat);
+        //NSLog(@"cat!!: %@", cat);
         [_categoriesByName setObject:cat forKey:cat.name];
     }
     

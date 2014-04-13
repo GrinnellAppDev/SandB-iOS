@@ -12,6 +12,7 @@
 #import "ShareMZModalViewController.h"
 #import "ShareModalViewController.h"
 #import "TextOptionModalViewController.h"
+#import "UIPageViewController+ReloadData.h"
 
 #import "MZFormSheetController.h"
 #import "MZCustomTransition.h"
@@ -21,6 +22,12 @@
 @property (nonatomic, strong) Article *currentArticle;
 @property (nonatomic) NSUInteger index;
 @property (nonatomic, assign) BOOL isFetchingArticles;
+
+// Reading Options
+@property (nonatomic, assign) float fontSize;
+@property (nonatomic, strong) NSString *fontFamily;
+@property (nonatomic, assign) BOOL isLightTheme;
+
 @end
 
 @implementation NewArticlePageViewHolderController
@@ -37,6 +44,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPages) name:@"ReloadPageViewController" object:nil];
     
     if ([self.recievedCategoryString isEqualToString:@"News"]) {
         self.pageArticles = [[DataModel sharedModel] articles];
@@ -116,6 +125,8 @@
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
     
     [MZFormSheetController registerTransitionClass:[MZCustomTransition class] forTransitionStyle:MZFormSheetTransitionStyleCustom];
+    
+    [self loadReadingOptions];
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,6 +146,12 @@
  }
  */
 
+- (void)loadReadingOptions
+{
+    self.fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"ReadingOptionsFontSize"];
+    self.fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"];
+    self.isLightTheme = [[NSUserDefaults standardUserDefaults] boolForKey:@"ReadingOptionsIsLightTheme"];
+}
 
 #pragma mark - Page View Controller methods
 
@@ -143,8 +160,78 @@
         return nil;
     }
     
+    [self loadReadingOptions];
+    
     NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
+    
+    /*
+    if (self.isLightTheme) {
+        NSLog(@"is light them");
+        navc.theTableView.backgroundColor = [UIColor whiteColor];
+    } else {
+        NSLog(@"is dark them");
+        navc.view.backgroundColor = [UIColor blackColor];
+    }
+    */
+    
+    
     Article *article = self.pageArticles[index];
+    
+    NSLog(@"fs: %f", self.fontSize);
+    NSLog(@"ff: %@", self.fontFamily);
+    
+    // Modify the article right here.
+    
+    //Get default values.
+    
+    // NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
+    //  NSFontAttributeName: [UIFont fontWithName:@"Palatino" size:14.0f],
+    
+    // size ranges from 100% to 200%.
+    // Helvetica Neue || Avenir Next || Cochin
+   
+//    for (NSString* family in [UIFont familyNames])
+//    {
+//        NSLog(@"%@", family);
+//        
+//        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+//        {
+//            NSLog(@"  %@", name);
+//        }
+//    }
+// #FFF
+    
+     NSString *htmlOpen = @"<html>";
+     NSString *htmlClose = @"</html>";
+    int fontSize = (self.fontSize * 100) + 100;
+    NSString * htmlAdditions  =  [NSString stringWithFormat:@"<head><style type='text/css'> body{font-size: %d%%;font-family:'%@';color:#4A4A4A;}</style></head>", fontSize, self.fontFamily];
+
+//     NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 180%;font-family:'Cochin';color:#4A4A4A;}</style></head>";
+     NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, article.content, htmlClose];
+    
+     NSError *error = nil;
+     
+     NSDictionary *options = @{
+     NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+     };
+     
+     
+     article.attrContent = [[NSMutableAttributedString alloc] initWithData:[newContent dataUsingEncoding:NSUTF32StringEncoding]
+     options:options documentAttributes:nil
+     error:&error];
+     
+    
+    
+    
+    
+    /* NSDictionary* attributes = @{
+                                NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
+                                
+                                 }; */
+    
+    //[article.attrContent addAttributes:attributes range:NSMakeRange(0, [article.attrContent length])];
+    
+    //NSLog(@"attrContent: %@", article.attrContent);
     
     navc.article = article;
     navc.pageIndex = index;
@@ -180,6 +267,14 @@
     }
     
     return [self viewControllerAtIndex:index];
+}
+
+
+- (void)reloadPages
+{
+    NSLog(@"Reloading");
+    [self.pageViewController xcd_setViewControllers:self.pageViewController.viewControllers direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:YES completion:nil];
 }
 
 #pragma mark - Downloading Data
@@ -226,7 +321,7 @@
     if (!self.isFetchingArticles) {
         self.isFetchingArticles = YES;
         NSLog(@"Fetching!!!");
-
+        
         if ([self.recievedCategoryString isEqualToString:@"News"]) {
             [self fetchArticles];
         }
@@ -235,6 +330,7 @@
         }
     }
 }
+
 #pragma mark - Status Bar Options
 
 - (BOOL)prefersStatusBarHidden {
@@ -347,7 +443,7 @@
                 
             }
         };
-
+        
         
     }
     

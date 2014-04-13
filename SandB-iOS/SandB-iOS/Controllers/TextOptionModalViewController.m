@@ -32,6 +32,16 @@
     self.view.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:180.0/255.0 blue:182.0/255.0 alpha:1.0];
     
     self.textSlider.maximumTrackTintColor = [UIColor whiteColor];
+    
+    // Set the initial values.
+    float fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"ReadingOptionsFontSize"];
+    
+    NSString * fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"];
+    
+    self.textSlider.value = fontSize;
+    
+    // TODO (DrJid): Set the current Font family and highlight that button as selected.
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,18 +66,42 @@
     [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 }
 
+//     // Helvetica Neue || Avenir Next || Cochin
+
+
 - (IBAction)sentinelFontButtonPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"Cochin" forKey:@"ReadingOptionsFontFamily"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
 
 - (IBAction)helveticaFontButtonPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"Helvetica Neue" forKey:@"ReadingOptionsFontFamily"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)ubuntuFontButtonPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"Avenir Next" forKey:@"ReadingOptionsFontFamily"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)lightThemeButtonPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ReadingOptionsIsLightTheme"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)darkThemeButtonPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ReadingOptionsIsLightTheme"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)fontSizeValueChanged:(UISlider *)slider {
+    
+    NSLog(@"sender: %f", slider.value);
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:slider.value forKey:@"ReadingOptionsFontSize"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadPageViewController" object:nil];
 }
 @end

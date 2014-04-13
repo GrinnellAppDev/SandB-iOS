@@ -99,34 +99,6 @@
         [self formAttributedString];
         
         
-        /*
-        dispatch_queue_t attrqueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-        dispatch_async( attrqueue, ^{
-            
-            NSDictionary *options = @{
-                                      NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                                      };
-            NSError *error = nil;
-            _attrContent = [[NSMutableAttributedString alloc] initWithData:[_content dataUsingEncoding:NSUTF32StringEncoding]
-                                                                   options:options documentAttributes:nil
-                                                                     error:&error];
-            
-            if (!error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"_attrContent: %@", _attrContent);
-                    
-                });
-            } else {
-                NSLog(@"WTF??"); 
-            }
-            
-            
-        });
-         */
-        
-        
-        
-        
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         [manager downloadWithURL:[NSURL URLWithString:self.thumbnailImageURL]
                          options:0
