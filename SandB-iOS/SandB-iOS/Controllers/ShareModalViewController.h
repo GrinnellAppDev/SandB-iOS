@@ -11,11 +11,14 @@
 #import "Article.h"
 #import <MessageUI/MessageUI.h>
 #import <SAMTextView.h>
+#import <Accounts/Accounts.h>
 
 @interface ShareModalViewController : UIViewController <MFMailComposeViewControllerDelegate, UITextViewDelegate, MFMessageComposeViewControllerDelegate>
 
 // PROPERTIES
 @property (nonatomic, strong) Article *article;
+@property (nonatomic, strong) ACAccount *twitterAccount;
+@property (nonatomic, strong) ACAccountStore *accountStore;
 
 // OUTLETS
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;

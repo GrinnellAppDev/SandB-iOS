@@ -82,6 +82,8 @@
 		8B85641718D4E6F40098B83A /* featuresColor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B85641518D4E6F40098B83A /* featuresColor@2x.png */; };
 		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8B9BB17916BEEE8F00C20358 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB17816BEEE8F00C20358 /* Article.m */; };
+		8BB2B2D21901C4F9001F5B45 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B2D11901C4F9001F5B45 /* Social.framework */; };
+		8BB2B31D19022248001F5B45 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B31C19022248001F5B45 /* Accounts.framework */; };
 		8BC46F6116C823A3008642F7 /* ArtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC46F5F16C823A3008642F7 /* ArtsViewController.m */; };
 		8BC46F6216C823A3008642F7 /* ArtsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC46F6016C823A3008642F7 /* ArtsViewController.xib */; };
 		8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C80F16B32493005F3F23 /* UIKit.framework */; };
@@ -241,6 +243,8 @@
 		8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8B9BB17716BEEE8F00C20358 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Article.h; path = ../Article.h; sourceTree = "<group>"; };
 		8B9BB17816BEEE8F00C20358 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Article.m; path = ../Article.m; sourceTree = "<group>"; };
+		8BB2B2D11901C4F9001F5B45 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		8BB2B31C19022248001F5B45 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		8BC46F5E16C823A3008642F7 /* ArtsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtsViewController.h; sourceTree = "<group>"; };
 		8BC46F5F16C823A3008642F7 /* ArtsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtsViewController.m; sourceTree = "<group>"; };
 		8BC46F6016C823A3008642F7 /* ArtsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtsViewController.xib; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB2B31D19022248001F5B45 /* Accounts.framework in Frameworks */,
+				8BB2B2D21901C4F9001F5B45 /* Social.framework in Frameworks */,
 				8B69414218FAB3E200976E4A /* MessageUI.framework in Frameworks */,
 				8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */,
 				8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */,
@@ -563,6 +569,8 @@
 		8BD1C80E16B32493005F3F23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8BB2B31C19022248001F5B45 /* Accounts.framework */,
+				8BB2B2D11901C4F9001F5B45 /* Social.framework */,
 				8B69414118FAB3E200976E4A /* MessageUI.framework */,
 				16E425AD187DD5F200695381 /* Crashlytics.framework */,
 				8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */,
