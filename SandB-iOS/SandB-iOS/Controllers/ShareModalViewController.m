@@ -68,13 +68,10 @@
     [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 }
 
-- (IBAction)shareButtonPressed:(id)sender {
-    
-    [self.commentTextView resignFirstResponder];
-
-}
 
 - (IBAction)twitterButtonPressed:(id)sender {
+    
+    self.characterCount.hidden = NO;
     
     self.commentTextView.text = [NSString stringWithFormat:@"%@ %@", self.article.title, self.article.URL];
     
@@ -88,36 +85,40 @@
     
     // ENABLE SHARING NOW, WHEN SHARE BUTTON PRESSED
     
-    if (!twitterBtnPressed) {
-        self.twitterButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [self buttonPressed:sender withImage:@"TwitterIcon"];
-        twitterBtnPressed = YES;
-    }
-    else {
-        self.twitterButton.tintColor = [UIColor whiteColor];
-        [self buttonDepressed:sender withImage:@"TwitterIcon"];
-        twitterBtnPressed = NO;
-    }
+    [self depressButtonsExceptFor:sender];
     
-    // sends a tweet
-    [self tweetWithStatus:self.commentTextView.text];
-    
+    twitterBtnPressed = YES;
+    fbBtnPressed = NO;
+    emailBtnPressed = NO;
+    imgBtnPressed = NO;
+
 }
 
 -(void)textViewDidChange:(UITextView *)textView
 {
-    int len = self.commentTextView.text;
+    int len = [self.commentTextView.text length];
+    NSLog(@"the length: %i", len);
     self.characterCount.text = [NSString stringWithFormat:@"%i", 140 - len];
+    if (len > 139) {
+        [textView resignFirstResponder];
+    }
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    if ([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        return NO;
-    }
-    return YES;
-}
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+//{
+//    if([text length] == 0)
+//    {
+//        if([textView.text length] != 0)
+//        {
+//            return YES;
+//        }
+//    }
+//    else if([[textView text] length] > 139)
+//    {
+//        return NO;
+//    }
+//    return YES;
+//}
 
 - (IBAction)facebookButtonPressed:(id)sender {
     [self buttonPressed:sender withImage:@"FacebookIcon"];
@@ -126,30 +127,20 @@
     self.commentTextView.placeholder = @"Write comment...";
     self.commentTextView.hidden = NO;
     
-    if (!fbBtnPressed) {
-        self.facebookIcon.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [self buttonPressed:sender withImage:@"FacebookIcon"];
-        fbBtnPressed = YES;
-    }
-    else {
-        self.facebookIcon.tintColor = [UIColor whiteColor];
-        [self buttonDepressed:sender withImage:@"FacebookIcon"];
-        fbBtnPressed = NO;
-    }
+    self.characterCount.hidden = YES;
+    
+    [self depressButtonsExceptFor:sender];
+    
+    twitterBtnPressed = NO;
+    fbBtnPressed = YES;
+    emailBtnPressed = NO;
+    imgBtnPressed = NO;
+
 }
 
 - (IBAction)iMessageButtonPressed:(id)sender {
     
-    if (!imgBtnPressed) {
-        self.iMessageButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [self buttonPressed:sender withImage:@"iMessageIcon"];
-        imgBtnPressed = YES;
-    }
-    else {
-        self.iMessageButton.tintColor = [UIColor whiteColor];
-        [self buttonDepressed:sender withImage:@"iMessageIcon"];
-        imgBtnPressed = NO;
-    }
+    [self depressButtonsExceptFor:sender];
     
     if(![MFMessageComposeViewController canSendText]) {
         UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -165,6 +156,12 @@
     
     // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
+    
+    twitterBtnPressed = NO;
+    fbBtnPressed = NO;
+    emailBtnPressed = NO;
+    imgBtnPressed = YES;
+
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
@@ -188,6 +185,9 @@
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    MZFormSheetController *ctrl = self.formSheetController;
+    [ctrl mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 }
 
 - (IBAction)emailButtonPressed:(id)sender {
@@ -206,20 +206,35 @@
         [mailViewController setMessageBody:messageBody isHTML:YES];
         [self presentViewController:mailViewController animated:YES completion:nil];
     }
-    if (!emailBtnPressed) {
-        self.emailButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [self buttonPressed:sender withImage:@"EmailIcon"];
-        emailBtnPressed = YES;
+    
+    twitterBtnPressed = NO;
+    fbBtnPressed = NO;
+    emailBtnPressed = YES;
+    imgBtnPressed = NO;
+
+    
+    [self depressButtonsExceptFor:sender];
+}
+
+- (IBAction)shareButtonPressed:(id)sender {
+    
+    if (twitterBtnPressed) {
+        NSLog(@"TWITTER BTN PRESSED!!");
+        [self tweetWithStatus:self.commentTextView.text];
     }
-    else {
-        self.emailButton.tintColor = [UIColor whiteColor];
-        [self buttonDepressed:sender withImage:@"EmailIcon"];
-        emailBtnPressed = NO;
+    
+    if (fbBtnPressed) {
+        NSLog(@"fb butn pressed!!!");
+        [self postWithStatus:self.commentTextView.text];
     }
+    
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    MZFormSheetController *ctrl = self.formSheetController;
+    [ctrl mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 }
 
 - (void) buttonPressed:(UIButton *)button withImage:(NSString *)image {
@@ -240,6 +255,36 @@
     [textView resignFirstResponder];
     return YES;
 }
+
+- (BOOL) textView: (UITextView*) textView shouldChangeTextInRange: (NSRange) range
+  replacementText: (NSString*) text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (void) depressButtonsExceptFor:(UIButton *)currentButton {
+    
+    NSArray *buttons = [[NSArray alloc] initWithObjects:self.twitterButton, self.emailButton, self.facebookIcon, self.iMessageButton, nil];
+    
+    
+    for (UIButton *btn in buttons) {
+        if (![btn isEqual:currentButton]) {
+        btn.tintColor = [UIColor whiteColor];
+            [btn setImage:[btn.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        }
+        else {
+            btn.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
+            [btn setImage:[btn.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        }
+
+    }
+}
+
+#pragma SOCIAL MEDIA
 
 - (void) tweetWithStatus:(NSString *)status {
     ACAccountType *twitterType =
@@ -289,6 +334,29 @@
     [self.accountStore requestAccessToAccountsWithType:twitterType
                                                options:NULL
                                             completion:accountStoreHandler];
+}
+
+- (void)postWithStatus:(NSString *)status {
+    ACAccountType *facebookType =
+    [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    
+    NSDictionary *options = @{ACFacebookAppIdKey : @"<your key>",
+                              ACFacebookPermissionsKey : @[@"email", @"publish_stream"],
+                              ACFacebookAudienceKey:ACFacebookAudienceFriends};
+    
+    [self.accountStore requestAccessToAccountsWithType:facebookType options:options
+                                            completion:^(BOOL granted, NSError *error) {
+                                                if (granted)
+                                                {
+                                                    NSArray *accounts = [_accountStore accountsWithAccountType:facebookType];
+                                                    
+                                                    // Optionally save the account
+                                                    [_accountStore saveAccount:[accounts lastObject] withCompletionHandler:nil];
+                                                } else {
+                                                    NSLog(@"%@",error);
+                                                    // Fail gracefully...
+                                                }
+                                            }];
 }
 
 @end

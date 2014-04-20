@@ -343,7 +343,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="46r-bE-a6l"/>
+                                            <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="RqO-Qe-afb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tVY-nY-uFO">
@@ -360,7 +360,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="bMD-3L-VvY"/>
+                                            <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="HFW-DR-HiZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">

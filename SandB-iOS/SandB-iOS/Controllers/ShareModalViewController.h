@@ -19,6 +19,7 @@
 @property (nonatomic, strong) Article *article;
 @property (nonatomic, strong) ACAccount *twitterAccount;
 @property (nonatomic, strong) ACAccountStore *accountStore;
+@property (nonatomic, strong) ACAccount *facebookAccount;
 
 // OUTLETS
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
