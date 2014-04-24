@@ -219,12 +219,10 @@
 - (IBAction)shareButtonPressed:(id)sender {
     
     if (twitterBtnPressed) {
-        NSLog(@"TWITTER BTN PRESSED!!");
         [self tweetWithStatus:self.commentTextView.text];
     }
     
     if (fbBtnPressed) {
-        NSLog(@"fb butn pressed!!!");
         [self postWithStatus:self.commentTextView.text];
     }
     
@@ -340,23 +338,81 @@
     ACAccountType *facebookType =
     [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     
-    NSDictionary *options = @{ACFacebookAppIdKey : @"<your key>",
-                              ACFacebookPermissionsKey : @[@"email", @"publish_stream"],
+    NSDictionary *options1 = @{ACFacebookAppIdKey : @"692222060836413",
+                              ACFacebookPermissionsKey : @[@"email"],
                               ACFacebookAudienceKey:ACFacebookAudienceFriends};
     
-    [self.accountStore requestAccessToAccountsWithType:facebookType options:options
+    NSDictionary *options2 = @{ACFacebookAppIdKey : @"692222060836413",
+                               ACFacebookPermissionsKey : @[@"publish_stream"],
+                               ACFacebookAudienceKey:ACFacebookAudienceFriends};
+    
+    [self.accountStore requestAccessToAccountsWithType:facebookType options:options1
                                             completion:^(BOOL granted, NSError *error) {
                                                 if (granted)
                                                 {
-                                                    NSArray *accounts = [_accountStore accountsWithAccountType:facebookType];
+                                                    NSArray *accounts = [self.accountStore accountsWithAccountType:facebookType];
                                                     
                                                     // Optionally save the account
-                                                    [_accountStore saveAccount:[accounts lastObject] withCompletionHandler:nil];
+                                                    [self.accountStore saveAccount:[accounts lastObject] withCompletionHandler:nil];
+                                                    
+                                                    NSLog(@"email was granted");
                                                 } else {
                                                     NSLog(@"%@",error);
                                                     // Fail gracefully...
                                                 }
                                             }];
+    
+    [self.accountStore requestAccessToAccountsWithType:facebookType options:options2
+                                            completion:^(BOOL granted, NSError *error) {
+                                                if (granted)
+                                                {
+                                                    NSArray *accounts = [self.accountStore accountsWithAccountType:facebookType];
+                                                    
+                                                    // Optionally save the account
+                                                    [self.accountStore saveAccount:[accounts lastObject] withCompletionHandler:nil];
+                                                    
+                                                    NSLog(@"publish stream was granted");
+                                                } else {
+                                                    NSLog(@"%@",error);
+                                                    // Fail gracefully...
+                                                }
+                                            }];
+    
+    // First obtain the Facebook account from the ACAccountStore
+    ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
+    
+    // If we don't have access to users Facebook account, the account store will return an empty array.
+    if (accounts.count == 0)
+        return;
+    
+    // Since there's only one Facebook account, grab the last object
+    ACAccount *account = [accounts lastObject];
+    
+    // Create the parameters dictionary and the URL (!use HTTPS!)
+    NSDictionary *parameters = @{@"message" : self.commentTextView.text, @"link": self.article.URL};
+    NSURL *URL = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
+    
+    // Create request
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                            requestMethod:SLRequestMethodPOST
+                                                      URL:URL
+                                               parameters:parameters];
+    
+    // Since we are performing a method that requires authorization we can simply
+    // add the ACAccount to the SLRequest
+    [request setAccount:account];
+    
+    // Perform request
+    [request performRequestWithHandler:^(NSData *respData, NSHTTPURLResponse *urlResp, NSError *error) {
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:respData
+                                                                           options:kNilOptions
+                                                                             error:&error];
+        
+        // Check for errors in the responseDictionary
+    }];
+
+
 }
 
 @end
