@@ -11,6 +11,8 @@
 
 @interface TextOptionModalViewController ()
 
+@property (nonatomic, strong) NSString *fontFamily;
+
 @end
 
 @implementation TextOptionModalViewController
@@ -36,37 +38,9 @@
     // Set the initial values.
     float fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"ReadingOptionsFontSize"];
     
-    NSString *fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"];
-    
-    NSLog(@"font family: %@", fontFamily);
-    
-    if (!fontFamily) {
-        fontFamily = @"HelveticaNeue-Light";
-        self.helveticaFontButton.tintColor = [UIColor redColor];
-        
-        self.helveticaFontButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [self.helveticaFontButton setImage:[self.helveticaFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    }
-    
-    else if ([fontFamily isEqualToString:@"HelveticaNeue-Light"]) {
-    
-        self.helveticaFontButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [self.helveticaFontButton setImage:[self.helveticaFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    }
-    
-    else if ([fontFamily isEqualToString:@"ProximaNova-Light"]) {
-        
-        self.sentinelFontButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [self.helveticaFontButton setImage:[self.sentinelFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    }
-    
-    else if ([fontFamily isEqualToString:@"Quattrocento"]) {
-        
-        self.ubuntuFontButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [self.ubuntuFontButton setImage:[self.ubuntuFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    }
-    
     self.textSlider.value = fontSize;
+    
+    [self colorChosenFont];
     
     // TODO (DrJid): Set the current Font family and highlight that button as selected.
 }
@@ -100,13 +74,10 @@
     [[NSUserDefaults standardUserDefaults] setObject:@"ProximaNova-Light" forKey:@"ReadingOptionsFontFamily"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    self.sentinelFontButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-    [self.sentinelFontButton setImage:[self.sentinelFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self changeButton:sender toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
     
-    self.ubuntuFontButton.tintColor = [UIColor whiteColor];
-    [self.ubuntuFontButton setImage:[self.ubuntuFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    self.helveticaFontButton.tintColor = [UIColor whiteColor];
-    [self.helveticaFontButton setImage:[self.helveticaFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self changeButton:self.ubuntuFontButton toColor:[UIColor whiteColor]];
+    [self changeButton:self.helveticaFontButton toColor:[UIColor whiteColor]];
     
 }
 
@@ -114,26 +85,22 @@
     [[NSUserDefaults standardUserDefaults] setObject:@"HelveticaNeue-Light" forKey:@"ReadingOptionsFontFamily"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    self.helveticaFontButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-    [self.helveticaFontButton setImage:[self.helveticaFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     
-    self.ubuntuFontButton.tintColor = [UIColor whiteColor];
-    [self.ubuntuFontButton setImage:[self.ubuntuFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    self.sentinelFontButton.tintColor = [UIColor whiteColor];
-    [self.sentinelFontButton setImage:[self.sentinelFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self changeButton:sender toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    
+    [self changeButton:self.ubuntuFontButton toColor:[UIColor whiteColor]];
+    [self changeButton:self.sentinelFontButton toColor:[UIColor whiteColor]];
 }
 
 - (IBAction)ubuntuFontButtonPressed:(id)sender {
     [[NSUserDefaults standardUserDefaults] setObject:@"Quattrocento" forKey:@"ReadingOptionsFontFamily"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    self.ubuntuFontButton.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-    [self.ubuntuFontButton setImage:[self.ubuntuFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     
-    self.sentinelFontButton.tintColor = [UIColor whiteColor];
-    [self.sentinelFontButton setImage:[self.sentinelFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    self.helveticaFontButton.tintColor = [UIColor whiteColor];
-    [self.helveticaFontButton setImage:[self.helveticaFontButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self changeButton:sender toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    
+    [self changeButton:self.sentinelFontButton toColor:[UIColor whiteColor]];
+    [self changeButton:self.helveticaFontButton toColor:[UIColor whiteColor]];
 }
 
 - (IBAction)fontSizeValueChanged:(UISlider *)slider {
@@ -144,5 +111,36 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadPageViewController" object:nil];
+}
+
+- (void) changeButton:(UIButton *)btn toColor:(UIColor *)color {
+    btn.tintColor = color;
+    
+    [btn setImage:[btn.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+}
+
+- (void) colorChosenFont {
+    
+    self.fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"];
+    
+    if (!self.fontFamily) {
+        self.fontFamily = @"HelveticaNeue-Light";
+        [self changeButton:self.helveticaFontButton toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    }
+    
+    else if ([self.fontFamily isEqualToString:@"HelveticaNeue-Light"]) {
+        
+        [self changeButton:self.helveticaFontButton toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    }
+    
+    else if ([self.fontFamily isEqualToString:@"ProximaNova-Light"]) {
+        
+        [self changeButton:self.sentinelFontButton toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    }
+    
+    else if ([self.fontFamily isEqualToString:@"Quattrocento"]) {
+        
+        [self changeButton:self.ubuntuFontButton toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    }
 }
 @end

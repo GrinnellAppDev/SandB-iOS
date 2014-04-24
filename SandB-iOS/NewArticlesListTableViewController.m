@@ -151,23 +151,23 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     else {
     cell.articleDetails.text = [NSString stringWithFormat:@"%@ | S&B",[[self.tappedArticleArray objectAtIndex:indexPath.row] date]]; 
     }
-    cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.tappedArticleArray objectAtIndex:indexPath.row] category]] color];
     
     // if article has been clicked on, aka red, color it with the category color to mark it as read
     if ([[self.tappedArticleArray  objectAtIndex:indexPath.row] read]) {
         cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.tappedArticleArray  objectAtIndex:indexPath.row] category]]  highlightedColor];
         cell.articleTitle.textColor = [UIColor grayColor];
-        [cell.articleTitle setFont:[UIFont fontWithName:@"ProximaNova-Light" size:19]];
+        [cell.articleTitle setFont:[UIFont fontWithName:@"ProximaNova-Light" size:18]];
         cell.articleDetails.textColor = [UIColor grayColor];
+        cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.tappedArticleArray objectAtIndex:indexPath.row] category]] readBarColor];
     }
     else {
         cell.backgroundColor = [UIColor whiteColor];
         cell.articleTitle.textColor = [UIColor blackColor];
         [cell.articleTitle setFont:[UIFont fontWithName:@"ProximaNova-Regular" size:18]];
         cell.articleDetails.textColor = [UIColor blackColor];
+        cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.tappedArticleArray objectAtIndex:indexPath.row] category]] color];
     }
     
-    [cell.articleTitle setFont:[UIFont fontWithName:@"ProximaNova-Regular" size:18]];
     [cell.articleDetails setFont:[UIFont fontWithName:@"ProximaNova-Light" size:12]];
     
     // make sure the selected color stays
