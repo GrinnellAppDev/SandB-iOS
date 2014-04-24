@@ -16,16 +16,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *sentinelFontButton;
 @property (strong, nonatomic) IBOutlet UIButton *helveticaFontButton;
 @property (strong, nonatomic) IBOutlet UIButton *ubuntuFontButton;
-@property (strong, nonatomic) IBOutlet UIButton *lightThemeButton;
-@property (strong, nonatomic) IBOutlet UIButton *darkThemeButton;
 
 // METHODS
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)sentinelFontButtonPressed:(id)sender;
 - (IBAction)helveticaFontButtonPressed:(id)sender;
 - (IBAction)ubuntuFontButtonPressed:(id)sender;
-- (IBAction)lightThemeButtonPressed:(id)sender;
-- (IBAction)darkThemeButtonPressed:(id)sender;
 
 
 

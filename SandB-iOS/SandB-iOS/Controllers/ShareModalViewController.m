@@ -80,8 +80,6 @@
     
     self.characterCount.hidden = NO;
     
-    self.commentTextView.text = [NSString stringWithFormat:@"%@ %@", self.article.title, self.article.URL];
-    
     int numOfChars = [self.commentTextView.text length];
     
     self.characterCount.text = [NSString stringWithFormat:@"%i", 140 - numOfChars];

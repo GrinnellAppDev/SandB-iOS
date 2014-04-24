@@ -126,7 +126,7 @@
         contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
         //contentCell.contentTextView.attributedText = test;
         
-        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 10, 306, contentHeight)];
+        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 20, 306, contentHeight)];
         contentTextView.attributedText = test;
         contentTextView.userInteractionEnabled = NO;
         contentTextView.selectable = NO;
@@ -144,7 +144,7 @@
     }
     
     else {
-        return 60.0f;
+        return 70.0f;
     }
 }
 

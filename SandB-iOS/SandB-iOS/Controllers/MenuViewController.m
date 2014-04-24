@@ -116,14 +116,14 @@
                 cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
         }
         cell.textLabel.textColor = categoryColors[indexPath.row];
-        [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:22]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:22]];
     }
     
     if (indexPath.section == 1) {
         cell.textLabel.text = toolsTitles[indexPath.row];
         categoryIndicator = (UIView *) [cell viewWithTag:10];
         categoryIndicator.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:22]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:22]];
     }
     
     return cell;

@@ -48,6 +48,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     self.newsCategory = @"News";
     if (self.recievedCategory) {
         self.newsCategory = self.recievedCategory;
+        NSLog(@"SOMEONE SHOULD BE LOGGING THE NEWS!!!");
     }
     
     [self ecslidingOptions];
@@ -55,7 +56,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         [self fetchArticles];
     }
     else if ([self.newsCategory isEqualToString:@"Favorites"]) {
-        NSLog(@"I AM BROKEN");
+        NSLog(@"am i somehow getting here? wtf");
     }
     else {
         [self fetchCategoryArticles];
@@ -73,7 +74,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
             _currentPage = currentPage;
             _totalPages = totalPages;
             [self.tableView reloadData];
-            [[Cache sharedCacheModel] archiveObject:articles toFileName:@"news"];
+            //[[Cache sharedCacheModel] archiveObject:articles toFileName:@"news"];
         }
         else {
             NSLog(@"I am sad!: %@", [error description]);
@@ -105,9 +106,9 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     [self.tableView reloadData];
     
-    NSMutableArray *archivedNews = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"news"];
-    
-    NSLog(@"SOME COOL STUFF %@", archivedNews);
+//    NSMutableArray *archivedNews = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"news"];
+//    
+//    NSLog(@"SOME COOL STUFF %@", archivedNews);
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,10 +156,19 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     // if article has been clicked on, aka red, color it with the category color to mark it as read
     if ([[self.tappedArticleArray  objectAtIndex:indexPath.row] read]) {
         cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.tappedArticleArray  objectAtIndex:indexPath.row] category]]  highlightedColor];
+        cell.articleTitle.textColor = [UIColor grayColor];
+        [cell.articleTitle setFont:[UIFont fontWithName:@"ProximaNova-Light" size:19]];
+        cell.articleDetails.textColor = [UIColor grayColor];
     }
     else {
         cell.backgroundColor = [UIColor whiteColor];
+        cell.articleTitle.textColor = [UIColor blackColor];
+        [cell.articleTitle setFont:[UIFont fontWithName:@"ProximaNova-Regular" size:18]];
+        cell.articleDetails.textColor = [UIColor blackColor];
     }
+    
+    [cell.articleTitle setFont:[UIFont fontWithName:@"ProximaNova-Regular" size:18]];
+    [cell.articleDetails setFont:[UIFont fontWithName:@"ProximaNova-Light" size:12]];
     
     // make sure the selected color stays
     
@@ -270,6 +280,10 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+-(IBAction)refreshButtonPressed:(id)sender {
+    [self fetchArticlesForView];
 }
 
 @end

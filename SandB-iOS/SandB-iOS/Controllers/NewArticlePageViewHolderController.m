@@ -194,7 +194,9 @@
      NSString *htmlOpen = @"<html>";
      NSString *htmlClose = @"</html>";
     int fontSize = (self.fontSize * 100) + 100;
-    NSString * htmlAdditions  =  [NSString stringWithFormat:@"<head><style type='text/css'> body{font-size: %d%%;font-family:'%@';color:#4A4A4A;}</style></head>", fontSize, self.fontFamily];
+    NSString * htmlAdditions  =  [NSString stringWithFormat:@"<head><style type='text/css'> body{font-size: %d%%;font-family:'%@';color:#4A4A4A;} </style></head>", fontSize, self.fontFamily];
+    
+    // FIGURE OUT HOW YOU'D GET THE STUPID TITLE TO CHANGE!!!!!!!!!!!!! CAUSE IT'S STUPIDLY BOLD RIGHT NOW. OMG.
 
 //     NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 180%;font-family:'Cochin';color:#4A4A4A;}</style></head>";
      NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, article.content, htmlClose];

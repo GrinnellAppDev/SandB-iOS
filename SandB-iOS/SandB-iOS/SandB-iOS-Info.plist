@@ -4,10 +4,17 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Proxima Nova Light.otf</string>
 		<string>QuattrocentoSans-Regular.otf</string>
+		<string>Proxima Nova ScOsf Light.otf</string>
 		<string>QuattrocentoSans-Italic.otf</string>
+		<string>Proxima Nova ScOfs Regular.otf</string>
 		<string>QuattrocentoSans-BoldItalic.otf</string>
+		<string>Proxima Nova Regular.otf</string>
+		<string>Proxima</string>
+		<string>Quattrocento-Regular.ttf</string>
 		<string>QuattrocentoSans-Bold.otf</string>
+		<string>Sentinel-Light.ttf</string>
 		<string>Raleway-Thin.ttf</string>
 		<string>Raleway-Regular.ttf</string>
 	</array>

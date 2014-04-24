@@ -248,7 +248,7 @@
                                                 <fragment content="Amazing Article Title #1">
                                                     <attributes>
                                                         <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
+                                                        <font key="NSFont" size="18" name="HelveticaNeue"/>
                                                         <font key="NSOriginalFont" size="20" name="HelveticaNeue-Light"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
@@ -299,6 +299,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="RefreshButton" id="PER-yT-Mjy">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="refreshButtonPressed:" destination="OR1-OJ-RFn" id="PDq-s3-5hP"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -407,7 +410,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aG6-Lv-f8j">
-                                        <rect key="frame" x="239" y="10" width="33" height="33"/>
+                                        <rect key="frame" x="239" y="7" width="33" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="CancelButton">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -465,13 +468,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5YU-GT-qS7">
-                                <rect key="frame" x="82" y="11" width="143" height="21"/>
+                                <rect key="frame" x="20" y="17" width="176" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Reading Options">
+                                    <fragment content="READING OPTIONS">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <font key="NSFont" size="19" name="HelveticaNeue-Thin"/>
+                                            <font key="NSOriginalFont" size="17" name="HelveticaNeue-Thin"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
@@ -479,7 +483,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNa-Vm-wny">
-                                <rect key="frame" x="264" y="5" width="33" height="33"/>
+                                <rect key="frame" x="264" y="7" width="33" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="CancelButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -489,7 +493,7 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Yo4-KH-8Bi">
-                                <rect key="frame" x="80" y="48" width="148" height="31"/>
+                                <rect key="frame" x="80" y="60" width="148" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" red="0.55837452170000001" green="0.0" blue="0.060333052870000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -498,23 +502,23 @@
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adn-Jp-uab">
-                                <rect key="frame" x="20" y="48" width="34" height="34"/>
+                                <rect key="frame" x="20" y="60" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="SmallerFont">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGN-ne-pJc">
-                                <rect key="frame" x="251" y="48" width="34" height="34"/>
+                                <rect key="frame" x="251" y="60" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="LargerFont">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-5l-6dL">
-                                <rect key="frame" x="1" y="84" width="101" height="45"/>
+                                <rect key="frame" x="1" y="113" width="101" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="SentinelFont">
+                                <state key="normal" image="ProximaFont">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -522,7 +526,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6k-Rd-f5U">
-                                <rect key="frame" x="109" y="85" width="102" height="46"/>
+                                <rect key="frame" x="109" y="116" width="102" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="HelveticaFont">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -532,47 +536,22 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihs-YU-SGu">
-                                <rect key="frame" x="219" y="85" width="88" height="41"/>
+                                <rect key="frame" x="216" y="114" width="88" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="UbuntuFont">
+                                <state key="normal" image="QuattrocentoFont">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="ubuntuFontButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="y86-Fp-n5G"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mem-vJ-7JS">
-                                <rect key="frame" x="0.0" y="132" width="157" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="LightTheme">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="lightThemeButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="wlM-60-C6S"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9P3-jD-aXj">
-                                <rect key="frame" x="165" y="132" width="141" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="DarkTheme">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="darkThemeButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="BUP-n0-unI"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jme-pe-xtC">
-                                <rect key="frame" x="0.0" y="40" width="306" height="1"/>
+                                <rect key="frame" x="-1" y="48" width="306" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anR-v0-wNF">
-                                <rect key="frame" x="1" y="84" width="306" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0K-sn-5jm">
-                                <rect key="frame" x="1" y="128" width="306" height="1"/>
+                                <rect key="frame" x="1" y="100" width="306" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -582,9 +561,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="306" height="168"/>
                     <connections>
-                        <outlet property="darkThemeButton" destination="9P3-jD-aXj" id="cmn-6d-Mih"/>
                         <outlet property="helveticaFontButton" destination="O6k-Rd-f5U" id="0SL-Qp-bDG"/>
-                        <outlet property="lightThemeButton" destination="Mem-vJ-7JS" id="Q36-SJ-JcO"/>
                         <outlet property="sentinelFontButton" destination="kEo-5l-6dL" id="eDO-I0-eHx"/>
                         <outlet property="textSlider" destination="Yo4-KH-8Bi" id="7dV-lR-9BQ"/>
                         <outlet property="ubuntuFontButton" destination="Ihs-YU-SGu" id="Xbo-5O-dEQ"/>
@@ -712,21 +689,22 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="66" id="O6Y-Cx-tl5" customClass="TitleCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="66"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="85" id="O6Y-Cx-tl5" customClass="TitleCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O6Y-Cx-tl5" id="8yo-5Z-hkb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="292" translatesAutoresizingMaskIntoConstraints="NO" id="yLW-Ub-PnV">
-                                                    <rect key="frame" x="14" y="0.0" width="292" height="72"/>
+                                                    <rect key="frame" x="14" y="7" width="292" height="72"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Title">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.18166055484693877" green="0.17600748571902691" blue="0.18095168409211812" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="22" name="HelveticaNeue-Bold"/>
+                                                                <font key="NSFont" size="22" name="HelveticaNeue"/>
+                                                                <font key="NSOriginalFont" size="22" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                             </attributes>
                                                         </fragment>
@@ -746,11 +724,11 @@
                                             <outlet property="titleLabel" destination="yLW-Ub-PnV" id="y22-VO-Cvk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContentCell" rowHeight="263" id="jrE-1q-ZZF" customClass="ContentCell">
-                                        <rect key="frame" x="0.0" y="88" width="320" height="263"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContentCell" rowHeight="253" id="jrE-1q-ZZF" customClass="ContentCell">
+                                        <rect key="frame" x="0.0" y="107" width="320" height="253"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jrE-1q-ZZF" id="91h-kU-5ix">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
@@ -833,13 +811,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nnl-7E-rPQ" id="FFx-jW-4vU">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NKC-Z6-pKN">
-                                                    <rect key="frame" x="-5" y="0.0" width="10" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="hiF-cc-XCO" kind="custom" identifier="GoToCategory" customClass="ECSlidingSegue" id="vPS-Gc-hnn"/>
@@ -890,21 +861,19 @@
         <image name="BackButtonWhite" width="33" height="33"/>
         <image name="CancelButton" width="33" height="33"/>
         <image name="ChatIconWhite" width="32" height="33"/>
-        <image name="DarkTheme" width="34" height="34"/>
         <image name="EditTextIconWhite" width="33" height="34"/>
         <image name="EmailIcon" width="50" height="50"/>
         <image name="FacebookIcon" width="50" height="50"/>
         <image name="HelveticaFont" width="53" height="34"/>
         <image name="LargerFont" width="34" height="34"/>
-        <image name="LightTheme" width="34" height="34"/>
+        <image name="ProximaFont" width="75" height="39"/>
+        <image name="QuattrocentoFont" width="75" height="39"/>
         <image name="RefreshButton" width="33" height="33"/>
-        <image name="SentinelFont" width="53" height="34"/>
         <image name="ShareIconWhite" width="33" height="30"/>
         <image name="ShowMoreButton" width="33" height="33"/>
         <image name="SmallerFont" width="34" height="34"/>
         <image name="StarIconWhite" width="34" height="30"/>
         <image name="TwitterIcon" width="50" height="50"/>
-        <image name="UbuntuFont" width="53" height="34"/>
         <image name="featuresColor.png" width="50" height="105"/>
         <image name="iMessageIcon" width="50" height="50"/>
     </resources>
