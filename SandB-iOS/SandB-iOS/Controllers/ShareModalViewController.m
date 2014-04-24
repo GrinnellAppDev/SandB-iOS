@@ -61,6 +61,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    if ([self bitlifyMyLink:self.article.URL]) {
+        self.commentTextView.text = [NSString stringWithFormat:@"%@ %@", self.article.title, [self bitlifyMyLink:self.article.URL]];
+    }
+    else {
+        self.commentTextView.text = [NSString stringWithFormat:@"%@ %@", self.article.title, self.article.URL];
+    }
+    
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -123,8 +130,9 @@
 - (IBAction)facebookButtonPressed:(id)sender {
     [self buttonPressed:sender withImage:@"FacebookIcon"];
     
-    self.commentTextView.text = nil;
-    self.commentTextView.placeholder = @"Write comment...";
+    self.commentTextView.text = [NSString stringWithFormat:@"%@", self.article.title];
+    //self.commentTextView.text = nil;
+    //self.commentTextView.placeholder = @"Add comment...";
     self.commentTextView.hidden = NO;
     
     self.characterCount.hidden = YES;
@@ -332,6 +340,9 @@
     [self.accountStore requestAccessToAccountsWithType:twitterType
                                                options:NULL
                                             completion:accountStoreHandler];
+    
+    MZFormSheetController *ctrl = self.formSheetController;
+    [ctrl mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 }
 
 - (void)postWithStatus:(NSString *)status {
@@ -412,7 +423,21 @@
         // Check for errors in the responseDictionary
     }];
 
+    MZFormSheetController *ctrl = self.formSheetController;
+    [ctrl mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 
+}
+
+-(NSString *)bitlifyMyLink:(NSString *)myUrl {
+    
+    NSString *loginId = @"o_7kd3981uea";
+    NSString *apiKey = @"R_746a0d09c127163df1ad0243e6369b35";
+    
+    NSString *longURL = [NSString stringWithFormat:@"http://api.bit.ly/v3/shorten?login=%@&apikey=%@&longUrl=%@&format=txt",loginId, apiKey, myUrl];
+    
+    NSString *shortenedURL = [NSString stringWithContentsOfURL:[NSURL URLWithString:longURL] encoding:NSUTF8StringEncoding error:nil];
+    
+    return shortenedURL;
 }
 
 @end
