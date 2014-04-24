@@ -135,16 +135,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 - (void)loadReadingOptions
 {
@@ -273,8 +263,13 @@
 - (void)reloadPages
 {
     NSLog(@"Reloading");
+    
+    
     [self.pageViewController xcd_setViewControllers:self.pageViewController.viewControllers direction:UIPageViewControllerNavigationDirectionForward
-                                           animated:YES completion:nil];
+                                           animated:NO completion:nil];
+    
+    
+
 }
 
 #pragma mark - Downloading Data
@@ -290,6 +285,9 @@
             //_totalPages = totalPages;
             //[self.tableView reloadData];
             self.pageArticles = articles;
+            
+            //call some sort of reloadPages here?
+            [self reloadPages];
         }
         else {
             NSLog(@"I am sad!");
@@ -309,6 +307,9 @@
              //_totalPages = totalPages;
              //[self.tableView reloadData];
              self.pageArticles = articles;
+             
+             //Todo: call some sort of reloadPages here
+             [self reloadPages]; 
          }
          else {
              NSLog(@"I am sad!");
