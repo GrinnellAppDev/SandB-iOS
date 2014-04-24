@@ -167,21 +167,32 @@
 
 }
 
+
+// serializing & deserializing objects
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        article = [aDecoder decodeObjectForKey:@"article"];
-        comments = [aDecoder decodeObjectForKey:@"comments"];
-        commentsCount = [aDecoder decodeIntForKey:@"commentsCount"];
+        self.title = [aDecoder decodeObjectForKey:@"title"];
+        self.content = [aDecoder decodeObjectForKey:@"content"];
+        self.URL = [aDecoder decodeObjectForKey:@"URL"];
+        self.date = [aDecoder decodeObjectForKey:@"date"];
+        self.email = [aDecoder decodeObjectForKey:@"email"];
+        self.author = [aDecoder decodeObjectForKey:@"author"];
+        self.category = [aDecoder decodeObjectForKey:@"category"];
         //image = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"image"]];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:article forKey:@"article"];
-    [aCoder encodeObject:comments forKey:@"comments"];
-    [aCoder encodeInt:commentsCount forKey:@"commentsCount"];
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.content forKey:@"content"];
+    [aCoder encodeObject:self.URL forKey:@"URL"];
+    [aCoder encodeObject:self.date forKey:@"date"];
+    [aCoder encodeObject:self.email forKey:@"email"];
+    [aCoder encodeObject:self.author forKey:@"author"];
+    [aCoder encodeObject:self.category forKey:@"category"];
    // NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
    // [aCoder encodeObject:imgData forKey:@"image"];
 }

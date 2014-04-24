@@ -12,6 +12,7 @@
 #import "DataModel.h"
 #import "NewArticlePageViewHolderController.h"
 #import "NewsCategories.h"
+#import "Cache.h"
 
 const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn automatically.
 
@@ -19,6 +20,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 @property (nonatomic) NSInteger articleIndex;
 @property (nonatomic, strong) NSArray *categoryColors;
 @property (nonatomic, strong) NSString *newsCategory;
+@property (nonatomic, strong) NSMutableArray *tappedArticleArray;
 
 @property (nonatomic, assign) BOOL isFetchingArticles;
 
@@ -50,13 +52,17 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     
     [self ecslidingOptions];
     if ([self.newsCategory isEqualToString:@"News"]) {
-        NSLog(@"am i getting here?!");
         [self fetchArticles];
+    }
+    else if ([self.newsCategory isEqualToString:@"Favorites"]) {
+        NSLog(@"I AM BROKEN");
     }
     else {
         [self fetchCategoryArticles];
-        NSLog(@"AM I GETTING CATEGORY DATA?!?!?!");
     }
+    
+    self.tappedArticleArray = [NSMutableArray new];
+    self.tappedArticleArray = [self getArrayForView];
     
 }
 
@@ -67,6 +73,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
             _currentPage = currentPage;
             _totalPages = totalPages;
             [self.tableView reloadData];
+            [[Cache sharedCacheModel] archiveObject:articles toFileName:@"news"];
         }
         else {
             NSLog(@"I am sad!: %@", [error description]);
@@ -97,6 +104,10 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     [self.tableView reloadData];
+    
+    NSMutableArray *archivedNews = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"news"];
+    
+    NSLog(@"SOME COOL STUFF %@", archivedNews);
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,7 +130,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     if (_currentPage < _totalPages) {
         return [[self getArrayForView] count] + 1; //+1 for the extra loading cell since there are more pages.
     } else {
-        return [[self getArrayForView] count];
+        return [self.tappedArticleArray  count];
     }
 }
 
@@ -131,14 +142,19 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     NewArticleCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //Customize Cell
-    cell.articleTitle.text = [[[self getArrayForView] objectAtIndex:indexPath.row] title];
+    cell.articleTitle.text = [[self.tappedArticleArray  objectAtIndex:indexPath.row] title];
     
-    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[[self getArrayForView]objectAtIndex:indexPath.row] date], [[[self getArrayForView]objectAtIndex:indexPath.row] author]];
-    cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self getArrayForView]objectAtIndex:indexPath.row] category]] color];
+    if ([[self.tappedArticleArray objectAtIndex:indexPath.row] author]) {
+    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | %@",[[self.tappedArticleArray objectAtIndex:indexPath.row] date], [[self.tappedArticleArray objectAtIndex:indexPath.row] author]];
+    }
+    else {
+    cell.articleDetails.text = [NSString stringWithFormat:@"%@ | S&B",[[self.tappedArticleArray objectAtIndex:indexPath.row] date]]; 
+    }
+    cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.tappedArticleArray objectAtIndex:indexPath.row] category]] color];
     
     // if article has been clicked on, aka red, color it with the category color to mark it as read
-    if ([[[self getArrayForView] objectAtIndex:indexPath.row] read]) {
-        cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self getArrayForView] objectAtIndex:indexPath.row] category]]  highlightedColor];
+    if ([[self.tappedArticleArray  objectAtIndex:indexPath.row] read]) {
+        cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.tappedArticleArray  objectAtIndex:indexPath.row] category]]  highlightedColor];
     }
     else {
         cell.backgroundColor = [UIColor whiteColor];
@@ -152,7 +168,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row <  [[self getArrayForView]  count]) {
+    if (indexPath.row <  [self.tappedArticleArray   count]) {
         return [self articleCellForIndexPath:indexPath];
     } else {
         return [self loadingCell];
@@ -181,9 +197,9 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NewArticleCell *cell = (NewArticleCell *) [tableView cellForRowAtIndexPath:indexPath];
     
-    cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[[self getArrayForView]objectAtIndex:indexPath.row] category]] highlightedColor];
+    cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.tappedArticleArray objectAtIndex:indexPath.row] category]] highlightedColor];
     
-    [[[self getArrayForView] objectAtIndex:indexPath.row] setRead:YES];
+    [[self.tappedArticleArray  objectAtIndex:indexPath.row] setRead:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -221,13 +237,17 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     // TO DO: Swipe to the right to reveal menu
 }
 
+// gets the correct array to display, i.e - whatever the user clicked on - news, favorites, w/e
 - (NSMutableArray *)getArrayForView {
+    
     if ([self.newsCategory isEqualToString:@"News"]) {
         return [[DataModel sharedModel] articles];
     }
+//    else if ([self.newsCategory isEqualToString:@"Favorites"]) {
+//        NSLog(@"hgskjhsdkjhdskjhdsjkhsdjkh");
+//        return [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"news"];
+//    }
     else {
-//        return [[DataModel sharedModel] categoryArrayForCategoryName:self.newsCategory];
-//        return [[DataModel sharedModel] categoryArticles];
         return [[DataModel sharedModel] categoryArrayForCategoryName:self.newsCategory];
     }
 }

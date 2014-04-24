@@ -82,6 +82,7 @@
 		8B85641718D4E6F40098B83A /* featuresColor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B85641518D4E6F40098B83A /* featuresColor@2x.png */; };
 		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8B9BB17916BEEE8F00C20358 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB17816BEEE8F00C20358 /* Article.m */; };
+		8BA436E51908A59E003709FA /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA436E41908A59E003709FA /* Cache.m */; };
 		8BB2B2D21901C4F9001F5B45 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B2D11901C4F9001F5B45 /* Social.framework */; };
 		8BB2B31D19022248001F5B45 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B31C19022248001F5B45 /* Accounts.framework */; };
 		8BC46F6116C823A3008642F7 /* ArtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC46F5F16C823A3008642F7 /* ArtsViewController.m */; };
@@ -243,6 +244,12 @@
 		8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8B9BB17716BEEE8F00C20358 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Article.h; path = ../Article.h; sourceTree = "<group>"; };
 		8B9BB17816BEEE8F00C20358 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Article.m; path = ../Article.m; sourceTree = "<group>"; };
+		8BA436DF19089D79003709FA /* QuattrocentoSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QuattrocentoSans-Bold.otf"; sourceTree = "<group>"; };
+		8BA436E019089D79003709FA /* QuattrocentoSans-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QuattrocentoSans-BoldItalic.otf"; sourceTree = "<group>"; };
+		8BA436E119089D79003709FA /* QuattrocentoSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QuattrocentoSans-Italic.otf"; sourceTree = "<group>"; };
+		8BA436E219089D79003709FA /* QuattrocentoSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QuattrocentoSans-Regular.otf"; sourceTree = "<group>"; };
+		8BA436E31908A59E003709FA /* Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cache.h; sourceTree = "<group>"; };
+		8BA436E41908A59E003709FA /* Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cache.m; sourceTree = "<group>"; };
 		8BB2B2D11901C4F9001F5B45 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8BB2B31C19022248001F5B45 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		8BC46F5E16C823A3008642F7 /* ArtsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtsViewController.h; sourceTree = "<group>"; };
@@ -372,6 +379,8 @@
 				8BF70EE218F65F2B00637795 /* NewsCategories.m */,
 				8BF70EE718F6CB1000637795 /* NewsCategory.h */,
 				8BF70EE818F6CB1000637795 /* NewsCategory.m */,
+				8BA436E31908A59E003709FA /* Cache.h */,
+				8BA436E41908A59E003709FA /* Cache.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -533,6 +542,8 @@
 		8B85640218D4D96A0098B83A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				8BA436DE19089D67003709FA /* QuattrocentoSans */,
+				8BA436DD19089D60003709FA /* Raleway */,
 				8B85640318D4D9760098B83A /* Raleway-Bold.otf */,
 				8B85640418D4D9760098B83A /* Raleway-ExtraBold.otf */,
 				8B85640518D4D9760098B83A /* Raleway-ExtraLight.otf */,
@@ -544,6 +555,24 @@
 				8B85640B18D4D9760098B83A /* Raleway-Thin.otf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		8BA436DD19089D60003709FA /* Raleway */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Raleway;
+			sourceTree = "<group>";
+		};
+		8BA436DE19089D67003709FA /* QuattrocentoSans */ = {
+			isa = PBXGroup;
+			children = (
+				8BA436DF19089D79003709FA /* QuattrocentoSans-Bold.otf */,
+				8BA436E019089D79003709FA /* QuattrocentoSans-BoldItalic.otf */,
+				8BA436E119089D79003709FA /* QuattrocentoSans-Italic.otf */,
+				8BA436E219089D79003709FA /* QuattrocentoSans-Regular.otf */,
+			);
+			name = QuattrocentoSans;
 			sourceTree = "<group>";
 		};
 		8BD1C80016B32493005F3F23 = {
@@ -803,6 +832,7 @@
 				8B72A00118FA529C00AD6C1F /* UIImage+Additional.m in Sources */,
 				8B729FFE18FA529C00AD6C1F /* MZFormSheetController.m in Sources */,
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
+				8BA436E51908A59E003709FA /* Cache.m in Sources */,
 				8B72A01418FA932200AD6C1F /* TextOptionModalViewController.m in Sources */,
 				8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */,
 				16B3E6F918691F1900ABC0CF /* ArticlesListViewController.m in Sources */,

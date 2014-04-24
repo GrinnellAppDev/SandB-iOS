@@ -42,6 +42,20 @@
     
     // TODO (DrJid): Set the current Font family and highlight that button as selected.
     
+    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
+    NSArray *fontNames;
+    NSInteger indFamily, indFont;
+    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
+    {
+        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
+        fontNames = [[NSArray alloc] initWithArray:
+                     [UIFont fontNamesForFamilyName:
+                      [familyNames objectAtIndex:indFamily]]];
+        for (indFont=0; indFont<[fontNames count]; ++indFont)
+        {
+            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +84,7 @@
 
 
 - (IBAction)sentinelFontButtonPressed:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setObject:@"Cochin" forKey:@"ReadingOptionsFontFamily"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"Raleway-Regular" forKey:@"ReadingOptionsFontFamily"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }

@@ -4,6 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>QuattrocentoSans-Regular.otf</string>
+		<string>QuattrocentoSans-Italic.otf</string>
+		<string>QuattrocentoSans-BoldItalic.otf</string>
+		<string>QuattrocentoSans-Bold.otf</string>
 		<string>Raleway-Thin.ttf</string>
 		<string>Raleway-Regular.ttf</string>
 	</array>

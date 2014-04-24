@@ -181,7 +181,13 @@
     }
     else {
         if (indexPath.row == 0) {
-            //stub - favorite articles
+            if ([segue.identifier isEqualToString:@"GoToCategory"]) {
+                UINavigationController *nc = segue.destinationViewController;
+                NewArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
+                
+                NSString *categoryString = @"Favorites";
+                naltvc.recievedCategory = categoryString;
+            }
         }
         else if (indexPath.row == 1) {
             [self rateSnB];
