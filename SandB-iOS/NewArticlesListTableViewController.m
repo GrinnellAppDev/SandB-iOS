@@ -41,6 +41,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -275,12 +276,6 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     }
 }
 
-// STATUS BAR
-
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
 
 -(IBAction)refreshButtonPressed:(id)sender {
     [self fetchArticlesForView];
