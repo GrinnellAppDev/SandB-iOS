@@ -97,7 +97,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     
-
+    [self.tableView reloadData];
 }
 
 /* Fetch all the news articles. 

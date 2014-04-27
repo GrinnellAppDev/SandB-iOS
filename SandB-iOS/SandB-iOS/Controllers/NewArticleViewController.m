@@ -122,7 +122,7 @@
         
         //titleCell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
         titleCell.titleLabel.numberOfLines = 0;
-        [titleCell.titleLabel setFont:[UIFont fontWithName:@"Proxima Nova" size:20.0]];
+        [titleCell.titleLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:20.0]];
         titleCell.titleLabel.text = self.article.title;
         return titleCell;
     }
@@ -131,7 +131,7 @@
         categoryCell = [tableView dequeueReusableCellWithIdentifier:categoryCellIdentifier forIndexPath:indexPath];
         
         categoryCell.categoryLabel.text = self.article.category;
-        [categoryCell.categoryLabel setFont:[UIFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"] size:15]];
+        [categoryCell.categoryLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:15]];
         
         int colorIndex = (int)[[[[NewsCategories sharedCategories] categories] objectForKey:@"names"] indexOfObject:self.article.category];
         
@@ -139,7 +139,7 @@
         
         categoryCell.byLabel.text = self.article.author;
         
-        [categoryCell.byLabel setFont:[UIFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"] size:15]];
+        [categoryCell.byLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:15]];
         
         return categoryCell;
     }
@@ -171,7 +171,7 @@
     }
     
     else
-        return 0;
+        return 10.0f;
 }
 
 - (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width

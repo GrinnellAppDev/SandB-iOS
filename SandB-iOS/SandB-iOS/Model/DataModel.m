@@ -78,10 +78,6 @@
                                         
                                         Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
                                         
-                                        if ([[self readArticles] containsObject:article]) {
-                                            article.read = YES;
-                                        }
-                                        
                                         [newArticles addObject:article];
                                         [[[DataModel sharedModel] articles] addObject:article];
                                     }];
@@ -114,9 +110,6 @@
                                         
                                         Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
                                         
-                                        if ([[self readArticles] containsObject:article]) {
-                                            article.read = YES;
-                                        }
                                         
                                         [[[DataModel sharedModel] articles] addObject:article];
                                         

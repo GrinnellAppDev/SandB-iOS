@@ -141,6 +141,22 @@
         self.starButton.userInteractionEnabled = NO;
         self.starButton.alpha = 0.3;
     }
+    
+    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
+    
+    NSArray *fontNames;
+    NSInteger indFamily, indFont;
+    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
+    {
+        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
+        fontNames = [[NSArray alloc] initWithArray:
+                     [UIFont fontNamesForFamilyName:
+                      [familyNames objectAtIndex:indFamily]]];
+        for (indFont=0; indFont<[fontNames count]; ++indFont)
+        {
+            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -209,8 +225,6 @@
      NSString *htmlClose = @"</html>";
     int fontSize = (self.fontSize * 100) + 100;
     NSString * htmlAdditions  =  [NSString stringWithFormat:@"<head><style type='text/css'> body{font-size: %d%%;font-family:'%@';color:#4A4A4A;} </style></head>", fontSize, self.fontFamily];
-    
-    // FIGURE OUT HOW YOU'D GET THE STUPID TITLE TO CHANGE!!!!!!!!!!!!! CAUSE IT'S STUPIDLY BOLD RIGHT NOW. OMG.
 
 //     NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 180%;font-family:'Cochin';color:#4A4A4A;}</style></head>";
      NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, article.content, htmlClose];
@@ -417,7 +431,7 @@
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
     
-    [[DataModel sharedModel] markArticleAsRead:self.currentArticle];
+    self.currentArticle.read = YES;
     
     NSLog(@"theINdex: %ld|| count: %lu", (long)theIndex, (unsigned long)self.pageArticles.count);
     if (theIndex > self.pageArticles.count - 5) {
