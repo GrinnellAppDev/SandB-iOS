@@ -412,8 +412,7 @@
 - (IBAction)shareButtonPressed:(id)sender {
 }
 
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
-{
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
@@ -421,7 +420,7 @@
     [self.currentArticle setRead:YES];
     
     
-    NSLog(@"theINdex: %d|| count: %lu", theIndex, self.pageArticles.count);
+    NSLog(@"theINdex: %ld|| count: %lu", (long)theIndex, (unsigned long)self.pageArticles.count);
     if (theIndex > self.pageArticles.count - 5) {
         // Go fetch more data. and update the self.pageArticles array;
         [self fetchArticlesForView];
@@ -430,8 +429,7 @@
 
 // MZ Methods
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     // setup the segue
     MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;

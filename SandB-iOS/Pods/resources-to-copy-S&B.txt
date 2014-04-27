@@ -1,1 +1,0 @@
-/Users/Lea/GitHub/AppDev/SandB-iOS/SandB-iOS/Pods/SSToolkit/SSToolkitResources.bundle

@@ -135,7 +135,7 @@
         categoryCell.categoryLabel.text = self.article.category;
         [categoryCell.categoryLabel setFont:[UIFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"] size:15]];
         
-        int colorIndex = [[[[NewsCategories sharedCategories] categories] objectForKey:@"names"] indexOfObject:self.article.category];
+        int colorIndex = (int)[[[[NewsCategories sharedCategories] categories] objectForKey:@"names"] indexOfObject:self.article.category];
         
         [categoryCell.categoryLabel setTextColor:[[[[NewsCategories sharedCategories] categories] objectForKey:@"colors"] objectAtIndex:colorIndex]];
         
