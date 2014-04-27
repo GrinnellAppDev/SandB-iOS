@@ -1,1 +1,0 @@
-../../ShareKit/Classes/ShareKit/Sharers/Services/Instapaper/SHKInstapaper.h

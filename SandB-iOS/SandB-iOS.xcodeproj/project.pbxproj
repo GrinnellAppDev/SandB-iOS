@@ -71,6 +71,7 @@
 		8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C81F16B32493005F3F23 /* AppDelegate.m */; };
 		8BF70EE318F65F2B00637795 /* NewsCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EE218F65F2B00637795 /* NewsCategories.m */; };
 		8BF70EE918F6CB1000637795 /* NewsCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EE818F6CB1000637795 /* NewsCategory.m */; };
+		E1883D1C190DBBAF004B6D5C /* strings_private.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1883D1B190DBBAF004B6D5C /* strings_private.strings */; };
 		E19E290A180E5ED200ED33FE /* icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2903180E5ED200ED33FE /* icon-29.png */; };
 		E19E290B180E5ED200ED33FE /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2904180E5ED200ED33FE /* icon-40.png */; };
 		E19E290C180E5ED200ED33FE /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2905180E5ED200ED33FE /* icon-58.png */; };
@@ -201,6 +202,7 @@
 		8BF70EE218F65F2B00637795 /* NewsCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCategories.m; sourceTree = "<group>"; };
 		8BF70EE718F6CB1000637795 /* NewsCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCategory.h; sourceTree = "<group>"; };
 		8BF70EE818F6CB1000637795 /* NewsCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCategory.m; sourceTree = "<group>"; };
+		E1883D1B190DBBAF004B6D5C /* strings_private.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = strings_private.strings; sourceTree = SOURCE_ROOT; };
 		E19E2903180E5ED200ED33FE /* icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-29.png"; sourceTree = "<group>"; };
 		E19E2904180E5ED200ED33FE /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
 		E19E2905180E5ED200ED33FE /* icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-58.png"; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 		8BD1C81616B32493005F3F23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1883D1B190DBBAF004B6D5C /* strings_private.strings */,
 				8B729FD818FA527500AD6C1F /* MZFormSheetController */,
 				E1A03015185E424E00C794F0 /* Default-568h@2x.png */,
 				E1A03016185E424E00C794F0 /* Default-Landscape.png */,
@@ -587,6 +590,7 @@
 				E19E290A180E5ED200ED33FE /* icon-29.png in Resources */,
 				8B5304CB19099D9B00A2D40B /* Proxima Nova Light.otf in Resources */,
 				8B5304D81909A98200A2D40B /* Quattrocento-Regular.ttf in Resources */,
+				E1883D1C190DBBAF004B6D5C /* strings_private.strings in Resources */,
 				8B5DC4D818F20A9400732D45 /* Images.xcassets in Resources */,
 				E19E290E180E5ED200ED33FE /* icon-80.png in Resources */,
 				E19E290D180E5ED200ED33FE /* icon-76.png in Resources */,
