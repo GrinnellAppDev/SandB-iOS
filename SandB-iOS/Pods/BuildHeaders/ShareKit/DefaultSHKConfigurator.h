@@ -1,1 +1,0 @@
-../../ShareKit/Classes/ShareKit/Configuration/DefaultSHKConfigurator.h

@@ -17,102 +17,13 @@ PODS:
   - AFNetworking/Serialization (2.0.3)
   - AFNetworking/UIKit (2.0.3):
     - AFNetworking/NSURLConnection
-  - Dropbox-iOS-SDK (1.3.10)
   - ECSlidingViewController (2.0.1)
-  - Evernote-SDK-iOS (1.3.1):
-    - SSKeychain (= 0.2.1)
-  - Facebook-iOS-SDK (3.13.1)
   - MBProgressHUD (0.8)
-  - PocketAPI (1.0.2)
   - Reachability (3.1.1)
   - SAMTextView (0.2.1)
   - SDWebImage (3.6):
     - SDWebImage/Core
   - SDWebImage/Core (3.6)
-  - ShareKit (2.5.6):
-    - ShareKit/Core
-    - ShareKit/Delicious
-    - ShareKit/Diigo
-    - ShareKit/Dropbox
-    - ShareKit/Evernote
-    - ShareKit/Facebook
-    - ShareKit/Flickr
-    - ShareKit/Foursquare
-    - ShareKit/GooglePlus
-    - ShareKit/Hatena
-    - ShareKit/Instagram
-    - ShareKit/Instapaper
-    - ShareKit/Kippt
-    - ShareKit/LinkedIn
-    - ShareKit/NoARC
-    - ShareKit/Pinboard
-    - ShareKit/Plurk
-    - ShareKit/Pocket
-    - ShareKit/Reachability
-    - ShareKit/Readability
-    - ShareKit/ReadItLater
-    - ShareKit/SinaWeibo
-    - ShareKit/Tumblr
-    - ShareKit/Twitter
-    - ShareKit/Vkontakte
-  - ShareKit/Core (2.5.6):
-    - ShareKit/NoARC
-    - ShareKit/Reachability
-    - SSKeychain (~> 0.2.1)
-    - SSToolkit (~> 1.0.4)
-  - ShareKit/Delicious (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Diigo (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Dropbox (2.5.6):
-    - Dropbox-iOS-SDK (~> 1.3)
-    - ShareKit/Core
-  - ShareKit/Evernote (2.5.6):
-    - Evernote-SDK-iOS (~> 1.3.0)
-    - ShareKit/Core
-  - ShareKit/Facebook (2.5.6):
-    - Facebook-iOS-SDK
-    - ShareKit/Core
-  - ShareKit/Flickr (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Foursquare (2.5.6):
-    - ShareKit/Core
-  - ShareKit/GooglePlus (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Hatena (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Instagram (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Instapaper (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Kippt (2.5.6):
-    - ShareKit/Core
-  - ShareKit/LinkedIn (2.5.6):
-    - ShareKit/Core
-  - ShareKit/NoARC (2.5.6)
-  - ShareKit/Pinboard (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Plurk (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Pocket (2.5.6):
-    - PocketAPI (~> 1.0)
-    - ShareKit/Core
-  - ShareKit/Reachability (2.5.6)
-  - ShareKit/Readability (2.5.6):
-    - ShareKit/Core
-  - ShareKit/ReadItLater (2.5.6):
-    - ShareKit/Core
-  - ShareKit/SinaWeibo (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Tumblr (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Twitter (2.5.6):
-    - ShareKit/Core
-  - ShareKit/Vkontakte (2.5.6):
-    - ShareKit/Core
-  - Shimmer (1.0.1)
-  - SSKeychain (0.2.1)
-  - SSToolkit (1.0.4)
   - TBXML (1.5)
 
 DEPENDENCIES:
@@ -122,25 +33,15 @@ DEPENDENCIES:
   - Reachability
   - SAMTextView (~> 0.2.1)
   - SDWebImage
-  - ShareKit
-  - Shimmer
   - TBXML
 
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
-  Dropbox-iOS-SDK: 9cc160cd7fa2edfae25adf11346bff3496d6dbad
   ECSlidingViewController: d7bb96ee5bbe261ed80ee16a513f94b9fd3c9767
-  Evernote-SDK-iOS: 9294970e3c28083d7e7aa3c2c882c0c93ef526e7
-  Facebook-iOS-SDK: 0d121e16437981fabff9379e07bf646bd5ab245c
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   SAMTextView: f0dae9662a7cc45e890eb2b24aa1769148ea2933
   SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
-  ShareKit: 4804fd5d03994bb5ae0f0cb654aafc27641daa43
-  Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
-  SSKeychain: ff035de8a52ecb729f4ddcc2d09e49e6826d9778
-  SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
   TBXML: 0511ac325d83e59d3aefa4bc8cd6cbeff07a8d9e
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1

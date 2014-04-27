@@ -134,6 +134,13 @@
     [MZFormSheetController registerTransitionClass:[MZCustomTransition class] forTransitionStyle:MZFormSheetTransitionStyleCustom];
     
     [self loadReadingOptions];
+    
+    // DISABLE FAVORITE BUTTON IF WE'RE ON THE FAVORITES VIEW
+    
+    if ([self.recievedCategoryString isEqualToString:@"Favorites"]) {
+        self.starButton.userInteractionEnabled = NO;
+        self.starButton.alpha = 0.3;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -382,6 +389,10 @@
     [self.starButton setImage:[[UIImage imageNamed:@"StarIconWhite"]imageWithRenderingMode:mode] forState:state];
     [self.shareButton setImage:[[UIImage imageNamed:@"ShareIconWhite"]imageWithRenderingMode:mode] forState:state];
     [self.editTextButton setImage:[[UIImage imageNamed:@"EditTextIconWhite"]imageWithRenderingMode:mode] forState:state];
+    
+    if ([self.recievedCategoryString isEqualToString:@"Favorites"]) {
+        self.starButton.alpha = 0.3;
+    }
 }
 
 - (IBAction)favoriteButtonPressed:(id)sender
@@ -392,15 +403,15 @@
     
     [[DataModel sharedModel] saveArticle:self.currentArticle];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutFavoriting" object:nil];
-
+    if (![self.recievedCategoryString isEqualToString:@"Favorites"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutFavoriting" object:nil];
+    }
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
 }
 
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
-{
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
@@ -408,7 +419,7 @@
     
     [[DataModel sharedModel] markArticleAsRead:self.currentArticle];
     
-    NSLog(@"theINdex: %d|| count: %lu", theIndex, self.pageArticles.count);
+    NSLog(@"theINdex: %ld|| count: %lu", (long)theIndex, (unsigned long)self.pageArticles.count);
     if (theIndex > self.pageArticles.count - 5) {
         // Go fetch more data. and update the self.pageArticles array;
         [self fetchArticlesForView];
@@ -417,8 +428,7 @@
 
 // MZ Methods
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     // setup the segue
     MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;

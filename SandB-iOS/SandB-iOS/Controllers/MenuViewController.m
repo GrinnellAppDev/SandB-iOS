@@ -12,7 +12,7 @@
 #import "NewArticlesListTableViewController.h"
 #import "DataModel.h"
 
-@interface MenuViewController ()
+@interface MenuViewController () <SKStoreProductViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -113,7 +113,7 @@
         
         // TO DO: Make sure to change background color of first cell white, when something else is selected
         if (indexPath.row == 0) {
-                cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
+                cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.05];
         }
         cell.textLabel.textColor = categoryColors[indexPath.row];
         [cell.textLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:22]];
@@ -142,13 +142,8 @@
     }
     
     if (indexPath.section == 1) {
-        cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.1];
-        if ([cell.textLabel.text isEqualToString:@"Rate Our App"]) {
-            {
-                NSString *str = @"itms-apps://ax.itunes.apple.com/app/id638912711";
-                
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-            }
+        if (0 == indexPath.row) {
+            cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.05];
         }
     }
     
@@ -211,7 +206,6 @@
         mailViewController.mailComposeDelegate = self;
         
         mailViewController.navigationBar.tintColor = [UIColor whiteColor];
-        mailViewController.navigationBar.translucent = NO;
         
         mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         
@@ -232,6 +226,10 @@
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     [self dismissViewControllerAnimated:YES completion:nil];
     [self viewDidLoad];
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -1,1 +1,0 @@
-../../ShareKit/Classes/ShareKit/Sharers/Services/Facebook/SHKFacebook.h

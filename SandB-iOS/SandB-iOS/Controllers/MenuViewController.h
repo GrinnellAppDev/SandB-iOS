@@ -10,7 +10,7 @@
 #import <MessageUI/MessageUI.h>
 #import <StoreKit/StoreKit.h>
 
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, SKStoreProductViewControllerDelegate>
+@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *theTableView;
 @property (strong, nonatomic) IBOutlet UIView *categoryIndicator;
 

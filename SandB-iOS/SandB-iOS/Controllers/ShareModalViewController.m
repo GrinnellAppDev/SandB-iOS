@@ -87,7 +87,7 @@
         self.commentTextView.text = [NSString stringWithFormat:@"%@ %@", self.article.title, self.article.URL];
     }
     
-    int numOfChars = [self.commentTextView.text length];
+    int numOfChars = (int)[self.commentTextView.text length];
     
     self.characterCount.text = [NSString stringWithFormat:@"%i", 140 - numOfChars];
     if (140-numOfChars < 0) {
@@ -108,7 +108,7 @@
 
 -(void)textViewDidChange:(UITextView *)textView
 {
-    int len = [self.commentTextView.text length];
+    int len = (int)[self.commentTextView.text length];
     NSLog(@"the length: %i", len);
     self.characterCount.text = [NSString stringWithFormat:@"%i", 140 - len];
     if (len > 139) {
@@ -313,7 +313,7 @@
                 NSLog(@"[SUCCESS!] Created Tweet with ID: %@", postResponseData[@"id_str"]);
             }
             else {
-                NSLog(@"[ERROR] Server responded: status code %d %@", statusCode,
+                NSLog(@"[ERROR] Server responded: status code %ld %@", (long)statusCode,
                       [NSHTTPURLResponse localizedStringForStatusCode:statusCode]);
             }
         }
