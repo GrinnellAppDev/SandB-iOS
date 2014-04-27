@@ -392,6 +392,9 @@
     self.currentArticle  = self.pageArticles[theIndex];
     
     [[DataModel sharedModel] saveArticle:self.currentArticle];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutFavoriting" object:nil];
+
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
@@ -448,8 +451,6 @@
                 smvc.article = self.pageArticles[self.articleIndex];                
             }
         };
-        
-        
     }
     
     if ([segue.identifier isEqualToString:@"textOptionModal"]) {

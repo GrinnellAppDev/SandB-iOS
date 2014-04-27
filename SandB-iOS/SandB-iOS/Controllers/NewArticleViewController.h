@@ -17,5 +17,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *theTableView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIView *savedToFavsView;
+@property (strong, nonatomic) IBOutlet UIImageView *bigStar;
+@property (strong, nonatomic) IBOutlet UILabel *savedLabel;
+
 
 @end

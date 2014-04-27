@@ -57,7 +57,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         [self fetchArticles];
     }
     else if ([self.newsCategory isEqualToString:@"Favorites"]) {
-        NSLog(@"am i somehow getting here? wtf");
+        // DO SOMETHING IF FAVORITES WAS DOING STUFF
     }
     else {
         [self fetchCategoryArticles];
