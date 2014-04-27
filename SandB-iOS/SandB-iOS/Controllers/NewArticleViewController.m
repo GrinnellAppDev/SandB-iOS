@@ -11,6 +11,8 @@
 #import "UIScrollView+APParallaxHeader.h"
 #import "UIImageView+WebCache.h"
 #import "TitleCell.h"
+#import "CategoryCell.h"
+#import "NewsCategories.h"
 
 @interface NewArticleViewController ()
 
@@ -44,7 +46,9 @@
         [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"defaultImage"] andHeight:400];
     }
     
-    self.savedToFavsView.hidden = YES;
+    self.savedToFavsView.alpha = 0;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyAboutFavoriting) name:@"notifyAboutFavoriting" object:nil];
     
 }
 
@@ -101,16 +105,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *titleCellIdentifier = @"TitleCell";
     static NSString *contentCellIdentifier = @"ContentCell";
+    static NSString *categoryCellIdentifier = @"CategoryCell";
     
     TitleCell *titleCell;
     ContentCell *contentCell;
+    CategoryCell *categoryCell;
     
     if (indexPath.row == 0) {
         
@@ -118,12 +124,29 @@
         
         //titleCell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
         titleCell.titleLabel.numberOfLines = 0;
-        [titleCell.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]];
+        [titleCell.titleLabel setFont:[UIFont fontWithName:@"Proxima Nova" size:20.0]];
         titleCell.titleLabel.text = self.article.title;
         return titleCell;
     }
     
-    else //(indexPath.row == 1)
+    else if (indexPath.row == 1) {
+        categoryCell = [tableView dequeueReusableCellWithIdentifier:categoryCellIdentifier forIndexPath:indexPath];
+        
+        categoryCell.categoryLabel.text = self.article.category;
+        [categoryCell.categoryLabel setFont:[UIFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"] size:15]];
+        
+        int colorIndex = [[[[NewsCategories sharedCategories] categories] objectForKey:@"names"] indexOfObject:self.article.category];
+        
+        [categoryCell.categoryLabel setTextColor:[[[[NewsCategories sharedCategories] categories] objectForKey:@"colors"] objectAtIndex:colorIndex]];
+        
+        categoryCell.byLabel.text = self.article.author;
+        
+        [categoryCell.byLabel setFont:[UIFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"] size:15]];
+        
+        return categoryCell;
+    }
+    
+    else
     {
         contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
         //contentCell.contentTextView.attributedText = test;
@@ -141,13 +164,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)path
 {
-    if (path.row == 1) {
+    if (path.row == 2) {
         return contentHeight + 10;
     }
     
-    else {
+    else if (path.row == 0) {
         return 70.0f;
     }
+    
+    else
+        return 0;
 }
 
 - (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
@@ -173,9 +199,24 @@
 }
 
 - (void) notifyAboutFavoriting {
-    [UIView animateWithDuration:0.3 animations:^(void) {
-        self.savedToFavsView.hidden = NO;
-    }];
+    [UIView animateWithDuration:0.25
+                          delay: 0.0
+                        options: UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.savedToFavsView.alpha = 1;
+                     }
+                     completion:^(BOOL finished){
+                         // Wait one second and then fade in the view
+                         [UIView animateWithDuration:0.25
+                                               delay: 0.6
+                                             options:UIViewAnimationOptionCurveEaseOut
+                                          animations:^{
+                                              self.savedToFavsView.alpha = 0.0;
+                                          }
+                                          completion:nil];
+                     }];
 }
+
+
 
 @end

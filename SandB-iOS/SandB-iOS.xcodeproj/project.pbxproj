@@ -62,6 +62,7 @@
 		8BA436E51908A59E003709FA /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA436E41908A59E003709FA /* Cache.m */; };
 		8BB2B2D21901C4F9001F5B45 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B2D11901C4F9001F5B45 /* Social.framework */; };
 		8BB2B31D19022248001F5B45 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B31C19022248001F5B45 /* Accounts.framework */; };
+		8BC48583190D8E6400C32B1E /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC48582190D8E6400C32B1E /* CategoryCell.m */; };
 		8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C80F16B32493005F3F23 /* UIKit.framework */; };
 		8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81116B32493005F3F23 /* Foundation.framework */; };
 		8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81316B32493005F3F23 /* CoreGraphics.framework */; };
@@ -184,6 +185,8 @@
 		8BA436E41908A59E003709FA /* Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cache.m; sourceTree = "<group>"; };
 		8BB2B2D11901C4F9001F5B45 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8BB2B31C19022248001F5B45 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		8BC48581190D8E6400C32B1E /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		8BC48582190D8E6400C32B1E /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		8BD1C80B16B32493005F3F23 /* S&B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "S&B.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD1C80F16B32493005F3F23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BD1C81116B32493005F3F23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -263,6 +266,8 @@
 				8B5DC4DA18F211E700732D45 /* ContentCell.m */,
 				8B0DA2B618F827C300613D14 /* TitleCell.h */,
 				8B0DA2B718F827C300613D14 /* TitleCell.m */,
+				8BC48581190D8E6400C32B1E /* CategoryCell.h */,
+				8BC48582190D8E6400C32B1E /* CategoryCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -676,6 +681,7 @@
 				8BF70EE318F65F2B00637795 /* NewsCategories.m in Sources */,
 				8B72A00E18FA621E00AD6C1F /* MZCustomTransition.m in Sources */,
 				1633F08618FADB0B00D0288F /* UIPageViewController+ReloadData.m in Sources */,
+				8BC48583190D8E6400C32B1E /* CategoryCell.m in Sources */,
 				8B5DC4CC18F1F57A00732D45 /* NewArticleCell.m in Sources */,
 				8BF70EE918F6CB1000637795 /* NewsCategory.m in Sources */,
 				8B72A01118FA6E8200AD6C1F /* ShareModalViewController.m in Sources */,
