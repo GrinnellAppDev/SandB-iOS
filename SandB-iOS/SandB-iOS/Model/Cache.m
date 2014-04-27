@@ -20,21 +20,11 @@
     return _sharedCacheModel;
 }
 
-+ (Cache *)sharedFavoritesModel {
-    static Cache *_sharedFavoritesModel = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedFavoritesModel = [[Cache alloc] init];
-    });
-    
-    return _sharedFavoritesModel;
-}
 
 - (id)init
 {
     self  = [super init];
     if (self) {
-        self.favoriteArticles = [NSMutableArray new];
     }
     return self;
 }
@@ -57,10 +47,6 @@
     
     id cachedObject = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
     return cachedObject;
-}
-
--(void) addToFavorites:(id)article {
-    [self.favoriteArticles addObject:article];
 }
 
 @end

@@ -11,12 +11,8 @@
 @interface Cache : NSObject
 
 + (Cache *) sharedCacheModel;
-+ (Cache *) sharedFavoritesModel;
 
 - (void) archiveObject:(id)object toFileName:(NSString *)fileName;
--(id) loadArchivedObjectWithFileName:(NSString *)fileName;
-- (void) addToFavorites:(id)article;
-
-@property (nonatomic, strong) NSMutableArray *favoriteArticles;
+- (id) loadArchivedObjectWithFileName:(NSString *)fileName;
 
 @end
