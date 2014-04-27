@@ -762,7 +762,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="favoriteView" destination="jrE-1q-ZZF" id="7pB-Lj-650"/>
                         <outlet property="savedToFavsView" destination="vZ9-2F-Woe" id="UD6-Fj-ldG"/>
                         <outlet property="theTableView" destination="hLR-Bd-caK" id="O05-OB-DBf"/>
                     </connections>

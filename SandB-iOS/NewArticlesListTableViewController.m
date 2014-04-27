@@ -254,10 +254,10 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     if ([self.newsCategory isEqualToString:@"News"]) {
         return [[DataModel sharedModel] articles];
     }
-//    else if ([self.newsCategory isEqualToString:@"Favorites"]) {
-//        NSLog(@"hgskjhsdkjhdskjhdsjkhsdjkh");
-//        return [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"news"];
-//    }
+    else if ([self.newsCategory isEqualToString:@"Favorites"]) {
+        
+        return [[DataModel sharedModel] savedArticles];
+    }
     else {
         return [[DataModel sharedModel] categoryArrayForCategoryName:self.newsCategory];
     }

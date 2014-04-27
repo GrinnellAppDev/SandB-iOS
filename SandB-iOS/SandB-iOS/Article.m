@@ -29,9 +29,7 @@
     if (self) {
         
         _title = [articleDictionary[@"title"] stringByDecodingXMLEntities];
-        
         _URL = articleDictionary[@"url"];
-        
         _content = articleDictionary[@"content"];
         
         _content = [_content stringByReplacingOccurrencesOfString:@"<div id=\"attachment_.*</div>" withString:@"" options:NSCaseInsensitiveSearch | NSRegularExpressionSearch range:NSMakeRange(0, [_content length])];
@@ -39,7 +37,7 @@
         
         _category = [articleDictionary[@"categories"] objectAtIndex:0][@"title"];
         
-        _articleId = articleDictionary[@"id"];
+        _articleId = [articleDictionary[@"id"] stringValue];
         
         NSArray *attachments = articleDictionary[@"attachments"];
         NSDictionary *thumbnails = articleDictionary[@"thumbnail_images"];
@@ -127,12 +125,19 @@
 //        
 //        UIColor *red = [UIColor colorWithRed:141.0f/255.0f green:29.0f/255.0f blue:41.0f/255.0f alpha:1.0f];
 //        _blurredImage = [image applyTintEffectWithColor:[UIColor blackColor]];
-        
-
-        
 
     }
     return self;
+}
+
+- (NSString *)description
+{
+    NSDictionary *desc = @{@"title": self.title,
+                           @"url": self.URL,
+                           };
+    
+    return [NSString stringWithFormat:@"%@", desc ];
+    
 }
 
 - (void)formAttributedString
@@ -171,7 +176,7 @@
 
 #pragma mark - Methods to determine equality
 - (BOOL)isEqual:(id)other {
-    if (other == self)
+    if (self == other)
         return YES;
     
     if (!other || ![other isKindOfClass:[self class]])
@@ -185,7 +190,7 @@
         return YES;
     
     return ( [self.title isEqualToString:anArticle.title] &&
-            [self.articleId isEqualToString:anArticle.articleId]);
+            [self.URL isEqualToString:anArticle.URL]);
 }
 
 //Hash function needed as helper for comparison method above.
@@ -210,7 +215,14 @@
         self.email = [aDecoder decodeObjectForKey:@"email"];
         self.author = [aDecoder decodeObjectForKey:@"author"];
         self.category = [aDecoder decodeObjectForKey:@"category"];
+        self.articleId = [aDecoder decodeObjectForKey:@"articleID"];
+        self.imageSmallURL = [aDecoder decodeObjectForKey:@"imageSmallURL"];
+        self.imageMediumURL = [aDecoder decodeObjectForKey:@"imageMediumURL"];
+        self.imageLargeURL  = [aDecoder decodeObjectForKey:@"imageLargeURL"];
+        
         //image = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"image"]];
+        
+     // TODO: Save the images.
     }
     return self;
 }
@@ -223,6 +235,11 @@
     [aCoder encodeObject:self.email forKey:@"email"];
     [aCoder encodeObject:self.author forKey:@"author"];
     [aCoder encodeObject:self.category forKey:@"category"];
+    [aCoder encodeObject:self.articleId forKey:@"articleID"];
+    [aCoder encodeObject:self.imageSmallURL forKey:@"imageSmallURL"];
+    [aCoder encodeObject:self.imageMediumURL forKey:@"imageMediumURL"];
+    [aCoder encodeObject:self.imageLargeURL forKey:@"imageLargeURL"];
+    
    // NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
    // [aCoder encodeObject:imgData forKey:@"image"];
 }

@@ -8,6 +8,7 @@
 
 #import "DataModel.h"
 #import "SandBClient.h"
+#import "Cache.h"
 
 @implementation DataModel
 {
@@ -225,8 +226,32 @@
 
 }
 
+#pragma mark - Adding to favorites. 
+
+- (void)saveArticle:(Article *)article {
+    
+    NSMutableSet *favoriteSet = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"FavoritedArticles"];
+    
+    if (!favoriteSet) {
+        //Create one!
+        favoriteSet = [[NSMutableSet alloc] initWithCapacity:3];
+    }
+    
+    [favoriteSet addObject:article];
+    
+    // Save it favoritesSet
+    [[Cache sharedCacheModel] archiveObject:favoriteSet toFileName:@"FavoritedArticles"];
+}
 
 
+- (NSMutableArray *)savedArticles
+{
+    NSLog(@"Favoritessssss");
+    NSSet *favoriteSet = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"FavoritedArticles"];
+    NSMutableArray *favoriteArray = [NSMutableArray arrayWithArray:favoriteSet.allObjects];
+    NSLog(@"fa: %@", favoriteArray);
+    return favoriteArray;
+}
 
 
 @end

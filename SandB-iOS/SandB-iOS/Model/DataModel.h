@@ -31,6 +31,8 @@ typedef void (^FetchArticlesCompletionBlock) (NSMutableArray *articles, NSMutabl
 - (void) fetchArticlesForCategory:(NSString *) category withCompletionBlock:(FetchArticlesCompletionBlock)completion;
 
 - (NSMutableArray *)categoryArrayForCategoryName:(NSString *)categoryName;
+- (void)saveArticle:(Article *)article;
+- (NSMutableArray *)savedArticles; 
 
 
 @end

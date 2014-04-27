@@ -51,6 +51,9 @@
     
     if ([self.recievedCategoryString isEqualToString:@"News"]) {
         self.pageArticles = [[DataModel sharedModel] articles];
+    } else if([self.recievedCategoryString isEqualToString:@"Favorites"]) {
+        
+        self.pageArticles =  [[DataModel sharedModel] savedArticles];
     }
     else {
         self.pageArticles =  [[DataModel sharedModel] categoryArrayForCategoryName:self.recievedCategoryString];
@@ -329,8 +332,9 @@
         
         if ([self.recievedCategoryString isEqualToString:@"News"]) {
             [self fetchArticles];
-        }
-        else {
+        } else if ([self.recievedCategoryString isEqualToString:@"Favorites"]) {
+            // do nothing.
+        } else {
             [self fetchCategoryArticles];
         }
     }
@@ -387,21 +391,7 @@
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
     
-    //[[Cache sharedFavoritesModel] addToFavorites:self.currentArticle];
-    NSMutableArray *favHolder = [NSMutableArray new];
-    
-    if ([[Cache sharedFavoritesModel] loadArchivedObjectWithFileName:@"Favorites"]) {
-        favHolder = [[Cache sharedFavoritesModel] loadArchivedObjectWithFileName:@"Favorites"];
-        [favHolder addObject:self.currentArticle];
-        [[Cache sharedFavoritesModel] archiveObject:favHolder toFileName:@"Favorites"];
-    }
-    
-    else {
-        [favHolder addObject:self.currentArticle];
-        [[Cache sharedFavoritesModel] archiveObject:favHolder toFileName:@"Favorites"];
-    }
-    NSLog(@"FAVORITES: %@", [[Cache sharedFavoritesModel] loadArchivedObjectWithFileName:@"Favorites"]);
-
+    [[DataModel sharedModel] saveArticle:self.currentArticle];
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
