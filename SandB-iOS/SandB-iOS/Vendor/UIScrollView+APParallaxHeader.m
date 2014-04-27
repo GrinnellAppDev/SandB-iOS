@@ -6,6 +6,7 @@
 //
 
 #import "UIScrollView+APParallaxHeader.h"
+#import "UIImageView+WebCache.h"
 
 #import <QuartzCore/QuartzCore.h>
 

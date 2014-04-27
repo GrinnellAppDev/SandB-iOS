@@ -57,11 +57,8 @@
 
 - (void)fetchArticlesWithCompletionBlock:(FetchArticlesCompletionBlock)completion
 {
-
-    
     _page++;
     NSMutableArray *newArticles = [NSMutableArray new];
-    
 
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
                          parameters:@{@"count": @(12),

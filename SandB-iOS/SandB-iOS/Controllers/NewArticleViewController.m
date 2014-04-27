@@ -39,8 +39,9 @@
     // Do any additional setup after loading the view.
     
     // add parallax image
-    if (self.article.image) {
-        [self.theTableView addParallaxWithImage:self.article.image andHeight:400];
+    UIImage *image = [UIImage imageWithData:self.article.imageData];
+    if (image) {
+        [self.theTableView addParallaxWithImage:image andHeight:400];
     }
     else {
         [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"defaultImage"] andHeight:400];

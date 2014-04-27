@@ -49,6 +49,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPages) name:@"ReloadPageViewController" object:nil];
     
+    /*
     if ([self.recievedCategoryString isEqualToString:@"News"]) {
         self.pageArticles = [[DataModel sharedModel] articles];
     } else if([self.recievedCategoryString isEqualToString:@"Favorites"]) {
@@ -58,6 +59,7 @@
     else {
         self.pageArticles =  [[DataModel sharedModel] categoryArrayForCategoryName:self.recievedCategoryString];
     }
+    */
     
     // Do any additional setup after loading the view.
     
@@ -274,9 +276,6 @@
     
     [self.pageViewController xcd_setViewControllers:self.pageViewController.viewControllers direction:UIPageViewControllerNavigationDirectionForward
                                            animated:NO completion:nil];
-    
-    
-
 }
 
 #pragma mark - Downloading Data

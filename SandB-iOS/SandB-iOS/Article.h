@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *article;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSData *imageData; 
 @property (nonatomic, strong) NSURL *comments;
 @property (nonatomic, assign) int commentsCount;
 @property (nonatomic, strong) NSString *date;

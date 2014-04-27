@@ -20,7 +20,6 @@
     return _sharedCacheModel;
 }
 
-
 - (id)init
 {
     self  = [super init];
@@ -33,13 +32,11 @@
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *cacheDirectory = paths[0];
-    
     NSString *filePath = [cacheDirectory stringByAppendingPathComponent:fileName];
-    
     [NSKeyedArchiver archiveRootObject:object toFile:filePath];
 }
 
--(id) loadArchivedObjectWithFileName:(NSString *)fileName {
+- (id) loadArchivedObjectWithFileName:(NSString *)fileName {
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *cacheDirectory = paths[0];
