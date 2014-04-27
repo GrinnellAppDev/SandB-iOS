@@ -64,6 +64,7 @@
 		8BB2B2D21901C4F9001F5B45 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B2D11901C4F9001F5B45 /* Social.framework */; };
 		8BB2B31D19022248001F5B45 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B31C19022248001F5B45 /* Accounts.framework */; };
 		8BC48583190D8E6400C32B1E /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC48582190D8E6400C32B1E /* CategoryCell.m */; };
+		8BC48585190DC6EC00C32B1E /* strings_private.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BC48584190DC6EC00C32B1E /* strings_private.strings */; };
 		8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C80F16B32493005F3F23 /* UIKit.framework */; };
 		8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81116B32493005F3F23 /* Foundation.framework */; };
 		8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81316B32493005F3F23 /* CoreGraphics.framework */; };
@@ -189,6 +190,7 @@
 		8BB2B31C19022248001F5B45 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		8BC48581190D8E6400C32B1E /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		8BC48582190D8E6400C32B1E /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		8BC48584190DC6EC00C32B1E /* strings_private.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = strings_private.strings; sourceTree = "<group>"; };
 		8BD1C80B16B32493005F3F23 /* S&B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "S&B.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD1C80F16B32493005F3F23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BD1C81116B32493005F3F23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -501,7 +503,6 @@
 		8BD1C81616B32493005F3F23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				16F8D066190DC78100026167 /* strings_private.strings */,
 				8B729FD818FA527500AD6C1F /* MZFormSheetController */,
 				E1A03015185E424E00C794F0 /* Default-568h@2x.png */,
 				E1A03016185E424E00C794F0 /* Default-Landscape.png */,
@@ -588,7 +589,11 @@
 				E1A0301F185E424E00C794F0 /* Default-Portrait@2x.png in Resources */,
 				8B5304CC19099D9E00A2D40B /* Proxima Nova ScOsf Light.otf in Resources */,
 				E19E290A180E5ED200ED33FE /* icon-29.png in Resources */,
+<<<<<<< HEAD
 				16F8D067190DC78100026167 /* strings_private.strings in Resources */,
+=======
+				8BC48585190DC6EC00C32B1E /* strings_private.strings in Resources */,
+>>>>>>> 797011bce97954c025beb31269d9666c2b89477c
 				8B5304CB19099D9B00A2D40B /* Proxima Nova Light.otf in Resources */,
 				8B5304D81909A98200A2D40B /* Quattrocento-Regular.ttf in Resources */,
 				8B5DC4D818F20A9400732D45 /* Images.xcassets in Resources */,
