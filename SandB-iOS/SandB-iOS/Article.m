@@ -169,8 +169,36 @@
 
 }
 
+#pragma mark - Methods to determine equality
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    
+    return [self isEqualToArticle:other];
+}
 
-// serializing & deserializing objects
+- (BOOL)isEqualToArticle:(Article *)anArticle {
+    if (self == anArticle)
+        return YES;
+    
+    return ( [self.title isEqualToString:anArticle.title] &&
+            [self.articleId isEqualToString:anArticle.articleId]);
+}
+
+//Hash function needed as helper for comparison method above.
+- (NSUInteger)hash {
+    NSUInteger result = 1;
+    NSUInteger prime = 31;
+    
+    // Use any object that already has a hash function (NSString)
+    result = prime * result + [self.title hash];
+    return result;
+}
+
+#pragma mark - Serializing and Deserializing
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
