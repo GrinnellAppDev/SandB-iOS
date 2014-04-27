@@ -377,8 +377,6 @@
     [self.starButton setImage:[[UIImage imageNamed:@"StarIconWhite"]imageWithRenderingMode:mode] forState:state];
     [self.shareButton setImage:[[UIImage imageNamed:@"ShareIconWhite"]imageWithRenderingMode:mode] forState:state];
     [self.editTextButton setImage:[[UIImage imageNamed:@"EditTextIconWhite"]imageWithRenderingMode:mode] forState:state];
-    
-    // TO DO: Change Color When Button Pressed
 }
 
 - (IBAction)favoriteButtonPressed:(id)sender

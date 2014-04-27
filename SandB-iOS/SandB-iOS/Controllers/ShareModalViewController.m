@@ -80,6 +80,13 @@
     
     self.characterCount.hidden = NO;
     
+    if ([self bitlifyMyLink:self.article.URL]) {
+        self.commentTextView.text = [NSString stringWithFormat:@"%@ %@", self.article.title, [self bitlifyMyLink:self.article.URL]];
+    }
+    else {
+        self.commentTextView.text = [NSString stringWithFormat:@"%@ %@", self.article.title, self.article.URL];
+    }
+    
     int numOfChars = [self.commentTextView.text length];
     
     self.characterCount.text = [NSString stringWithFormat:@"%i", 140 - numOfChars];
@@ -154,7 +161,7 @@
         return;
     }
     
-    NSString *message = [NSString stringWithFormat:@"Just sent the %@ file to your email. Please check!", self.article.URL];
+    NSString *message = [NSString stringWithFormat:@"Check out this awesome article: %@!", self.article.URL];
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
