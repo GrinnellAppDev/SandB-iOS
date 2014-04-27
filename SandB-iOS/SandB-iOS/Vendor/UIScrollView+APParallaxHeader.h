@@ -12,6 +12,7 @@
 
 @interface UIScrollView (APParallaxHeader)
 
+- (void)addParallaxWithImageURL:(NSString *)imageURL andHeight:(CGFloat)height;
 - (void)addParallaxWithImage:(UIImage *)image andHeight:(CGFloat)height;
 - (void)addParallaxWithView:(UIView*)view andHeight:(CGFloat)height;
 

@@ -405,8 +405,8 @@
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
-    [self.currentArticle setRead:YES];
     
+    [[DataModel sharedModel] markArticleAsRead:self.currentArticle];
     
     NSLog(@"theINdex: %d|| count: %lu", theIndex, self.pageArticles.count);
     if (theIndex > self.pageArticles.count - 5) {

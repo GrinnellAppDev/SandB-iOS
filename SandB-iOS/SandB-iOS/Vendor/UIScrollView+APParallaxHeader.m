@@ -19,10 +19,7 @@
 @property (nonatomic) CGFloat parallaxHeight;
 
 @property(nonatomic, assign) BOOL isObserving;
-
 @end
-
-
 
 #pragma mark - UIScrollView (APParallaxHeader)
 #import <objc/runtime.h>
@@ -31,16 +28,42 @@ static char UIScrollViewParallaxView;
 
 @implementation UIScrollView (APParallaxHeader)
 
-- (void)addParallaxWithImage:(UIImage *)image andHeight:(CGFloat)height {
+- (void)addParallaxWithImageURL:(NSString *)imageURL andHeight:(CGFloat)height {
     if(self.parallaxView) {
         if(self.parallaxView.currentSubView) [self.parallaxView.currentSubView removeFromSuperview];
-        [self.parallaxView.imageView setImage:image];
+        [self.parallaxView.imageView setImageWithURL:[NSURL URLWithString:imageURL]];
     }
     else
     {
         APParallaxView *view = [[APParallaxView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, height)];
         [view setClipsToBounds:YES];
-        [view.imageView setImage:image];
+        [view.imageView setImageWithURL:[NSURL URLWithString:imageURL]];
+        
+        view.scrollView = self;
+        view.parallaxHeight = height;
+        [self addSubview:view];
+        
+        view.originalTopInset = self.contentInset.top;
+        
+        UIEdgeInsets newInset = self.contentInset;
+        newInset.top = height;
+        self.contentInset = newInset;
+        
+        self.parallaxView = view;
+        self.showsParallax = YES;
+    }
+}
+
+- (void)addParallaxWithImage:(UIImage *)image andHeight:(CGFloat)height {
+    if(self.parallaxView) {
+        if(self.parallaxView.currentSubView) [self.parallaxView.currentSubView removeFromSuperview];
+        self.parallaxView.imageView.image = image;
+    }
+    else
+    {
+        APParallaxView *view = [[APParallaxView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, height)];
+        [view setClipsToBounds:YES];
+        view.imageView.image = image;
         
         view.scrollView = self;
         view.parallaxHeight = height;

@@ -116,7 +116,6 @@
              {
                  // do something with image
                  _image = image;
-                 _imageData = UIImagePNGRepresentation(image);
              }
          }];
         
@@ -219,7 +218,6 @@
         self.imageSmallURL = [aDecoder decodeObjectForKey:@"imageSmallURL"];
         self.imageMediumURL = [aDecoder decodeObjectForKey:@"imageMediumURL"];
         self.imageLargeURL  = [aDecoder decodeObjectForKey:@"imageLargeURL"];
-        self.imageData = [aDecoder decodeObjectForKey:@"imageData"];
         //image = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"image"]];
         
      // TODO: Save the images.
@@ -239,7 +237,6 @@
     [aCoder encodeObject:self.imageSmallURL forKey:@"imageSmallURL"];
     [aCoder encodeObject:self.imageMediumURL forKey:@"imageMediumURL"];
     [aCoder encodeObject:self.imageLargeURL forKey:@"imageLargeURL"];
-    [aCoder encodeObject:self.imageData forKey:@"imageData"];
     
    // NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
    // [aCoder encodeObject:imgData forKey:@"image"];

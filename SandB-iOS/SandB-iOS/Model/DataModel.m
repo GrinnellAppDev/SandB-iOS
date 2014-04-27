@@ -57,9 +57,12 @@
 
 - (void)fetchArticlesWithCompletionBlock:(FetchArticlesCompletionBlock)completion
 {
+    
+    
     _page++;
     NSMutableArray *newArticles = [NSMutableArray new];
-
+    
+    
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
                          parameters:@{@"count": @(12),
                                       @"page": @(_page)
@@ -74,6 +77,11 @@
                                     [articleArray enumerateObjectsUsingBlock:^(NSDictionary *articleDictionary, NSUInteger idx, BOOL *stop) {
                                         
                                         Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
+                                        
+                                        if ([[self readArticles] containsObject:article]) {
+                                            article.read = YES;
+                                        }
+                                        
                                         [newArticles addObject:article];
                                         [[[DataModel sharedModel] articles] addObject:article];
                                     }];
@@ -106,6 +114,10 @@
                                         
                                         Article *article = [[Article alloc] initWithArticleDictionary:articleDictionary];
                                         
+                                        if ([[self readArticles] containsObject:article]) {
+                                            article.read = YES;
+                                        }
+                                        
                                         [[[DataModel sharedModel] articles] addObject:article];
                                         
                                     }];
@@ -122,7 +134,7 @@
 
 - (NSMutableArray *)categoryArrayFromID:(NSNumber *)categoryID
 {
-
+    
     switch ([categoryID integerValue]) {
         case 5:
             return _artsArticles;
@@ -146,12 +158,12 @@
 - (NSMutableArray *)categoryArrayForCategoryName:(NSString *)categoryName
 {
     NewsCategory *category = [[[NewsCategories sharedCategories] categoriesByName] objectForKey:categoryName];
-    return [self categoryArrayFromID:category.idNum]; 
+    return [self categoryArrayFromID:category.idNum];
 }
 
 
 - (void)fetchArticlesForCategory:(NSString *)categoryString withCompletionBlock:(FetchArticlesCompletionBlock)completion {
- 
+    
     NewsCategory *category = [[[NewsCategories sharedCategories] categoriesByName] objectForKey:categoryString];
     
     switch ([category.idNum integerValue]) {
@@ -164,7 +176,7 @@
         case 216: {
             _communityPage++;
             [self fetchArticlesUsingPage:_communityPage andCategoryID:216 andArray:_communityArticles withCompletionBlock:completion];
-
+            
             break;
         }
             
@@ -190,7 +202,7 @@
 - (void) fetchArticlesUsingPage:(int)page andCategoryID:(int)categoryID andArray:(NSMutableArray *)categoryArticles withCompletionBlock:(FetchArticlesCompletionBlock)completion {
     
     NSMutableArray *newCategoryArticles = [NSMutableArray new];
-
+    
     [[SandBClient sharedClient] GET:@"get_category_posts/"
                          parameters:@{@"id":@(categoryID),
                                       @"page": @(page)
@@ -211,7 +223,7 @@
                                         [newCategoryArticles addObject:article];
                                         //[[[DataModel sharedModel] categoryArticles] addObject:article];
                                         [categoryArticles addObject:article];
-                                       
+                                        
                                         
                                     }];
                                     completion(categoryArticles, newCategoryArticles, totalPages, page, nil);
@@ -220,10 +232,10 @@
                                 
                                 completion(nil, nil, 0, 0, error);
                             }];
-
+    
 }
 
-#pragma mark - Adding to favorites. 
+#pragma mark - Adding to favorites.
 
 - (void)saveArticle:(Article *)article {
     
@@ -249,6 +261,32 @@
     NSLog(@"fa: %@", favoriteArray);
     return favoriteArray;
 }
+
+#pragma mark - Marking articles as read
+- (void)markArticleAsRead:(Article *)article
+{
+    article.read = YES;
+    
+    NSMutableSet *readArticles = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"ReadArticles"];
+    
+    if (!readArticles) {
+        //Create one!
+        readArticles = [[NSMutableSet alloc] initWithCapacity:3];
+    }
+    
+    [readArticles addObject:article];
+    
+    // Save it favoritesSet
+    [[Cache sharedCacheModel] archiveObject:readArticles toFileName:@"ReadArticles"];
+    
+}
+
+- (NSMutableSet *)readArticles
+{
+    NSMutableSet *readArticles = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"FavoritedArticles"];
+    return readArticles;
+}
+
 
 
 @end
