@@ -44,6 +44,8 @@
         [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"defaultImage"] andHeight:400];
     }
     
+    self.savedToFavsView.hidden = YES;
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -168,6 +170,12 @@
     else if (scrollView.contentOffset.y < -69.0) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UncolorTopBar" object:nil];
     }
+}
+
+- (void) notifyAboutFavoriting {
+    [UIView animateWithDuration:0.3 animations:^(void) {
+        self.savedToFavsView.hidden = NO;
+    }];
 }
 
 @end

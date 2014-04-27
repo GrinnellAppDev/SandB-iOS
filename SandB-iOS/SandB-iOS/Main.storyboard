@@ -740,16 +740,36 @@
                                     <outlet property="delegate" destination="o9W-0n-rtV" id="Emv-SQ-iyI"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZ9-2F-Woe">
+                                <rect key="frame" x="0.0" y="21" width="320" height="527"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="favoriteBig" translatesAutoresizingMaskIntoConstraints="NO" id="XCV-W7-3Cf">
+                                        <rect key="frame" x="110" y="94" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Saved to favorites!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMC-l6-lTf">
+                                        <rect key="frame" x="95" y="202" width="156" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.37" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="favoriteView" destination="jrE-1q-ZZF" id="7pB-Lj-650"/>
+                        <outlet property="savedToFavsView" destination="vZ9-2F-Woe" id="UD6-Fj-ldG"/>
                         <outlet property="theTableView" destination="hLR-Bd-caK" id="O05-OB-DBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IF7-2y-3tI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2556" y="652"/>
+            <point key="canvasLocation" x="2556" y="663"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vu2-Cr-fAX">
@@ -874,7 +894,8 @@
         <image name="SmallerFont" width="34" height="34"/>
         <image name="StarIconWhite" width="34" height="30"/>
         <image name="TwitterIcon" width="50" height="50"/>
-        <image name="featuresColor.png" width="50" height="105"/>
+        <image name="favoriteBig" width="95" height="95"/>
+        <image name="featuresColor.png" width="28" height="28"/>
         <image name="iMessageIcon" width="50" height="50"/>
     </resources>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

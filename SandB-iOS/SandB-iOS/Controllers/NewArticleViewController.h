@@ -16,6 +16,6 @@
 @property (nonatomic, strong) Article *article;
 @property (strong, nonatomic) IBOutlet UITableView *theTableView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-
+@property (strong, nonatomic) IBOutlet UIView *savedToFavsView;
 
 @end

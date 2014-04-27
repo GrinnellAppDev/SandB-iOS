@@ -5,6 +5,4 @@ pod 'TBXML'
 pod 'AFNetworking' 
 pod 'SDWebImage'
 pod 'ECSlidingViewController', '~> 2.0.1'
-pod 'Shimmer'
-pod "ShareKit"
 pod 'SAMTextView', '~> 0.2.1'

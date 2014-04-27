@@ -39,6 +39,8 @@
         
         _category = [articleDictionary[@"categories"] objectAtIndex:0][@"title"];
         
+        _articleId = articleDictionary[@"id"];
+        
         NSArray *attachments = articleDictionary[@"attachments"];
         NSDictionary *thumbnails = articleDictionary[@"thumbnail_images"];
         

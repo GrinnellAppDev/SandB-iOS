@@ -18,7 +18,9 @@
 @property (nonatomic, strong) NSString *date;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *URL;
+@property (nonatomic, strong) NSString *articleId;
 @property (nonatomic) BOOL read;
+@property (nonatomic) BOOL favorited;
 
 
 @property (nonatomic, strong) NSString *content;

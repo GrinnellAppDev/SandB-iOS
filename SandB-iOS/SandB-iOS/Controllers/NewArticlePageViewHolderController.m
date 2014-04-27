@@ -18,6 +18,8 @@
 #import "MZCustomTransition.h"
 #import "MZFormSheetSegue.h"
 
+#import "Cache.h"
+
 @interface NewArticlePageViewHolderController ()
 @property (nonatomic, strong) Article *currentArticle;
 @property (nonatomic) NSUInteger index;
@@ -381,7 +383,25 @@
 
 - (IBAction)favoriteButtonPressed:(id)sender
 {
+    NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
+    NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
+    self.currentArticle  = self.pageArticles[theIndex];
     
+    //[[Cache sharedFavoritesModel] addToFavorites:self.currentArticle];
+    NSMutableArray *favHolder = [NSMutableArray new];
+    
+    if ([[Cache sharedFavoritesModel] loadArchivedObjectWithFileName:@"Favorites"]) {
+        favHolder = [[Cache sharedFavoritesModel] loadArchivedObjectWithFileName:@"Favorites"];
+        [favHolder addObject:self.currentArticle];
+        [[Cache sharedFavoritesModel] archiveObject:favHolder toFileName:@"Favorites"];
+    }
+    
+    else {
+        [favHolder addObject:self.currentArticle];
+        [[Cache sharedFavoritesModel] archiveObject:favHolder toFileName:@"Favorites"];
+    }
+    NSLog(@"FAVORITES: %@", [[Cache sharedFavoritesModel] loadArchivedObjectWithFileName:@"Favorites"]);
+
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
