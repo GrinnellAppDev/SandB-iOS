@@ -245,7 +245,6 @@
         //Create one!
         favoriteSet = [[NSMutableSet alloc] initWithCapacity:3];
     }
-    
     [favoriteSet addObject:article];
     
     // Save it favoritesSet

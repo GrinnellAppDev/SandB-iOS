@@ -46,6 +46,8 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
     [self configureECSlidingController];
     self.allArticlesArray = [NSMutableArray new];
 //    self.allArticlesArray = [self getArrayForView];
