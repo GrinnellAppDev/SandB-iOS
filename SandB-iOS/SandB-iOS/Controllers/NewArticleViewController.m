@@ -211,7 +211,7 @@
                                                delay: 0.6
                                              options:UIViewAnimationOptionCurveEaseOut
                                           animations:^{
-                                              self.savedToFavsView.alpha = 0.0;
+                                              self.savedToFavsView.alpha = 0;
                                           }
                                           completion:nil];
                      }];

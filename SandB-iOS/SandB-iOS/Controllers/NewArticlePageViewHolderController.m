@@ -132,6 +132,13 @@
     [MZFormSheetController registerTransitionClass:[MZCustomTransition class] forTransitionStyle:MZFormSheetTransitionStyleCustom];
     
     [self loadReadingOptions];
+    
+    // DISABLE FAVORITE BUTTON IF WE'RE ON THE FAVORITES VIEW
+    
+    if ([self.recievedCategoryString isEqualToString:@"Favorites"]) {
+        self.starButton.userInteractionEnabled = NO;
+        self.starButton.alpha = 0.3;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -383,6 +390,10 @@
     [self.starButton setImage:[[UIImage imageNamed:@"StarIconWhite"]imageWithRenderingMode:mode] forState:state];
     [self.shareButton setImage:[[UIImage imageNamed:@"ShareIconWhite"]imageWithRenderingMode:mode] forState:state];
     [self.editTextButton setImage:[[UIImage imageNamed:@"EditTextIconWhite"]imageWithRenderingMode:mode] forState:state];
+    
+    if ([self.recievedCategoryString isEqualToString:@"Favorites"]) {
+        self.starButton.alpha = 0.3;
+    }
 }
 
 - (IBAction)favoriteButtonPressed:(id)sender
@@ -393,8 +404,9 @@
     
     [[DataModel sharedModel] saveArticle:self.currentArticle];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutFavoriting" object:nil];
-
+    if (![self.recievedCategoryString isEqualToString:@"Favorites"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutFavoriting" object:nil];
+    }
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
