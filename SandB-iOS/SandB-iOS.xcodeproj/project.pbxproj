@@ -64,6 +64,8 @@
 		8BB2B2D21901C4F9001F5B45 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B2D11901C4F9001F5B45 /* Social.framework */; };
 		8BB2B31D19022248001F5B45 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2B31C19022248001F5B45 /* Accounts.framework */; };
 		8BC48583190D8E6400C32B1E /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC48582190D8E6400C32B1E /* CategoryCell.m */; };
+		8BC48585190DC6EC00C32B1E /* strings_private.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BC48584190DC6EC00C32B1E /* strings_private.strings */; };
+		8BC48587190DCD9A00C32B1E /* Proxima Nova Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8BC48586190DCD9A00C32B1E /* Proxima Nova Semibold.otf */; };
 		8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C80F16B32493005F3F23 /* UIKit.framework */; };
 		8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81116B32493005F3F23 /* Foundation.framework */; };
 		8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD1C81316B32493005F3F23 /* CoreGraphics.framework */; };
@@ -189,6 +191,8 @@
 		8BB2B31C19022248001F5B45 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		8BC48581190D8E6400C32B1E /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		8BC48582190D8E6400C32B1E /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		8BC48584190DC6EC00C32B1E /* strings_private.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = strings_private.strings; sourceTree = "<group>"; };
+		8BC48586190DCD9A00C32B1E /* Proxima Nova Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Semibold.otf"; sourceTree = "<group>"; };
 		8BD1C80B16B32493005F3F23 /* S&B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "S&B.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD1C80F16B32493005F3F23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BD1C81116B32493005F3F23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -363,6 +367,7 @@
 		8B5304C619099CE600A2D40B /* Proxima Nova */ = {
 			isa = PBXGroup;
 			children = (
+				8BC48586190DCD9A00C32B1E /* Proxima Nova Semibold.otf */,
 				8B5304CF1909A34D00A2D40B /* Proxima Nova Regular.otf */,
 				8B5304CD1909A26D00A2D40B /* Proxima Nova ScOsf Regular.otf */,
 				8B5304C719099CF200A2D40B /* Proxima Nova Alt Light.otf */,
@@ -578,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B5304CE1909A27A00A2D40B /* Proxima Nova ScOsf Regular.otf in Resources */,
+				8BC48587190DCD9A00C32B1E /* Proxima Nova Semibold.otf in Resources */,
 				8BD1C81A16B32493005F3F23 /* InfoPlist.strings in Resources */,
 				E1A0301B185E424E00C794F0 /* Default-568h@2x.png in Resources */,
 				E19E290C180E5ED200ED33FE /* icon-58.png in Resources */,
