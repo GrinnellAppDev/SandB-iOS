@@ -227,9 +227,6 @@
      error:&error];
      
     
-    
-    
-    
     /* NSDictionary* attributes = @{
                                 NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
                                 
