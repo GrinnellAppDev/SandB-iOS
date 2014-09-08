@@ -21,9 +21,9 @@ PODS:
   - MBProgressHUD (0.8)
   - Reachability (3.1.1)
   - SAMTextView (0.2.1)
-  - SDWebImage (3.6):
+  - SDWebImage (3.7.1):
     - SDWebImage/Core
-  - SDWebImage/Core (3.6)
+  - SDWebImage/Core (3.7.1)
   - TBXML (1.5)
 
 DEPENDENCIES:
@@ -32,16 +32,16 @@ DEPENDENCIES:
   - MBProgressHUD
   - Reachability
   - SAMTextView (~> 0.2.1)
-  - SDWebImage
+  - SDWebImage (~> 3.7.1)
   - TBXML
 
 SPEC CHECKSUMS:
-  AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
-  ECSlidingViewController: d7bb96ee5bbe261ed80ee16a513f94b9fd3c9767
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
-  SAMTextView: f0dae9662a7cc45e890eb2b24aa1769148ea2933
-  SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
-  TBXML: 0511ac325d83e59d3aefa4bc8cd6cbeff07a8d9e
+  AFNetworking: a4d0e9a64de9242986620dafd1b3cee3b413ac5c
+  ECSlidingViewController: e93ab7e075fc9a99a874fa050ce3b2a64026eb85
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  SAMTextView: 1062a784ba7b2080b0c17748001c416b53010b4b
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  TBXML: a279440030ba55c40e1455cafba3b0a44e1963d4
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1

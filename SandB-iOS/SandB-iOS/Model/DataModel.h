@@ -22,6 +22,7 @@ typedef void (^FetchArticlesCompletionBlock) (NSMutableArray *articles, NSMutabl
 @property (nonatomic, strong) NSMutableArray *featuresArticles;
 @property (nonatomic, strong) NSMutableArray *opinionsArticles;
 @property (nonatomic, strong) NSMutableArray *sportArticles;
+@property (nonatomic, strong) NSMutableArray *unsortedArticles;
 
 + (DataModel *)sharedModel;
 - (void)fetchArticlesWithCompletionBlock:(FetchArticlesCompletionBlock)completion;

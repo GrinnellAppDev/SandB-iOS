@@ -19,6 +19,7 @@
     int _sportsPage;
     int _opinionsPage;
     int _categoryPage;
+    int _unsortedPage;
 }
 
 
@@ -42,6 +43,7 @@
         self.communityArticles = [NSMutableArray new];
         self.sportArticles = [NSMutableArray new];
         self.opinionsArticles = [NSMutableArray new];
+        self.unsortedArticles = [NSMutableArray new];
         
         _page = 0;
         _artsPage = 0;
@@ -49,6 +51,7 @@
         _featuresPage = 0;
         _sportsPage = 0;
         _opinionsPage = 0;
+        _unsortedPage = 0;
     }
     return self;
 }
@@ -144,6 +147,9 @@
         case 7:
             return _sportArticles;
             break;
+        case 1:
+            return _unsortedArticles;
+            break;
     }
     return nil;
 }
@@ -186,6 +192,11 @@
         case 7: {
             _sportsPage++;
             [self fetchArticlesUsingPage:_sportsPage andCategoryID:7 andArray:_sportArticles withCompletionBlock:completion];
+            break;
+        }
+        case 1: {
+            _unsortedPage++;
+            [self fetchArticlesUsingPage:_unsortedPage andCategoryID:1 andArray:_unsortedArticles withCompletionBlock:completion];
             break;
         }
             
