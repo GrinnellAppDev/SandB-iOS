@@ -167,6 +167,8 @@
     messageController.messageComposeDelegate = self;
     [messageController setBody:message];
     
+    [[messageController navigationBar] setTintColor:[UIColor whiteColor]];
+    
     // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
     

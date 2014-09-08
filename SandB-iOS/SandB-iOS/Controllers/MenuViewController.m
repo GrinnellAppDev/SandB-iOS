@@ -65,6 +65,16 @@
     return 2;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 45;
+    }
+    
+    else {
+        return 20.0f;
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
@@ -79,7 +89,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Categories";
+        return nil;
     }
     else {
         return @"Tools";
@@ -88,9 +98,9 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    header.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-    header.textLabel.textColor = [UIColor whiteColor];
+        UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+        header.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
+        header.textLabel.textColor = [UIColor whiteColor];
     
 }
 
@@ -123,7 +133,7 @@
         cell.textLabel.text = toolsTitles[indexPath.row];
         categoryIndicator = (UIView *) [cell viewWithTag:10];
         categoryIndicator.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
-        [cell.textLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:22]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:18]];
     }
     
     return cell;
