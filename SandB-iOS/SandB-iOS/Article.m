@@ -16,12 +16,12 @@
 @synthesize  article,  comments, commentsCount;
 
 /*
-@property (nonatomic, strong) NSString *content;
-@property (nonatomic, strong) NSString *category; //News, Opinion, Sports etc.
-@property (nonatomic, strong) NSString *imageMediumURL;
-@property (nonatomic, strong) NSString *imageLargeURL;
-@property (nonatomic, strong) NSString *author;
-*/
+ @property (nonatomic, strong) NSString *content;
+ @property (nonatomic, strong) NSString *category; //News, Opinion, Sports etc.
+ @property (nonatomic, strong) NSString *imageMediumURL;
+ @property (nonatomic, strong) NSString *imageLargeURL;
+ @property (nonatomic, strong) NSString *author;
+ */
 
 - (instancetype)initWithArticleDictionary:(NSDictionary *)articleDictionary
 {
@@ -42,11 +42,11 @@
         NSArray *attachments = articleDictionary[@"attachments"];
         NSDictionary *thumbnails = articleDictionary[@"thumbnail_images"];
         
-       // NSLog(@"title: %@", _title);
-       // NSLog(@"attachments: %@", attachments);
-
+        // NSLog(@"title: %@", _title);
+        // NSLog(@"attachments: %@", attachments);
+        
         if (attachments) {
-
+            
             //todo - should loop.
             [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 
@@ -57,17 +57,17 @@
                 }
                 
                 /*
-                if (obj[@"images"][@"medium"][@"url"]) {
-                    _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
-                }
-                
-                if (obj[@"images"][@"large"][@"url"]) {
-                    _imageLargeURL = obj[@"images"][@"large"][@"url"];
-                }
+                 if (obj[@"images"][@"medium"][@"url"]) {
+                 _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
+                 }
+                 
+                 if (obj[@"images"][@"large"][@"url"]) {
+                 _imageLargeURL = obj[@"images"][@"large"][@"url"];
+                 }
                  */
                 
-              // _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
-              // _imageLargeURL = obj[@"images"][@"large"][@"url"];
+                // _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
+                // _imageLargeURL = obj[@"images"][@"large"][@"url"];
             }];
         }
         
@@ -103,15 +103,13 @@
         
         
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadWithURL:[NSURL URLWithString:self.thumbnailImageURL]
-                         options:0
-                        progress:^(NSInteger receivedSize, NSInteger expectedSize)
-         {
+        
+        [manager downloadImageWithURL:[NSURL URLWithString:self.thumbnailImageURL]
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize){
              // progression tracking code
              // not needed
-         }
-                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
-         {
+         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
              if (image)
              {
                  // do something with image
@@ -120,11 +118,11 @@
          }];
         
         //Obviously this isn't right. We're doing it on the main thread. Need to figure out a way to blur this out. And then refresh the GlassScrollViews AFTER the image has been blurred. in order for this to work right...
-//        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_imageMediumURL]]];
-//        
-//        UIColor *red = [UIColor colorWithRed:141.0f/255.0f green:29.0f/255.0f blue:41.0f/255.0f alpha:1.0f];
-//        _blurredImage = [image applyTintEffectWithColor:[UIColor blackColor]];
-
+        //        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_imageMediumURL]]];
+        //
+        //        UIColor *red = [UIColor colorWithRed:141.0f/255.0f green:29.0f/255.0f blue:41.0f/255.0f alpha:1.0f];
+        //        _blurredImage = [image applyTintEffectWithColor:[UIColor blackColor]];
+        
     }
     return self;
 }
@@ -154,7 +152,7 @@
     NSDictionary *options = @{
                               NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                               };
-
+    
     
     _attrContent = [[NSMutableAttributedString alloc] initWithData:[newContent dataUsingEncoding:NSUTF32StringEncoding]
                                                            options:options documentAttributes:nil
@@ -163,14 +161,14 @@
     
     /*
      NSDictionary* attributes = @{
-                                  NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-
+     NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+     
      };
      
      
      [_attrContent addAttributes:attributes range:NSMakeRange(0, [_attrContent length])];
-    */
-
+     */
+    
 }
 
 #pragma mark - Methods to determine equality
@@ -220,7 +218,7 @@
         self.imageLargeURL  = [aDecoder decodeObjectForKey:@"imageLargeURL"];
         //image = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"image"]];
         
-     // TODO: Save the images.
+        // TODO: Save the images.
     }
     return self;
 }
@@ -238,8 +236,8 @@
     [aCoder encodeObject:self.imageMediumURL forKey:@"imageMediumURL"];
     [aCoder encodeObject:self.imageLargeURL forKey:@"imageLargeURL"];
     
-   // NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
-   // [aCoder encodeObject:imgData forKey:@"image"];
+    // NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
+    // [aCoder encodeObject:imgData forKey:@"image"];
 }
 
 @end

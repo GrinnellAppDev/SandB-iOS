@@ -184,7 +184,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat contentOffsetDifference = scrollView.contentOffset.y;
+    //CGFloat contentOffsetDifference = scrollView.contentOffset.y;
    // NSLog(@"our floattt: %f", contentOffsetDifference);
     
     if (scrollView.contentOffset.y > -69.0 ) {

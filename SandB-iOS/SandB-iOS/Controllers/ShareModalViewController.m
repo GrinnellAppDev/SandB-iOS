@@ -423,10 +423,11 @@
     
     // Perform request
     [request performRequestWithHandler:^(NSData *respData, NSHTTPURLResponse *urlResp, NSError *error) {
+        /*
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:respData
                                                                            options:kNilOptions
                                                                              error:&error];
-        
+        */
         // Check for errors in the responseDictionary
     }];
 

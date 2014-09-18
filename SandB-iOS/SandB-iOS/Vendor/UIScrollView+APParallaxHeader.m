@@ -31,13 +31,13 @@ static char UIScrollViewParallaxView;
 - (void)addParallaxWithImageURL:(NSString *)imageURL andHeight:(CGFloat)height {
     if(self.parallaxView) {
         if(self.parallaxView.currentSubView) [self.parallaxView.currentSubView removeFromSuperview];
-        [self.parallaxView.imageView setImageWithURL:[NSURL URLWithString:imageURL]];
+        [self.parallaxView.imageView sd_setImageWithURL:[NSURL URLWithString:imageURL]];
     }
     else
     {
         APParallaxView *view = [[APParallaxView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, height)];
         [view setClipsToBounds:YES];
-        [view.imageView setImageWithURL:[NSURL URLWithString:imageURL]];
+        [view.imageView sd_setImageWithURL:[NSURL URLWithString:imageURL]];
         
         view.scrollView = self;
         view.parallaxHeight = height;
