@@ -26,8 +26,6 @@
 		8B125BB71721005B00C550F7 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BB61721005B00C550F7 /* Icon-Small.png */; };
 		8B125BB9172100C000C550F7 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BB8172100BF00C550F7 /* iTunesArtwork.png */; };
 		8B125BBB172100FF00C550F7 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */; };
-		8B40D5041729D4060000128D /* TopBanneriPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B40D5031729D4060000128D /* TopBanneriPhone.png */; };
-		8B40D5061729D4150000128D /* TopBanneriPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B40D5051729D4150000128D /* TopBanneriPad.png */; };
 		8B44468A18F23725002D1B42 /* UIScrollView+APParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B44468918F23725002D1B42 /* UIScrollView+APParallaxHeader.m */; };
 		8B5304CA19099D9900A2D40B /* Proxima Nova Alt Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5304C719099CF200A2D40B /* Proxima Nova Alt Light.otf */; };
 		8B5304CB19099D9B00A2D40B /* Proxima Nova Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5304C819099CF200A2D40B /* Proxima Nova Light.otf */; };
@@ -109,8 +107,6 @@
 		8B125BB61721005B00C550F7 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		8B125BB8172100BF00C550F7 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		8B40D5031729D4060000128D /* TopBanneriPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopBanneriPhone.png; sourceTree = "<group>"; };
-		8B40D5051729D4150000128D /* TopBanneriPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopBanneriPad.png; sourceTree = "<group>"; };
 		8B44468818F23725002D1B42 /* UIScrollView+APParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+APParallaxHeader.h"; sourceTree = "<group>"; };
 		8B44468918F23725002D1B42 /* UIScrollView+APParallaxHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+APParallaxHeader.m"; sourceTree = "<group>"; };
 		8B5304C719099CF200A2D40B /* Proxima Nova Alt Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Light.otf"; sourceTree = "<group>"; };
@@ -344,8 +340,6 @@
 				8B125BAE1720FE1B00C550F7 /* Icon.png */,
 				8B125BB8172100BF00C550F7 /* iTunesArtwork.png */,
 				8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */,
-				8B40D5031729D4060000128D /* TopBanneriPhone.png */,
-				8B40D5051729D4150000128D /* TopBanneriPad.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -589,8 +583,6 @@
 				8B125BB9172100C000C550F7 /* iTunesArtwork.png in Resources */,
 				8B125BBB172100FF00C550F7 /* iTunesArtwork@2x.png in Resources */,
 				8B5304D61909A93100A2D40B /* Sentinel-Light.ttf in Resources */,
-				8B40D5041729D4060000128D /* TopBanneriPhone.png in Resources */,
-				8B40D5061729D4150000128D /* TopBanneriPad.png in Resources */,
 				8B5304D01909A34D00A2D40B /* Proxima Nova Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,7 +754,6 @@
 			baseConfigurationReference = 43B56FF85CDE42F196966E07 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -776,6 +767,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -785,7 +777,6 @@
 			baseConfigurationReference = 43B56FF85CDE42F196966E07 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -799,7 +790,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "36329D87-A661-46F9-A997-C7204BB99CA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9989f4d3-d85c-40cb-9e40-7ae81fb3d73d";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
