@@ -13,6 +13,7 @@
 #import "NewArticlePageViewHolderController.h"
 #import "NewsCategories.h"
 #import "Cache.h"
+#import "Article.h"
 
 const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn automatically.
 
@@ -21,6 +22,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 @property (nonatomic, strong) NSArray *categoryColors;
 @property (nonatomic, strong) NSString *newsCategory;
 @property (nonatomic, strong) NSMutableArray *allArticlesArray;
+
 
 @property (nonatomic, assign) BOOL isFetchingArticles;
 
@@ -88,7 +90,6 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         [self fetchCategoryArticles];
     }
     
-    [self.tableView reloadData];
     
 }
 
@@ -179,13 +180,14 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     cell.articleDetails.text = [NSString stringWithFormat:@"%@ | S&B",[[self.allArticlesArray objectAtIndex:indexPath.row] date]]; 
     }
     
-    // if article has been clicked on, aka red, color it with the category color to mark it as read
-    if ([[self.allArticlesArray  objectAtIndex:indexPath.row] read]) {
+    // if article has been clicked on, aka read, color it with the category color to mark it as read
+    if ([[[DataModel sharedModel] readArticles] containsObject:[self.allArticlesArray objectAtIndex:indexPath.row]] && ![self.newsCategory isEqualToString:@"Favorites"]) {
         cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.allArticlesArray  objectAtIndex:indexPath.row] category]]  highlightedColor];
         cell.articleTitle.textColor = [UIColor grayColor];
         [cell.articleTitle setFont:[UIFont fontWithName:@"ProximaNova-Light" size:18]];
         cell.articleDetails.textColor = [UIColor grayColor];
         cell.categoryIdentifier.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.allArticlesArray objectAtIndex:indexPath.row] category]] readBarColor];
+        
     }
     else {
         cell.backgroundColor = [UIColor whiteColor];
@@ -236,7 +238,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     
     cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.allArticlesArray objectAtIndex:indexPath.row] category]] highlightedColor];
     
-    [[self.allArticlesArray  objectAtIndex:indexPath.row] setRead:YES];
+    [[DataModel sharedModel] markArticleAsRead:[self.allArticlesArray objectAtIndex:indexPath.row]];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -259,6 +261,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
             
             napvhc.articleIndex = currentArticleIndex;
             napvhc.recievedCategoryString = self.newsCategory;
+            napvhc.sentArticle = [self.allArticlesArray objectAtIndex:currentArticleIndex];
             
             //Test this out.
             napvhc.pageArticles = self.allArticlesArray;

@@ -249,7 +249,26 @@
         //Create one!
         favoriteSet = [[NSMutableSet alloc] initWithCapacity:3];
     }
+    
+    article.favorited = YES;
+    
     [favoriteSet addObject:article];
+    
+    // Save it favoritesSet
+    [[Cache sharedCacheModel] archiveObject:favoriteSet toFileName:@"FavoritedArticles"];
+}
+
+- (void) deleteArticle:(Article *) article {
+    NSMutableSet *favoriteSet = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"FavoritedArticles"];
+    
+    if (!favoriteSet) {
+        //Create one!
+        favoriteSet = [[NSMutableSet alloc] initWithCapacity:3];
+    }
+    
+    article.favorited = NO;
+    
+    [favoriteSet removeObject:article];
     
     // Save it favoritesSet
     [[Cache sharedCacheModel] archiveObject:favoriteSet toFileName:@"FavoritedArticles"];
@@ -264,6 +283,7 @@
     NSLog(@"fa: %@", favoriteArray);
     return favoriteArray;
 }
+
 
 #pragma mark - Marking articles as read
 - (void)markArticleAsRead:(Article *)article
@@ -284,9 +304,15 @@
     
 }
 
-- (NSMutableSet *)readArticles
+- (NSMutableSet *)favoritedArticles
 {
     NSMutableSet *readArticles = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"FavoritedArticles"];
+    return readArticles;
+}
+
+- (NSMutableSet *)readArticles
+{
+    NSMutableSet *readArticles = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"ReadArticles"];
     return readArticles;
 }
 

@@ -1,1 +1,0 @@
-PODS_SSTOOLKIT_OTHER_LDFLAGS = -framework CoreGraphics -framework MessageUI -framework QuartzCore

@@ -5,7 +5,7 @@
       "idiom" : "iphone",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "LaunchImage4 2.png",
+      "filename" : "LaunchImage4 2@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -49,14 +49,14 @@
       "orientation" : "portrait",
       "idiom" : "iphone",
       "extent" : "full-screen",
-      "filename" : "LaunchImageStupid 2.png",
+      "filename" : "LaunchImage4 2-1.png",
       "scale" : "1x"
     },
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
       "extent" : "full-screen",
-      "filename" : "LaunchImage4 2-1.png",
+      "filename" : "LaunchImage4 2@2x.png",
       "scale" : "2x"
     },
     {

@@ -13,6 +13,7 @@
 #import "TitleCell.h"
 #import "CategoryCell.h"
 #import "NewsCategories.h"
+#import "DataModel.h"
 
 @interface NewArticleViewController ()
 
@@ -49,6 +50,7 @@
     self.savedToFavsView.alpha = 0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyAboutFavoriting) name:@"notifyAboutFavoriting" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyAboutUnfavoriting) name:@"notifyAboutUnfavoriting" object:nil];
     
 }
 
@@ -197,6 +199,7 @@
 }
 
 - (void) notifyAboutFavoriting {
+    self.savedLabel.text = @"Saved to favorites!";
     [UIView animateWithDuration:0.25
                           delay: 0.0
                         options: UIViewAnimationOptionCurveEaseIn
@@ -213,6 +216,28 @@
                                           }
                                           completion:nil];
                      }];
+}
+
+- (void) notifyAboutUnfavoriting {
+    self.savedLabel.text = @"Removed from favorites!";
+    NSLog(@"unfavoriting!");
+    [UIView animateWithDuration:0.25
+                          delay: 0.0
+                        options: UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.savedToFavsView.alpha = 1;
+                     }
+                     completion:^(BOOL finished){
+                         // Wait one second and then fade in the view
+                         [UIView animateWithDuration:0.25
+                                               delay: 0.6
+                                             options:UIViewAnimationOptionCurveEaseOut
+                                          animations:^{
+                                              self.savedToFavsView.alpha = 0;
+                                          }
+                                          completion:nil];
+                     }];
+    
 }
 
 

@@ -33,8 +33,10 @@ typedef void (^FetchArticlesCompletionBlock) (NSMutableArray *articles, NSMutabl
 
 - (NSMutableArray *)categoryArrayForCategoryName:(NSString *)categoryName;
 - (void)saveArticle:(Article *)article;
+- (void)deleteArticle:(Article *)article;
 - (NSMutableArray *)savedArticles;
 - (void)markArticleAsRead:(Article *)article; 
 - (NSMutableSet *)readArticles;
+
 
 @end

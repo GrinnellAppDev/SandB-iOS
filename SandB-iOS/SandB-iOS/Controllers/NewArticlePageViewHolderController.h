@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NewArticleViewController.h"
+#import "Article.h"
 
 @interface NewArticlePageViewHolderController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *editTextButton;
 @property (nonatomic) NSUInteger articleIndex;
 @property (nonatomic, strong) NSString *recievedCategoryString;
+@property (nonatomic, strong) Article *sentArticle;
 
 // ACTIONS
 - (IBAction)favoriteButtonPressed:(id)sender;

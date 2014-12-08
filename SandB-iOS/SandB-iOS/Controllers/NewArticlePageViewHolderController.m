@@ -137,11 +137,6 @@
     
     // DISABLE FAVORITE BUTTON IF WE'RE ON THE FAVORITES VIEW
     
-    if ([self.recievedCategoryString isEqualToString:@"Favorites"]) {
-        self.starButton.userInteractionEnabled = NO;
-        self.starButton.alpha = 0.3;
-    }
-    
     NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
     
     NSArray *fontNames;
@@ -156,6 +151,12 @@
         {
             NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
         }
+    }
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    if ([[[DataModel sharedModel] savedArticles] containsObject:self.sentArticle]) {
+        [self.starButton setImage:[UIImage imageNamed:@"StarIconGold"]forState:UIControlStateNormal];
     }
 }
 
@@ -397,12 +398,16 @@
     
     [self.backButton setImage:[[UIImage imageNamed:@"BackButtonWhite"]imageWithRenderingMode:mode] forState:state];
     [self.chatButton setImage:[[UIImage imageNamed:@"ChatIconWhite"]imageWithRenderingMode:mode] forState:state];
-    [self.starButton setImage:[[UIImage imageNamed:@"StarIconWhite"]imageWithRenderingMode:mode] forState:state];
+    if ([[[DataModel sharedModel] savedArticles] containsObject:self.currentArticle] || (self.currentArticle != self.sentArticle)) {
+        [self.starButton setImage:[UIImage imageNamed:@"StarIconGold"]forState:UIControlStateNormal];
+    }
+    else {
+        [self.starButton setImage:[[UIImage imageNamed:@"StarIconWhite"]imageWithRenderingMode:mode] forState:state];
+    }
     [self.shareButton setImage:[[UIImage imageNamed:@"ShareIconWhite"]imageWithRenderingMode:mode] forState:state];
     [self.editTextButton setImage:[[UIImage imageNamed:@"EditTextIconWhite"]imageWithRenderingMode:mode] forState:state];
     
     if ([self.recievedCategoryString isEqualToString:@"Favorites"]) {
-        self.starButton.alpha = 0.3;
     }
 }
 
@@ -411,12 +416,26 @@
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
-    
-    [[DataModel sharedModel] saveArticle:self.currentArticle];
-    
-    if (![self.recievedCategoryString isEqualToString:@"Favorites"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutFavoriting" object:nil];
+     
+    if ([[[DataModel sharedModel] savedArticles] containsObject:self.currentArticle]) {
+        NSLog(@"We are unfavoriting!");
+        self.currentArticle.favorited = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutUnfavoriting" object:nil];
+        
+        [[DataModel sharedModel] deleteArticle:self.currentArticle];
+        [self colorButtonsForRenderingMode:UIImageRenderingModeAlwaysTemplate andControlState:UIControlStateNormal];
+
     }
+    else {
+        NSLog(@"We are favoriting!");
+        self.currentArticle.favorited = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutFavoriting" object:nil];
+        
+        [self.starButton setImage:[UIImage imageNamed:@"StarIconGold"] forState:UIControlStateNormal];
+        
+        [[DataModel sharedModel] saveArticle:self.currentArticle];
+    }
+
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
@@ -427,8 +446,20 @@
     NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
+    self.sentArticle = self.currentArticle;
     
     self.currentArticle.read = YES;
+    [[DataModel sharedModel] markArticleAsRead:self.currentArticle];
+    
+    if ([[[DataModel sharedModel] savedArticles] containsObject:self.currentArticle]) {
+        NSLog(@"Is this favorited?");
+        //self.starButton.alpha = 0.3;
+    }
+    else {
+        NSLog(@"Is this not favorited?");
+        //self.starButton.alpha = 1;
+    }
+
     
     NSLog(@"theINdex: %ld|| count: %lu", (long)theIndex, (unsigned long)self.pageArticles.count);
     if (theIndex > self.pageArticles.count - 5) {
