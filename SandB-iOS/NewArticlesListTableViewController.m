@@ -308,8 +308,4 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     }
 }
 
--(IBAction)refreshButtonPressed:(id)sender {
-    [self fetchArticlesForView];
-}
-
 @end

@@ -1,25 +1,28 @@
 PODS:
-  - AFNetworking (2.0.3):
+  - AFNetworking (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.0.3):
+  - AFNetworking/NSURLConnection (2.5.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.0.3):
+  - AFNetworking/NSURLSession (2.5.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.1)
+  - AFNetworking/Security (2.5.1)
+  - AFNetworking/Serialization (2.5.1)
+  - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.0.3)
-  - AFNetworking/Security (2.0.3)
-  - AFNetworking/Serialization (2.0.3)
-  - AFNetworking/UIKit (2.0.3):
-    - AFNetworking/NSURLConnection
-  - ECSlidingViewController (2.0.1)
-  - MBProgressHUD (0.8)
-  - Reachability (3.1.1)
+    - AFNetworking/NSURLSession
+  - ECSlidingViewController (2.0.3)
+  - MBProgressHUD (0.9)
+  - Reachability (3.2)
   - SAMTextView (0.2.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
@@ -36,10 +39,10 @@ DEPENDENCIES:
   - TBXML
 
 SPEC CHECKSUMS:
-  AFNetworking: a4d0e9a64de9242986620dafd1b3cee3b413ac5c
-  ECSlidingViewController: e93ab7e075fc9a99a874fa050ce3b2a64026eb85
-  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
-  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  ECSlidingViewController: e79fe856bfb1a99a39c995377a1943e50f7647eb
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
   SAMTextView: 1062a784ba7b2080b0c17748001c416b53010b4b
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   TBXML: a279440030ba55c40e1455cafba3b0a44e1963d4
