@@ -12,14 +12,14 @@
 
 @implementation DataModel
 {
-    int _page;
-    int _artsPage;
-    int _featuresPage;
-    int _communityPage;
-    int _sportsPage;
-    int _opinionsPage;
-    int _categoryPage;
-    int _unsortedPage;
+    int page;
+    int artsPage;
+    int featuresPage;
+    int communityPage;
+    int sportsPage;
+    int opinionsPage;
+    int categoryPage;
+    int unsortedPage;
 }
 
 
@@ -45,13 +45,13 @@
         self.opinionsArticles = [NSMutableArray new];
         self.unsortedArticles = [NSMutableArray new];
         
-        _page = 0;
-        _artsPage = 0;
-        _communityPage = 0;
-        _featuresPage = 0;
-        _sportsPage = 0;
-        _opinionsPage = 0;
-        _unsortedPage = 0;
+        page = 0;
+        artsPage = 0;
+        communityPage = 0;
+        featuresPage = 0;
+        sportsPage = 0;
+        opinionsPage = 0;
+        unsortedPage = 0;
     }
     return self;
 }
@@ -62,13 +62,13 @@
 {
     
     
-    _page++;
+    page++;
     NSMutableArray *newArticles = [NSMutableArray new];
     
     
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
                          parameters:@{@"count": @(12),
-                                      @"page": @(_page)
+                                      @"page": @(page)
                                       }
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
                                 
@@ -84,7 +84,7 @@
                                         [newArticles addObject:article];
                                         [[[DataModel sharedModel] articles] addObject:article];
                                     }];
-                                    completion([[DataModel sharedModel] articles], newArticles, totalPages, _page, nil);
+                                    completion([[DataModel sharedModel] articles], newArticles, totalPages, page, nil);
                                 }
                                 
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -117,7 +117,7 @@
                                         [[[DataModel sharedModel] articles] addObject:article];
                                         
                                     }];
-                                    completion([[DataModel sharedModel] articles], nil, totalPages, _page, nil);
+                                    completion([[DataModel sharedModel] articles], nil, totalPages, page, nil);
                                 }
                                 
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -133,22 +133,22 @@
     
     switch ([categoryID integerValue]) {
         case 5:
-            return _artsArticles;
+            return self.artsArticles;
             break;
         case 216:
-            return _communityArticles;
+            return self.communityArticles;
             break;
         case  6:
-            return _featuresArticles;
+            return self.featuresArticles;
             break;
         case 4:
-            return _opinionsArticles;
+            return self.opinionsArticles;
             break;
         case 7:
-            return _sportArticles;
+            return self.sportArticles;
             break;
         case 1:
-            return _unsortedArticles;
+            return self.unsortedArticles;
             break;
     }
     return nil;
@@ -167,49 +167,49 @@
     
     switch ([category.idNum integerValue]) {
         case 5: {
-            _artsPage++;
-            [self fetchArticlesUsingPage:_artsPage andCategoryID:5 andArray:_artsArticles withCompletionBlock:completion];
+            artsPage++;
+            [self fetchArticlesUsingPage:artsPage andCategoryID:5 andArray:self.artsArticles withCompletionBlock:completion];
             break;
         }
             
         case 216: {
-            _communityPage++;
-            [self fetchArticlesUsingPage:_communityPage andCategoryID:216 andArray:_communityArticles withCompletionBlock:completion];
+            communityPage++;
+            [self fetchArticlesUsingPage:communityPage andCategoryID:216 andArray:self.communityArticles withCompletionBlock:completion];
             
             break;
         }
             
         case  6: {
-            _featuresPage++;
-            [self fetchArticlesUsingPage:_featuresPage andCategoryID:6 andArray:_featuresArticles withCompletionBlock:completion];
+            featuresPage++;
+            [self fetchArticlesUsingPage:featuresPage andCategoryID:6 andArray:self.featuresArticles withCompletionBlock:completion];
             break;
         }
             
         case 4:
-            _opinionsPage++;
-            [self fetchArticlesUsingPage:_opinionsPage andCategoryID:4 andArray:_opinionsArticles withCompletionBlock:completion];
+            opinionsPage++;
+            [self fetchArticlesUsingPage:opinionsPage andCategoryID:4 andArray:self.opinionsArticles withCompletionBlock:completion];
             break;
         case 7: {
-            _sportsPage++;
-            [self fetchArticlesUsingPage:_sportsPage andCategoryID:7 andArray:_sportArticles withCompletionBlock:completion];
+            sportsPage++;
+            [self fetchArticlesUsingPage:sportsPage andCategoryID:7 andArray:self.sportArticles withCompletionBlock:completion];
             break;
         }
         case 1: {
-            _unsortedPage++;
-            [self fetchArticlesUsingPage:_unsortedPage andCategoryID:1 andArray:_unsortedArticles withCompletionBlock:completion];
+            unsortedPage++;
+            [self fetchArticlesUsingPage:unsortedPage andCategoryID:1 andArray:self.unsortedArticles withCompletionBlock:completion];
             break;
         }
             
     }
 }
 
-- (void) fetchArticlesUsingPage:(int)page andCategoryID:(int)categoryID andArray:(NSMutableArray *)categoryArticles withCompletionBlock:(FetchArticlesCompletionBlock)completion {
+- (void) fetchArticlesUsingPage:(int)thePage andCategoryID:(int)categoryID andArray:(NSMutableArray *)categoryArticles withCompletionBlock:(FetchArticlesCompletionBlock)completion {
     
     NSMutableArray *newCategoryArticles = [NSMutableArray new];
     
     [[SandBClient sharedClient] GET:@"get_category_posts/"
                          parameters:@{@"id":@(categoryID),
-                                      @"page": @(page)
+                                      @"page": @(thePage)
                                       }
      
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
@@ -230,7 +230,7 @@
                                         
                                         
                                     }];
-                                    completion(categoryArticles, newCategoryArticles, totalPages, page, nil);
+                                    completion(categoryArticles, newCategoryArticles, totalPages, thePage, nil);
                                 }
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                 

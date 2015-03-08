@@ -400,6 +400,13 @@
 				8B5304C619099CE600A2D40B /* Proxima Nova */,
 				8BA436DE19089D67003709FA /* Quattrocento */,
 				8BA436DD19089D60003709FA /* Raleway */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		8BA436DD19089D60003709FA /* Raleway */ = {
+			isa = PBXGroup;
+			children = (
 				8B85640318D4D9760098B83A /* Raleway-Bold.otf */,
 				8B85640418D4D9760098B83A /* Raleway-ExtraBold.otf */,
 				8B85640518D4D9760098B83A /* Raleway-ExtraLight.otf */,
@@ -409,13 +416,6 @@
 				8B85640918D4D9760098B83A /* Raleway-Regular.otf */,
 				8B85640A18D4D9760098B83A /* Raleway-SemiBold.otf */,
 				8B85640B18D4D9760098B83A /* Raleway-Thin.otf */,
-			);
-			name = Fonts;
-			sourceTree = "<group>";
-		};
-		8BA436DD19089D60003709FA /* Raleway */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			name = Raleway;
 			sourceTree = "<group>";

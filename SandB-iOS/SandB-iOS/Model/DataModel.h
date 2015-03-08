@@ -27,7 +27,7 @@ typedef void (^FetchArticlesCompletionBlock) (NSMutableArray *articles, NSMutabl
 + (DataModel *)sharedModel;
 - (void)fetchArticlesWithCompletionBlock:(FetchArticlesCompletionBlock)completion;
 
-- (void)searchArticlesForTerm:(NSString *)searchTerm withCompletionBlock:(FetchArticlesCompletionBlock)completionBlock ;
+- (void)searchArticlesForTerm:(NSString *)searchTerm withCompletionBlock:(FetchArticlesCompletionBlock)completionBlock;
 
 - (void) fetchArticlesForCategory:(NSString *) category withCompletionBlock:(FetchArticlesCompletionBlock)completion;
 

@@ -13,37 +13,23 @@
 
 @implementation Article
 
-@synthesize  article,  comments, commentsCount;
-
-/*
- @property (nonatomic, strong) NSString *content;
- @property (nonatomic, strong) NSString *category; //News, Opinion, Sports etc.
- @property (nonatomic, strong) NSString *imageMediumURL;
- @property (nonatomic, strong) NSString *imageLargeURL;
- @property (nonatomic, strong) NSString *author;
- */
-
 - (instancetype)initWithArticleDictionary:(NSDictionary *)articleDictionary
 {
     self = [super init];
     if (self) {
         
-        _title = [articleDictionary[@"title"] stringByDecodingXMLEntities];
-        _URL = articleDictionary[@"url"];
-        _content = articleDictionary[@"content"];
         
-        _content = [_content stringByReplacingOccurrencesOfString:@"<div id=\"attachment_.*</div>" withString:@"" options:NSCaseInsensitiveSearch | NSRegularExpressionSearch range:NSMakeRange(0, [_content length])];
+        // grab data from dictionary and set the properties
+        self.title = [articleDictionary[@"title"] stringByDecodingXMLEntities];
+        self.URL = articleDictionary[@"url"];
+        self.content = articleDictionary[@"content"];
+        self.content = [self.content stringByReplacingOccurrencesOfString:@"<div id=\"attachment_.*</div>" withString:@"" options:NSCaseInsensitiveSearch | NSRegularExpressionSearch range:NSMakeRange(0, [self.content length])];
+        self.category = [articleDictionary[@"categories"] objectAtIndex:0][@"title"];
+        self.articleId = [articleDictionary[@"id"] stringValue];
         
-        
-        _category = [articleDictionary[@"categories"] objectAtIndex:0][@"title"];
-        
-        _articleId = [articleDictionary[@"id"] stringValue];
-        
+        // parse attachments, because they're in an array of dictionaries
         NSArray *attachments = articleDictionary[@"attachments"];
         NSDictionary *thumbnails = articleDictionary[@"thumbnail_images"];
-        
-        // NSLog(@"title: %@", _title);
-        // NSLog(@"attachments: %@", attachments);
         
         if (attachments) {
             
@@ -51,49 +37,37 @@
             [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 
                 if ([obj[@"images"] count] > 1) {
-                    _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
-                    _imageLargeURL = obj[@"images"][@"large"][@"url"];
-                    _imageSmallURL = obj[@"images"][@"thumbnail"][@"url"];
+                    self.imageMediumURL =  obj[@"images"][@"medium"][@"url"];
+                    self.imageLargeURL = obj[@"images"][@"large"][@"url"];
+                    self.imageSmallURL = obj[@"images"][@"thumbnail"][@"url"];
                 }
-                
-                /*
-                 if (obj[@"images"][@"medium"][@"url"]) {
-                 _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
-                 }
-                 
-                 if (obj[@"images"][@"large"][@"url"]) {
-                 _imageLargeURL = obj[@"images"][@"large"][@"url"];
-                 }
-                 */
-                
-                // _imageMediumURL =  obj[@"images"][@"medium"][@"url"];
-                // _imageLargeURL = obj[@"images"][@"large"][@"url"];
+
             }];
         }
         
         if (thumbnails) {
             self.thumbnailImageURL = thumbnails[@"large"][@"url"];
         }
-        _author = [articleDictionary[@"custom_fields"][@"author"] firstObject];
         
-        NSRange range = [_author rangeOfString:@","];
+        self.author = [articleDictionary[@"custom_fields"][@"author"] firstObject];
+        
+        NSRange range = [self.author rangeOfString:@","];
         if (range.location != NSNotFound) {
-            _author = [_author substringToIndex:range.location];
+            self.author = [self.author substringToIndex:range.location];
         }
         
-        _date = articleDictionary[@"date"];
-        _email = [articleDictionary[@"custom_fields"][@"author"] lastObject];
+        self.date = articleDictionary[@"date"];
+        self.email = [articleDictionary[@"custom_fields"][@"author"] lastObject];
         
         // MAKE STRING INTO DATE
         
-        // TODO (DrJid): NSDateFormatter is expensive. Create one to be used for all instead of every single article. This would speed things up.
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSDate *articleDate = [formatter dateFromString:_date];
+        NSDate *articleDate = [formatter dateFromString:self.date];
         
         NSDateFormatter *newFormatter = [[NSDateFormatter alloc] init];
         [newFormatter setDateFormat:@"dd MMM"];
-        _date = [newFormatter stringFromDate:articleDate];
+        self.date = [newFormatter stringFromDate:articleDate];
         
         //This section is what we need to optimize on.
         //Blurring the images.
@@ -107,21 +81,15 @@
         [manager downloadImageWithURL:[NSURL URLWithString:self.thumbnailImageURL]
                               options:0
                              progress:^(NSInteger receivedSize, NSInteger expectedSize){
-             // progression tracking code
-             // not needed
+
          } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
              if (image)
              {
                  // do something with image
-                 _image = image;
+                 self.image = image;
              }
          }];
         
-        //Obviously this isn't right. We're doing it on the main thread. Need to figure out a way to blur this out. And then refresh the GlassScrollViews AFTER the image has been blurred. in order for this to work right...
-        //        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_imageMediumURL]]];
-        //
-        //        UIColor *red = [UIColor colorWithRed:141.0f/255.0f green:29.0f/255.0f blue:41.0f/255.0f alpha:1.0f];
-        //        _blurredImage = [image applyTintEffectWithColor:[UIColor blackColor]];
         
     }
     return self;
@@ -139,14 +107,12 @@
 
 - (void)formAttributedString
 {
-    //Increasing the font size via css - Did it this way because I didn't want to lose the formatting... Hmm..
+    //Increasing the font size via css - Did it this way because I didn't want to lose the formatting
     NSString *htmlOpen = @"<html>";
     NSString *htmlClose = @"</html>";
     NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 150%;font-family:'Helvetica Neue';color:#4A4A4A;}</style></head>";
-    NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, _content, htmlClose];
+    NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, self.content, htmlClose];
     
-    
-    //NSLog(@"Forming attrString for %@", _title);
     NSError *error = nil;
     
     NSDictionary *options = @{
@@ -154,24 +120,14 @@
                               };
     
     
-    _attrContent = [[NSMutableAttributedString alloc] initWithData:[newContent dataUsingEncoding:NSUTF32StringEncoding]
+    self.attrContent = [[NSMutableAttributedString alloc] initWithData:[newContent dataUsingEncoding:NSUTF32StringEncoding]
                                                            options:options documentAttributes:nil
                                                              error:&error];
-    
-    
-    /*
-     NSDictionary* attributes = @{
-     NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-     
-     };
-     
-     
-     [_attrContent addAttributes:attributes range:NSMakeRange(0, [_attrContent length])];
-     */
     
 }
 
 #pragma mark - Methods to determine equality
+
 - (BOOL)isEqual:(id)other {
     if (self == other)
         return YES;
@@ -201,6 +157,7 @@
 }
 
 #pragma mark - Serializing and Deserializing
+// cache
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
@@ -235,9 +192,6 @@
     [aCoder encodeObject:self.imageSmallURL forKey:@"imageSmallURL"];
     [aCoder encodeObject:self.imageMediumURL forKey:@"imageMediumURL"];
     [aCoder encodeObject:self.imageLargeURL forKey:@"imageLargeURL"];
-    
-    // NSData *imgData = UIImageJPEGRepresentation(image, 1.0);
-    // [aCoder encodeObject:imgData forKey:@"image"];
 }
 
 @end
