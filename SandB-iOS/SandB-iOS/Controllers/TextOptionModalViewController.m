@@ -105,7 +105,7 @@
 
 - (IBAction)fontSizeValueChanged:(UISlider *)slider {
     
-    NSLog(@"sender: %f", slider.value);
+    //NSLog(@"sender: %f", slider.value);
     
     [[NSUserDefaults standardUserDefaults] setFloat:slider.value forKey:@"ReadingOptionsFontSize"];
     [[NSUserDefaults standardUserDefaults] synchronize];

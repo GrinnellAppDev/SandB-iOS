@@ -49,23 +49,10 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPages) name:@"ReloadPageViewController" object:nil];
     
-    /*
-    if ([self.recievedCategoryString isEqualToString:@"News"]) {
-        self.pageArticles = [[DataModel sharedModel] articles];
-    } else if([self.recievedCategoryString isEqualToString:@"Favorites"]) {
-        
-        self.pageArticles =  [[DataModel sharedModel] savedArticles];
-    }
-    else {
-        self.pageArticles =  [[DataModel sharedModel] categoryArrayForCategoryName:self.recievedCategoryString];
-    }
-    */
-    
     // Do any additional setup after loading the view.
     
     // Page View Controller Setup
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticlePageViewController"];
-    //NSLog(@"Data source is: %@", self.infoPageViewController)
     self.pageViewController.dataSource = self;
     
     NewArticleViewController *startingViewController = [self viewControllerAtIndex:self.articleIndex];
@@ -135,23 +122,6 @@
     
     [self loadReadingOptions];
     
-    // DISABLE FAVORITE BUTTON IF WE'RE ON THE FAVORITES VIEW
-    
-    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
-    
-    NSArray *fontNames;
-    NSInteger indFamily, indFont;
-    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
-    {
-        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
-        fontNames = [[NSArray alloc] initWithArray:
-                     [UIFont fontNamesForFamilyName:
-                      [familyNames objectAtIndex:indFamily]]];
-        for (indFont=0; indFont<[fontNames count]; ++indFont)
-        {
-            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
-        }
-    }
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -185,21 +155,8 @@
     
     NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
     
-    /*
-    if (self.isLightTheme) {
-        NSLog(@"is light them");
-        navc.theTableView.backgroundColor = [UIColor whiteColor];
-    } else {
-        NSLog(@"is dark them");
-        navc.view.backgroundColor = [UIColor blackColor];
-    }
-    */
-    
     
     Article *article = self.pageArticles[index];
-    
-    NSLog(@"fs: %f", self.fontSize);
-    NSLog(@"ff: %@", self.fontFamily);
     
     // Modify the article right here.
     
@@ -210,17 +167,6 @@
     
     // size ranges from 100% to 200%.
     // Helvetica Neue || Avenir Next || Cochin
-   
-//    for (NSString* family in [UIFont familyNames])
-//    {
-//        NSLog(@"%@", family);
-//        
-//        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-//        {
-//            NSLog(@"  %@", name);
-//        }
-//    }
-// #FFF
     
      NSString *htmlOpen = @"<html>";
      NSString *htmlClose = @"</html>";
@@ -398,7 +344,8 @@
     
     [self.backButton setImage:[[UIImage imageNamed:@"BackButtonWhite"]imageWithRenderingMode:mode] forState:state];
     [self.chatButton setImage:[[UIImage imageNamed:@"ChatIconWhite"]imageWithRenderingMode:mode] forState:state];
-    if ([[[DataModel sharedModel] savedArticles] containsObject:self.currentArticle] || (self.currentArticle != self.sentArticle)) {
+    if ([[[DataModel sharedModel] savedArticles] containsObject:self.currentArticle]) {
+
         [self.starButton setImage:[UIImage imageNamed:@"StarIconGold"]forState:UIControlStateNormal];
     }
     else {
@@ -407,8 +354,7 @@
     [self.shareButton setImage:[[UIImage imageNamed:@"ShareIconWhite"]imageWithRenderingMode:mode] forState:state];
     [self.editTextButton setImage:[[UIImage imageNamed:@"EditTextIconWhite"]imageWithRenderingMode:mode] forState:state];
     
-    if ([self.recievedCategoryString isEqualToString:@"Favorites"]) {
-    }
+    // TO DO: Figure out how to mark the first article in saved articles as gold, because it's currently not doing that, and idk why
 }
 
 - (IBAction)favoriteButtonPressed:(id)sender
@@ -418,7 +364,7 @@
     self.currentArticle  = self.pageArticles[theIndex];
      
     if ([[[DataModel sharedModel] savedArticles] containsObject:self.currentArticle]) {
-        NSLog(@"We are unfavoriting!");
+        // UNFAVORITING
         self.currentArticle.favorited = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutUnfavoriting" object:nil];
         
@@ -427,7 +373,7 @@
 
     }
     else {
-        NSLog(@"We are favoriting!");
+        // FAVORITING
         self.currentArticle.favorited = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"notifyAboutFavoriting" object:nil];
         
@@ -450,18 +396,7 @@
     
     self.currentArticle.read = YES;
     [[DataModel sharedModel] markArticleAsRead:self.currentArticle];
-    
-    if ([[[DataModel sharedModel] savedArticles] containsObject:self.currentArticle]) {
-        NSLog(@"Is this favorited?");
-        //self.starButton.alpha = 0.3;
-    }
-    else {
-        NSLog(@"Is this not favorited?");
-        //self.starButton.alpha = 1;
-    }
 
-    
-    NSLog(@"theINdex: %ld|| count: %lu", (long)theIndex, (unsigned long)self.pageArticles.count);
     if (theIndex > self.pageArticles.count - 5) {
         // Go fetch more data. and update the self.pageArticles array;
         [self fetchArticlesForView];

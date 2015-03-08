@@ -219,7 +219,7 @@
                                 if (httpResponse.statusCode == 200) {
                                     
                                     int totalPages = [responseObject[@"pages"] intValue];
-                                    NSLog(@"res: %@", responseObject);
+                                    //NSLog(@"res: %@", responseObject);
                                     NSArray *articleArray = responseObject[@"posts"];
                                     [articleArray enumerateObjectsUsingBlock:^(NSDictionary *articleDictionary, NSUInteger idx, BOOL *stop) {
                                         
@@ -277,10 +277,10 @@
 
 - (NSMutableArray *)savedArticles
 {
-    NSLog(@"Favoritessssss");
+    //NSLog(@"Favoritessssss");
     NSSet *favoriteSet = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"FavoritedArticles"];
     NSMutableArray *favoriteArray = [NSMutableArray arrayWithArray:favoriteSet.allObjects];
-    NSLog(@"fa: %@", favoriteArray);
+    //NSLog(@"fa: %@", favoriteArray);
     return favoriteArray;
 }
 

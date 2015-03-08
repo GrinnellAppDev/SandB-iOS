@@ -60,7 +60,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     self.newsCategory = @"News";
     if (self.recievedCategory) {
         self.newsCategory = self.recievedCategory;
-        NSLog(@"Received Category: %@", self.recievedCategory);
+        //NSLog(@"Received Category: %@", self.recievedCategory);
     }
     
     
@@ -69,7 +69,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         //Check the cache content.
         NSMutableArray *news =  [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"News"];
         if (news) {
-            NSLog(@"loading articles from cache");
+            //NSLog(@"loading articles from cache");
             
             self.allArticlesArray = news;
         }
@@ -78,6 +78,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     else if ([self.newsCategory isEqualToString:@"Favorites"]) {
         // Do nothing on favorites.
         self.allArticlesArray =  [[DataModel sharedModel] savedArticles];
+        [self.tableView reloadData];
     }
     else {
         
@@ -98,6 +99,11 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     
+    NSLog(@"I wonder when this gets called.");
+    
+    if ([self.newsCategory isEqualToString:@"Favorites"]) {
+        self.allArticlesArray = [[DataModel sharedModel] savedArticles];
+    }
     [self.tableView reloadData];
 }
 
@@ -287,7 +293,6 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         return [[DataModel sharedModel] articles];
     }
     else if ([self.newsCategory isEqualToString:@"Favorites"]) {
-        
         return [[DataModel sharedModel] savedArticles];
     }
     else {

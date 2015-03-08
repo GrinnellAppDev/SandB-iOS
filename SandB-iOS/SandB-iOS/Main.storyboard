@@ -132,7 +132,7 @@
                                             <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="HFW-DR-HiZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
                                         <rect key="frame" x="84" y="227" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="rq1-Xa-45o"/>
@@ -427,7 +427,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="85" id="O6Y-Cx-tl5" customClass="TitleCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O6Y-Cx-tl5" id="8yo-5Z-hkb">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="O6Y-Cx-tl5" id="8yo-5Z-hkb">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -461,7 +461,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="30" id="aty-04-KJ5" customClass="CategoryCell">
                                         <rect key="frame" x="0.0" y="107" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aty-04-KJ5" id="Osn-pq-ApF">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="aty-04-KJ5" id="Osn-pq-ApF">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -485,7 +485,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContentCell" rowHeight="253" id="jrE-1q-ZZF" customClass="ContentCell">
                                         <rect key="frame" x="0.0" y="137" width="320" height="253"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jrE-1q-ZZF" id="91h-kU-5ix">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="jrE-1q-ZZF" id="91h-kU-5ix">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>

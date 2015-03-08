@@ -220,7 +220,7 @@
 
 - (void) notifyAboutUnfavoriting {
     self.savedLabel.text = @"Removed from favorites!";
-    NSLog(@"unfavoriting!");
+    //NSLog(@"unfavoriting!");
     [UIView animateWithDuration:0.25
                           delay: 0.0
                         options: UIViewAnimationOptionCurveEaseIn

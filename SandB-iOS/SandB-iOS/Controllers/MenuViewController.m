@@ -40,9 +40,7 @@
     categoriesTitles = [[[NewsCategories sharedCategories] categories] objectForKey:@"names"];
     categoryColors = [[[NewsCategories sharedCategories] categories] objectForKey:@"colors"];
     selectedCategoryColors = [[[NewsCategories sharedCategories] categories] objectForKey:@"highlighted"];
-    
-    //NSLog(@"highlighted colors: %@", categoryColors);
-    
+        
     toolsTitles = @[@"Saved Articles", @"Rate Our App", @"Contact Us"];
     
     self.view.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];

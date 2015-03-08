@@ -109,7 +109,7 @@
 -(void)textViewDidChange:(UITextView *)textView
 {
     int len = (int)[self.commentTextView.text length];
-    NSLog(@"the length: %i", len);
+    //NSLog(@"the length: %i", len);
     self.characterCount.text = [NSString stringWithFormat:@"%i", 140 - len];
     if (len > 139) {
         [textView resignFirstResponder];
