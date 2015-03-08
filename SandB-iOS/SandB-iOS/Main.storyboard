@@ -628,7 +628,7 @@
         <image name="ProximaFont" width="75" height="39"/>
         <image name="QuattrocentoFont" width="75" height="39"/>
         <image name="ShareIconWhite" width="33" height="30"/>
-        <image name="ShowMoreButton" width="33" height="33"/>
+        <image name="ShowMoreButton" width="51" height="54"/>
         <image name="SmallerFont" width="34" height="34"/>
         <image name="StarIconWhite" width="34" height="30"/>
         <image name="TwitterIcon" width="50" height="50"/>
