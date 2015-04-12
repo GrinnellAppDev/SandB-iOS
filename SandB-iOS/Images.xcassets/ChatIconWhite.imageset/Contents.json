@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ChatIconWhite.png"
+      "filename" : "ChatBubble2.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ChatIconWhite@2x.png"
+      "filename" : "ChatBubble2@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "ChatBubble2@3x.png"
     }
   ],
   "info" : {

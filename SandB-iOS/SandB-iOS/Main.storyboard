@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bZ2-b2-54Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bZ2-b2-54Z">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Scarlet & Black-->
@@ -116,14 +116,19 @@
                                             <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="RqO-Qe-afb"/>
                                         </connections>
                                     </button>
+                                    <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xK-m3-Tgm">
+                                        <rect key="frame" x="-2" y="336" width="295" height="34"/>
+                                        <color key="backgroundColor" red="0.61033982038497925" green="0.52857714891433716" blue="0.54184442758560181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tVY-nY-uFO">
-                                        <rect key="frame" x="116" y="333" width="59" height="30"/>
+                                        <rect key="frame" x="116" y="335" width="59" height="35"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
-                                                <fragment content="SHARE">
+                                                <fragment content="POST">
                                                     <attributes>
                                                         <font key="NSFont" size="19" name="HelveticaNeue-Thin"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -133,7 +138,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
-                                        <rect key="frame" x="84" y="227" width="50" height="50"/>
+                                        <rect key="frame" x="84" y="222" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="rq1-Xa-45o"/>
                                         </constraints>
@@ -145,7 +150,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgr-XH-fmy">
-                                        <rect key="frame" x="157" y="227" width="50" height="50"/>
+                                        <rect key="frame" x="157" y="222" width="50" height="50"/>
                                         <state key="normal" image="FacebookIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -154,7 +159,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqQ-Dn-0Gw">
-                                        <rect key="frame" x="84" y="285" width="50" height="50"/>
+                                        <rect key="frame" x="84" y="280" width="50" height="50"/>
                                         <state key="normal" image="iMessageIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -163,7 +168,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGQ-XV-BoC">
-                                        <rect key="frame" x="154" y="285" width="53" height="50"/>
+                                        <rect key="frame" x="154" y="280" width="53" height="50"/>
                                         <state key="normal" image="EmailIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -213,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZL-bQ-hrv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2161" y="-491"/>
+            <point key="canvasLocation" x="2161" y="-348"/>
         </scene>
         <!--Text Option Modal View Controller-->
         <scene sceneID="SE3-Ej-D1h">
@@ -628,7 +633,7 @@
         <image name="ProximaFont" width="75" height="39"/>
         <image name="QuattrocentoFont" width="75" height="39"/>
         <image name="ShareIconWhite" width="33" height="30"/>
-        <image name="ShowMoreButton" width="51" height="54"/>
+        <image name="ShowMoreButton" width="26" height="20"/>
         <image name="SmallerFont" width="34" height="34"/>
         <image name="StarIconWhite" width="34" height="30"/>
         <image name="TwitterIcon" width="50" height="50"/>
