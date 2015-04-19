@@ -11,6 +11,7 @@
 #import <SAMTextView.h>
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
+#import <MBProgressHUD.h>
 
 
 @interface ShareModalViewController () {
@@ -45,6 +46,8 @@
     self.commentTextView.delegate = self;
     
     self.accountStore = [[ACAccountStore alloc] init];
+    
+    self.postedScreen.alpha = 0;
     
 }
 
@@ -303,25 +306,46 @@
     ACAccountType *twitterType =
     [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Sending tweet...";
+    [hud show:YES];
+    
     SLRequestHandler requestHandler =
     ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if (responseData) {
             NSInteger statusCode = urlResponse.statusCode;
             if (statusCode >= 200 && statusCode < 300) {
+                
+                [hud hide:YES];
+                
                 NSDictionary *postResponseData =
                 [NSJSONSerialization JSONObjectWithData:responseData
                                                 options:NSJSONReadingMutableContainers
                                                   error:NULL];
                 NSLog(@"[SUCCESS!] Created Tweet with ID: %@", postResponseData[@"id_str"]);
+                
+                [self succesfulPost];
             }
             else {
+                [hud hide:YES];
+                
                 NSLog(@"[ERROR] Server responded: status code %ld %@", (long)statusCode,
                       [NSHTTPURLResponse localizedStringForStatusCode:statusCode]);
+                
+                MZFormSheetController *controller = self.formSheetController;
+                [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
+                
+                [self unsuccesfulPostWithError:[NSString stringWithFormat:@"Server responded, status code %ld %@", (long)statusCode, [NSHTTPURLResponse localizedStringForStatusCode:statusCode]]];
             }
+            
         }
         else {
+            [hud hide:YES];
+            
             NSLog(@"[ERROR] An error occurred while posting: %@", [error localizedDescription]);
+            [self unsuccesfulPostWithError:[NSString stringWithFormat:@"An error occurred while posting: %@", [error localizedDescription]]];
         }
+        
     };
     
     ACAccountStoreRequestAccessCompletionHandler accountStoreHandler =
@@ -337,22 +361,28 @@
                                                        parameters:params];
             [request setAccount:[accounts lastObject]];
             [request performRequestWithHandler:requestHandler];
+            
+            NSLog(@"Granted!");
         }
         else {
+            
             NSLog(@"[ERROR] An error occurred while asking for user authorization: %@",
                   [error localizedDescription]);
+            [self unsuccesfulPostWithError:[NSString stringWithFormat:@"An error occurred while asking for user authorization: %@", [error localizedDescription]]];
+            
         }
+        
     };
     
     [self.accountStore requestAccessToAccountsWithType:twitterType
                                                options:NULL
                                             completion:accountStoreHandler];
     
-    MZFormSheetController *ctrl = self.formSheetController;
-    [ctrl mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
+    
 }
 
 - (void)postWithStatus:(NSString *)status {
+    
     ACAccountType *facebookType =
     [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     
@@ -377,6 +407,8 @@
                                                 } else {
                                                     NSLog(@"%@",error);
                                                     // Fail gracefully...
+                                                    
+                                                    [self unsuccesfulPostWithError:[error localizedDescription]];
                                                 }
                                             }];
     
@@ -393,46 +425,62 @@
                                                 } else {
                                                     NSLog(@"%@",error);
                                                     // Fail gracefully...
+                                                    [self unsuccesfulPostWithError:[error localizedDescription]];
                                                 }
                                             }];
     
     // First obtain the Facebook account from the ACAccountStore
-    ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-    NSArray *accounts = [_accountStore accountsWithAccountType:accountType];
+    ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    NSArray *accounts = [self.accountStore accountsWithAccountType:accountType];
     
     // If we don't have access to users Facebook account, the account store will return an empty array.
     if (accounts.count == 0)
         return;
     
     // Since there's only one Facebook account, grab the last object
-    ACAccount *account = [accounts lastObject];
+    self.facebookAccount = [accounts lastObject];
     
     // Create the parameters dictionary and the URL (!use HTTPS!)
     NSDictionary *parameters = @{@"message" : self.commentTextView.text, @"link": self.article.URL};
-    NSURL *URL = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
+    //NSURL *URL = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
     
     // Create request
+//    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+//                                            requestMethod:SLRequestMethodPOST
+//                                                      URL:URL
+//                                               parameters:parameters];
+    
     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
-                                            requestMethod:SLRequestMethodPOST
-                                                      URL:URL
-                                               parameters:parameters];
+                                                       requestMethod:SLRequestMethodGET
+                                                                 URL:[NSURL URLWithString:@"https://graph.facebook.com/me"]
+                                                          parameters:@{@"fields": @"feed"}];
     
     // Since we are performing a method that requires authorization we can simply
     // add the ACAccount to the SLRequest
-    [request setAccount:account];
+    
+    NSLog(@"The parameters: %@", parameters);
+    [request setAccount:self.facebookAccount];
+    
+    
     
     // Perform request
     [request performRequestWithHandler:^(NSData *respData, NSHTTPURLResponse *urlResp, NSError *error) {
-        /*
+        
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:respData
                                                                            options:kNilOptions
                                                                              error:&error];
-        */
         // Check for errors in the responseDictionary
+        
+        NSLog(@"The response: %@", responseDictionary);
+        
+        if (error) {
+            [self unsuccesfulPostWithError:[error localizedDescription]];
+        }
+        else {
+            [self succesfulPost];
+        }
+        
     }];
-
-    MZFormSheetController *ctrl = self.formSheetController;
-    [ctrl mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 
 }
 
@@ -446,6 +494,44 @@
     NSString *shortenedURL = [NSString stringWithContentsOfURL:[NSURL URLWithString:longURL] encoding:NSUTF8StringEncoding error:nil];
     
     return shortenedURL;
+}
+
+- (void) succesfulPost {
+    [UIView animateWithDuration:0.3
+                          delay: 0.1
+                        options: UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.postedScreen.alpha = 1;
+                     }
+                     completion:^(BOOL finished){
+                         // Wait one second and then fade in the view
+                         [UIView animateWithDuration:0.3
+                                               delay: 0.6
+                                             options:UIViewAnimationOptionCurveEaseOut
+                                          animations:^{
+                                              self.postedScreen.alpha = 0;
+                                              
+                                          }
+                                          completion:^(BOOL finished){
+                                              MZFormSheetController *controller = self.formSheetController;
+                                              [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
+                                          }];
+                     }];
+    
+
+}
+
+
+- (void) unsuccesfulPostWithError:(NSString *) error {
+    
+    MZFormSheetController *controller = self.formSheetController;
+    [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Post unsuccessful!" message:[NSString stringWithFormat:@"Error: %@", error] delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    
+    
+    [alert show];
+    
 }
 
 @end

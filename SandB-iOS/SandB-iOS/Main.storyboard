@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bZ2-b2-54Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bZ2-b2-54Z">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7518.3"/>
     </dependencies>
     <scenes>
         <!--Scarlet & Black-->
@@ -25,7 +25,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="Amazing Article Title #1">
                                                     <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="18" name="HelveticaNeue"/>
                                                         <font key="NSOriginalFont" size="20" name="HelveticaNeue-Light"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
@@ -137,11 +137,8 @@
                                             <action selector="shareButtonPressed:" destination="2V4-0M-orm" eventType="touchUpInside" id="HFW-DR-HiZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-VZ-230">
                                         <rect key="frame" x="84" y="222" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="rq1-Xa-45o"/>
-                                        </constraints>
                                         <state key="normal" image="TwitterIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -198,6 +195,22 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AGw-LD-AOo">
+                                        <rect key="frame" x="-15" y="-37" width="320" height="568"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CheckMarkIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7qT-pl-L6S">
+                                                <rect key="frame" x="110" y="115" width="100" height="100"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Post successful!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFl-zn-PeL">
+                                                <rect key="frame" x="61" y="223" width="199" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.80099719762802124" green="0.75658398866653442" blue="0.76441371440887451" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.65405771680000002" blue="0.65405771680000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -213,12 +226,13 @@
                         <outlet property="emailButton" destination="QGQ-XV-BoC" id="oJ4-s0-j85"/>
                         <outlet property="facebookIcon" destination="vgr-XH-fmy" id="TMn-l9-t8d"/>
                         <outlet property="iMessageButton" destination="IqQ-Dn-0Gw" id="5P9-7T-HMV"/>
+                        <outlet property="postedScreen" destination="AGw-LD-AOo" id="caN-JX-RXj"/>
                         <outlet property="twitterButton" destination="MJv-VZ-230" id="AiW-y0-NWk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZL-bQ-hrv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2161" y="-348"/>
+            <point key="canvasLocation" x="2161" y="-595"/>
         </scene>
         <!--Text Option Modal View Controller-->
         <scene sceneID="SE3-Ej-D1h">
@@ -229,7 +243,7 @@
                         <viewControllerLayoutGuide type="bottom" id="7c9-zP-crz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1g2-uz-PpA">
-                        <rect key="frame" x="0.0" y="0.0" width="306" height="168"/>
+                        <rect key="frame" x="0.0" y="0.0" width="306" height="180"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5YU-GT-qS7">
@@ -307,14 +321,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anR-v0-wNF">
-                                <rect key="frame" x="1" y="100" width="306" height="1"/>
+                                <rect key="frame" x="-1" y="100" width="306" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.65405771680000002" blue="0.65405771680000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="306" height="168"/>
+                    <size key="freeformSize" width="306" height="180"/>
                     <connections>
                         <outlet property="helveticaFontButton" destination="O6k-Rd-f5U" id="0SL-Qp-bDG"/>
                         <outlet property="sentinelFontButton" destination="kEo-5l-6dL" id="eDO-I0-eHx"/>
@@ -324,7 +338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHP-EQ-vfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2556" y="-491"/>
+            <point key="canvasLocation" x="2619" y="-631"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="12m-vp-cX6">
@@ -621,10 +635,152 @@
             </objects>
             <point key="canvasLocation" x="1758" y="1333"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Sk9-sL-0sB">
+            <objects>
+                <viewController id="tip-kt-Hh3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fxb-f8-0EN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ric-rP-VGf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uuc-2x-tCL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmG-Uk-e7E">
+                                <rect key="frame" x="7" y="20" width="306" height="238"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="T2x-v1-6cI">
+                                        <rect key="frame" x="80" y="60" width="148" height="31"/>
+                                        <color key="minimumTrackTintColor" red="0.55837452170000001" green="0.0" blue="0.060333052870000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="fontSizeValueChanged:" destination="6oo-AK-9Hq" eventType="valueChanged" id="iAI-Hs-hyU"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emm-UH-jg9">
+                                        <rect key="frame" x="20" y="60" width="34" height="34"/>
+                                        <state key="normal" image="SmallerFont">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aaf-Mr-Wuc">
+                                        <rect key="frame" x="251" y="60" width="34" height="34"/>
+                                        <state key="normal" image="LargerFont">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t53-JD-N8K">
+                                        <rect key="frame" x="1" y="113" width="101" height="45"/>
+                                        <state key="normal" image="ProximaFont">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sentinelFontButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="Ou2-SQ-qr9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBV-Cu-LCb">
+                                        <rect key="frame" x="109" y="116" width="102" height="46"/>
+                                        <state key="normal" image="HelveticaFont">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="helveticaFontButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="qIB-Lk-yWv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaK-eq-UN9">
+                                        <rect key="frame" x="216" y="114" width="88" height="41"/>
+                                        <state key="normal" image="QuattrocentoFont">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ubuntuFontButtonPressed:" destination="6oo-AK-9Hq" eventType="touchUpInside" id="vCK-Rd-bp0"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ZX-Nd-qi3">
+                                        <rect key="frame" x="-1" y="48" width="306" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OcD-Ty-uzY">
+                                        <rect key="frame" x="-1" y="100" width="306" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93g-WI-XZI">
+                                        <rect key="frame" x="20" y="8" width="176" height="21"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="READING OPTIONS">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="19" name="HelveticaNeue-Thin"/>
+                                                    <font key="NSOriginalFont" size="17" name="HelveticaNeue-Thin"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WHI-eZ-xbF">
+                                <rect key="frame" x="0.0" y="248" width="159" height="79"/>
+                                <color key="backgroundColor" red="0.80099719762802124" green="0.75658398866653442" blue="0.76441371440887451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFs-ys-FFQ">
+                                <rect key="frame" x="79" y="260" width="30" height="30"/>
+                                <state key="normal" image="CheckMarkIcon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbu-wx-LLQ">
+                                <rect key="frame" x="57" y="298" width="74" height="21"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="APPLY">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Thin"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEz-gs-Imw">
+                                <rect key="frame" x="207" y="255" width="40" height="40"/>
+                                <state key="normal" image="CancelButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3S-kv-NSf">
+                                <rect key="frame" x="190" y="297" width="74" height="22"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="CANCEL">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Thin"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wu3-ml-8xf">
+                                <rect key="frame" x="161" y="248" width="159" height="79"/>
+                                <color key="backgroundColor" red="0.80099719762802124" green="0.75658398866653442" blue="0.76441371440887451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80099719762802124" green="0.75658398866653442" blue="0.76441371440887451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="c1b-GG-jpX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PRT-lc-TwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2161" y="1386"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BackButtonWhite" width="33" height="33"/>
         <image name="CancelButton" width="33" height="33"/>
+        <image name="CheckMarkIcon" width="99" height="99"/>
         <image name="EditTextIconWhite" width="33" height="34"/>
         <image name="EmailIcon" width="50" height="50"/>
         <image name="FacebookIcon" width="50" height="50"/>
@@ -645,5 +801,5 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+    <color key="tintColor" red="0.59037685394287109" green="0.26459178328514099" blue="0.26007464528083801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

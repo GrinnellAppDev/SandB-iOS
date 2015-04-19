@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) IBOutlet SAMTextView *commentTextView;
 @property (strong, nonatomic) IBOutlet UILabel *characterCount;
+@property (weak, nonatomic) IBOutlet UIView *postedScreen;
 
 // BUTTONS
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;

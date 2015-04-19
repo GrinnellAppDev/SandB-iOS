@@ -439,8 +439,9 @@
         };
     }
     
+    // change size of the modal view presented here - the storyboard doesn't actually set the size, you have to do it manually HERE
     if ([segue.identifier isEqualToString:@"textOptionModal"]) {
-        formSheet.presentedFormSheetSize = CGSizeMake(306, 168);
+        formSheet.presentedFormSheetSize = CGSizeMake(306, 180);
     }
 }
 
