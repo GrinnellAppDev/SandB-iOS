@@ -1,0 +1,146 @@
+//
+//  TextOptionModalViewController.m
+//  SandB-iOS
+//
+//  Created by Lea Marolt on 4/13/14.
+//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
+//
+
+#import "TextOptionModalViewController.h"
+#import "MZFormSheetController.h"
+
+@interface TextOptionModalViewController ()
+
+@property (nonatomic, strong) NSString *fontFamily;
+
+@end
+
+@implementation TextOptionModalViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:180.0/255.0 blue:182.0/255.0 alpha:1.0];
+    
+    self.textSlider.maximumTrackTintColor = [UIColor whiteColor];
+    
+    // Set the initial values.
+    float fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"ReadingOptionsFontSize"];
+    
+    self.textSlider.value = fontSize;
+    
+    [self colorChosenFont];
+    
+    // TODO (DrJid): Set the current Font family and highlight that button as selected.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    MZFormSheetController *controller = self.formSheetController;
+    [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
+}
+
+//     // Helvetica Neue || Avenir Next || Cochin
+
+
+- (IBAction)sentinelFontButtonPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"ProximaNova-Light" forKey:@"ReadingOptionsFontFamily"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self changeButton:sender toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    
+    [self changeButton:self.ubuntuFontButton toColor:[UIColor whiteColor]];
+    [self changeButton:self.helveticaFontButton toColor:[UIColor whiteColor]];
+    
+}
+
+- (IBAction)helveticaFontButtonPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"HelveticaNeue-Light" forKey:@"ReadingOptionsFontFamily"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    [self changeButton:sender toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    
+    [self changeButton:self.ubuntuFontButton toColor:[UIColor whiteColor]];
+    [self changeButton:self.sentinelFontButton toColor:[UIColor whiteColor]];
+}
+
+- (IBAction)ubuntuFontButtonPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"Quattrocento" forKey:@"ReadingOptionsFontFamily"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    [self changeButton:sender toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    
+    [self changeButton:self.sentinelFontButton toColor:[UIColor whiteColor]];
+    [self changeButton:self.helveticaFontButton toColor:[UIColor whiteColor]];
+}
+
+- (IBAction)fontSizeValueChanged:(UISlider *)slider {
+    
+    //NSLog(@"sender: %f", slider.value);
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:slider.value forKey:@"ReadingOptionsFontSize"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadPageViewController" object:nil];
+}
+
+- (void) changeButton:(UIButton *)btn toColor:(UIColor *)color {
+    btn.tintColor = color;
+    
+    [btn setImage:[btn.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+}
+
+- (void) colorChosenFont {
+    
+    self.fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"];
+    
+    if (!self.fontFamily) {
+        self.fontFamily = @"HelveticaNeue-Light";
+        [self changeButton:self.helveticaFontButton toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    }
+    
+    else if ([self.fontFamily isEqualToString:@"HelveticaNeue-Light"]) {
+        
+        [self changeButton:self.helveticaFontButton toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    }
+    
+    else if ([self.fontFamily isEqualToString:@"ProximaNova-Light"]) {
+        
+        [self changeButton:self.sentinelFontButton toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    }
+    
+    else if ([self.fontFamily isEqualToString:@"Quattrocento"]) {
+        
+        [self changeButton:self.ubuntuFontButton toColor:[UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0]];
+    }
+}
+@end
