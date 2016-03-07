@@ -372,7 +372,7 @@
 				8B729FFA18FA529C00AD6C1F /* UIViewController+TargetViewController.h */,
 				8B729FFB18FA529C00AD6C1F /* UIViewController+TargetViewController.m */,
 			);
-			name = MZFormSheetController;
+			path = MZFormSheetController;
 			sourceTree = "<group>";
 		};
 		8B85640218D4D96A0098B83A /* Fonts */ = {
@@ -458,14 +458,14 @@
 				16B3E6F618691EC600ABC0CF /* Controllers */,
 				3BEBCE8416C5A96900B6DD08 /* App Delegate */,
 				3BEBCE8616C5A9A000B6DD08 /* Images */,
-				8BD1C81616B32493005F3F23 /* Supporting Files */,
+				8BD1C81616B32493005F3F23 /* SupportingFiles */,
 				16B3E6F318691C9A00ABC0CF /* Main.storyboard */,
 				8B5DC4D718F20A9400732D45 /* Images.xcassets */,
 			);
 			path = "SandB-iOS";
 			sourceTree = "<group>";
 		};
-		8BD1C81616B32493005F3F23 /* Supporting Files */ = {
+		8BD1C81616B32493005F3F23 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				8B729FD818FA527500AD6C1F /* MZFormSheetController */,
@@ -475,7 +475,7 @@
 				8BD1C81B16B32493005F3F23 /* main.m */,
 				8BD1C81D16B32493005F3F23 /* SandB-iOS-Prefix.pch */,
 			);
-			name = "Supporting Files";
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		E63C9A7975688DA07E1F69DE /* Pods */ = {
@@ -768,8 +768,8 @@
 					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
-				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
+				GCC_PREFIX_HEADER = "SandB-iOS/SupportingFiles/SandB-iOS-Prefix.pch";
+				INFOPLIST_FILE = "SandB-iOS/SupportingFiles/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appdev.SandB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -793,8 +793,8 @@
 					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
-				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
+				GCC_PREFIX_HEADER = "SandB-iOS/SupportingFiles/SandB-iOS-Prefix.pch";
+				INFOPLIST_FILE = "SandB-iOS/SupportingFiles/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appdev.SandB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
