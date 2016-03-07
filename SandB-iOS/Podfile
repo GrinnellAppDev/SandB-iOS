@@ -3,10 +3,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '7.0'
 inhibit_all_warnings!
+
+pod 'AFNetworking' 
+pod 'APParallaxHeader'
+pod 'ECSlidingViewController', '~> 2.0.1'
 pod 'MBProgressHUD'
 pod 'Reachability'
-pod 'TBXML'
-pod 'AFNetworking' 
-pod 'SDWebImage', '~> 3.7.1'
-pod 'ECSlidingViewController', '~> 2.0.1'
 pod 'SAMTextView', '~> 0.2.1'
+pod 'SDWebImage', '~> 3.7.1'
+pod 'TBXML'

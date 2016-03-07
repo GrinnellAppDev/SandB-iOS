@@ -26,7 +26,6 @@
 		8B125BB71721005B00C550F7 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BB61721005B00C550F7 /* Icon-Small.png */; };
 		8B125BB9172100C000C550F7 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BB8172100BF00C550F7 /* iTunesArtwork.png */; };
 		8B125BBB172100FF00C550F7 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */; };
-		8B44468A18F23725002D1B42 /* UIScrollView+APParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B44468918F23725002D1B42 /* UIScrollView+APParallaxHeader.m */; };
 		8B5304CA19099D9900A2D40B /* Proxima Nova Alt Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5304C719099CF200A2D40B /* Proxima Nova Alt Light.otf */; };
 		8B5304CB19099D9B00A2D40B /* Proxima Nova Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5304C819099CF200A2D40B /* Proxima Nova Light.otf */; };
 		8B5304CC19099D9E00A2D40B /* Proxima Nova ScOsf Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5304C919099CF200A2D40B /* Proxima Nova ScOsf Light.otf */; };
@@ -107,8 +106,6 @@
 		8B125BB61721005B00C550F7 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		8B125BB8172100BF00C550F7 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		8B44468818F23725002D1B42 /* UIScrollView+APParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+APParallaxHeader.h"; sourceTree = "<group>"; };
-		8B44468918F23725002D1B42 /* UIScrollView+APParallaxHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+APParallaxHeader.m"; sourceTree = "<group>"; };
 		8B5304C719099CF200A2D40B /* Proxima Nova Alt Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Light.otf"; sourceTree = "<group>"; };
 		8B5304C819099CF200A2D40B /* Proxima Nova Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Light.otf"; sourceTree = "<group>"; };
 		8B5304C919099CF200A2D40B /* Proxima Nova ScOsf Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova ScOsf Light.otf"; sourceTree = "<group>"; };
@@ -307,16 +304,6 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		8B44468418F2369C002D1B42 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				8B44468818F23725002D1B42 /* UIScrollView+APParallaxHeader.h */,
-				8B44468918F23725002D1B42 /* UIScrollView+APParallaxHeader.m */,
-			);
-			name = Vendor;
-			path = "SandB-iOS/Vendor";
-			sourceTree = "<group>";
-		};
 		8B4F81E816ED0E47008466CE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,7 +417,6 @@
 		8BD1C80016B32493005F3F23 = {
 			isa = PBXGroup;
 			children = (
-				8B44468418F2369C002D1B42 /* Vendor */,
 				8B85640218D4D96A0098B83A /* Fonts */,
 				8BD1C81516B32493005F3F23 /* SandB-iOS */,
 				8BD1C80E16B32493005F3F23 /* Frameworks */,
@@ -690,7 +676,6 @@
 				8B72A00818FA5E1500AD6C1F /* NSInvocation+Copy.m in Sources */,
 				8B72A00218FA529C00AD6C1F /* UIViewController+TargetViewController.m in Sources */,
 				8B729FFD18FA529C00AD6C1F /* MZFormSheetBackgroundWindowViewController.m in Sources */,
-				8B44468A18F23725002D1B42 /* UIScrollView+APParallaxHeader.m in Sources */,
 				8B0DA2B818F827C300613D14 /* TitleCell.m in Sources */,
 				8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */,
 				16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */,
