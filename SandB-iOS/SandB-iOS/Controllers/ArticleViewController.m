@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
 //
 
-#import "NewArticleViewController.h"
+#import "ArticleViewController.h"
 #import "ContentCell.h"
 #import "UIScrollView+APParallaxHeader.h"
 #import "UIImageView+WebCache.h"
@@ -15,11 +15,11 @@
 #import "NewsCategories.h"
 #import "DataModel.h"
 
-@interface NewArticleViewController ()
+@interface ArticleViewController ()
 
 @end
 
-@implementation NewArticleViewController {
+@implementation ArticleViewController {
     CGFloat contentHeight;
     NSAttributedString *test;
 }

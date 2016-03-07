@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewArticleViewController.h"
+#import "ArticleViewController.h"
 #import "Article.h"
 
-@interface NewArticlePageViewHolderController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface ArticlePageViewHolderController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) NSMutableArray *pageArticles;

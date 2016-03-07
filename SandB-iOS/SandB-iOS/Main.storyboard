@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bZ2-b2-54Z">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Scarlet & Black-->
         <scene sceneID="Nbo-MW-F3J">
             <objects>
-                <tableViewController id="OR1-OJ-RFn" customClass="NewArticlesListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="OR1-OJ-RFn" customClass="ArticlesListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="82" sectionHeaderHeight="22" sectionFooterHeight="22" id="PZh-0b-jq2">
                         <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewArticleCell" rowHeight="82" id="XcO-ej-S0v" customClass="NewArticleCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewArticleCell" rowHeight="82" id="XcO-ej-S0v" customClass="ArticleCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XcO-ej-S0v" id="PmM-Y5-Ewe">
@@ -349,10 +348,10 @@
             </objects>
             <point key="canvasLocation" x="2556" y="-31"/>
         </scene>
-        <!--New Article Page View Holder Controller-->
+        <!--Article Page View Holder Controller-->
         <scene sceneID="coj-Y8-Bep">
             <objects>
-                <viewController id="iGa-OU-o3g" customClass="NewArticlePageViewHolderController" sceneMemberID="viewController">
+                <viewController id="iGa-OU-o3g" customClass="ArticlePageViewHolderController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wk1-Lc-KnX"/>
                         <viewControllerLayoutGuide type="bottom" id="Rql-Su-oYL"/>
@@ -427,10 +426,10 @@
             </objects>
             <point key="canvasLocation" x="2161" y="657"/>
         </scene>
-        <!--New Article View Controller-->
+        <!--Article View Controller-->
         <scene sceneID="7C1-iL-lQh">
             <objects>
-                <viewController storyboardIdentifier="NewArticleViewController" id="o9W-0n-rtV" customClass="NewArticleViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewArticleViewController" id="o9W-0n-rtV" customClass="ArticleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zhx-zz-ssR"/>
                         <viewControllerLayoutGuide type="bottom" id="tV5-85-A4D"/>

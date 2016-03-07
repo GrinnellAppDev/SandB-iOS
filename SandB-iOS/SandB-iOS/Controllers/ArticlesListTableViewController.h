@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewArticlesListTableViewController : UITableViewController
+@interface ArticlesListTableViewController : UITableViewController
 
 // PROPERTIES
 @property (nonatomic, strong) NSString *recievedCategory;
-
-// METHODS
-- (IBAction)refreshButtonPressed:(id)sender;
 
 @end

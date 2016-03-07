@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
 //
 
-#import "NewArticlesListTableViewController.h"
+#import "ArticlesListTableViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
-#import "NewArticleCell.h"
+#import "ArticleCell.h"
 #import "DataModel.h"
-#import "NewArticlePageViewHolderController.h"
+#import "ArticlePageViewHolderController.h"
 #import "NewsCategories.h"
 #import "Cache.h"
 #import "Article.h"
 
 const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn automatically.
 
-@interface NewArticlesListTableViewController ()
+@interface ArticlesListTableViewController ()
 @property (nonatomic) NSInteger articleIndex;
 @property (nonatomic, strong) NSArray *categoryColors;
 @property (nonatomic, strong) NSString *newsCategory;
@@ -28,7 +28,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 
 @end
 
-@implementation NewArticlesListTableViewController
+@implementation ArticlesListTableViewController
 {
     int _currentPage;
     int _totalPages;
@@ -174,7 +174,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 {
     static NSString *cellIdentifier = @"NewArticleCell";
     
-    NewArticleCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    ArticleCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     //Customize Cell
     cell.articleTitle.text = [[self.allArticlesArray  objectAtIndex:indexPath.row] title];
@@ -240,7 +240,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NewArticleCell *cell = (NewArticleCell *) [tableView cellForRowAtIndexPath:indexPath];
+    ArticleCell *cell = (ArticleCell *) [tableView cellForRowAtIndexPath:indexPath];
     
     cell.backgroundColor = [[[[NewsCategories sharedCategories] categoriesByName] objectForKey:[[self.allArticlesArray objectAtIndex:indexPath.row] category]] highlightedColor];
     

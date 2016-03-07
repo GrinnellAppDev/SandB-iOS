@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
 //
 
-#import "NewArticleCell.h"
+#import "ArticleCell.h"
 
 @implementation NewArticleCell
 

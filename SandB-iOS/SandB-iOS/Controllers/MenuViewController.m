@@ -9,7 +9,7 @@
 #import "MenuViewController.h"
 #import "NewsCategories.h"
 #import "UIViewController+ECSlidingViewController.h"
-#import "NewArticlesListTableViewController.h"
+#import "ArticlesListTableViewController.h"
 #import "DataModel.h"
 
 @interface MenuViewController () <SKStoreProductViewControllerDelegate, MFMailComposeViewControllerDelegate>
@@ -174,7 +174,7 @@
     if (indexPath.section == 0) {
         if ([segue.identifier isEqualToString:@"GoToCategory"]) {
             UINavigationController *nc = segue.destinationViewController;
-            NewArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
+            ArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
             NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
             
 
@@ -186,7 +186,7 @@
         if (indexPath.row == 0) {
             if ([segue.identifier isEqualToString:@"GoToCategory"]) {
                 UINavigationController *nc = segue.destinationViewController;
-                NewArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
+                ArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
                 
                 NSString *categoryString = @"Favorites";
                 naltvc.recievedCategory = categoryString;

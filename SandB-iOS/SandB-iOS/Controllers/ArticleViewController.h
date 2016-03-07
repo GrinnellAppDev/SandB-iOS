@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Article.h"
 
-@interface NewArticleViewController : UIViewController 
+@interface ArticleViewController : UIViewController 
 
 @property (nonatomic) NSUInteger pageIndex;
 @property (strong, nonatomic) IBOutlet UILabel *articleTitleLabel;

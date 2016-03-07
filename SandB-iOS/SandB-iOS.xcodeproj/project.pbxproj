@@ -33,11 +33,11 @@
 		8B5304D01909A34D00A2D40B /* Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5304CF1909A34D00A2D40B /* Proxima Nova Regular.otf */; };
 		8B5304D61909A93100A2D40B /* Sentinel-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5304D51909A93100A2D40B /* Sentinel-Light.ttf */; };
 		8B5304D81909A98200A2D40B /* Quattrocento-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5304D71909A98200A2D40B /* Quattrocento-Regular.ttf */; };
-		8B5DC4C918F1F4F500732D45 /* NewArticlesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */; };
-		8B5DC4CC18F1F57A00732D45 /* NewArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4CB18F1F57A00732D45 /* NewArticleCell.m */; };
+		8B5DC4C918F1F4F500732D45 /* ArticlesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4C818F1F4F500732D45 /* ArticlesListTableViewController.m */; };
+		8B5DC4CC18F1F57A00732D45 /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4CB18F1F57A00732D45 /* ArticleCell.m */; };
 		8B5DC4CF18F1F67B00732D45 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */; };
-		8B5DC4D318F1F91A00732D45 /* NewArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D218F1F91A00732D45 /* NewArticleViewController.m */; };
-		8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D518F1FD0200732D45 /* NewArticlePageViewHolderController.m */; };
+		8B5DC4D318F1F91A00732D45 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D218F1F91A00732D45 /* ArticleViewController.m */; };
+		8B5DC4D618F1FD0200732D45 /* ArticlePageViewHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D518F1FD0200732D45 /* ArticlePageViewHolderController.m */; };
 		8B5DC4D818F20A9400732D45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B5DC4D718F20A9400732D45 /* Images.xcassets */; };
 		8B5DC4DB18F211E700732D45 /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DC4DA18F211E700732D45 /* ContentCell.m */; };
 		8B69414218FAB3E200976E4A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69414118FAB3E200976E4A /* MessageUI.framework */; };
@@ -113,16 +113,16 @@
 		8B5304CF1909A34D00A2D40B /* Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Regular.otf"; sourceTree = "<group>"; };
 		8B5304D51909A93100A2D40B /* Sentinel-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sentinel-Light.ttf"; sourceTree = "<group>"; };
 		8B5304D71909A98200A2D40B /* Quattrocento-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quattrocento-Regular.ttf"; sourceTree = "<group>"; };
-		8B5DC4C718F1F4F500732D45 /* NewArticlesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticlesListTableViewController.h; sourceTree = "<group>"; };
-		8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticlesListTableViewController.m; sourceTree = "<group>"; };
-		8B5DC4CA18F1F57A00732D45 /* NewArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewArticleCell.h; path = ../Model/NewArticleCell.h; sourceTree = "<group>"; };
-		8B5DC4CB18F1F57A00732D45 /* NewArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewArticleCell.m; path = ../Model/NewArticleCell.m; sourceTree = "<group>"; };
+		8B5DC4C718F1F4F500732D45 /* ArticlesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesListTableViewController.h; sourceTree = "<group>"; };
+		8B5DC4C818F1F4F500732D45 /* ArticlesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesListTableViewController.m; sourceTree = "<group>"; };
+		8B5DC4CA18F1F57A00732D45 /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleCell.h; path = ../Model/ArticleCell.h; sourceTree = "<group>"; };
+		8B5DC4CB18F1F57A00732D45 /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleCell.m; path = ../Model/ArticleCell.m; sourceTree = "<group>"; };
 		8B5DC4CD18F1F67B00732D45 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		8B5DC4D118F1F91A00732D45 /* NewArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticleViewController.h; sourceTree = "<group>"; };
-		8B5DC4D218F1F91A00732D45 /* NewArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticleViewController.m; sourceTree = "<group>"; };
-		8B5DC4D418F1FD0200732D45 /* NewArticlePageViewHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticlePageViewHolderController.h; sourceTree = "<group>"; };
-		8B5DC4D518F1FD0200732D45 /* NewArticlePageViewHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticlePageViewHolderController.m; sourceTree = "<group>"; };
+		8B5DC4D118F1F91A00732D45 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		8B5DC4D218F1F91A00732D45 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
+		8B5DC4D418F1FD0200732D45 /* ArticlePageViewHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlePageViewHolderController.h; sourceTree = "<group>"; };
+		8B5DC4D518F1FD0200732D45 /* ArticlePageViewHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlePageViewHolderController.m; sourceTree = "<group>"; };
 		8B5DC4D718F20A9400732D45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		8B5DC4D918F211E700732D45 /* ContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCell.h; sourceTree = "<group>"; };
 		8B5DC4DA18F211E700732D45 /* ContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCell.m; sourceTree = "<group>"; };
@@ -222,14 +222,14 @@
 		16B3E6F618691EC600ABC0CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8B5DC4D118F1F91A00732D45 /* NewArticleViewController.h */,
-				8B5DC4D218F1F91A00732D45 /* NewArticleViewController.m */,
+				8B5DC4D118F1F91A00732D45 /* ArticleViewController.h */,
+				8B5DC4D218F1F91A00732D45 /* ArticleViewController.m */,
 				8B5DC4CD18F1F67B00732D45 /* MenuViewController.h */,
 				8B5DC4CE18F1F67B00732D45 /* MenuViewController.m */,
-				8B5DC4C718F1F4F500732D45 /* NewArticlesListTableViewController.h */,
-				8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */,
-				8B5DC4D418F1FD0200732D45 /* NewArticlePageViewHolderController.h */,
-				8B5DC4D518F1FD0200732D45 /* NewArticlePageViewHolderController.m */,
+				8B5DC4C718F1F4F500732D45 /* ArticlesListTableViewController.h */,
+				8B5DC4C818F1F4F500732D45 /* ArticlesListTableViewController.m */,
+				8B5DC4D418F1FD0200732D45 /* ArticlePageViewHolderController.h */,
+				8B5DC4D518F1FD0200732D45 /* ArticlePageViewHolderController.m */,
 				8B72A00918FA603600AD6C1F /* ShareMzModalViewController.h */,
 				8B72A00A18FA603600AD6C1F /* ShareMzModalViewController.m */,
 				8B72A00F18FA6E8200AD6C1F /* ShareModalViewController.h */,
@@ -243,8 +243,8 @@
 		16B3E7021869376C00ABC0CF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8B5DC4CA18F1F57A00732D45 /* NewArticleCell.h */,
-				8B5DC4CB18F1F57A00732D45 /* NewArticleCell.m */,
+				8B5DC4CA18F1F57A00732D45 /* ArticleCell.h */,
+				8B5DC4CB18F1F57A00732D45 /* ArticleCell.m */,
 				8B5DC4D918F211E700732D45 /* ContentCell.h */,
 				8B5DC4DA18F211E700732D45 /* ContentCell.m */,
 				8B0DA2B618F827C300613D14 /* TitleCell.h */,
@@ -648,7 +648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD1C81C16B32493005F3F23 /* main.m in Sources */,
-				8B5DC4C918F1F4F500732D45 /* NewArticlesListTableViewController.m in Sources */,
+				8B5DC4C918F1F4F500732D45 /* ArticlesListTableViewController.m in Sources */,
 				16355F9B18FA87910047F3B0 /* NSString+ISO8859Codes.m in Sources */,
 				8B72A00118FA529C00AD6C1F /* UIImage+Additional.m in Sources */,
 				8B729FFE18FA529C00AD6C1F /* MZFormSheetController.m in Sources */,
@@ -664,20 +664,20 @@
 				8B72A00E18FA621E00AD6C1F /* MZCustomTransition.m in Sources */,
 				1633F08618FADB0B00D0288F /* UIPageViewController+ReloadData.m in Sources */,
 				8BC48583190D8E6400C32B1E /* CategoryCell.m in Sources */,
-				8B5DC4CC18F1F57A00732D45 /* NewArticleCell.m in Sources */,
+				8B5DC4CC18F1F57A00732D45 /* ArticleCell.m in Sources */,
 				8BF70EE918F6CB1000637795 /* NewsCategory.m in Sources */,
 				8B72A01118FA6E8200AD6C1F /* ShareModalViewController.m in Sources */,
 				16B3E726186B929200ABC0CF /* DataModel.m in Sources */,
 				8B729FFC18FA529C00AD6C1F /* MZFormSheetBackgroundWindow.m in Sources */,
 				8B5DC4DB18F211E700732D45 /* ContentCell.m in Sources */,
 				16B3E723186A6ECE00ABC0CF /* SandBClient.m in Sources */,
-				8B5DC4D318F1F91A00732D45 /* NewArticleViewController.m in Sources */,
+				8B5DC4D318F1F91A00732D45 /* ArticleViewController.m in Sources */,
 				8B729FFF18FA529C00AD6C1F /* MZFormSheetSegue.m in Sources */,
 				8B72A00818FA5E1500AD6C1F /* NSInvocation+Copy.m in Sources */,
 				8B72A00218FA529C00AD6C1F /* UIViewController+TargetViewController.m in Sources */,
 				8B729FFD18FA529C00AD6C1F /* MZFormSheetBackgroundWindowViewController.m in Sources */,
 				8B0DA2B818F827C300613D14 /* TitleCell.m in Sources */,
-				8B5DC4D618F1FD0200732D45 /* NewArticlePageViewHolderController.m in Sources */,
+				8B5DC4D618F1FD0200732D45 /* ArticlePageViewHolderController.m in Sources */,
 				16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

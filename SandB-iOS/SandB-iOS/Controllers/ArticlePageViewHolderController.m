@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
 //
 
-#import "NewArticlePageViewHolderController.h"
+#import "ArticlePageViewHolderController.h"
 #import "Article.h"
 #import "DataModel.h"
 #import "ShareMZModalViewController.h"
@@ -146,7 +146,7 @@
 
 #pragma mark - Page View Controller methods
 
-- (NewArticleViewController *) viewControllerAtIndex:(NSUInteger) index {
+- (ArticleViewController *) viewControllerAtIndex:(NSUInteger) index {
     if (([self.pageArticles count] == 0) || (index >= [self.pageArticles count])) {
         return nil;
     }
@@ -205,7 +205,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
-    NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
+    NSUInteger index = ((ArticleViewController *) viewController).pageIndex;
     
     if (index == 0 || (index == NSNotFound)) {
         return nil;
@@ -218,7 +218,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
-    NSUInteger index = ((NewArticleViewController *) viewController).pageIndex;
+    NSUInteger index = ((ArticleViewController *) viewController).pageIndex;
     
     if (index == NSNotFound) {
         return nil;
