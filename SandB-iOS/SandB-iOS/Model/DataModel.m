@@ -1,14 +1,7 @@
-//
-//  DataModel.m
-//  SandB-iOS
-//
-//  Created by Maijid Moujaled on 12/25/13.
-//  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
-//
 
+#import "Cache.h"
 #import "DataModel.h"
 #import "SandBClient.h"
-#import "Cache.h"
 
 @implementation DataModel
 {

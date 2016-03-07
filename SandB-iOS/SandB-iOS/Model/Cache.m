@@ -1,10 +1,3 @@
-//
-//  Cache.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/23/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
 #import "Cache.h"
 
@@ -18,14 +11,6 @@
     });
     
     return _sharedCacheModel;
-}
-
-- (id)init
-{
-    self  = [super init];
-    if (self) {
-    }
-    return self;
 }
 
 - (void) archiveObject:(id)object toFileName:(NSString *)fileName {

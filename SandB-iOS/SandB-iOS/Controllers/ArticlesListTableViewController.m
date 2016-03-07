@@ -1,19 +1,12 @@
-//
-//  ArticlesListTableViewController.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/6/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
-#import "ArticlesListTableViewController.h"
-#import "UIViewController+ECSlidingViewController.h"
-#import "ArticleCell.h"
-#import "DataModel.h"
-#import "ArticlePageViewHolderController.h"
-#import "NewsCategories.h"
-#import "Cache.h"
 #import "Article.h"
+#import "ArticleCell.h"
+#import "ArticlePageViewHolderController.h"
+#import "ArticlesListTableViewController.h"
+#import "Cache.h"
+#import "DataModel.h"
+#import "NewsCategories.h"
+#import "UIViewController+ECSlidingViewController.h"
 
 const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn automatically.
 

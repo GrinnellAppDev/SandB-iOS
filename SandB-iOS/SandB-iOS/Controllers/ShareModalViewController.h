@@ -1,17 +1,10 @@
-//
-//  ShareModalViewController.h
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/13/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
-#import <UIKit/UIKit.h>
-#import "MZFormSheetController.h"
-#import "Article.h"
+#import <Accounts/Accounts.h>
 #import <MessageUI/MessageUI.h>
 #import <SAMTextView.h>
-#import <Accounts/Accounts.h>
+#import <UIKit/UIKit.h>
+
+@class Article;
 
 @interface ShareModalViewController : UIViewController <MFMailComposeViewControllerDelegate, UITextViewDelegate, MFMessageComposeViewControllerDelegate>
 

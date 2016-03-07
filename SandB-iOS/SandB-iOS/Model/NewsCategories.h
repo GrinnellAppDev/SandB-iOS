@@ -1,13 +1,5 @@
-//
-//  NewsCategories.h
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/10/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
-#import "NewsCategory.h"
 
 @interface NewsCategories : NSObject
 

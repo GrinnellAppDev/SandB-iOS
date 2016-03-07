@@ -1,18 +1,12 @@
-//
-//  ShareModalViewController.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/13/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
-#import "ShareModalViewController.h"
-#import "MZFormSheetController.h"
-#import <SAMTextView.h>
-#import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import <MBProgressHUD.h>
+#import <SAMTextView.h>
+#import <Social/Social.h>
 
+#import "Article.h"
+#import "MZFormSheetController.h"
+#import "ShareModalViewController.h"
 
 @interface ShareModalViewController () {
     BOOL *twitterBtnPressed;

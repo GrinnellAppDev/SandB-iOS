@@ -1,26 +1,19 @@
-//
-//  ArticlePageViewHolderController.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/6/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
-#import "ArticlePageViewHolderController.h"
 #import "Article.h"
+#import "ArticlePageViewHolderController.h"
+#import "ArticleViewController.h"
+#import "Cache.h"
 #import "DataModel.h"
-#import "ShareMZModalViewController.h"
+#import "MZCustomTransition.h"
+#import "MZFormSheetController.h"
+#import "MZFormSheetSegue.h"
 #import "ShareModalViewController.h"
+#import "ShareMZModalViewController.h"
 #import "TextOptionModalViewController.h"
 #import "UIPageViewController+ReloadData.h"
 
-#import "MZFormSheetController.h"
-#import "MZCustomTransition.h"
-#import "MZFormSheetSegue.h"
-
-#import "Cache.h"
-
 @interface ArticlePageViewHolderController ()
+
 @property (nonatomic, strong) Article *currentArticle;
 @property (nonatomic) NSUInteger index;
 @property (nonatomic, assign) BOOL isFetchingArticles;

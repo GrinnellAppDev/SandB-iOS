@@ -1,19 +1,13 @@
-//
-//  ArticleViewController.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/6/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
+#import "Article.h"
 #import "ArticleViewController.h"
-#import "ContentCell.h"
-#import "UIScrollView+APParallaxHeader.h"
-#import "UIImageView+WebCache.h"
-#import "TitleCell.h"
 #import "CategoryCell.h"
-#import "NewsCategories.h"
+#import "ContentCell.h"
 #import "DataModel.h"
+#import "NewsCategories.h"
+#import "TitleCell.h"
+#import "UIImageView+WebCache.h"
+#import "UIScrollView+APParallaxHeader.h"
 
 @interface ArticleViewController ()
 

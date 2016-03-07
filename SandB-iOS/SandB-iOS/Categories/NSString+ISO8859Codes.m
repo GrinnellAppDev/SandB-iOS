@@ -1,10 +1,6 @@
-//
-//  NSString+ISO8859Codes.m
-//  SandB-iOS
-//
-//  Created by Maijid Moujaled on 4/13/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//  Content of this file came from: http://stackoverflow.com/questions/1105169/html-character-decoding-in-objective-c-cocoa-touch
+
+//  Content of this file came from:
+//  http://stackoverflow.com/questions/1105169/html-character-decoding-in-objective-c-cocoa-touch
 
 #import "NSString+ISO8859Codes.h"
 

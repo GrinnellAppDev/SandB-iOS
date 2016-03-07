@@ -1,16 +1,9 @@
-//
-//  AppDelegate.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 1/25/13.
-//  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
-//
 
-#import "AppDelegate.h"
-
-#import "SandBClient.h"
-#import "AFNetworkActivityIndicatorManager.h"
 #import <Crashlytics/Crashlytics.h>
+
+#import "AFNetworkActivityIndicatorManager.h"
+#import "AppDelegate.h"
+#import "SandBClient.h"
 
 @implementation AppDelegate
 @synthesize window, tabBarController, navController1, navController2, navController3, navController4, navController5;
