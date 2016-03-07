@@ -301,7 +301,7 @@
 			children = (
 				8B4F81E816ED0E47008466CE /* Icons */,
 			);
-			name = Images;
+			path = Images;
 			sourceTree = "<group>";
 		};
 		8B4F81E816ED0E47008466CE /* Icons */ = {
@@ -324,7 +324,7 @@
 				8B125BB8172100BF00C550F7 /* iTunesArtwork.png */,
 				8B125BBA172100FF00C550F7 /* iTunesArtwork@2x.png */,
 			);
-			name = Icons;
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		8B5304C619099CE600A2D40B /* Proxima Nova */ = {
