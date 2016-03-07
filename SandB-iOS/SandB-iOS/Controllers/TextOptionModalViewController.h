@@ -1,13 +1,7 @@
-//
-//  TextOptionModalViewController.h
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/13/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
-#import "Article.h"
+
+@class Article;
 
 @interface TextOptionModalViewController : UIViewController
 

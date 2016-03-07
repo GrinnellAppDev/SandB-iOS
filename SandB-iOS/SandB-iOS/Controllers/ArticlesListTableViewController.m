@@ -1,19 +1,12 @@
-//
-//  NewArticlesListTableViewController.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/6/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
-#import "ArticlesListTableViewController.h"
-#import "UIViewController+ECSlidingViewController.h"
-#import "ArticleCell.h"
-#import "DataModel.h"
-#import "ArticlePageViewHolderController.h"
-#import "NewsCategories.h"
-#import "Cache.h"
 #import "Article.h"
+#import "ArticleCell.h"
+#import "ArticlePageViewHolderController.h"
+#import "ArticlesListTableViewController.h"
+#import "Cache.h"
+#import "DataModel.h"
+#import "NewsCategories.h"
+#import "UIViewController+ECSlidingViewController.h"
 
 const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn automatically.
 
@@ -172,7 +165,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 
 - (UITableViewCell *)articleCellForIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"NewArticleCell";
+    static NSString *cellIdentifier = @"ArticleCell";
     
     ArticleCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
@@ -260,8 +253,8 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:[UITableViewCell class]]) {
-        if ([segue.destinationViewController isKindOfClass:[NewArticlePageViewHolderController class]]) {
-            NewArticlePageViewHolderController *napvhc = segue.destinationViewController;
+        if ([segue.destinationViewController isKindOfClass:[ArticlePageViewHolderController class]]) {
+            ArticlePageViewHolderController *napvhc = segue.destinationViewController;
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             NSUInteger currentArticleIndex = indexPath.row;
             

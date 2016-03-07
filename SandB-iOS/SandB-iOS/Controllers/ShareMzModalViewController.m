@@ -1,10 +1,3 @@
-//
-//  ShareMzModalViewController.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 4/13/14.
-//  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
-//
 
 #import "ShareMzModalViewController.h"
 #import "MZFormSheetController.h"

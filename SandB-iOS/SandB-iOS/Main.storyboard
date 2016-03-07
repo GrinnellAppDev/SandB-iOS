@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bZ2-b2-54Z">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
@@ -13,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewArticleCell" rowHeight="82" id="XcO-ej-S0v" customClass="ArticleCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleCell" rowHeight="82" id="XcO-ej-S0v" customClass="ArticleCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XcO-ej-S0v" id="PmM-Y5-Ewe">
@@ -343,7 +344,7 @@
         <!--Page View Controller-->
         <scene sceneID="12m-vp-cX6">
             <objects>
-                <pageViewController storyboardIdentifier="NewArticlePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jI3-oi-tgu" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="ArticlePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jI3-oi-tgu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eY-0Y-9kK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2556" y="-31"/>
@@ -429,7 +430,7 @@
         <!--Article View Controller-->
         <scene sceneID="7C1-iL-lQh">
             <objects>
-                <viewController storyboardIdentifier="NewArticleViewController" id="o9W-0n-rtV" customClass="ArticleViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleViewController" id="o9W-0n-rtV" customClass="ArticleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zhx-zz-ssR"/>
                         <viewControllerLayoutGuide type="bottom" id="tV5-85-A4D"/>

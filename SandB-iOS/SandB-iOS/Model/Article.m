@@ -1,15 +1,8 @@
-//
-//  Article.m
-//  SandB-iOS
-//
-//  Created by Lea Marolt on 2/3/13.
-//  Copyright (c) 2013 Grinnell AppDev. All rights reserved.
-//
 
 #import "Article.h"
+#import "NSString+ISO8859Codes.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+ImageEffects.h"
-#import "NSString+ISO8859Codes.h"
 
 @implementation Article
 
