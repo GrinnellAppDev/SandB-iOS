@@ -1,5 +1,5 @@
 //
-//  NewArticleCell.h
+//  ArticleCell.h
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 4/6/14.

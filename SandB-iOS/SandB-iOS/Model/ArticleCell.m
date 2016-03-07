@@ -1,5 +1,5 @@
 //
-//  NewArticleCell.m
+//  ArticleCell.m
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 4/6/14.
@@ -8,7 +8,7 @@
 
 #import "ArticleCell.h"
 
-@implementation NewArticleCell
+@implementation ArticleCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

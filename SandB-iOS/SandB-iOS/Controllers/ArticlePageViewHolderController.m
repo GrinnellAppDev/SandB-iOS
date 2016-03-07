@@ -1,5 +1,5 @@
 //
-//  NewArticlePageViewHolderController.m
+//  ArticlePageViewHolderController.m
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 4/6/14.
@@ -20,7 +20,7 @@
 
 #import "Cache.h"
 
-@interface NewArticlePageViewHolderController ()
+@interface ArticlePageViewHolderController ()
 @property (nonatomic, strong) Article *currentArticle;
 @property (nonatomic) NSUInteger index;
 @property (nonatomic, assign) BOOL isFetchingArticles;
@@ -32,7 +32,7 @@
 
 @end
 
-@implementation NewArticlePageViewHolderController
+@implementation ArticlePageViewHolderController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,10 +52,10 @@
     // Do any additional setup after loading the view.
     
     // Page View Controller Setup
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticlePageViewController"];
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticlePageViewController"];
     self.pageViewController.dataSource = self;
     
-    NewArticleViewController *startingViewController = [self viewControllerAtIndex:self.articleIndex];
+    ArticleViewController *startingViewController = [self viewControllerAtIndex:self.articleIndex];
     
     NSArray *viewControllers = @[startingViewController];
     //[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -96,7 +96,7 @@
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
     }
     
-    // Methods that notify this view from the NewArticleViewController that the table view scrolled to a certain break point
+    // Methods that notify this view from the ArticleViewController that the table view scrolled to a certain break point
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorTopBar) name:@"ColorTopBar" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uncolorTopBar) name:@"UncolorTopBar" object:nil];
     
@@ -153,7 +153,7 @@
     
     [self loadReadingOptions];
     
-    NewArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewArticleViewController"];
+    ArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
     
     
     Article *article = self.pageArticles[index];
@@ -359,7 +359,7 @@
 
 - (IBAction)favoriteButtonPressed:(id)sender
 {
-    NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
+    ArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
      
@@ -389,7 +389,7 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     
-    NewArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
+    ArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
     NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
     self.sentArticle = self.currentArticle;

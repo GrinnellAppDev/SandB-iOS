@@ -1,5 +1,5 @@
 //
-//  NewArticlesListTableViewController.m
+//  ArticlesListTableViewController.m
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 4/6/14.
@@ -172,7 +172,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 
 - (UITableViewCell *)articleCellForIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"NewArticleCell";
+    static NSString *cellIdentifier = @"ArticleCell";
     
     ArticleCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
@@ -260,8 +260,8 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:[UITableViewCell class]]) {
-        if ([segue.destinationViewController isKindOfClass:[NewArticlePageViewHolderController class]]) {
-            NewArticlePageViewHolderController *napvhc = segue.destinationViewController;
+        if ([segue.destinationViewController isKindOfClass:[ArticlePageViewHolderController class]]) {
+            ArticlePageViewHolderController *napvhc = segue.destinationViewController;
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             NSUInteger currentArticleIndex = indexPath.row;
             

@@ -1,5 +1,5 @@
 //
-//  NewArticlesListTableViewController.h
+//  ArticlesListTableViewController.h
 //  SandB-iOS
 //
 //  Created by Lea Marolt on 4/6/14.
