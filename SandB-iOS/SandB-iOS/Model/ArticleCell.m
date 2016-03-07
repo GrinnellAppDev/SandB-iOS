@@ -1,14 +1,14 @@
 //
-//  ArticleCell.m
+//  NewArticleCell.m
 //  SandB-iOS
 //
-//  Created by Lea Marolt on 3/15/14.
+//  Created by Lea Marolt on 4/6/14.
 //  Copyright (c) 2014 Grinnell AppDev. All rights reserved.
 //
 
 #import "ArticleCell.h"
 
-@implementation ArticleCell
+@implementation NewArticleCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -17,6 +17,11 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

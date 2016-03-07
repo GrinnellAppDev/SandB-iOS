@@ -16,4 +16,8 @@ profile
 *.moved-aside
 DerivedData
 .idea/
-*/SandB-iOS/strings_private.strings
+
+#CocoaPods
+SandB-iOS/Pods
+
+strings_private.strings

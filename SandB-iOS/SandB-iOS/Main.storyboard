@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bZ2-b2-54Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bZ2-b2-54Z">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7518.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Scarlet & Black-->
         <scene sceneID="Nbo-MW-F3J">
             <objects>
-                <tableViewController id="OR1-OJ-RFn" customClass="NewArticlesListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="OR1-OJ-RFn" customClass="ArticlesListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="82" sectionHeaderHeight="22" sectionFooterHeight="22" id="PZh-0b-jq2">
                         <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewArticleCell" rowHeight="82" id="XcO-ej-S0v" customClass="NewArticleCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewArticleCell" rowHeight="82" id="XcO-ej-S0v" customClass="ArticleCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XcO-ej-S0v" id="PmM-Y5-Ewe">
@@ -348,10 +348,10 @@
             </objects>
             <point key="canvasLocation" x="2556" y="-31"/>
         </scene>
-        <!--New Article Page View Holder Controller-->
+        <!--Article Page View Holder Controller-->
         <scene sceneID="coj-Y8-Bep">
             <objects>
-                <viewController id="iGa-OU-o3g" customClass="NewArticlePageViewHolderController" sceneMemberID="viewController">
+                <viewController id="iGa-OU-o3g" customClass="ArticlePageViewHolderController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wk1-Lc-KnX"/>
                         <viewControllerLayoutGuide type="bottom" id="Rql-Su-oYL"/>
@@ -426,10 +426,10 @@
             </objects>
             <point key="canvasLocation" x="2161" y="657"/>
         </scene>
-        <!--New Article View Controller-->
+        <!--Article View Controller-->
         <scene sceneID="7C1-iL-lQh">
             <objects>
-                <viewController storyboardIdentifier="NewArticleViewController" id="o9W-0n-rtV" customClass="NewArticleViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewArticleViewController" id="o9W-0n-rtV" customClass="ArticleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zhx-zz-ssR"/>
                         <viewControllerLayoutGuide type="bottom" id="tV5-85-A4D"/>
@@ -471,7 +471,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
                                         <connections>
                                             <outlet property="titleLabel" destination="yLW-Ub-PnV" id="y22-VO-Cvk"/>
@@ -796,10 +796,5 @@
         <image name="favoriteBig" width="95" height="95"/>
         <image name="iMessageIcon" width="50" height="50"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <color key="tintColor" red="0.59037685394287109" green="0.26459178328514099" blue="0.26007464528083801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
