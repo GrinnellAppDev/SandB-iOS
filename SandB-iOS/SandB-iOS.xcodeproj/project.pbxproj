@@ -113,8 +113,8 @@
 		8B5304CF1909A34D00A2D40B /* Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Regular.otf"; sourceTree = "<group>"; };
 		8B5304D51909A93100A2D40B /* Sentinel-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sentinel-Light.ttf"; sourceTree = "<group>"; };
 		8B5304D71909A98200A2D40B /* Quattrocento-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quattrocento-Regular.ttf"; sourceTree = "<group>"; };
-		8B5DC4C718F1F4F500732D45 /* NewArticlesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewArticlesListTableViewController.h; path = ../../NewArticlesListTableViewController.h; sourceTree = "<group>"; };
-		8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewArticlesListTableViewController.m; path = ../../NewArticlesListTableViewController.m; sourceTree = "<group>"; };
+		8B5DC4C718F1F4F500732D45 /* NewArticlesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticlesListTableViewController.h; sourceTree = "<group>"; };
+		8B5DC4C818F1F4F500732D45 /* NewArticlesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticlesListTableViewController.m; sourceTree = "<group>"; };
 		8B5DC4CA18F1F57A00732D45 /* NewArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewArticleCell.h; path = ../Model/NewArticleCell.h; sourceTree = "<group>"; };
 		8B5DC4CB18F1F57A00732D45 /* NewArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewArticleCell.m; path = ../Model/NewArticleCell.m; sourceTree = "<group>"; };
 		8B5DC4CD18F1F67B00732D45 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -383,7 +383,7 @@
 				8BA436DE19089D67003709FA /* Quattrocento */,
 				8BA436DD19089D60003709FA /* Raleway */,
 			);
-			name = Fonts;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		8BA436DD19089D60003709FA /* Raleway */ = {
