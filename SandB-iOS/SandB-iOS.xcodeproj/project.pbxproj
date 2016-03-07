@@ -55,7 +55,6 @@
 		8B72A00E18FA621E00AD6C1F /* MZCustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A00D18FA621E00AD6C1F /* MZCustomTransition.m */; };
 		8B72A01118FA6E8200AD6C1F /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A01018FA6E8200AD6C1F /* ShareModalViewController.m */; };
 		8B72A01418FA932200AD6C1F /* TextOptionModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A01318FA932200AD6C1F /* TextOptionModalViewController.m */; };
-		8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B85640018D4D75B0098B83A /* ArticleCell.m */; };
 		8B9BB13916BC64F100C20358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */; };
 		8B9BB17916BEEE8F00C20358 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BB17816BEEE8F00C20358 /* Article.m */; };
 		8BA436E51908A59E003709FA /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA436E41908A59E003709FA /* Cache.m */; };
@@ -157,8 +156,6 @@
 		8B72A01018FA6E8200AD6C1F /* ShareModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModalViewController.m; sourceTree = "<group>"; };
 		8B72A01218FA932200AD6C1F /* TextOptionModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextOptionModalViewController.h; sourceTree = "<group>"; };
 		8B72A01318FA932200AD6C1F /* TextOptionModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextOptionModalViewController.m; sourceTree = "<group>"; };
-		8B8563FF18D4D75B0098B83A /* ArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
-		8B85640018D4D75B0098B83A /* ArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
 		8B85640318D4D9760098B83A /* Raleway-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.otf"; sourceTree = "<group>"; };
 		8B85640418D4D9760098B83A /* Raleway-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.otf"; sourceTree = "<group>"; };
 		8B85640518D4D9760098B83A /* Raleway-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -283,8 +280,6 @@
 				8B9BB17816BEEE8F00C20358 /* Article.m */,
 				16B3E724186B929200ABC0CF /* DataModel.h */,
 				16B3E725186B929200ABC0CF /* DataModel.m */,
-				8B8563FF18D4D75B0098B83A /* ArticleCell.h */,
-				8B85640018D4D75B0098B83A /* ArticleCell.m */,
 				8BF70EE118F65F2B00637795 /* NewsCategories.h */,
 				8BF70EE218F65F2B00637795 /* NewsCategories.m */,
 				8BF70EE718F6CB1000637795 /* NewsCategory.h */,
@@ -519,6 +514,7 @@
 				8BD1C80916B32493005F3F23 /* Resources */,
 				83CEC29E5FDD4F6EAA129B86 /* Copy Pods Resources */,
 				16E425AC187DD5BB00695381 /* ShellScript */,
+				FBBA53D3DF6AB0C0469D350F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -643,6 +639,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FBBA53D3DF6AB0C0469D350F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -658,7 +669,6 @@
 				8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */,
 				8BA436E51908A59E003709FA /* Cache.m in Sources */,
 				8B72A01418FA932200AD6C1F /* TextOptionModalViewController.m in Sources */,
-				8B85640118D4D75B0098B83A /* ArticleCell.m in Sources */,
 				8B72A00018FA529C00AD6C1F /* MZTransition.m in Sources */,
 				8B72A00718FA5E1500AD6C1F /* MZAppearance.m in Sources */,
 				8B9BB17916BEEE8F00C20358 /* Article.m in Sources */,
@@ -776,6 +786,7 @@
 				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appdev.SandB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -800,6 +811,7 @@
 				GCC_PREFIX_HEADER = "SandB-iOS/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appdev.SandB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
