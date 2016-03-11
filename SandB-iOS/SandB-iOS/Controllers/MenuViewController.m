@@ -166,12 +166,12 @@
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     if (indexPath.section == 0) {
         if ([segue.identifier isEqualToString:@"GoToCategory"]) {
             UINavigationController *nc = segue.destinationViewController;
             ArticlesListTableViewController *naltvc = [nc.viewControllers objectAtIndex:0];
-            NSIndexPath *indexPath = [self.theTableView indexPathForCell:sender];
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             
 
             NSString *categoryString = categoriesTitles[indexPath.row];

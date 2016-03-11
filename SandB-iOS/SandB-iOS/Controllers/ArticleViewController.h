@@ -6,7 +6,7 @@
 @interface ArticleViewController : UIViewController 
 
 @property (strong, nonatomic) IBOutlet UILabel *articleTitleLabel;
-@property (strong, nonatomic) IBOutlet UITableView *theTableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIView *savedToFavsView;
 @property (strong, nonatomic) IBOutlet UIImageView *bigStar;

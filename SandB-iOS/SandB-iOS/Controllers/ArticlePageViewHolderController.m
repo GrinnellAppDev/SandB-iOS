@@ -7,6 +7,7 @@
 #import "MZCustomTransition.h"
 #import "MZFormSheetController.h"
 #import "MZFormSheetSegue.h"
+#import "ReadingOptions.h"
 #import "ShareModalViewController.h"
 #import "ShareMZModalViewController.h"
 #import "TextOptionModalViewController.h"
@@ -18,29 +19,13 @@
 @property (nonatomic) NSUInteger index;
 @property (nonatomic, assign) BOOL isFetchingArticles;
 
-// Reading Options
-@property (nonatomic, assign) float fontSize;
-@property (nonatomic, strong) NSString *fontFamily;
-@property (nonatomic, assign) BOOL isLightTheme;
-
 @end
 
 @implementation ArticlePageViewHolderController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPages) name:@"ReloadPageViewController" object:nil];
     
     // Do any additional setup after loading the view.
     
@@ -53,7 +38,8 @@
     NSArray *viewControllers = @[startingViewController];
     //[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    // Bug in PageViewController with Scroll. http://stackoverflow.com/questions/13633059/uipageviewcontroller-how-do-i-correctly-jump-to-a-specific-page-without-messing
+    // Bug in PageViewController with Scroll.
+    // http://stackoverflow.com/questions/13633059/uipageviewcontroller-how-do-i-correctly-jump-to-a-specific-page-without-messing
     __weak UIPageViewController * _weakPageViewController = self.pageViewController;
     [self.pageViewController setViewControllers:viewControllers
                                       direction:UIPageViewControllerNavigationDirectionForward
@@ -113,8 +99,6 @@
     
     [MZFormSheetController registerTransitionClass:[MZCustomTransition class] forTransitionStyle:MZFormSheetTransitionStyleCustom];
     
-    [self loadReadingOptions];
-    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -129,71 +113,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (void)loadReadingOptions
-{
-    self.fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"ReadingOptionsFontSize"];
-    self.fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"];
-    self.isLightTheme = [[NSUserDefaults standardUserDefaults] boolForKey:@"ReadingOptionsIsLightTheme"];
-}
-
 #pragma mark - Page View Controller methods
 
-- (ArticleViewController *) viewControllerAtIndex:(NSUInteger) index {
+- (ArticleViewController *)viewControllerAtIndex:(NSUInteger) index {
     if (([self.pageArticles count] == 0) || (index >= [self.pageArticles count])) {
         return nil;
     }
     
-    [self loadReadingOptions];
-    
-    ArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
+    ArticleViewController *articleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
     
     
     Article *article = self.pageArticles[index];
+    [article formAttrContentWithReadingOptions:[ReadingOptions savedOptions]];
     
-    // Modify the article right here.
     
-    //Get default values.
+    articleViewController.article = article;
+    articleViewController.pageIndex = index;
     
-    // NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
-    //  NSFontAttributeName: [UIFont fontWithName:@"Palatino" size:14.0f],
-    
-    // size ranges from 100% to 200%.
-    // Helvetica Neue || Avenir Next || Cochin
-    
-     NSString *htmlOpen = @"<html>";
-     NSString *htmlClose = @"</html>";
-    int fontSize = (self.fontSize * 100) + 100;
-    NSString * htmlAdditions  =  [NSString stringWithFormat:@"<head><style type='text/css'> body{font-size: %d%%;font-family:'%@';color:#4A4A4A;} </style></head>", fontSize, self.fontFamily];
-
-//     NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 180%;font-family:'Cochin';color:#4A4A4A;}</style></head>";
-     NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, article.content, htmlClose];
-    
-     NSError *error = nil;
-     
-     NSDictionary *options = @{
-     NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-     };
-     
-     
-     article.attrContent = [[NSMutableAttributedString alloc] initWithData:[newContent dataUsingEncoding:NSUTF32StringEncoding]
-     options:options documentAttributes:nil
-     error:&error];
-     
-    
-    /* NSDictionary* attributes = @{
-                                NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
-                                
-                                 }; */
-    
-    //[article.attrContent addAttributes:attributes range:NSMakeRange(0, [article.attrContent length])];
-    
-    //NSLog(@"attrContent: %@", article.attrContent);
-    
-    navc.article = article;
-    navc.pageIndex = index;
-    
-    return navc;
+    return articleViewController;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -231,9 +168,10 @@
 {
     NSLog(@"Reloading");
     
-    
-    [self.pageViewController xcd_setViewControllers:self.pageViewController.viewControllers direction:UIPageViewControllerNavigationDirectionForward
-                                           animated:NO completion:nil];
+    [self.pageViewController xcd_setViewControllers:self.pageViewController.viewControllers
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:NO
+                                         completion:nil];
 }
 
 #pragma mark - Downloading Data
@@ -272,7 +210,6 @@
              //[self.tableView reloadData];
              self.pageArticles = articles;
              
-             //Todo: call some sort of reloadPages here
              [self reloadPages]; 
          }
          else {

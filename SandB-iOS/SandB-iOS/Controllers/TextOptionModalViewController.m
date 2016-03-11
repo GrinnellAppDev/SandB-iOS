@@ -39,24 +39,15 @@
     // TODO (DrJid): Set the current Font family and highlight that button as selected.
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadingOptionsDismissed" object:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (IBAction)cancelButtonPressed:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)cancelButtonPressed:(id)sender {
     MZFormSheetController *controller = self.formSheetController;
     [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 }
@@ -103,8 +94,6 @@
     
     [[NSUserDefaults standardUserDefaults] setFloat:slider.value forKey:@"ReadingOptionsFontSize"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadPageViewController" object:nil];
 }
 
 - (void) changeButton:(UIButton *)btn toColor:(UIColor *)color {

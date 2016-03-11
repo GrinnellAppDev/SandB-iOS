@@ -1,5 +1,6 @@
 
 #import "Article.h"
+#import "ReadingOptions.h"
 #import "NSString+ISO8859Codes.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+ImageEffects.h"
@@ -30,7 +31,7 @@
             [attachments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 
                 if ([obj[@"images"] count] > 1) {
-                    self.imageMediumURL =  obj[@"images"][@"medium"][@"url"];
+                    self.imageMediumURL = obj[@"images"][@"medium"][@"url"];
                     self.imageLargeURL = obj[@"images"][@"large"][@"url"];
                     self.imageSmallURL = obj[@"images"][@"thumbnail"][@"url"];
                 }
@@ -64,9 +65,8 @@
         
         //This section is what we need to optimize on.
         //Blurring the images.
-        //And forming NSAttributedStrings from the article content.
         
-        [self formAttributedString];
+        [self formAttrContentWithReadingOptions:[ReadingOptions savedOptions]];
         
         
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
@@ -90,38 +90,45 @@
 
 - (NSString *)description
 {
-    NSDictionary *desc = @{@"title": self.title,
-                           @"url": self.URL,
-                           };
+    NSDictionary *desc = @{ @"title": self.title,
+                            @"url": self.URL };
     
     return [NSString stringWithFormat:@"%@", desc ];
     
 }
 
-- (void)formAttributedString
+- (void)formAttrContentWithReadingOptions:(ReadingOptions *)options
 {
-    //Increasing the font size via css - Did it this way because I didn't want to lose the formatting
-    NSString *htmlOpen = @"<html>";
-    NSString *htmlClose = @"</html>";
-    NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 150%;font-family:'Helvetica Neue';color:#4A4A4A;}</style></head>";
-    NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, self.content, htmlClose];
+    // Convert fontSize to percent between 100%-200%
+    int percentageFontSize = (options.fontSize * 100) + 100;
+    
+    NSString * htmlAdditions = [NSString
+                                stringWithFormat:@"<head><style type='text/css'>body{font-size: %d%%;font-family:'%@';color:#4A4A4A;}</style></head>", percentageFontSize, options.fontFamily];
+    
+    NSString *newContent =  [NSString stringWithFormat:@"<html>%@ %@</html>", htmlAdditions, self.content];
     
     NSError *error = nil;
     
-    NSDictionary *options = @{
-                              NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                              };
-    
-    
     self.attrContent = [[NSMutableAttributedString alloc] initWithData:[newContent dataUsingEncoding:NSUTF32StringEncoding]
-                                                           options:options documentAttributes:nil
-                                                             error:&error];
+                                                                  options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
+                                                       documentAttributes:nil
+                                                                    error:&error];
+}
+
+- (CGFloat)attrContentHeightForWidth:(CGFloat)width
+{
+    UITextView *textView = [[UITextView alloc] init];
+    [textView setAttributedText:self.attrContent];
     
+    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    
+    return size.height;
 }
 
 #pragma mark - Methods to determine equality
 
-- (BOOL)isEqual:(id)other {
+- (BOOL)isEqual:(id)other
+{
     if (self == other)
         return YES;
     
@@ -131,7 +138,8 @@
     return [self isEqualToArticle:other];
 }
 
-- (BOOL)isEqualToArticle:(Article *)anArticle {
+- (BOOL)isEqualToArticle:(Article *)anArticle
+{
     if (self == anArticle)
         return YES;
     
@@ -140,7 +148,8 @@
 }
 
 //Hash function needed as helper for comparison method above.
-- (NSUInteger)hash {
+- (NSUInteger)hash
+{
     NSUInteger result = 1;
     NSUInteger prime = 31;
     
@@ -152,7 +161,8 @@
 #pragma mark - Serializing and Deserializing
 // cache
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
     self = [super init];
     if (self) {
         self.title = [aDecoder decodeObjectForKey:@"title"];
@@ -173,7 +183,8 @@
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
     [aCoder encodeObject:self.title forKey:@"title"];
     [aCoder encodeObject:self.content forKey:@"content"];
     [aCoder encodeObject:self.URL forKey:@"URL"];
