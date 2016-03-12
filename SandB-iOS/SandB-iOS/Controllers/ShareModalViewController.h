@@ -1,10 +1,10 @@
 
 #import <Accounts/Accounts.h>
 #import <MessageUI/MessageUI.h>
-#import <SAMTextView.h>
 #import <UIKit/UIKit.h>
 
 @class Article;
+@class SAMTextView;
 
 @interface ShareModalViewController : UIViewController <MFMailComposeViewControllerDelegate, UITextViewDelegate, MFMessageComposeViewControllerDelegate>
 

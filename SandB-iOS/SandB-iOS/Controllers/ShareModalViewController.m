@@ -1,11 +1,11 @@
 
 #import <Accounts/Accounts.h>
-#import <MBProgressHUD.h>
-#import <SAMTextView.h>
 #import <Social/Social.h>
 
 #import "Article.h"
+#import "MBProgressHUD.h"
 #import "MZFormSheetController.h"
+#import "SAMTextView.h"
 #import "ShareModalViewController.h"
 
 @interface ShareModalViewController () {
@@ -113,28 +113,10 @@
     }
 }
 
-//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-//{
-//    if([text length] == 0)
-//    {
-//        if([textView.text length] != 0)
-//        {
-//            return YES;
-//        }
-//    }
-//    else if([[textView text] length] > 139)
-//    {
-//        return NO;
-//    }
-//    return YES;
-//}
-
 - (IBAction)facebookButtonPressed:(id)sender {
     [self buttonPressed:sender withImage:@"FacebookIcon"];
     
     self.commentTextView.text = [NSString stringWithFormat:@"%@", self.article.title];
-    //self.commentTextView.text = nil;
-    //self.commentTextView.placeholder = @"Add comment...";
     self.commentTextView.hidden = NO;
     
     self.characterCount.hidden = YES;

@@ -12,14 +12,27 @@
 
 #define CONTENT_WIDTH 306.0
 #define IMAGE_HEADER_HEIGHT 400
+#define NAVBAR_COLOR_TRIGGER_OFFSET -69.0
+
+#define NUMBER_ARTICLE_ROWS 3
+
+#define TITLE_ROW_INDEX 0
+#define CATEGORY_ROW_INDEX 1
+#define CONTENT_ROW_INDEX 2
+
+#define TITLE_ROW_HEIGHT 70.0f
+#define CATEGORY_ROW_HEIGHT 10.0f
+#define CONTENT_ROW_HEIGHT contentHeight + 10
 
 @interface ArticleViewController ()
 
 @end
 
 @implementation ArticleViewController {
-    CGFloat contentHeight;
+    CGFloat contentHeight; // used in CONTENT_ROW_HEIGHT macro
 }
+
+#pragma mark - View Lifecycle Methods
 
 - (void)viewDidLoad
 {
@@ -55,90 +68,55 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return NUMBER_ARTICLE_ROWS;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *titleCellIdentifier = @"TitleCell";
-    static NSString *contentCellIdentifier = @"ContentCell";
-    static NSString *categoryCellIdentifier = @"CategoryCell";
+    switch (indexPath.row) {
+        case TITLE_ROW_INDEX:
+            return [self createTitleCellForTableView:tableView andIndexPath:indexPath];
+            
+        case CATEGORY_ROW_INDEX:
+            return [self createCategoryCellForTableView:tableView andIndexPath:indexPath];
     
-    TitleCell *titleCell;
-    ContentCell *contentCell;
-    CategoryCell *categoryCell;
-    
-    if (indexPath.row == 0) {
-        
-        titleCell = [tableView dequeueReusableCellWithIdentifier:titleCellIdentifier forIndexPath:indexPath];
-        
-        //titleCell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        titleCell.titleLabel.numberOfLines = 0;
-        [titleCell.titleLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:20.0]];
-        titleCell.titleLabel.text = self.article.title;
-        
-        return titleCell;
-    
-    } else if (indexPath.row == 1) {
-        categoryCell = [tableView dequeueReusableCellWithIdentifier:categoryCellIdentifier forIndexPath:indexPath];
-        
-        categoryCell.categoryLabel.text = self.article.category;
-        [categoryCell.categoryLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:15]];
-        
-        int colorIndex = (int)[[[[NewsCategories sharedCategories] categories] objectForKey:@"names"] indexOfObject:self.article.category];
-        
-        [categoryCell.categoryLabel setTextColor:[[[[NewsCategories sharedCategories] categories] objectForKey:@"colors"] objectAtIndex:colorIndex]];
-        
-        categoryCell.byLabel.text = self.article.author;
-        [categoryCell.byLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:15]];
-        
-        return categoryCell;
-   
-    } else {
-        contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
-        
-        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 20, CONTENT_WIDTH, contentHeight)];
-        
-        contentTextView.attributedText = self.article.attrContent;
-        contentTextView.userInteractionEnabled = NO;
-        contentTextView.selectable = NO;
-        contentTextView.backgroundColor = [UIColor clearColor];
-        
-        // Remove existing contentTextView
-        for (UIView *view in [contentCell.contentView subviews]) {
-            [view removeFromSuperview];
-        }
-        
-        [contentCell.contentView addSubview:contentTextView];
-        
-        return contentCell;
+        case CONTENT_ROW_INDEX:
+            return [self createContentCellForTableView:tableView andIndexPath:indexPath];
+            
+        default:        // Should never reach this
+            return nil; // Just supresses compiler warnings
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)path
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (path.row == 2) {
-        return contentHeight + 10;
-    } else if (path.row == 0) {
-        return 70.0f;
-    } else {
-        return 10.0f;
+    switch (indexPath.row) {
+        case TITLE_ROW_INDEX:
+            return TITLE_ROW_HEIGHT;
+            
+        case CATEGORY_ROW_INDEX:
+            return CATEGORY_ROW_HEIGHT;
+            
+        case CONTENT_ROW_INDEX:
+            return CONTENT_ROW_HEIGHT;
+            
+        default:         // Should never reach this
+            return 0.0f; // Just supresses compiler warnings
     }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //CGFloat contentOffsetDifference = scrollView.contentOffset.y;
-   // NSLog(@"our floattt: %f", contentOffsetDifference);
-    
-    if (scrollView.contentOffset.y > -69.0 ) {
+    if (scrollView.contentOffset.y > NAVBAR_COLOR_TRIGGER_OFFSET) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ColorTopBar" object:nil];
     }
     
-    else if (scrollView.contentOffset.y < -69.0) {
+    else if (scrollView.contentOffset.y < NAVBAR_COLOR_TRIGGER_OFFSET) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UncolorTopBar" object:nil];
     }
 }
+
+#pragma mark - NotificationCenter Observers
 
 - (void)notifyAboutFavoriting
 {
@@ -190,6 +168,65 @@
     [self.article formAttrContentWithReadingOptions:[ReadingOptions savedOptions]];
     
     [self.tableView reloadData];
+}
+
+#pragma mark - Table Cell Constructors
+
+- (UITableViewCell *)createTitleCellForTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *titleCellIdentifier = @"TitleCell";
+    
+    TitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleCellIdentifier forIndexPath:indexPath];
+    
+    //titleCell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    titleCell.titleLabel.numberOfLines = 0;
+    [titleCell.titleLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:20.0]];
+    titleCell.titleLabel.text = self.article.title;
+    
+    return titleCell;
+}
+
+- (UITableViewCell *)createCategoryCellForTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *categoryCellIdentifier = @"CategoryCell";
+    
+    CategoryCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:categoryCellIdentifier forIndexPath:indexPath];
+    
+    categoryCell.categoryLabel.text = self.article.category;
+    [categoryCell.categoryLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:15]];
+    
+    int colorIndex = (int)[[[[NewsCategories sharedCategories] categories] objectForKey:@"names"] indexOfObject:self.article.category];
+    
+    [categoryCell.categoryLabel setTextColor:[[[[NewsCategories sharedCategories] categories] objectForKey:@"colors"] objectAtIndex:colorIndex]];
+    
+    categoryCell.byLabel.text = self.article.author;
+    [categoryCell.byLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:15]];
+    
+    return categoryCell;
+}
+
+- (UITableViewCell *)createContentCellForTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *contentCellIdentifier = @"ContentCell";
+    
+    ContentCell *contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
+    
+    UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 20, CONTENT_WIDTH, contentHeight)];
+    
+    contentTextView.attributedText = self.article.attrContent;
+    contentTextView.userInteractionEnabled = NO;
+    contentTextView.selectable = NO;
+    contentTextView.backgroundColor = [UIColor clearColor];
+    
+    // Remove existing contentTextView
+    for (UIView *view in [contentCell.contentView subviews]) {
+        [view removeFromSuperview];
+    }
+    
+    [contentCell.contentView addSubview:contentTextView];
+    
+    return contentCell;
+    
 }
 
 @end
