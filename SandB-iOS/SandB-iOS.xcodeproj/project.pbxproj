@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A72ADD2A3AA4449A8D2C7FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 860B32250CAC4589B9915763 /* libPods.a */; };
 		1633F08618FADB0B00D0288F /* UIPageViewController+ReloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1633F08518FADB0B00D0288F /* UIPageViewController+ReloadData.m */; };
 		16355F9B18FA87910047F3B0 /* NSString+ISO8859Codes.m in Sources */ = {isa = PBXBuildFile; fileRef = 16355F9A18FA87910047F3B0 /* NSString+ISO8859Codes.m */; };
 		16B3E6F418691C9A00ABC0CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B3E6F318691C9A00ABC0CF /* Main.storyboard */; };
@@ -16,6 +15,8 @@
 		16B3E726186B929200ABC0CF /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E725186B929200ABC0CF /* DataModel.m */; };
 		16DC336B190DCFB000C43BAD /* strings_private.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16DC336A190DCFB000C43BAD /* strings_private.strings */; };
 		16E425AE187DD5F200695381 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E425AD187DD5F200695381 /* Crashlytics.framework */; };
+		363D36FD1C8E374B008C44D0 /* ReadingOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 363D36FC1C8E374B008C44D0 /* ReadingOptions.m */; };
+		363D36FF1C8E5576008C44D0 /* DefaultReadingOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 363D36FE1C8E5576008C44D0 /* DefaultReadingOptions.plist */; };
 		8B0DA2B818F827C300613D14 /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DA2B718F827C300613D14 /* TitleCell.m */; };
 		8B125BAB1720FD5E00C550F7 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BAA1720FD5E00C550F7 /* Icon-72.png */; };
 		8B125BAD1720FD7900C550F7 /* SnBLogoNew144.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B125BAC1720FD7900C550F7 /* SnBLogoNew144.png */; };
@@ -69,6 +70,7 @@
 		8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C81F16B32493005F3F23 /* AppDelegate.m */; };
 		8BF70EE318F65F2B00637795 /* NewsCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EE218F65F2B00637795 /* NewsCategories.m */; };
 		8BF70EE918F6CB1000637795 /* NewsCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EE818F6CB1000637795 /* NewsCategory.m */; };
+		8E9BF97CD26563F4C621A9D9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F0672179187FCE33612F6C /* Pods.framework */; };
 		E19E290A180E5ED200ED33FE /* icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2903180E5ED200ED33FE /* icon-29.png */; };
 		E19E290B180E5ED200ED33FE /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2904180E5ED200ED33FE /* icon-40.png */; };
 		E19E290C180E5ED200ED33FE /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2905180E5ED200ED33FE /* icon-58.png */; };
@@ -92,9 +94,12 @@
 		16B3E725186B929200ABC0CF /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		16DC336A190DCFB000C43BAD /* strings_private.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = strings_private.strings; sourceTree = "<group>"; };
 		16E425AD187DD5F200695381 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		363D36FB1C8E374B008C44D0 /* ReadingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingOptions.h; sourceTree = "<group>"; };
+		363D36FC1C8E374B008C44D0 /* ReadingOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingOptions.m; sourceTree = "<group>"; };
+		363D36FE1C8E5576008C44D0 /* DefaultReadingOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultReadingOptions.plist; sourceTree = "<group>"; };
 		5AC149E66E3E59AB5BD81106 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		733EE58CC559DD3DC94E3F3E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		860B32250CAC4589B9915763 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F0672179187FCE33612F6C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0DA2B618F827C300613D14 /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
 		8B0DA2B718F827C300613D14 /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
 		8B125BAA1720FD5E00C550F7 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -212,7 +217,7 @@
 				8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */,
 				8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */,
 				16E425AE187DD5F200695381 /* Crashlytics.framework in Frameworks */,
-				0A72ADD2A3AA4449A8D2C7FC /* libPods.a in Frameworks */,
+				8E9BF97CD26563F4C621A9D9 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +286,8 @@
 				8BF70EE218F65F2B00637795 /* NewsCategories.m */,
 				8BF70EE718F6CB1000637795 /* NewsCategory.h */,
 				8BF70EE818F6CB1000637795 /* NewsCategory.m */,
+				363D36FB1C8E374B008C44D0 /* ReadingOptions.h */,
+				363D36FC1C8E374B008C44D0 /* ReadingOptions.m */,
 				8BA436E31908A59E003709FA /* Cache.h */,
 				8BA436E41908A59E003709FA /* Cache.m */,
 			);
@@ -444,7 +451,7 @@
 				8BD1C80F16B32493005F3F23 /* UIKit.framework */,
 				8BD1C81116B32493005F3F23 /* Foundation.framework */,
 				8BD1C81316B32493005F3F23 /* CoreGraphics.framework */,
-				860B32250CAC4589B9915763 /* libPods.a */,
+				86F0672179187FCE33612F6C /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -474,6 +481,7 @@
 				8BD1C81816B32493005F3F23 /* InfoPlist.strings */,
 				8BD1C81B16B32493005F3F23 /* main.m */,
 				8BD1C81D16B32493005F3F23 /* SandB-iOS-Prefix.pch */,
+				363D36FE1C8E5576008C44D0 /* DefaultReadingOptions.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -518,6 +526,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = "";
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Grinnell AppDev";
 				TargetAttributes = {
@@ -569,6 +578,7 @@
 				8B125BAF1720FE1B00C550F7 /* Icon.png in Resources */,
 				8B125BB11720FECD00C550F7 /* Icon@2x.png in Resources */,
 				E19E2910180E5ED200ED33FE /* icon-152.png in Resources */,
+				363D36FF1C8E5576008C44D0 /* DefaultReadingOptions.plist in Resources */,
 				8B125BB31720FF4700C550F7 /* Icon-Small-50.png in Resources */,
 				8B125BB51720FFCD00C550F7 /* Icon-Small@2x.png in Resources */,
 				8B125BB71721005B00C550F7 /* Icon-Small.png in Resources */,
@@ -676,6 +686,7 @@
 				8B72A00818FA5E1500AD6C1F /* NSInvocation+Copy.m in Sources */,
 				8B72A00218FA529C00AD6C1F /* UIViewController+TargetViewController.m in Sources */,
 				8B729FFD18FA529C00AD6C1F /* MZFormSheetBackgroundWindowViewController.m in Sources */,
+				363D36FD1C8E374B008C44D0 /* ReadingOptions.m in Sources */,
 				8B0DA2B818F827C300613D14 /* TitleCell.m in Sources */,
 				8B5DC4D618F1FD0200732D45 /* ArticlePageViewHolderController.m in Sources */,
 				16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */,
@@ -771,9 +782,12 @@
 				GCC_PREFIX_HEADER = "SandB-iOS/SupportingFiles/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SupportingFiles/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appdev.SandB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SandB-iOS/SupportingFiles/S&B-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -796,10 +810,12 @@
 				GCC_PREFIX_HEADER = "SandB-iOS/SupportingFiles/SandB-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SandB-iOS/SupportingFiles/SandB-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appdev.SandB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SandB-iOS/SupportingFiles/S&B-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
