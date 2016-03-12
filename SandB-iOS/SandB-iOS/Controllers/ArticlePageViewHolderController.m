@@ -9,7 +9,6 @@
 #import "MZFormSheetSegue.h"
 #import "ReadingOptions.h"
 #import "ShareModalViewController.h"
-#import "ShareMZModalViewController.h"
 #import "TextOptionModalViewController.h"
 #import "UIPageViewController+ReloadData.h"
 

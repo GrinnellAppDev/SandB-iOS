@@ -51,7 +51,6 @@
 		8B72A00218FA529C00AD6C1F /* UIViewController+TargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B729FFB18FA529C00AD6C1F /* UIViewController+TargetViewController.m */; };
 		8B72A00718FA5E1500AD6C1F /* MZAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A00418FA5E1500AD6C1F /* MZAppearance.m */; };
 		8B72A00818FA5E1500AD6C1F /* NSInvocation+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A00618FA5E1500AD6C1F /* NSInvocation+Copy.m */; };
-		8B72A00B18FA603600AD6C1F /* ShareMzModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A00A18FA603600AD6C1F /* ShareMzModalViewController.m */; };
 		8B72A00E18FA621E00AD6C1F /* MZCustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A00D18FA621E00AD6C1F /* MZCustomTransition.m */; };
 		8B72A01118FA6E8200AD6C1F /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A01018FA6E8200AD6C1F /* ShareModalViewController.m */; };
 		8B72A01418FA932200AD6C1F /* TextOptionModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72A01318FA932200AD6C1F /* TextOptionModalViewController.m */; };
@@ -150,8 +149,6 @@
 		8B72A00418FA5E1500AD6C1F /* MZAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAppearance.m; sourceTree = "<group>"; };
 		8B72A00518FA5E1500AD6C1F /* NSInvocation+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Copy.h"; sourceTree = "<group>"; };
 		8B72A00618FA5E1500AD6C1F /* NSInvocation+Copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+Copy.m"; sourceTree = "<group>"; };
-		8B72A00918FA603600AD6C1F /* ShareMzModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareMzModalViewController.h; sourceTree = "<group>"; };
-		8B72A00A18FA603600AD6C1F /* ShareMzModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareMzModalViewController.m; sourceTree = "<group>"; };
 		8B72A00C18FA621E00AD6C1F /* MZCustomTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCustomTransition.h; sourceTree = "<group>"; };
 		8B72A00D18FA621E00AD6C1F /* MZCustomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCustomTransition.m; sourceTree = "<group>"; };
 		8B72A00F18FA6E8200AD6C1F /* ShareModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModalViewController.h; sourceTree = "<group>"; };
@@ -235,8 +232,6 @@
 				8B5DC4C818F1F4F500732D45 /* ArticlesListTableViewController.m */,
 				8B5DC4D418F1FD0200732D45 /* ArticlePageViewHolderController.h */,
 				8B5DC4D518F1FD0200732D45 /* ArticlePageViewHolderController.m */,
-				8B72A00918FA603600AD6C1F /* ShareMzModalViewController.h */,
-				8B72A00A18FA603600AD6C1F /* ShareMzModalViewController.m */,
 				8B72A00F18FA6E8200AD6C1F /* ShareModalViewController.h */,
 				8B72A01018FA6E8200AD6C1F /* ShareModalViewController.m */,
 				8B72A01218FA932200AD6C1F /* TextOptionModalViewController.h */,
@@ -668,7 +663,6 @@
 				8B72A00018FA529C00AD6C1F /* MZTransition.m in Sources */,
 				8B72A00718FA5E1500AD6C1F /* MZAppearance.m in Sources */,
 				8B9BB17916BEEE8F00C20358 /* Article.m in Sources */,
-				8B72A00B18FA603600AD6C1F /* ShareMzModalViewController.m in Sources */,
 				8B5DC4CF18F1F67B00732D45 /* MenuViewController.m in Sources */,
 				8BF70EE318F65F2B00637795 /* NewsCategories.m in Sources */,
 				8B72A00E18FA621E00AD6C1F /* MZCustomTransition.m in Sources */,
