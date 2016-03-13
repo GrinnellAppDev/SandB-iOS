@@ -35,22 +35,10 @@
     ArticleViewController *startingViewController = [self viewControllerAtIndex:self.articleIndex];
     
     NSArray *viewControllers = @[startingViewController];
-    //[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    // Bug in PageViewController with Scroll.
-    // http://stackoverflow.com/questions/13633059/uipageviewcontroller-how-do-i-correctly-jump-to-a-specific-page-without-messing
-    __weak UIPageViewController * _weakPageViewController = self.pageViewController;
     [self.pageViewController setViewControllers:viewControllers
                                       direction:UIPageViewControllerNavigationDirectionForward
-                                       animated:YES completion:^(BOOL finished) {
-                                           UIPageViewController* pvcs = _weakPageViewController;
-                                           if (!pvcs) return;
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               [pvcs setViewControllers:viewControllers
-                                                              direction:UIPageViewControllerNavigationDirectionForward
-                                                               animated:NO completion:nil];
-                                           });
-                                       }];
+                                       animated:NO
+                                     completion:nil];
     
     self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
