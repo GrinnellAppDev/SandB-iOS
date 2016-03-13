@@ -22,8 +22,7 @@
 
 @implementation ArticlePageViewHolderController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
@@ -88,21 +87,15 @@
     
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     if ([[[DataModel sharedModel] savedArticles] containsObject:self.sentArticle]) {
         [self.starButton setImage:[UIImage imageNamed:@"StarIconGold"]forState:UIControlStateNormal];
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Page View Controller methods
 
-- (ArticleViewController *)viewControllerAtIndex:(NSUInteger) index {
+- (ArticleViewController *)viewControllerAtIndex:(NSUInteger)index {
     if (([self.pageArticles count] == 0) || (index >= [self.pageArticles count])) {
         return nil;
     }
@@ -120,7 +113,8 @@
     return articleViewController;
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(UIViewController *)viewController {
     
     NSUInteger index = ((ArticleViewController *) viewController).pageIndex;
     
@@ -133,7 +127,8 @@
     return [self viewControllerAtIndex:index];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
     
     NSUInteger index = ((ArticleViewController *) viewController).pageIndex;
     
@@ -151,8 +146,7 @@
 }
 
 
-- (void)reloadPages
-{
+- (void)reloadPages {
     NSLog(@"Reloading");
     
     [self.pageViewController xcd_setViewControllers:self.pageViewController.viewControllers
@@ -163,9 +157,19 @@
 
 #pragma mark - Downloading Data
 
-- (void) fetchArticles {
+// These two methods, fetchArticles and fetchCategoryArticles are repeated almost line-for-line
+// in ArticlesListTableViewController
+// TODO:
+
+
+
+- (void)fetchArticles {
     
-    [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+    [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles,
+                                                                NSMutableArray *newArticles,
+                                                                int totalPages,
+                                                                int currentPage,
+                                                                NSError *error) {
         if (!error) {
             
             // TODO (DrJid): Handle when _currentPage < totalPages :: Honestly... there are like... 3K articles... we'd never get to this point now would we...
@@ -186,7 +190,7 @@
     
 }
 
-- (void) fetchCategoryArticles {
+- (void)fetchCategoryArticles {
     
     [[DataModel sharedModel] fetchArticlesForCategory:self.recievedCategoryString withCompletionBlock:
      ^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
@@ -253,9 +257,8 @@
     
 }
 
-// changing the color of the buttons
-
-- (void) colorButtonsForRenderingMode:(UIImageRenderingMode *) mode andControlState:(UIControlState *) state {
+- (void)colorButtonsForRenderingMode:(UIImageRenderingMode *)mode
+                     andControlState:(UIControlState *)state {
     
     self.view.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
     
@@ -301,13 +304,13 @@
 
 }
 
-- (IBAction)shareButtonPressed:(id)sender {
-}
-
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+- (void)pageViewController:(UIPageViewController *)pageViewController
+         didFinishAnimating:(BOOL)finished
+    previousViewControllers:(NSArray *)previousViewControllers
+        transitionCompleted:(BOOL)completed {
     
-    ArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
-    NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
+    ArticleViewController *currentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
+    NSInteger theIndex = [self.pageArticles indexOfObject:currentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
     self.sentArticle = self.currentArticle;
     

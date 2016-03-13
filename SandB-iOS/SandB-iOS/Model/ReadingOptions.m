@@ -10,8 +10,7 @@
 
 @implementation ReadingOptions
 
-+ (instancetype)savedOptions
-{
++ (instancetype)savedOptions {
     ReadingOptions *options = [[ReadingOptions alloc] init];
     
     options.fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"ReadingOptionsFontSize"];

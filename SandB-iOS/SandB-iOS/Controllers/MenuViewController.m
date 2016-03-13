@@ -21,8 +21,7 @@
 }
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -39,23 +38,18 @@
         
     toolsTitles = @[@"Saved Articles", @"Rate Our App", @"Contact Us"];
     
-    self.view.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithRed:140.0/255
+                                                green:29.0/255
+                                                 blue:41.0/255
+                                                alpha:1.0];
     
     self.slidingViewController.anchorRightRevealAmount = 200.0;
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
 
@@ -69,8 +63,7 @@
     }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if (section == 0) {
         return 6;
@@ -90,7 +83,9 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+- (void)tableView:(UITableView *)tableView
+    willDisplayHeaderView:(UIView *)view
+               forSection:(NSInteger)section {
     
         UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
         header.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
@@ -100,11 +95,12 @@
 
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *indetifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indetifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indetifier
+                                                            forIndexPath:indexPath];
     
     // Configure the cell...
     
@@ -117,7 +113,10 @@
         
         // TO DO: Make sure to change background color of first cell white, when something else is selected
         if (indexPath.row == 0) {
-                cell.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:0.05];
+                cell.backgroundColor = [UIColor colorWithRed:140.0/255
+                                                       green:29.0/255
+                                                        blue:41.0/255
+                                                       alpha:0.05];
         }
         cell.textLabel.textColor = categoryColors[indexPath.row];
         [cell.textLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:22]];
@@ -126,7 +125,10 @@
     if (indexPath.section == 1) {
         cell.textLabel.text = toolsTitles[indexPath.row];
         categoryIndicator = (UIView *) [cell viewWithTag:10];
-        categoryIndicator.backgroundColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
+        categoryIndicator.backgroundColor = [UIColor colorWithRed:140.0/255
+                                                            green:29.0/255
+                                                             blue:41.0/255
+                                                            alpha:1.0];
         [cell.textLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:18]];
     }
     
@@ -177,8 +179,7 @@
             NSString *categoryString = categoriesTitles[indexPath.row];
             naltvc.recievedCategory = categoryString;
         }
-    }
-    else {
+    } else {
         if (indexPath.row == 0) {
             if ([segue.identifier isEqualToString:@"GoToCategory"]) {
                 UINavigationController *nc = segue.destinationViewController;
@@ -187,24 +188,15 @@
                 NSString *categoryString = @"Favorites";
                 naltvc.recievedCategory = categoryString;
             }
-        }
-        else if (indexPath.row == 1) {
+        } else if (indexPath.row == 1) {
             [self rateSnB];
-        }
-        else {
+        } else {
             [self contactUs];
         }
     }
 }
 
-
-#pragma mark - ECSliding Methods
-
-- (IBAction)unwindToMenuViewController: (UIStoryboardSegue *) segue {
-    
-}
-
-- (void) contactUs {
+- (void)contactUs {
     if([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
@@ -219,15 +211,18 @@
     }
 }
 
-- (void) rateSnB {
-    NSDictionary *parameters = [NSDictionary dictionaryWithObject:@"638912711" forKey:SKStoreProductParameterITunesItemIdentifier];
+- (void)rateSnB {
+    NSDictionary *parameters = [NSDictionary dictionaryWithObject:@"638912711"
+                                                           forKey:SKStoreProductParameterITunesItemIdentifier];
     SKStoreProductViewController *productViewController = [[SKStoreProductViewController alloc] init];
     productViewController.delegate = self;
     [productViewController loadProductWithParameters:parameters completionBlock:nil];
     [self presentViewController:productViewController animated:YES completion:nil];
 }
 
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error {
     [self dismissViewControllerAnimated:YES completion:nil];
     [self viewDidLoad];
 }

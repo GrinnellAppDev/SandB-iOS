@@ -19,17 +19,7 @@
 
 @implementation ShareModalViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -42,21 +32,9 @@
     self.accountStore = [[ACAccountStore alloc] init];
     
     self.postedScreen.alpha = 0;
-    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if ([self bitlifyMyLink:self.article.URL]) {
         self.commentTextView.text = [NSString stringWithFormat:@"%@ %@", self.article.title, [self bitlifyMyLink:self.article.URL]];
@@ -103,8 +81,7 @@
 
 }
 
--(void)textViewDidChange:(UITextView *)textView
-{
+-(void)textViewDidChange:(UITextView *)textView {
     int len = (int)[self.commentTextView.text length];
     //NSLog(@"the length: %i", len);
     self.characterCount.text = [NSString stringWithFormat:@"%i", 140 - len];
@@ -155,11 +132,10 @@
     fbBtnPressed = NO;
     emailBtnPressed = NO;
     imgBtnPressed = YES;
-
 }
 
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
-{
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller
+                 didFinishWithResult:(MessageComposeResult)result {
     switch (result) {
         case MessageComposeResultCancelled:
             break;
@@ -185,7 +161,6 @@
 }
 
 - (IBAction)emailButtonPressed:(id)sender {
-    
     if([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
@@ -196,7 +171,11 @@
         mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         
         [mailViewController setSubject:self.article.title];
-        NSString *messageBody = [NSString stringWithFormat:@"<h2>%@</h2></br><img src='%@'></br><a href='%@'>Read more...</a>", self.article.title, self.article.imageSmallURL, self.article.URL];
+        NSString *messageBody = [NSString
+                                    stringWithFormat:@"<h2>%@</h2></br><img src='%@'></br><a href='%@'>Read more...</a>",
+                                    self.article.title,
+                                    self.article.imageSmallURL,
+                                    self.article.URL];
         [mailViewController setMessageBody:messageBody isHTML:YES];
         [self presentViewController:mailViewController animated:YES completion:nil];
     }
@@ -222,24 +201,28 @@
     
 }
 
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error {
     [self dismissViewControllerAnimated:YES completion:nil];
     
     MZFormSheetController *ctrl = self.formSheetController;
     [ctrl mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
 }
 
-- (void) buttonPressed:(UIButton *)button withImage:(NSString *)image {
-    
-    [button setImage:[[UIImage imageNamed:image]imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+- (void)buttonPressed:(UIButton *)button withImage:(NSString *)image {
+    [button setImage:[[UIImage imageNamed:image]
+                         imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
+            forState:UIControlStateNormal];
 }
 
-- (void) buttonDepressed:(UIButton *)button withImage:(NSString *)image {
-    
-    [button setImage:[[UIImage imageNamed:image]imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+- (void)buttonDepressed:(UIButton *)button withImage:(NSString *)image {
+    [button setImage:[[UIImage imageNamed:image]
+                         imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
+            forState:UIControlStateNormal];
 }
 
-- (BOOL) textViewShouldBeginEditing:(UITextView *)textView {
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     return YES;
 }
 
@@ -248,9 +231,9 @@
     return YES;
 }
 
-- (BOOL) textView: (UITextView*) textView shouldChangeTextInRange: (NSRange) range
-  replacementText: (NSString*) text
-{
+- (BOOL)textView:(UITextView*)textView
+    shouldChangeTextInRange:(NSRange)range
+            replacementText:(NSString*)text {
     if ([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
         return NO;
@@ -258,7 +241,7 @@
     return YES;
 }
 
-- (void) depressButtonsExceptFor:(UIButton *)currentButton {
+- (void)depressButtonsExceptFor:(UIButton *)currentButton {
     
     NSArray *buttons = [[NSArray alloc] initWithObjects:self.twitterButton, self.emailButton, self.facebookIcon, self.iMessageButton, nil];
     
@@ -278,7 +261,7 @@
 
 #pragma SOCIAL MEDIA
 
-- (void) tweetWithStatus:(NSString *)status {
+- (void)tweetWithStatus:(NSString *)status {
     ACAccountType *twitterType =
     [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
@@ -418,18 +401,11 @@
     
     // Create the parameters dictionary and the URL (!use HTTPS!)
     NSDictionary *parameters = @{@"message" : self.commentTextView.text, @"link": self.article.URL};
-    //NSURL *URL = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
-    
-    // Create request
-//    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
-//                                            requestMethod:SLRequestMethodPOST
-//                                                      URL:URL
-//                                               parameters:parameters];
     
     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
-                                                       requestMethod:SLRequestMethodGET
-                                                                 URL:[NSURL URLWithString:@"https://graph.facebook.com/me"]
-                                                          parameters:@{@"fields": @"feed"}];
+                                            requestMethod:SLRequestMethodGET
+                                                      URL:[NSURL URLWithString:@"https://graph.facebook.com/me"]
+                                               parameters:@{@"fields": @"feed"}];
     
     // Since we are performing a method that requires authorization we can simply
     // add the ACAccount to the SLRequest
@@ -472,7 +448,7 @@
     return shortenedURL;
 }
 
-- (void) succesfulPost {
+- (void)succesfulPost {
     [UIView animateWithDuration:0.3
                           delay: 0.1
                         options: UIViewAnimationOptionCurveEaseIn
@@ -498,7 +474,7 @@
 }
 
 
-- (void) unsuccesfulPostWithError:(NSString *) error {
+- (void)unsuccesfulPostWithError:(NSString *)error {
     
     MZFormSheetController *controller = self.formSheetController;
     [controller mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];

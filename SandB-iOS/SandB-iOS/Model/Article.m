@@ -7,17 +7,18 @@
 
 @implementation Article
 
-- (instancetype)initWithArticleDictionary:(NSDictionary *)articleDictionary
-{
+- (instancetype)initWithArticleDictionary:(NSDictionary *)articleDictionary {
     self = [super init];
     if (self) {
-        
-        
         // grab data from dictionary and set the properties
         self.title = [articleDictionary[@"title"] stringByDecodingXMLEntities];
         self.URL = articleDictionary[@"url"];
         self.content = articleDictionary[@"content"];
-        self.content = [self.content stringByReplacingOccurrencesOfString:@"<div id=\"attachment_.*</div>" withString:@"" options:NSCaseInsensitiveSearch | NSRegularExpressionSearch range:NSMakeRange(0, [self.content length])];
+        self.content = [self.content
+                        stringByReplacingOccurrencesOfString:@"<div id=\"attachment_.*</div>"
+                                                  withString:@""
+                                                     options:NSCaseInsensitiveSearch | NSRegularExpressionSearch
+                                                       range:NSMakeRange(0, [self.content length])];
         self.category = [articleDictionary[@"categories"] objectAtIndex:0][@"title"];
         self.articleId = [articleDictionary[@"id"] stringValue];
         
@@ -73,23 +74,22 @@
         
         [manager downloadImageWithURL:[NSURL URLWithString:self.thumbnailImageURL]
                               options:0
-                             progress:^(NSInteger receivedSize, NSInteger expectedSize){
-
-         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-             if (image)
-             {
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize){}
+                            completed:^(UIImage *image,
+                                        NSError *error,
+                                        SDImageCacheType cacheType,
+                                        BOOL finished,
+                                        NSURL *imageURL) {
+             if (image) {
                  // do something with image
                  self.image = image;
              }
-         }];
-        
-        
+        }];
     }
     return self;
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
     NSDictionary *desc = @{ @"title": self.title,
                             @"url": self.URL };
     
@@ -97,8 +97,7 @@
     
 }
 
-- (void)formAttrContentWithReadingOptions:(ReadingOptions *)options
-{
+- (void)formAttrContentWithReadingOptions:(ReadingOptions *)options {
     // Convert fontSize to percent between 100%-200%
     int percentageFontSize = (options.fontSize * 100) + 100;
     
@@ -110,13 +109,12 @@
     NSError *error = nil;
     
     self.attrContent = [[NSMutableAttributedString alloc] initWithData:[newContent dataUsingEncoding:NSUTF32StringEncoding]
-                                                                  options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
-                                                       documentAttributes:nil
-                                                                    error:&error];
+                                                               options:@{ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType }
+                                                    documentAttributes:nil
+                                                                 error:&error];
 }
 
-- (CGFloat)attrContentHeightForWidth:(CGFloat)width
-{
+- (CGFloat)attrContentHeightForWidth:(CGFloat)width {
     UITextView *textView = [[UITextView alloc] init];
     [textView setAttributedText:self.attrContent];
     
@@ -127,8 +125,7 @@
 
 #pragma mark - Methods to determine equality
 
-- (BOOL)isEqual:(id)other
-{
+- (BOOL)isEqual:(id)other {
     if (self == other)
         return YES;
     
@@ -138,8 +135,7 @@
     return [self isEqualToArticle:other];
 }
 
-- (BOOL)isEqualToArticle:(Article *)anArticle
-{
+- (BOOL)isEqualToArticle:(Article *)anArticle {
     if (self == anArticle)
         return YES;
     
@@ -148,8 +144,7 @@
 }
 
 //Hash function needed as helper for comparison method above.
-- (NSUInteger)hash
-{
+- (NSUInteger)hash {
     NSUInteger result = 1;
     NSUInteger prime = 31;
     
@@ -161,8 +156,7 @@
 #pragma mark - Serializing and Deserializing
 // cache
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
         self.title = [aDecoder decodeObjectForKey:@"title"];
@@ -183,8 +177,7 @@
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
+- (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.title forKey:@"title"];
     [aCoder encodeObject:self.content forKey:@"content"];
     [aCoder encodeObject:self.URL forKey:@"URL"];
