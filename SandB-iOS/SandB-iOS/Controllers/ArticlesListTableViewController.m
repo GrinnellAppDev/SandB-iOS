@@ -11,11 +11,13 @@
 const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn automatically.
 
 @interface ArticlesListTableViewController ()
+
+//@property (weak, nonatomic) IBOutlet UIRefreshControl *refreshControl;
+
 @property (nonatomic) NSInteger articleIndex;
 @property (nonatomic, strong) NSArray *categoryColors;
 @property (nonatomic, strong) NSString *newsCategory;
 @property (nonatomic, strong) NSMutableArray *allArticlesArray;
-
 
 @property (nonatomic, assign) BOOL isFetchingArticles;
 
@@ -67,6 +69,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
             self.allArticlesArray = news;
         }
         [self fetchArticles];
+        [self.refreshControl beginRefreshing];
     }
     else if ([self.newsCategory isEqualToString:@"Favorites"]) {
         // Do nothing on favorites.
@@ -82,6 +85,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
             self.allArticlesArray = categoryCache;
         }
         [self fetchCategoryArticles];
+        [self.refreshControl beginRefreshing];
     }
     
     
@@ -117,6 +121,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
             NSLog(@"I am sad!: %@", [error description]);
         }
         self.isFetchingArticles = NO;
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -135,6 +140,7 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
              NSLog(@"I am sad! :%@", [error description]);
          }
          self.isFetchingArticles = NO;
+         [self.refreshControl endRefreshing];
      }];
 }
 
@@ -305,5 +311,10 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
         }
     }
 }
+
+- (IBAction)refresh:(UIRefreshControl *)sender {
+    [self fetchArticlesForView];
+}
+
 
 @end
