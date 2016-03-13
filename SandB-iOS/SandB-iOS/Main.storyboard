@@ -541,7 +541,7 @@
                         <outlet property="bigStar" destination="XCV-W7-3Cf" id="tgy-pm-TlG"/>
                         <outlet property="savedLabel" destination="eMC-l6-lTf" id="oMK-CK-yn3"/>
                         <outlet property="savedToFavsView" destination="vZ9-2F-Woe" id="UD6-Fj-ldG"/>
-                        <outlet property="theTableView" destination="hLR-Bd-caK" id="O05-OB-DBf"/>
+                        <outlet property="tableView" destination="hLR-Bd-caK" id="Hug-h0-Jar"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IF7-2y-3tI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -606,7 +606,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="theTableView" destination="bjM-PA-FSC" id="HPF-yM-0TP"/>
+                        <outlet property="tableView" destination="bjM-PA-FSC" id="K0A-xe-x2c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pl-rF-pgb" userLabel="First Responder" sceneMemberID="firstResponder"/>

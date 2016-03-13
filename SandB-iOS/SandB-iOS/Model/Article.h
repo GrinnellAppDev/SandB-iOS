@@ -1,6 +1,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ReadingOptions;
+
 @interface Article : NSObject
 
 @property (nonatomic, strong) NSString *title;
@@ -27,5 +29,7 @@
 @property (nonatomic, strong) NSString *thumbnailImageURL;
 
 - (instancetype)initWithArticleDictionary:(NSDictionary *)articleDictionary;
+- (void)formAttrContentWithReadingOptions:(ReadingOptions *)options;
+- (CGFloat)attrContentHeightForWidth:(CGFloat)width;
 
 @end

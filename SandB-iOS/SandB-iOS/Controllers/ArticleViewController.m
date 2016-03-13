@@ -5,194 +5,121 @@
 #import "ContentCell.h"
 #import "DataModel.h"
 #import "NewsCategories.h"
+#import "ReadingOptions.h"
 #import "TitleCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIScrollView+APParallaxHeader.h"
+
+#define CONTENT_WIDTH 306.0
+#define IMAGE_HEADER_HEIGHT 400
+#define NAVBAR_COLOR_TRIGGER_OFFSET -69.0
+
+#define NUMBER_ARTICLE_ROWS 3
+
+#define TITLE_ROW_INDEX 0
+#define CATEGORY_ROW_INDEX 1
+#define CONTENT_ROW_INDEX 2
+
+#define TITLE_ROW_HEIGHT 70.0f
+#define CATEGORY_ROW_HEIGHT 10.0f
+#define CONTENT_ROW_HEIGHT contentHeight + 10
 
 @interface ArticleViewController ()
 
 @end
 
 @implementation ArticleViewController {
-    CGFloat contentHeight;
-    NSAttributedString *test;
+    CGFloat contentHeight; // used in CONTENT_ROW_HEIGHT macro
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - View Lifecycle Methods
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
-    
     // add parallax image
     if (self.article.image) {
-       [self.theTableView addParallaxWithImage:self.article.image andHeight:400];
-    }
-    else {
-        [self.theTableView addParallaxWithImage:[UIImage imageNamed:@"defaultImage"] andHeight:400];
+       [self.tableView addParallaxWithImage:self.article.image
+                                  andHeight:IMAGE_HEADER_HEIGHT];
+    } else {
+        [self.tableView addParallaxWithImage:[UIImage imageNamed:@"defaultImage"]
+                                   andHeight:IMAGE_HEADER_HEIGHT];
     }
     
     self.savedToFavsView.alpha = 0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyAboutFavoriting) name:@"notifyAboutFavoriting" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyAboutUnfavoriting) name:@"notifyAboutUnfavoriting" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadContentForNewReadingOptions)
+                                                 name:@"ReadingOptionsDismissed"
+                                               object:nil];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:YES];
-    
-//    CGSize size = self.articleContentTextView.contentSize;
-    
-}
-
--(void) viewWillAppear:(BOOL)animated {
+-(void) viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:YES];
 
-    test = self.article.attrContent;
-    
-    contentHeight = [self textViewHeightForAttributedText:test andWidth:307.0];
+    contentHeight = [self.article attrContentHeightForWidth:CONTENT_WIDTH];
 }
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)viewDidLayoutSubviews {
-    // change size of textview
-    
-//    CGFloat textViewWidth = self.articleContentTextView.frame.size.width;
-//    CGSize newSize = [self.articleContentTextView sizeThatFits:CGSizeMake(textViewWidth, MAXFLOAT)];
-//    CGRect newFrame = self.articleContentTextView.frame;
-//    newFrame.size = CGSizeMake(fmaxf(newSize.width, textViewWidth), 500);
-//    self.articleContentTextView.frame = newFrame;
-    
-    
-    // somehow this gets called twice, and it reverts back to the content height of the previous article. Not quite sure why or how this is happening, but IT ISSSS!!!
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - Table View Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return NUMBER_ARTICLE_ROWS;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *titleCellIdentifier = @"TitleCell";
-    static NSString *contentCellIdentifier = @"ContentCell";
-    static NSString *categoryCellIdentifier = @"CategoryCell";
+    switch (indexPath.row) {
+        case TITLE_ROW_INDEX:
+            return [self createTitleCellForTableView:tableView andIndexPath:indexPath];
+            
+        case CATEGORY_ROW_INDEX:
+            return [self createCategoryCellForTableView:tableView andIndexPath:indexPath];
     
-    TitleCell *titleCell;
-    ContentCell *contentCell;
-    CategoryCell *categoryCell;
-    
-    if (indexPath.row == 0) {
-        
-        titleCell = [tableView dequeueReusableCellWithIdentifier:titleCellIdentifier forIndexPath:indexPath];
-        
-        //titleCell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        titleCell.titleLabel.numberOfLines = 0;
-        [titleCell.titleLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:20.0]];
-        titleCell.titleLabel.text = self.article.title;
-        return titleCell;
-    }
-    
-    else if (indexPath.row == 1) {
-        categoryCell = [tableView dequeueReusableCellWithIdentifier:categoryCellIdentifier forIndexPath:indexPath];
-        
-        categoryCell.categoryLabel.text = self.article.category;
-        [categoryCell.categoryLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:15]];
-        
-        int colorIndex = (int)[[[[NewsCategories sharedCategories] categories] objectForKey:@"names"] indexOfObject:self.article.category];
-        
-        [categoryCell.categoryLabel setTextColor:[[[[NewsCategories sharedCategories] categories] objectForKey:@"colors"] objectAtIndex:colorIndex]];
-        
-        categoryCell.byLabel.text = self.article.author;
-        
-        [categoryCell.byLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:15]];
-        
-        return categoryCell;
-    }
-    
-    else
-    {
-        contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
-        //contentCell.contentTextView.attributedText = test;
-        
-        UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 20, 306, contentHeight)];
-        contentTextView.attributedText = test;
-        contentTextView.userInteractionEnabled = NO;
-        contentTextView.selectable = NO;
-        contentTextView.backgroundColor = [UIColor clearColor]; 
-        [contentCell.contentView addSubview:contentTextView];
-        
-        return contentCell;
+        case CONTENT_ROW_INDEX:
+            return [self createContentCellForTableView:tableView andIndexPath:indexPath];
+            
+        default:        // Should never reach this
+            return nil; // Just supresses compiler warnings
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)path
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (path.row == 2) {
-        return contentHeight + 10;
+    switch (indexPath.row) {
+        case TITLE_ROW_INDEX:
+            return TITLE_ROW_HEIGHT;
+            
+        case CATEGORY_ROW_INDEX:
+            return CATEGORY_ROW_HEIGHT;
+            
+        case CONTENT_ROW_INDEX:
+            return CONTENT_ROW_HEIGHT;
+            
+        default:         // Should never reach this
+            return 0.0f; // Just supresses compiler warnings
     }
-    
-    else if (path.row == 0) {
-        return 70.0f;
-    }
-    
-    else
-        return 10.0f;
-}
-
-- (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
-{
-    UITextView *textView = [[UITextView alloc] init];
-    [textView setAttributedText:text];
-    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
-    return size.height;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //CGFloat contentOffsetDifference = scrollView.contentOffset.y;
-   // NSLog(@"our floattt: %f", contentOffsetDifference);
-    
-    if (scrollView.contentOffset.y > -69.0 ) {
+    if (scrollView.contentOffset.y > NAVBAR_COLOR_TRIGGER_OFFSET) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ColorTopBar" object:nil];
     }
     
-    else if (scrollView.contentOffset.y < -69.0) {
+    else if (scrollView.contentOffset.y < NAVBAR_COLOR_TRIGGER_OFFSET) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UncolorTopBar" object:nil];
     }
 }
 
-- (void) notifyAboutFavoriting {
+#pragma mark - NotificationCenter Observers
+
+- (void)notifyAboutFavoriting
+{
     self.savedLabel.text = @"Saved to favorites!";
     [UIView animateWithDuration:0.25
                           delay: 0.0
@@ -212,7 +139,8 @@
                      }];
 }
 
-- (void) notifyAboutUnfavoriting {
+- (void)notifyAboutUnfavoriting
+{
     self.savedLabel.text = @"Removed from favorites!";
     //NSLog(@"unfavoriting!");
     [UIView animateWithDuration:0.25
@@ -234,6 +162,71 @@
     
 }
 
+- (void)reloadContentForNewReadingOptions
+{
+    // update article's attrContent with possibly changed reading options
+    [self.article formAttrContentWithReadingOptions:[ReadingOptions savedOptions]];
+    
+    [self.tableView reloadData];
+}
 
+#pragma mark - Table Cell Constructors
+
+- (UITableViewCell *)createTitleCellForTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *titleCellIdentifier = @"TitleCell";
+    
+    TitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleCellIdentifier forIndexPath:indexPath];
+    
+    //titleCell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    titleCell.titleLabel.numberOfLines = 0;
+    [titleCell.titleLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:20.0]];
+    titleCell.titleLabel.text = self.article.title;
+    
+    return titleCell;
+}
+
+- (UITableViewCell *)createCategoryCellForTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *categoryCellIdentifier = @"CategoryCell";
+    
+    CategoryCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:categoryCellIdentifier forIndexPath:indexPath];
+    
+    categoryCell.categoryLabel.text = self.article.category;
+    [categoryCell.categoryLabel setFont:[UIFont fontWithName:@"ProximaNova-Semibold" size:15]];
+    
+    int colorIndex = (int)[[[[NewsCategories sharedCategories] categories] objectForKey:@"names"] indexOfObject:self.article.category];
+    
+    [categoryCell.categoryLabel setTextColor:[[[[NewsCategories sharedCategories] categories] objectForKey:@"colors"] objectAtIndex:colorIndex]];
+    
+    categoryCell.byLabel.text = self.article.author;
+    [categoryCell.byLabel setFont:[UIFont fontWithName:@"ProximaNova-Light" size:15]];
+    
+    return categoryCell;
+}
+
+- (UITableViewCell *)createContentCellForTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *contentCellIdentifier = @"ContentCell";
+    
+    ContentCell *contentCell = [tableView dequeueReusableCellWithIdentifier:contentCellIdentifier forIndexPath:indexPath];
+    
+    UITextView *contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(7, 20, CONTENT_WIDTH, contentHeight)];
+    
+    contentTextView.attributedText = self.article.attrContent;
+    contentTextView.userInteractionEnabled = NO;
+    contentTextView.selectable = NO;
+    contentTextView.backgroundColor = [UIColor clearColor];
+    
+    // Remove existing contentTextView
+    for (UIView *view in [contentCell.contentView subviews]) {
+        [view removeFromSuperview];
+    }
+    
+    [contentCell.contentView addSubview:contentTextView];
+    
+    return contentCell;
+    
+}
 
 @end

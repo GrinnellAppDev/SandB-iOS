@@ -19,9 +19,7 @@
 @property (nonatomic, strong) Article *sentArticle;
 @property (nonatomic) NSUInteger articleIndex;
 
-// ACTIONS
 - (IBAction)popViewController:(id)sender;
 - (IBAction)favoriteButtonPressed:(id)sender;
-- (IBAction)shareButtonPressed:(id)sender;
 
 @end

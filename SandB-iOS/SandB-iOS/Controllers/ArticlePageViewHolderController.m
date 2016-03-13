@@ -7,8 +7,8 @@
 #import "MZCustomTransition.h"
 #import "MZFormSheetController.h"
 #import "MZFormSheetSegue.h"
+#import "ReadingOptions.h"
 #import "ShareModalViewController.h"
-#import "ShareMZModalViewController.h"
 #import "TextOptionModalViewController.h"
 #import "UIPageViewController+ReloadData.h"
 
@@ -18,29 +18,12 @@
 @property (nonatomic) NSUInteger index;
 @property (nonatomic, assign) BOOL isFetchingArticles;
 
-// Reading Options
-@property (nonatomic, assign) float fontSize;
-@property (nonatomic, strong) NSString *fontFamily;
-@property (nonatomic, assign) BOOL isLightTheme;
-
 @end
 
 @implementation ArticlePageViewHolderController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPages) name:@"ReloadPageViewController" object:nil];
     
     // Do any additional setup after loading the view.
     
@@ -51,21 +34,10 @@
     ArticleViewController *startingViewController = [self viewControllerAtIndex:self.articleIndex];
     
     NSArray *viewControllers = @[startingViewController];
-    //[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    // Bug in PageViewController with Scroll. http://stackoverflow.com/questions/13633059/uipageviewcontroller-how-do-i-correctly-jump-to-a-specific-page-without-messing
-    __weak UIPageViewController * _weakPageViewController = self.pageViewController;
     [self.pageViewController setViewControllers:viewControllers
                                       direction:UIPageViewControllerNavigationDirectionForward
-                                       animated:YES completion:^(BOOL finished) {
-                                           UIPageViewController* pvcs = _weakPageViewController;
-                                           if (!pvcs) return;
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               [pvcs setViewControllers:viewControllers
-                                                              direction:UIPageViewControllerNavigationDirectionForward
-                                                               animated:NO completion:nil];
-                                           });
-                                       }];
+                                       animated:NO
+                                     completion:nil];
     
     self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
@@ -113,90 +85,36 @@
     
     [MZFormSheetController registerTransitionClass:[MZCustomTransition class] forTransitionStyle:MZFormSheetTransitionStyleCustom];
     
-    [self loadReadingOptions];
-    
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     if ([[[DataModel sharedModel] savedArticles] containsObject:self.sentArticle]) {
         [self.starButton setImage:[UIImage imageNamed:@"StarIconGold"]forState:UIControlStateNormal];
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (void)loadReadingOptions
-{
-    self.fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"ReadingOptionsFontSize"];
-    self.fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"ReadingOptionsFontFamily"];
-    self.isLightTheme = [[NSUserDefaults standardUserDefaults] boolForKey:@"ReadingOptionsIsLightTheme"];
-}
-
 #pragma mark - Page View Controller methods
 
-- (ArticleViewController *) viewControllerAtIndex:(NSUInteger) index {
+- (ArticleViewController *)viewControllerAtIndex:(NSUInteger)index {
     if (([self.pageArticles count] == 0) || (index >= [self.pageArticles count])) {
         return nil;
     }
     
-    [self loadReadingOptions];
-    
-    ArticleViewController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
+    ArticleViewController *articleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
     
     
     Article *article = self.pageArticles[index];
+    [article formAttrContentWithReadingOptions:[ReadingOptions savedOptions]];
     
-    // Modify the article right here.
     
-    //Get default values.
+    articleViewController.article = article;
+    articleViewController.pageIndex = index;
     
-    // NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
-    //  NSFontAttributeName: [UIFont fontWithName:@"Palatino" size:14.0f],
-    
-    // size ranges from 100% to 200%.
-    // Helvetica Neue || Avenir Next || Cochin
-    
-     NSString *htmlOpen = @"<html>";
-     NSString *htmlClose = @"</html>";
-    int fontSize = (self.fontSize * 100) + 100;
-    NSString * htmlAdditions  =  [NSString stringWithFormat:@"<head><style type='text/css'> body{font-size: %d%%;font-family:'%@';color:#4A4A4A;} </style></head>", fontSize, self.fontFamily];
-
-//     NSString *htmlAdditions = @"<head><style type='text/css'> body{font-size: 180%;font-family:'Cochin';color:#4A4A4A;}</style></head>";
-     NSString *newContent =  [NSString stringWithFormat:@"%@%@ %@%@",htmlOpen, htmlAdditions, article.content, htmlClose];
-    
-     NSError *error = nil;
-     
-     NSDictionary *options = @{
-     NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-     };
-     
-     
-     article.attrContent = [[NSMutableAttributedString alloc] initWithData:[newContent dataUsingEncoding:NSUTF32StringEncoding]
-     options:options documentAttributes:nil
-     error:&error];
-     
-    
-    /* NSDictionary* attributes = @{
-                                NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
-                                
-                                 }; */
-    
-    //[article.attrContent addAttributes:attributes range:NSMakeRange(0, [article.attrContent length])];
-    
-    //NSLog(@"attrContent: %@", article.attrContent);
-    
-    navc.article = article;
-    navc.pageIndex = index;
-    
-    return navc;
+    return articleViewController;
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(UIViewController *)viewController {
     
     NSUInteger index = ((ArticleViewController *) viewController).pageIndex;
     
@@ -209,7 +127,8 @@
     return [self viewControllerAtIndex:index];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
     
     NSUInteger index = ((ArticleViewController *) viewController).pageIndex;
     
@@ -227,20 +146,30 @@
 }
 
 
-- (void)reloadPages
-{
+- (void)reloadPages {
     NSLog(@"Reloading");
     
-    
-    [self.pageViewController xcd_setViewControllers:self.pageViewController.viewControllers direction:UIPageViewControllerNavigationDirectionForward
-                                           animated:NO completion:nil];
+    [self.pageViewController xcd_setViewControllers:self.pageViewController.viewControllers
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:NO
+                                         completion:nil];
 }
 
 #pragma mark - Downloading Data
 
-- (void) fetchArticles {
+// These two methods, fetchArticles and fetchCategoryArticles are repeated almost line-for-line
+// in ArticlesListTableViewController
+// TODO:
+
+
+
+- (void)fetchArticles {
     
-    [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
+    [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles,
+                                                                NSMutableArray *newArticles,
+                                                                int totalPages,
+                                                                int currentPage,
+                                                                NSError *error) {
         if (!error) {
             
             // TODO (DrJid): Handle when _currentPage < totalPages :: Honestly... there are like... 3K articles... we'd never get to this point now would we...
@@ -261,7 +190,7 @@
     
 }
 
-- (void) fetchCategoryArticles {
+- (void)fetchCategoryArticles {
     
     [[DataModel sharedModel] fetchArticlesForCategory:self.recievedCategoryString withCompletionBlock:
      ^(NSMutableArray *articles, NSMutableArray *newArticles, int totalPages, int currentPage, NSError *error) {
@@ -272,7 +201,6 @@
              //[self.tableView reloadData];
              self.pageArticles = articles;
              
-             //Todo: call some sort of reloadPages here
              [self reloadPages]; 
          }
          else {
@@ -329,9 +257,8 @@
     
 }
 
-// changing the color of the buttons
-
-- (void) colorButtonsForRenderingMode:(UIImageRenderingMode *) mode andControlState:(UIControlState *) state {
+- (void)colorButtonsForRenderingMode:(UIImageRenderingMode *)mode
+                     andControlState:(UIControlState *)state {
     
     self.view.tintColor = [UIColor colorWithRed:140.0/255 green:29.0/255 blue:41.0/255 alpha:1.0];
     
@@ -377,13 +304,13 @@
 
 }
 
-- (IBAction)shareButtonPressed:(id)sender {
-}
-
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+- (void)pageViewController:(UIPageViewController *)pageViewController
+         didFinishAnimating:(BOOL)finished
+    previousViewControllers:(NSArray *)previousViewControllers
+        transitionCompleted:(BOOL)completed {
     
-    ArticleViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
-    NSInteger theIndex = [self.pageArticles indexOfObject:theCurrentViewController.article];
+    ArticleViewController *currentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
+    NSInteger theIndex = [self.pageArticles indexOfObject:currentViewController.article];
     self.currentArticle  = self.pageArticles[theIndex];
     self.sentArticle = self.currentArticle;
     
