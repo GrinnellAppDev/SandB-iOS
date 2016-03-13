@@ -12,8 +12,6 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
 
 @interface ArticlesListTableViewController ()
 
-//@property (weak, nonatomic) IBOutlet UIRefreshControl *refreshControl;
-
 @property (nonatomic) NSInteger articleIndex;
 @property (nonatomic, strong) NSArray *categoryColors;
 @property (nonatomic, strong) NSString *newsCategory;
