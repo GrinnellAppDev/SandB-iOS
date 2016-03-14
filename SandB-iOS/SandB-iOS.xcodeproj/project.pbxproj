@@ -13,7 +13,6 @@
 		16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E708186937DD00ABC0CF /* UIImage+ImageEffects.m */; };
 		16B3E723186A6ECE00ABC0CF /* SandBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E722186A6ECE00ABC0CF /* SandBClient.m */; };
 		16B3E726186B929200ABC0CF /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E725186B929200ABC0CF /* DataModel.m */; };
-		16DC336B190DCFB000C43BAD /* strings_private.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16DC336A190DCFB000C43BAD /* strings_private.strings */; };
 		16E425AE187DD5F200695381 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E425AD187DD5F200695381 /* Crashlytics.framework */; };
 		363D36FD1C8E374B008C44D0 /* ReadingOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 363D36FC1C8E374B008C44D0 /* ReadingOptions.m */; };
 		363D36FF1C8E5576008C44D0 /* DefaultReadingOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 363D36FE1C8E5576008C44D0 /* DefaultReadingOptions.plist */; };
@@ -91,7 +90,6 @@
 		16B3E722186A6ECE00ABC0CF /* SandBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandBClient.m; sourceTree = "<group>"; };
 		16B3E724186B929200ABC0CF /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		16B3E725186B929200ABC0CF /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
-		16DC336A190DCFB000C43BAD /* strings_private.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = strings_private.strings; sourceTree = "<group>"; };
 		16E425AD187DD5F200695381 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		363D36FB1C8E374B008C44D0 /* ReadingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingOptions.h; sourceTree = "<group>"; };
 		363D36FC1C8E374B008C44D0 /* ReadingOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingOptions.m; sourceTree = "<group>"; };
@@ -471,7 +469,6 @@
 			isa = PBXGroup;
 			children = (
 				8B729FD818FA527500AD6C1F /* MZFormSheetController */,
-				16DC336A190DCFB000C43BAD /* strings_private.strings */,
 				8BD1C81716B32493005F3F23 /* SandB-iOS-Info.plist */,
 				8BD1C81816B32493005F3F23 /* InfoPlist.strings */,
 				8BD1C81B16B32493005F3F23 /* main.m */,
@@ -561,7 +558,6 @@
 				E19E290B180E5ED200ED33FE /* icon-40.png in Resources */,
 				8B5304CC19099D9E00A2D40B /* Proxima Nova ScOsf Light.otf in Resources */,
 				E19E290A180E5ED200ED33FE /* icon-29.png in Resources */,
-				16DC336B190DCFB000C43BAD /* strings_private.strings in Resources */,
 				8B5304CB19099D9B00A2D40B /* Proxima Nova Light.otf in Resources */,
 				8B5304D81909A98200A2D40B /* Quattrocento-Regular.ttf in Resources */,
 				8B5DC4D818F20A9400732D45 /* Images.xcassets in Resources */,
