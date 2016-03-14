@@ -26,6 +26,9 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     int _totalPages;
 }
 
+
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -34,41 +37,28 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     [self configureECSlidingController];
     self.allArticlesArray = [NSMutableArray new];
     
-    // On the first time load, check the cache contents and load those in first if there are any.
-    // Fetch for a new articles right a fter.
-    
     self.newsCategory = @"News";
     if (self.recievedCategory) {
         self.newsCategory = self.recievedCategory;
-        //NSLog(@"Received Category: %@", self.recievedCategory);
     }
     
-    if ([self.newsCategory isEqualToString:@"News"]) {
-        
-        //Check the cache content.
-        NSMutableArray *news =  [[Cache sharedCacheModel] loadArchivedObjectWithFileName:@"News"];
-        
-        if (news) {
-            self.allArticlesArray = news;
-        }
-        
-        [self fetchArticles];
-        [self.refreshControl beginRefreshing];
-        
-    } else if ([self.newsCategory isEqualToString:@"Favorites"]) {
+    // On the first time load, check the cache contents and load those in first if there are any.
+    // Fetch for a new articles right after.
+    
+    if ([self.newsCategory isEqualToString:@"Favorites"]) {
         // Do nothing on favorites.
         self.allArticlesArray =  [[DataModel sharedModel] savedArticles];
         [self.tableView reloadData];
         
     } else {
-        //Check cache content of category.
-        NSMutableArray *categoryCache = [[Cache sharedCacheModel] loadArchivedObjectWithFileName:self.recievedCategory];
-        if (categoryCache) {
-            NSLog(@"loading from category cache");
-            self.allArticlesArray = categoryCache;
+        NSMutableArray *cachedArticles =  [[Cache sharedCacheModel]
+                                              loadArchivedObjectWithFileName:self.newsCategory];
+        
+        if (cachedArticles) {
+            self.allArticlesArray = cachedArticles;
         }
         
-        [self fetchCategoryArticles];
+        [self fetchArticles];
         [self.refreshControl beginRefreshing];
     }
 }
@@ -85,50 +75,6 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     [self.tableView reloadData];
 }
 
-/* Fetch all the news articles. 
- * Cache them right after you fetch them
- */
-- (void)fetchArticles {
-    [[DataModel sharedModel] fetchArticlesWithCompletionBlock:^(NSMutableArray *articles,
-                                                                NSMutableArray *newArticles,
-                                                                int totalPages,
-                                                                int currentPage,
-                                                                NSError *error) {
-        if (!error) {
-            _currentPage = currentPage;
-            _totalPages = totalPages;
-            self.allArticlesArray = articles;
-            [self.tableView reloadData];
-            [[Cache sharedCacheModel] archiveObject:articles toFileName:@"News"];
-        } else {
-            NSLog(@"I am sad!: %@", [error description]);
-        }
-        
-        self.isFetchingArticles = NO;
-        [self.refreshControl endRefreshing];
-    }];
-}
-
-- (void)fetchCategoryArticles {
-    [[DataModel sharedModel] fetchArticlesForCategory:self.recievedCategory
-                                  withCompletionBlock:^(NSMutableArray *articles,
-                                                        NSMutableArray *newArticles,
-                                                        int totalPages,
-                                                        int currentPage,
-                                                        NSError *error) {
-         if (!error) {
-             _currentPage = currentPage;
-             _totalPages = totalPages;
-             self.allArticlesArray = articles;
-             [self.tableView reloadData];
-             [[Cache sharedCacheModel] archiveObject:articles toFileName:self.recievedCategory];
-         } else {
-             NSLog(@"I am sad! :%@", [error description]);
-         }
-         self.isFetchingArticles = NO;
-         [self.refreshControl endRefreshing];
-     }];
-}
 
 #pragma mark - Table view data source
 
@@ -146,6 +92,140 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     }
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row <  [self.allArticlesArray count]) {
+        return [self articleCellForIndexPath:indexPath];
+    } else {
+        return [self loadingCell];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+      willDisplayCell:(UITableViewCell *)cell
+    forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (cell.tag == kLoadingCellTag) {
+        //Know which one to do depending on view options.
+        [self fetchArticles];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ArticleCell *cell = (ArticleCell *) [tableView cellForRowAtIndexPath:indexPath];
+    Article *article = [self.allArticlesArray objectAtIndex:indexPath.row];
+    NewsCategory *category = [[[NewsCategories sharedCategories] categoriesByName]
+                                 objectForKey:article.category];
+    
+    cell.backgroundColor = category.highlightedColor;
+    
+    [[DataModel sharedModel] markArticleAsRead:article];
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)setCellColor:(UIColor *)color ForCell:(UITableViewCell *)cell {
+    cell.contentView.backgroundColor = color;
+    cell.backgroundColor = color;
+}
+
+
+#pragma mark - Segue Methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        if ([segue.destinationViewController
+                isKindOfClass:[ArticlePageViewHolderController class]]) {
+            
+            ArticlePageViewHolderController *apvhc = segue.destinationViewController;
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            NSUInteger selectedArticleIndex = indexPath.row;
+            
+            apvhc.articleIndex = selectedArticleIndex;
+            apvhc.recievedCategoryString = self.newsCategory;
+            apvhc.sentArticle = [self.allArticlesArray objectAtIndex:selectedArticleIndex];
+            
+            //Test this out.
+            apvhc.pageArticles = self.allArticlesArray;
+        }
+    }
+}
+
+
+#pragma mark - IBActions
+
+- (IBAction)refresh:(UIRefreshControl *)sender {
+    [self fetchArticles];
+}
+
+
+#pragma mark - ECSliding methods
+
+- (void)configureECSlidingController {
+    // setup swipe and button gestures for the sliding view controller
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    self.slidingViewController.customAnchoredGestures = @[];
+    
+    // TO DO: Swipe to the right to reveal menu
+}
+
+
+#pragma mark - Helper methods
+
+/* Fetch all the news articles.
+ * Cache them right after you fetch them
+ */
+- (void)fetchArticles {
+    NSString *categoryName = self.newsCategory; // Capture category name for async block
+    
+    static void (^newArticlesHandler)(NSMutableArray *, NSMutableArray *, int, int, NSError*);
+    newArticlesHandler = ^(NSMutableArray *articles,
+                           NSMutableArray *newArticles,
+                           int totalPages,
+                           int currentPage,
+                           NSError *error) {
+        if (!error) {
+            _currentPage = currentPage;
+            _totalPages = totalPages;
+            
+            self.allArticlesArray = articles;
+            [self.tableView reloadData];
+            [[Cache sharedCacheModel] archiveObject:articles toFileName:categoryName];
+        } else {
+            NSLog(@"I am sad!: %@", error.description);
+        }
+        
+        self.isFetchingArticles = NO;
+        [self.refreshControl endRefreshing];
+    };
+    
+    if (self.isFetchingArticles) {
+        return;
+    }
+    
+    self.isFetchingArticles = YES;
+    
+    if ([categoryName isEqualToString:@"News"]) {
+        [[DataModel sharedModel] fetchArticlesWithCompletionBlock:newArticlesHandler];
+    } else {
+        [[DataModel sharedModel] fetchArticlesForCategory:categoryName
+                                      withCompletionBlock:newArticlesHandler];
+    }
+}
+
+// gets the correct array to display, i.e - whatever the user clicked on - news, favorites, w/e
+- (NSMutableArray *)getArrayForView {
+    
+    if ([self.newsCategory isEqualToString:@"News"]) {
+        return [[DataModel sharedModel] articles];
+    } else if ([self.newsCategory isEqualToString:@"Favorites"]) {
+        return [[DataModel sharedModel] savedArticles];
+    } else {
+        return [[DataModel sharedModel] categoryArrayForCategoryName:self.newsCategory];
+    }
+}
 
 - (UITableViewCell *)articleCellForIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"ArticleCell";
@@ -154,14 +234,14 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     
     Article *article = [self.allArticlesArray objectAtIndex:indexPath.row];
     NewsCategory *category = [[[NewsCategories sharedCategories] categoriesByName]
-                                 objectForKey:article.category];
+                              objectForKey:article.category];
     
     //Customize Cell
     cell.articleTitle.text = article.title;
     
     if (article.author) {
         cell.articleDetails.text = [NSString
-                                       stringWithFormat:@"%@ | %@", article.date, article.author];
+                                    stringWithFormat:@"%@ | %@", article.date, article.author];
     } else {
         cell.articleDetails.text = [NSString stringWithFormat:@"%@ | S&B", article.date];
     }
@@ -193,16 +273,6 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     return cell;
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row <  [self.allArticlesArray count]) {
-        return [self articleCellForIndexPath:indexPath];
-    } else {
-        return [self loadingCell];
-    }
-}
-
 - (UITableViewCell *)loadingCell {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                    reuseIdentifier:nil];
@@ -217,95 +287,5 @@ const int kLoadingCellTag = 888; // Tag for the loadingCell. This cell is drawn 
     
     return cell;
 }
-
-- (void)tableView:(UITableView *)tableView
-      willDisplayCell:(UITableViewCell *)cell
-    forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (cell.tag == kLoadingCellTag) {
-        //Know which one to do depending on view options.
-        [self fetchArticlesForView];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ArticleCell *cell = (ArticleCell *) [tableView cellForRowAtIndexPath:indexPath];
-    Article *article = [self.allArticlesArray objectAtIndex:indexPath.row];
-    NewsCategory *category = [[[NewsCategories sharedCategories] categoriesByName]
-                                 objectForKey:article.category];
-    
-    cell.backgroundColor = category.highlightedColor;
-    
-    [[DataModel sharedModel] markArticleAsRead:article];
-}
-
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)setCellColor:(UIColor *)color ForCell:(UITableViewCell *)cell {
-    cell.contentView.backgroundColor = color;
-    cell.backgroundColor = color;
-}
-
-#pragma mark - Segue Methods
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([sender isKindOfClass:[UITableViewCell class]]) {
-        if ([segue.destinationViewController
-                isKindOfClass:[ArticlePageViewHolderController class]]) {
-            
-            ArticlePageViewHolderController *apvhc = segue.destinationViewController;
-            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-            NSUInteger selectedArticleIndex = indexPath.row;
-            
-            apvhc.articleIndex = selectedArticleIndex;
-            apvhc.recievedCategoryString = self.newsCategory;
-            apvhc.sentArticle = [self.allArticlesArray objectAtIndex:selectedArticleIndex];
-            
-            //Test this out.
-            apvhc.pageArticles = self.allArticlesArray;
-        }
-    }
-}
-
-#pragma mark - ECSliding methods
-
-- (void)configureECSlidingController {
-    // setup swipe and button gestures for the sliding view controller
-    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
-    self.slidingViewController.customAnchoredGestures = @[];
-    
-    // TO DO: Swipe to the right to reveal menu
-}
-
-// gets the correct array to display, i.e - whatever the user clicked on - news, favorites, w/e
-- (NSMutableArray *)getArrayForView {
-    
-    if ([self.newsCategory isEqualToString:@"News"]) {
-        return [[DataModel sharedModel] articles];
-    } else if ([self.newsCategory isEqualToString:@"Favorites"]) {
-        return [[DataModel sharedModel] savedArticles];
-    } else {
-        return [[DataModel sharedModel] categoryArrayForCategoryName:self.newsCategory];
-    }
-}
-
-- (void)fetchArticlesForView {
-    if (!self.isFetchingArticles) {
-        self.isFetchingArticles = YES;
-        
-        if ([self.newsCategory isEqualToString:@"News"]) {
-            [self fetchArticles];
-        } else {
-            [self fetchCategoryArticles];
-        }
-    }
-}
-
-- (IBAction)refresh:(UIRefreshControl *)sender {
-    [self fetchArticlesForView];
-}
-
 
 @end
