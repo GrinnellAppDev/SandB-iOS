@@ -58,11 +58,10 @@
     page++;
     NSMutableArray *newArticles = [NSMutableArray new];
     
-    
     [[SandBClient sharedClient] GET:@"get_recent_posts/"
-                         parameters:@{@"count": @(12),
-                                      @"page": @(page)
-                                      }
+                         parameters:@{ @"count" : @(12),
+                                       @"page" : @(page) }
+                           progress:nil
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
                                 
                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
@@ -92,8 +91,8 @@
     [[[DataModel sharedModel] articles] removeAllObjects];
     
     [[SandBClient sharedClient] GET:@"get_search_results/"
-                         parameters:@{@"search": searchTerm
-                                      }
+                         parameters:@{ @"search" : searchTerm }
+                           progress:nil
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
                                 
                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
@@ -201,10 +200,9 @@
     NSMutableArray *newCategoryArticles = [NSMutableArray new];
     
     [[SandBClient sharedClient] GET:@"get_category_posts/"
-                         parameters:@{@"id":@(categoryID),
-                                      @"page": @(thePage)
-                                      }
-     
+                         parameters:@{ @"id" : @(categoryID),
+                                       @"page" : @(thePage) }
+                           progress:nil
                             success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
                                 
                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
