@@ -1,4 +1,4 @@
-S&amp;B
+S&amp;B [![Build Status](https://travis-ci.org/GrinnellAppDev/SandB-iOS.svg?branch=master)](https://travis-ci.org/GrinnellAppDev/SandB-iOS)
 =========
 
 Authors:  * Colin Tremblay
@@ -53,5 +53,4 @@ For App Support, feedback, suggestions etc. please email appdev@grinnell.edu
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
-
+^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
