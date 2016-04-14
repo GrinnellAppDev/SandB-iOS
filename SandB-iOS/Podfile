@@ -7,7 +7,9 @@ use_frameworks!
 
 pod 'AFNetworking' 
 pod 'APParallaxHeader'
+pod 'Crashlytics'
 pod 'ECSlidingViewController', '~> 2.0.1'
+pod 'Fabric'
 pod 'MBProgressHUD'
 pod 'Reachability'
 pod 'SAMTextView', '~> 0.2.1'

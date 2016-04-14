@@ -1,5 +1,6 @@
 
 #import <Crashlytics/Crashlytics.h>
+#import <Fabric/Fabric.h>
 
 #import "AFNetworkActivityIndicatorManager.h"
 #import "AppDelegate.h"
@@ -11,7 +12,7 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
-    [self setupAPIKeys];
+    [self setupThirdPartyFrameworks];
     [self setupNavBarAppearance];
     [self setupReadingOptionsDefaults];
     
@@ -31,12 +32,8 @@
 
 #pragma mark - Helper Methods
 
-- (void)setupAPIKeys {
-    NSString *strings_private = [[NSBundle mainBundle] pathForResource:@"strings_private"
-                                                                ofType:@"strings"];
-    NSDictionary *keysDict = [NSDictionary dictionaryWithContentsOfFile:strings_private];
-    
-    [Crashlytics startWithAPIKey:[keysDict objectForKey:@"CrashlyticsAPIKey"]];
+- (void)setupThirdPartyFrameworks {
+    [Fabric with:@[[Crashlytics class]]];
 }
 
 - (void)setupNavBarAppearance {

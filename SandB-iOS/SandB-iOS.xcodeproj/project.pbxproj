@@ -13,7 +13,6 @@
 		16B3E709186937DD00ABC0CF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E708186937DD00ABC0CF /* UIImage+ImageEffects.m */; };
 		16B3E723186A6ECE00ABC0CF /* SandBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E722186A6ECE00ABC0CF /* SandBClient.m */; };
 		16B3E726186B929200ABC0CF /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3E725186B929200ABC0CF /* DataModel.m */; };
-		16E425AE187DD5F200695381 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E425AD187DD5F200695381 /* Crashlytics.framework */; };
 		363D36FD1C8E374B008C44D0 /* ReadingOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 363D36FC1C8E374B008C44D0 /* ReadingOptions.m */; };
 		363D36FF1C8E5576008C44D0 /* DefaultReadingOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 363D36FE1C8E5576008C44D0 /* DefaultReadingOptions.plist */; };
 		8B0DA2B818F827C300613D14 /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DA2B718F827C300613D14 /* TitleCell.m */; };
@@ -68,7 +67,7 @@
 		8BD1C82016B32493005F3F23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1C81F16B32493005F3F23 /* AppDelegate.m */; };
 		8BF70EE318F65F2B00637795 /* NewsCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EE218F65F2B00637795 /* NewsCategories.m */; };
 		8BF70EE918F6CB1000637795 /* NewsCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF70EE818F6CB1000637795 /* NewsCategory.m */; };
-		8E9BF97CD26563F4C621A9D9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F0672179187FCE33612F6C /* Pods.framework */; };
+		D6427E4D5B333CE36AE0D90F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A19EE528F8595430E09D7 /* Pods.framework */; };
 		E19E290A180E5ED200ED33FE /* icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2903180E5ED200ED33FE /* icon-29.png */; };
 		E19E290B180E5ED200ED33FE /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2904180E5ED200ED33FE /* icon-40.png */; };
 		E19E290C180E5ED200ED33FE /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = E19E2905180E5ED200ED33FE /* icon-58.png */; };
@@ -90,13 +89,11 @@
 		16B3E722186A6ECE00ABC0CF /* SandBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandBClient.m; sourceTree = "<group>"; };
 		16B3E724186B929200ABC0CF /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		16B3E725186B929200ABC0CF /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
-		16E425AD187DD5F200695381 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		363D36FB1C8E374B008C44D0 /* ReadingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingOptions.h; sourceTree = "<group>"; };
 		363D36FC1C8E374B008C44D0 /* ReadingOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingOptions.m; sourceTree = "<group>"; };
 		363D36FE1C8E5576008C44D0 /* DefaultReadingOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultReadingOptions.plist; sourceTree = "<group>"; };
 		5AC149E66E3E59AB5BD81106 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		733EE58CC559DD3DC94E3F3E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		86F0672179187FCE33612F6C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0DA2B618F827C300613D14 /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
 		8B0DA2B718F827C300613D14 /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
 		8B125BAA1720FD5E00C550F7 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -197,6 +194,7 @@
 		E19E2907180E5ED200ED33FE /* icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-80.png"; sourceTree = "<group>"; };
 		E19E2908180E5ED200ED33FE /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
 		E19E2909180E5ED200ED33FE /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-152.png"; sourceTree = "<group>"; };
+		F63A19EE528F8595430E09D7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,8 +209,7 @@
 				8BD1C81016B32493005F3F23 /* UIKit.framework in Frameworks */,
 				8BD1C81216B32493005F3F23 /* Foundation.framework in Frameworks */,
 				8BD1C81416B32493005F3F23 /* CoreGraphics.framework in Frameworks */,
-				16E425AE187DD5F200695381 /* Crashlytics.framework in Frameworks */,
-				8E9BF97CD26563F4C621A9D9 /* Pods.framework in Frameworks */,
+				D6427E4D5B333CE36AE0D90F /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,12 +436,11 @@
 				8BB2B31C19022248001F5B45 /* Accounts.framework */,
 				8BB2B2D11901C4F9001F5B45 /* Social.framework */,
 				8B69414118FAB3E200976E4A /* MessageUI.framework */,
-				16E425AD187DD5F200695381 /* Crashlytics.framework */,
 				8B9BB13816BC64F100C20358 /* SystemConfiguration.framework */,
 				8BD1C80F16B32493005F3F23 /* UIKit.framework */,
 				8BD1C81116B32493005F3F23 /* Foundation.framework */,
 				8BD1C81316B32493005F3F23 /* CoreGraphics.framework */,
-				86F0672179187FCE33612F6C /* Pods.framework */,
+				F63A19EE528F8595430E09D7 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -499,7 +495,7 @@
 				8BD1C80816B32493005F3F23 /* Frameworks */,
 				8BD1C80916B32493005F3F23 /* Resources */,
 				83CEC29E5FDD4F6EAA129B86 /* Copy Pods Resources */,
-				16E425AC187DD5BB00695381 /* ShellScript */,
+				16E425AC187DD5BB00695381 /* Start Fabric */,
 				FBBA53D3DF6AB0C0469D350F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -583,18 +579,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		16E425AC187DD5BB00695381 /* ShellScript */ = {
+		16E425AC187DD5BB00695381 /* Start Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Start Fabric";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 45894d9e8a6bc3b8513651d6de36159e2c836e51";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 45894d9e8a6bc3b8513651d6de36159e2c836e51 $(cat \"${SRCROOT}/SandB-iOS/SupportingFiles/fabric_build_secret\")";
 		};
 		1A0EF58DF03C4B8CBAB6CE7D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -20,4 +20,5 @@ DerivedData
 #CocoaPods
 SandB-iOS/Pods
 
+fabric_build_secret
 strings_private.strings
