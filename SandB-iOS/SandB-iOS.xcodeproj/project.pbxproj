@@ -591,7 +591,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 45894d9e8a6bc3b8513651d6de36159e2c836e51 $(cat \"${SRCROOT}/SandB-iOS/SupportingFiles/fabric_build_secret\")";
+			shellScript = "BUILD_SECRET_FILE=\"${SRCROOT}/SandB-iOS/SupportingFiles/fabric_build_secret\"\n\nif [ -a $BUILD_SECRET_FILE ]\nthen\n    FABRIC_BUILD_SECRET=$(cat $BUILD_SECRET_FILE)\nfi\n\n# File will not exist in travis\n# but encrypted env variable should\n\n\"${PODS_ROOT}/Fabric/run\" 45894d9e8a6bc3b8513651d6de36159e2c836e51 $FABRIC_BUILD_SECRET";
+			showEnvVarsInLog = 0;
 		};
 		1A0EF58DF03C4B8CBAB6CE7D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
