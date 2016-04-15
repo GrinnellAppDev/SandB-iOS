@@ -6,3 +6,7 @@ podfile: SandB-iOS/Podfile
 xcode_workspace: SandB-iOS/SandB-iOS.xcworkspace
 xcode_scheme: S&B
 xcode_sdk: iphonesimulator9.3
+
+env:
+  matrix:
+    secure: PhAhL1pUmvaMYXwAjRSk77k0aSjtuKdTaTlLrd6nMOT0tXlebn2fPrN1tjohNTD8G4r+17Ixish9sPhbQPJ2Z/GS6ZqQT1NqbqqN/gBEFS7YYmVbP8duhO56iBP/C9+H+cWHT6YWCKxmItqh5mPJ2AJMw/Z86QFBj+bJKo3O6NM=
