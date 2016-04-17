@@ -516,7 +516,7 @@
 			attributes = {
 				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Grinnell AppDev";
 				TargetAttributes = {
 					8BD1C80A16B32493005F3F23 = {
@@ -721,6 +721,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Lea Marolt (H69TS4DPUJ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lea Marolt (H69TS4DPUJ)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
